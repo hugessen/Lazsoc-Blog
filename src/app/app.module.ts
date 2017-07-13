@@ -10,6 +10,7 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
+import { OurTeamComponent } from './our-team/our-team.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ClubsComponent } from './clubs/clubs.component';
     PostingCard,
     NewsfeedComponent,
     HiringComponent,
-    ClubsComponent
+    ClubsComponent,
+    OurTeamComponent
   ],
   imports: [
     BrowserModule,

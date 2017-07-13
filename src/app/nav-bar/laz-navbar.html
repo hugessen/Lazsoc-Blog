@@ -1,8 +1,8 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-md navbar-light">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" routerLink="/newsfeed">
     <img src="../../assets/img/Lazsoc-logo.png" width="50" height="30" alt="">
   </a>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -16,9 +16,12 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/clubs" routerLinkActive="active">Our Clubs</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/fullteam" routerLinkActive="active">Our Team</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
+          Boring Info Pages
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">Action</a>
@@ -27,7 +30,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="/#/corporate">Our Partners</a>
+        <a class="nav-link" routerLink="">Our Partners</a>
       </li>
     </ul>
   </div>

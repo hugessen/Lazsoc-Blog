@@ -6,11 +6,13 @@ import { PostingCard } from './posting-card/posting-card';
 import { LazNavbar } from './nav-bar/laz-navbar';
 import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
+import { OurTeamComponent } from './our-team/our-team.component';
 
 const appRoutes: Routes = [
   { path: 'newsfeed', component: NewsfeedComponent },
   { path: 'hiring',        component: HiringComponent },
   { path: 'clubs',        component: ClubsComponent },
+  { path: 'fullteam',        component: OurTeamComponent },
   { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
 ];
