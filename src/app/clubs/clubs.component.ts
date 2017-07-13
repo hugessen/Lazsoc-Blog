@@ -10,6 +10,7 @@ export class ClubsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
