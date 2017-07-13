@@ -11,6 +11,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { OurTeamComponent } from './our-team/our-team.component';
+import { ClubResourcesComponent } from './club-resources/club-resources.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { OurTeamComponent } from './our-team/our-team.component';
     NewsfeedComponent,
     HiringComponent,
     ClubsComponent,
-    OurTeamComponent
+    OurTeamComponent,
+    ClubResourcesComponent
   ],
   imports: [
     BrowserModule,
