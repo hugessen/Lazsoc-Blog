@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebAPI } from '../web-api.service';
 
 @Component({
   selector: 'app-newsfeed',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
-
-  constructor() { }
+  events = [];
+  constructor(private webAPI: WebAPI) {
+    webAPI.getEvents().then( res => {
+      this.events = res.events;
+      console.log(this.events);
+    })
+  }
 
   ngOnInit() {
   }

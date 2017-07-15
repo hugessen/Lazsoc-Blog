@@ -2,3 +2,16 @@
 <!-- <h1 class="display-2 text-center"><b>Lazaridis Students' Society</b></h1> -->
 <h1 class="display-3 text-center"><b>Something big is coming</b></h1>
 <h1 class="display-5 text-muted text-center">#RushPike2017</h1>
+
+<h3>Some events</h3>
+<div class="container">
+  <div class="card" style="width: 20rem;" *ngFor="let event of events">
+    <img class="card-img-top" src="assets/img/DECA.png" style="height:10rem">
+    <div class="card-block">
+      <h5 class="card-title">{{event.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{event.sub_heading}}</h6>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
+
+</div>

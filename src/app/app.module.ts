@@ -4,6 +4,8 @@ import { PostingCard } from './posting-card/posting-card';
 import { LazNavbar } from './nav-bar/laz-navbar';
 import { HiringContainer } from './hiring-container/hiring-container';
 import { AppRoutingModule } from './app-routing.module';
+import { WebAPI } from './web-api.service';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
@@ -28,9 +30,10 @@ import { ClubResourcesComponent } from './club-resources/club-resources.componen
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [WebAPI],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
