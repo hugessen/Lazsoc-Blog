@@ -1,17 +1,55 @@
-<img src="../assets/img/Lazsoc-Banner.png" class="rounded mx-auto d-block" style="margin:15px;"alt="">
-<!-- <h1 class="display-2 text-center"><b>Lazaridis Students' Society</b></h1> -->
-<h1 class="display-3 text-center"><b>Something big is coming</b></h1>
-<h1 class="display-5 text-muted text-center">#RushPike2017</h1>
+<div class="container-fluid" style="margin-left:5rem">
+  <div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-3 mt-4" style="position:fixed">
+      <div class="card">
+        <img class="card-img-top" src="assets/img/Startup Consulting.jpg">
+        <div class="card-block">
+          <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar">
+          <h4 class="card-title align-self-center profile-name">Richard Hugessen</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+    </div>
 
-<h3>Some events</h3>
-<div class="container">
-  <div class="card" style="width: 20rem;" *ngFor="let event of events">
-    <img class="card-img-top" src="assets/img/DECA.png" style="height:10rem">
-    <div class="card-block">
-      <h5 class="card-title">{{event.title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{event.sub_heading}}</h6>
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 invisible"></div>
+    <div class="col-sm-5 col-md-5 col-lg-5 mt-4">
+      <div *ngFor="let event of events" style="margin-bottom:2rem">
+        <div class="card card-inverse card-info">
+            <img class="card-img-top" src="assets/img/Startup Consulting.jpg">
+            <div class="card-block">
+                <figure class="profile profile-inline">
+                    <img src="assets/img/SL.png" class="profile-avatar" alt="">
+                </figure>
+                <h4 class="card-title">Startup Consulting 2017</h4>
+                <div class="card-text">
+                    Get ready to hear from some incredible speakers! A case competition for everyone!
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-info btn-sm">Follow</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 mt-4">
+      <div class="card">
+        <div class="card-header">
+          Calendar
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-block">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
