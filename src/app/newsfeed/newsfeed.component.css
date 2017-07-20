@@ -116,10 +116,34 @@ h5 {
 
 .avatar{
   border-radius: 50%;
-  width: 50px;
-  height:50px;
+  width: 60px;
+  height:60px;
 }
 
 .profile-name {
   margin-left: 10px;
+}
+.event-title-font {
+  font-size:12px;
+  font-weight:bolder;
+}
+.event-sub-heading {
+  font-size:10px;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+}
+.sticky-updates{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 340px;
 }
