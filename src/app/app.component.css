@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Calluna;
+  src: url('../assets/fonts/CallunaSansRegular.otf');
+}
+
+@font-face {
+  font-family: Calluna-Bold;
+  src: url('../assets/fonts/CallunaSansBold.otf');
+}
+
+@font-face {
+  font-family: Calluna-Semibold;
+  src: url('../assets/fonts/CallunaSansSemiBold.otf');
+}
+
+@font-face {
+  font-family: Calluna-Light;
+  src: url('../assets/fonts/CallunaSansLight.otf');
+}
+
+@font-face {
+  font-family: Calluna-Light-Italic;
+  src: url('../assets/fonts/CallunaSansLightItalic.otf');
+}
+
+@font-face {
+  font-family: Calluna-Black;
+  src: url('../assets/fonts/CallunaSansBlack.otf');
+}

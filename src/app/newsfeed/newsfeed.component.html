@@ -4,7 +4,7 @@
       <div class="card sticky">
         <div class="card-header d-flex">
           <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar">
-          <h4 class="card-title profile-name">Richard <br> Hugessen</h4>
+          <h4 class="card-title profile-name align-self-center">Richard Hugessen</h4>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">All</li>
@@ -17,16 +17,21 @@
 
     <div class="col-sm-5 col-md-5 col-lg-5 mt-4">
       <div *ngFor="let event of events" style="margin-bottom:2rem">
-        <div class="card card-inverse card-info">
-            <img class="card-img-top" src="assets/img/Startup Consulting.jpg">
+        <div class="card" style="background-color:rgba(0,0,0,0.05)">
+
             <div class="card-block">
-                <figure class="profile profile-inline">
-                    <img src="assets/img/SL.png" class="profile-avatar" alt="">
-                </figure>
-                <h4 class="card-title">Startup Consulting 2017</h4>
-                <div class="card-text">
-                    Get ready to hear from some incredible speakers! A case competition for everyone!
+              <div class="d-flex mb-2">
+                <img src="assets/img/thumbnails/{{clubs[event.club_id.toString()].app_logo}}" class="profile-avatar mr-3" alt="">
+                <div class="d-flex flex-column">
+
+                  <h4 class="card-title mb-2">{{event.title}}</h4>
+                  <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
                 </div>
+              </div>
+              <div class="card-text mb-2">
+                  {{event.event_description}}
+              </div>
+            <img class="card-img-top" src="assets/img/Startup Consulting.jpg" *ngIf="event.banner != ''">
             </div>
             <div class="card-footer">
                 <button class="btn btn-info btn-sm">Follow</button>
@@ -44,8 +49,8 @@
             <div class="d-flex w-100">
               <img src="assets/img/calendar-icon.svg" class="mr-3">
               <div class="d-flex flex-column">
-                <span class="event-title-font">{{events[3].title}}</span>
-                <span class="event-sub-heading">{{events[3].location}}</span>
+                <span class="event-title-font">{{events[0].title}}</span>
+                <span class="event-sub-heading">{{events[0].location}}</span>
               </div>
             </div>
           </li>

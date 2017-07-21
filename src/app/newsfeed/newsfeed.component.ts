@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../web-api.service';
+import { Observable } from 'rxjs/Rx';
+import { GetLongDate } from '../get-long-date.pipe';
 import * as Stickyfill from 'stickyfill';
 
 @Component({
@@ -9,10 +11,15 @@ import * as Stickyfill from 'stickyfill';
 })
 export class NewsfeedComponent implements OnInit {
   events = [];
+  clubs = {};
   constructor(private webAPI: WebAPI) {
-
-    webAPI.getEvents().then( res => {
-      this.events = res.events;
+    Observable.forkJoin([
+      Observable.fromPromise(webAPI.getNewsfeed()),
+      Observable.fromPromise(webAPI.getClubs(true))
+    ]).subscribe(data => {
+      this.events = data[0];
+      this.clubs = data[1];
+      console.log(this.clubs);
       console.log(this.events);
     })
   }

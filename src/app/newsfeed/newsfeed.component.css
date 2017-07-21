@@ -15,8 +15,8 @@ h5 {
     overflow: hidden;
     padding: 0;
     border: none;
-    border-radius: .28571429rem;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    border-radius: 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .card-block {
@@ -36,12 +36,18 @@ h5 {
 }
 
 .card-title {
-    font-size: 1.28571429em;
-    font-weight: 700;
+    font-size: 1.2em;
+    font-family:Calluna-Bold;
     line-height: 1.2857em;
+    font-weight:500;
+}
+.card-datetime {
+  font-family:Calluna;
+    font-size:0.9em;
 }
 
 .card-text {
+    font-family:Calluna;
     clear: both;
     margin-top: .5em;
     color: rgba(0, 0, 0, .68);
@@ -78,14 +84,14 @@ h5 {
 
 .profile-avatar {
     display: block;
-    width: 100%;
-    height: auto;
+    width: 50px;
+    height:50px;
     border-radius: 50%;
 }
 
 .profile-inline {
     position: relative;
-    top: -35px;
+    top: 0px;
     display: inline-block;
     /*border: 1px solid grey;*/
 }
@@ -96,45 +102,23 @@ h5 {
     vertical-align: top;
 }
 
-.text-bold {
-    font-weight: 700;
-}
-
-.meta {
-    font-size: 1em;
-    color: rgba(0, 0, 0, .4);
-}
-
-.meta a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, .4);
-}
-
-.meta a:hover {
-    color: rgba(0, 0, 0, .87);
-}
-
 .avatar{
   border-radius: 50%;
-  width: 60px;
-  height:60px;
+  width: 50px;
+  height:50px;
 }
 
 .profile-name {
   margin-left: 10px;
 }
 .event-title-font {
-  font-size:12px;
+  font-family:Calluna-Semibold;
+  font-size:0.8em;
   font-weight:bolder;
 }
 .event-sub-heading {
-  font-size:10px;
-}
-
-.sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 80px;
+  font-family:Calluna;
+  font-size:0.7em;
 }
 
 .sticky {

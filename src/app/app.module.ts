@@ -14,6 +14,7 @@ import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ClubResourcesComponent } from './club-resources/club-resources.component';
+import { GetLongDate } from './get-long-date.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ClubResourcesComponent } from './club-resources/club-resources.componen
     HiringComponent,
     ClubsComponent,
     OurTeamComponent,
-    ClubResourcesComponent
+    ClubResourcesComponent,
+    GetLongDate
   ],
   imports: [
     BrowserModule,
