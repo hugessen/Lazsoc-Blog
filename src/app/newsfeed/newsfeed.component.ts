@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../web-api.service';
 import { Observable } from 'rxjs/Rx';
 import { GetLongDate } from '../get-long-date.pipe';
+import { Event } from '../event';
 import * as Stickyfill from 'stickyfill';
 
 @Component({
@@ -12,6 +13,9 @@ import * as Stickyfill from 'stickyfill';
 export class NewsfeedComponent implements OnInit {
   events = [];
   clubs = {};
+  newsfeedState = "all";
+  content = [];
+
   constructor(private webAPI: WebAPI) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getNewsfeed()),
@@ -19,12 +23,23 @@ export class NewsfeedComponent implements OnInit {
     ]).subscribe(data => {
       this.events = data[0];
       this.clubs = data[1];
-      console.log(this.clubs);
+      // console.log(this.events);
       console.log(this.events);
     })
+    // this.webAPI.getEvents().then(res => {
+    //   this.events = res.events;
+    //   console.log(this.events);
+    // });
+    // this.webAPI.getClubs(true).then(res => {
+    //   this.clubs = res;
+    // })
   }
 
   ngOnInit() {
+  }
+
+  setNewsfeedState(state:string){
+    this.newsfeedState = state;
   }
 
   doSticky(){
@@ -35,5 +50,4 @@ export class NewsfeedComponent implements OnInit {
   Stickyfill.add(document.getElementsByClassName('sticky-updates'));
 
   }
-
 }

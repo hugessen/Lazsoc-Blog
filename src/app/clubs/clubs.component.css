@@ -1,0 +1,8 @@
+body{margin:2em;}
+h2 {margin:1em 0;}
+
+/*
+.collapse-accordion a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
+*/
+.collapse-accordion .card a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
+.collapse-accordion .card-header {padding:0;}
