@@ -23,7 +23,7 @@
 
       <div *ngFor="let event of events" style="margin-bottom:2rem">
         <!-- Events section -->
-        <div class="card" *ngIf="event.typeof == 'event'">
+        <div class="card" *ngIf="(event.typeof == 'event') && (newsfeedState == 'events' || newsfeedState == 'all')">
           <div class="card-img-top">
             <img class="card-img-top" src="assets/img/Startup Consulting.jpg" *ngIf="event.banner == ''">
           </div>
@@ -46,7 +46,7 @@
         </div>
 
         <!-- Laz Latest Section -->
-        <div class="card" *ngIf="event.typeof == 'blog'">
+        <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
           <div class="card-block">
             <h4 class="club-title mb-1">{{event.title}}</h4>
             <h4 class="card-datetime">{{event.author}}</h4>
