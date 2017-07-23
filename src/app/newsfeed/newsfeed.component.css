@@ -37,14 +37,14 @@ h5 {
 }
 
 .club-title {
-    font-size: 1em;
+    font-size: 1.15em;
     font-family:Calluna-Bold;
     line-height: 1.2857em;
     font-weight:500;
 }
 .card-datetime {
   font-family:Calluna;
-    font-size:0.9em;
+  font-size:1em;
 }
 
 .card-text {
@@ -159,4 +159,9 @@ h5 {
   width:100%;
   font-family:Calluna;
   border-radius: 0;
+}
+
+.icon {
+  height:20px;
+  margin-right:10px;
 }
