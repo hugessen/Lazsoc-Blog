@@ -15,6 +15,7 @@ import { ClubsComponent } from './clubs/clubs.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ClubResourcesComponent } from './club-resources/club-resources.component';
 import { GetLongDate } from './get-long-date.pipe';
+import { EventPageComponent } from './event-page/event-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GetLongDate } from './get-long-date.pipe';
     ClubsComponent,
     OurTeamComponent,
     ClubResourcesComponent,
-    GetLongDate
+    GetLongDate,
+    EventPageComponent
   ],
   imports: [
     BrowserModule,

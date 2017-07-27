@@ -54,6 +54,11 @@ export class WebAPI {
         }).catch(err => reject(err));
       })
   }
+  
+  getEvent(id: number): Promise<any> {
+  return this.getEvents()
+             .then(events => events.find(event => event.id === id));
+  }
 
   getClubs(doTransform){
     return new Promise((resolve,reject) => {

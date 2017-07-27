@@ -1,11 +1,10 @@
-<h1 class="display-2 text-center">Our Clubs</h1>
-<h2>Richard is great!</h2>
-<p>
-
-  <div class="list-group">
-    <button class="list-group-item active"> Cras justo odio </button>
-    <button class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
-    <button class="list-group-item list-group-item-action">Morbi leo risus</button>
-    <button class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-    <button class="list-group-item list-group-item-action disabled">Vestibulum at eros</button>
-  </div>
+<form name="loginForm" ng-controller="LoginController"
+      ng-submit="login(credentials)" novalidate>
+  <label for="username">Username:</label>
+  <input type="text" id="username"
+         ng-model="credentials.username">
+  <label for="password">Password:</label>
+  <input type="password" id="password"
+         ng-model="credentials.password">
+  <button type="submit">Login</button>
+</form>
