@@ -6,3 +6,17 @@ h2 {margin:1em 0;}
 */
 .collapse-accordion .card a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
 .collapse-accordion .card-header {padding:0;}
+
+.col-md-9 {
+	
+}
+
+.col-md-3 {
+	height: 200px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ebdfed+0,e7c8ea+50,eedbef+100 */
+	background: #ebdfed; /* Old browsers */
+	background: -moz-linear-gradient(left, #ebdfed 0%, #e7c8ea 50%, #eedbef 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #ebdfed 0%,#e7c8ea 50%,#eedbef 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #ebdfed 0%,#e7c8ea 50%,#eedbef 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebdfed', endColorstr='#eedbef',GradientType=1 ); /* IE6-9 */
+}
