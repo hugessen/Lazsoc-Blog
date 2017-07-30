@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebAPI } from '../web-api.service';
 import * as jquery from 'jquery';
 
 @Component({
@@ -7,8 +8,12 @@ import * as jquery from 'jquery';
   styleUrls: ['./clubs.component.css']
 })
 export class ClubsComponent implements OnInit {
+  clubs = {};
 
-  constructor() {
+  constructor(private webAPI:WebAPI) {
+    webAPI.getClubs(true).then(res => {
+      this.clubs = res;
+    })
   }
 
   ngOnInit() {

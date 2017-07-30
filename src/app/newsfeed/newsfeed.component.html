@@ -30,7 +30,7 @@
         <!-- Events section -->
         <div class="card" *ngIf="(event.typeof == 'event') && (newsfeedState == 'events' || newsfeedState == 'all')" (click)="onSelect(event)">
           <div class="card-img-top">
-            <img class="card-img-top" src="assets/img/Startup Consulting.jpg" *ngIf="event.banner == ''">
+            <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
           </div>
             <div class="card-block">
               <div class="d-flex mb-2">
