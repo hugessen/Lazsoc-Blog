@@ -26,8 +26,8 @@ h3 {
 
 .img-circle {
 	border-radius: 50%;
-	height: 94px;
-	width: 94px;
+	height: 120px;
+	width: 120px;
 	margin-left: 15px;
 	margin-bottom: 5px;
 }
@@ -37,7 +37,7 @@ h3 {
 	font-weight: 500;
 }
 
-.thumbnail {
+.user-card {
 	padding: 0;
 }
 
