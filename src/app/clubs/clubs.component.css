@@ -21,7 +21,13 @@ h5 {
 
 h3 {
 	font-weight: 800;
+	font-size: 22px;
 	margin-bottom: 0;
+}
+
+.user-card {
+	padding: 0;
+	border: 1px solid lightGray;
 }
 
 .img-circle {
@@ -32,13 +38,14 @@ h3 {
 	margin-bottom: 5px;
 }
 
+.user-card-text {
+	margin-top: 50px;
+	padding-left: 10px;
+}
+
 .card-under-name-text {
 	color: rgba(138, 139, 139, 1);
 	font-weight: 500;
-}
-
-.user-card {
-	padding: 0;
 }
 
 .thumbnail > img {
