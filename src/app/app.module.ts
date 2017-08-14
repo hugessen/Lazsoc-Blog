@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PostingCard } from './posting-card/posting-card';
 import { LazNavbar } from './nav-bar/laz-navbar';
-import { HiringContainer } from './hiring-container/hiring-container';
 import { AppRoutingModule } from './app-routing.module';
-import { WebAPI } from './web-api.service';
+import { WebAPI } from './services/web-api.service';
 import { HttpModule } from '@angular/http';
+import { AuthService } from './services/auth.service';
 
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
@@ -16,20 +15,24 @@ import { OurTeamComponent } from './our-team/our-team.component';
 import { ClubResourcesComponent } from './club-resources/club-resources.component';
 import { GetLongDate } from './get-long-date.pipe';
 import { EventPageComponent } from './event-page/event-page.component';
+import { Angular2TokenService } from 'angular2-token';
+import { LoginComponent } from './login/login.component';
+import { SidebarComponent,ProfileSidebar } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LazNavbar,
-    HiringContainer,
-    PostingCard,
     NewsfeedComponent,
     HiringComponent,
     ClubsComponent,
     OurTeamComponent,
     ClubResourcesComponent,
     GetLongDate,
-    EventPageComponent
+    EventPageComponent,
+    LoginComponent,
+    SidebarComponent,
+    ProfileSidebar
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { EventPageComponent } from './event-page/event-page.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [WebAPI],
+  providers: [WebAPI, Angular2TokenService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

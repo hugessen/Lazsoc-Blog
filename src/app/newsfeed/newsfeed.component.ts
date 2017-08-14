@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WebAPI } from '../web-api.service';
+import { WebAPI } from '../services/web-api.service';
 import { Observable } from 'rxjs/Rx';
 import { GetLongDate } from '../get-long-date.pipe';
 import { Event } from '../event';
@@ -18,21 +18,14 @@ export class NewsfeedComponent implements OnInit {
   content = [];
 
   constructor(private router: Router, private webAPI: WebAPI) {
-    Observable.forkJoin([
-      Observable.fromPromise(webAPI.getNewsfeed()),
-      Observable.fromPromise(webAPI.getClubs(true))
-    ]).subscribe(data => {
-      this.events = data[0];
-      this.clubs = data[1];
-      // console.log(this.events);
-      console.log(this.events);
-    })
-    // this.webAPI.getEvents().then(res => {
-    //   this.events = res.events;
+    // Observable.forkJoin([
+    //   // Observable.fromPromise(webAPI.getNewsfeed()),
+    //   // Observable.fromPromise(webAPI.getClubs(true))
+    // ]).subscribe(data => {
+    //   // this.events = data[0];
+    //   // this.clubs = data[1];
+    //   // console.log(this.events);
     //   console.log(this.events);
-    // });
-    // this.webAPI.getClubs(true).then(res => {
-    //   this.clubs = res;
     // })
   }
 
