@@ -27,6 +27,10 @@ export class NewsfeedComponent implements OnInit {
     //   // console.log(this.events);
     //   console.log(this.events);
     // })
+    this.webAPI.getBlogContent().then(res => {
+      this.events = res;
+      console.log(this.events);
+    })
   }
 
   ngOnInit() {

@@ -146,12 +146,18 @@ h5 {
 .sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 94px;
+    top: 124px;
 }
+.sticky-share {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 460px;
+}
+
 .sticky-updates{
   position: -webkit-sticky;
   position: sticky;
-  top: 392px;
+  top: 422px;
 }
 
 .card-header{

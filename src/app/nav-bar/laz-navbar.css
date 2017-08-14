@@ -6,4 +6,9 @@
 }
 .gold-bar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  background-color:#F2A900;
+  height:10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 90px;
 }

@@ -99,7 +99,7 @@ export class WebAPI {
   }
 
 
-  getBlogContent(){
+  getBlogContent():Promise<any[]>{
     return new Promise((resolve,reject) => {
         var result = [];
         for(var i = 0; i < 10; i++) {
@@ -112,6 +112,7 @@ export class WebAPI {
             banner: "assets/img/LazHall.jpg"
           })
         }
+        result = this.createNewsfeed([],result,null);
         resolve(result);
       })
   }
