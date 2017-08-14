@@ -10,7 +10,7 @@ import {environment} from "../../environments/environment";
 })
 export class LoginComponent implements OnInit {
   user:any;
-  constructor(private authToken: Angular2TokenService, private authService: AuthService){
+  constructor(private authService: AuthService){
     // this.authToken.init(environment.token_auth_config);
   }
 

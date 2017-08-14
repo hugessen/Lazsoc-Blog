@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(public authService:Angular2TokenService) {
     this.authService.init({
-        apiBase:                    'http://localhost:3000',
+        apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -37,7 +37,10 @@ export class AuthService {
         oAuthWindowType:            'newWindow',
         oAuthWindowOptions:         null,
 
-        userTypes:                  null,
+        userTypes:[
+          { name: 'ADMIN', path: 'admin' },
+          { name: 'USER', path: 'user' }
+        ],
 
         globalOptions: {
             headers: {
