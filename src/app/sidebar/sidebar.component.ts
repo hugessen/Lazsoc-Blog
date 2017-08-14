@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebAPI } from '../services/web-api.service';
 
 @Component({
   selector: 'sidebar-right',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor() { }
+  events = [];
+  constructor(private webAPI:WebAPI) {
+    this.webAPI.getBlogContent().then(res => {
+      this.events = res;
+    })
+  }
 
   ngOnInit() {
   }

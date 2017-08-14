@@ -18,6 +18,7 @@ import { EventPageComponent } from './event-page/event-page.component';
 import { Angular2TokenService } from 'angular2-token';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent,ProfileSidebar } from './sidebar/sidebar.component';
+import { BeansComponent } from './beans/beans.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SidebarComponent,ProfileSidebar } from './sidebar/sidebar.component';
     EventPageComponent,
     LoginComponent,
     SidebarComponent,
-    ProfileSidebar
+    ProfileSidebar,
+    BeansComponent
   ],
   imports: [
     BrowserModule,

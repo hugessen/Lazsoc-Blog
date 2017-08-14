@@ -134,7 +134,7 @@ h5 {
   font-family:Calluna;
 }
 .event-title-font {
-  font-family:Calluna-Semibold;
+  font-family:Calluna-Bold;
   font-size:0.8em;
   font-weight:bolder;
 }
@@ -146,18 +146,18 @@ h5 {
 .sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 124px;
+    top: 104px;
 }
 .sticky-share {
   position: -webkit-sticky;
   position: sticky;
-  top: 460px;
+  top: 440px;
 }
 
 .sticky-updates{
   position: -webkit-sticky;
   position: sticky;
-  top: 422px;
+  top: 315px;
 }
 
 .card-header{

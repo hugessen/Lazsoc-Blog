@@ -1,0 +1,182 @@
+html {
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+h5 {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+    margin: 0;
+}
+
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid darkgrey;
+    border-radius: 0;
+    /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+}
+
+.card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius:0;
+}
+
+.club-title {
+    font-size: 1.15em;
+    font-family:Calluna-Bold;
+    line-height: 1.2857em;
+    font-weight:500;
+}
+.card-datetime {
+  font-family:Calluna;
+  font-size:1em;
+}
+
+.card-text {
+    font-family:Calluna;
+    clear: both;
+    margin-top: .5em;
+    /*margin-left: 65px;*/
+    font-size:0.9em;
+    color: rgba(0, 0, 0, .68);
+}
+
+.card-footer {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
+    background: #fff;
+}
+
+.card-inverse .btn {
+    border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.profile {
+    position: absolute;
+    top: -12px;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.profile-avatar {
+    display: block;
+    position:absolute;
+    transform: translate(10px, 50px);
+    width: 90px;
+    height:90px;
+    border-radius: 50%;
+    border:2px solid white;
+}
+.club-avatar {
+    display: block;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    /*border: 1px solid darkgrey;*/
+}
+
+
+.profile-inline {
+    position: relative;
+    top: 0px;
+    display: inline-block;
+    /*border: 1px solid grey;*/
+}
+
+.profile-inline ~ .card-title {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: top;
+}
+
+.avatar{
+  border-radius: 50%;
+  width: 50px;
+  height:50px;
+}
+
+.profile-name {
+  margin-left: 10px;
+  font-size: 1.1em;
+  font-family:Calluna-Bold;
+  font-weight:500;
+}
+.profile-subheader {
+  margin-left:10px;
+  font-size: 0.8em;
+  font-family:Calluna;
+}
+.event-title-font {
+  font-family:Calluna-Bold;
+  font-size:0.8em;
+  font-weight:bolder;
+}
+.event-sub-heading {
+  font-family:Calluna;
+  font-size:0.7em;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 104px;
+}
+.sticky-share {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 440px;
+}
+
+.sticky-updates{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 315px;
+}
+
+.card-header{
+  font-family:Calluna-Bold;
+  font-size:1.1em;
+  background-color: white;
+}
+.list-group-item{
+  width:100%;
+  font-family:Calluna;
+  border-radius: 0;
+}
+
+.share_button {
+  font-weight:bold;
+  color:rgba(66,44,137,1);
+}
+
+.icon {
+  height:18px;
+  margin-right:10px;
+}

@@ -2,6 +2,7 @@ import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { BeansComponent } from './beans/beans.component';
 import { LazNavbar } from './nav-bar/laz-navbar';
 import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: LoginComponent },
   { path: 'resources',  component: ClubResourcesComponent },
+  { path: 'beans',  component: BeansComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
