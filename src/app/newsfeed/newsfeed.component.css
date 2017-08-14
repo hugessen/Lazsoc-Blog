@@ -87,9 +87,12 @@ h5 {
 
 .profile-avatar {
     display: block;
-    width: 50px;
-    height:50px;
+    position:absolute;
+    transform: translate(10px, 50px);
+    width: 90px;
+    height:90px;
     border-radius: 50%;
+    border:2px solid white;
 }
 .club-avatar {
     display: block;
@@ -154,11 +157,17 @@ h5 {
 .card-header{
   font-family:Calluna-Bold;
   font-size:1.1em;
+  background-color: white;
 }
 .list-group-item{
   width:100%;
   font-family:Calluna;
   border-radius: 0;
+}
+
+.share_button {
+  font-weight:bold;
+  color:rgba(66,44,137,1);
 }
 
 .icon {
