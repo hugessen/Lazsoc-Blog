@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Event } from './event';
+import { Event } from '../event';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -11,7 +11,7 @@ export class WebAPI {
   constructor(private http:Http) { }
 
 
-  getNewsfeed():Promise<any>{
+  getNewsfeed():Promise<any[]>{
     return new Promise((resolve,reject) => {
       Observable.forkJoin([
         Observable.fromPromise(this.getEvents()),
@@ -28,7 +28,7 @@ export class WebAPI {
     })
   }
 
-  createNewsfeed(events, blogContent, clubs){
+  createNewsfeed(events, blogContent, clubs):any[]{
       var result = [];
       for (let event of events){
         event.typeof = "event";
@@ -54,7 +54,7 @@ export class WebAPI {
         }).catch(err => reject(err));
       })
   }
-  
+
   getEvent(id: number): Promise<any> {
   return this.getEvents()
              .then(events => events.find(event => event.id === id));
@@ -68,6 +68,15 @@ export class WebAPI {
                 resolve(this.transformClubs(res));
             else
                 resolve(res);
+        }).catch(err => reject(err));
+      })
+  }
+
+  getJobPostings(){
+    return new Promise((resolve,reject) => {
+        this.http.get("https://2e640c7e.ngrok.io/api/job_postings.json").map(res => res.json()).toPromise()
+        .then(res => {
+          resolve(res);
         }).catch(err => reject(err));
       })
   }
@@ -90,7 +99,7 @@ export class WebAPI {
   }
 
 
-  getBlogContent(){
+  getBlogContent():Promise<any[]>{
     return new Promise((resolve,reject) => {
         var result = [];
         for(var i = 0; i < 10; i++) {
@@ -103,6 +112,7 @@ export class WebAPI {
             banner: "assets/img/LazHall.jpg"
           })
         }
+        result = this.createNewsfeed([],result,null);
         resolve(result);
       })
   }

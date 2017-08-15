@@ -1,15 +1,15 @@
-<div class="container-fluid" style="background-color:#F5F5F5">
-  <div class="row justify-content-center">
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4">
+<div class="container-fluid">
+  <!-- <div class="row justify-content-center"> -->
+    <!-- <div class="col-sm-3 col-md-3 col-lg-3 mt-4">
       <div class="card sticky">
-        <div class="card-header d-flex align-items-center" style="height:80px">
-          <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar mr-2">
-          <div class="d-flex flex-column">
+        <img src="https://photos.smugmug.com/Art/Graffiti-Art/i-8h7jctZ/2/ff578e56/M/This%20is%20Paradise%202_Toronto1339-M.jpg" style="height:100px" class="card-image-top">
+        <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="profile-avatar mr-2">
+        <div class="card-header d-flex align-items-center py-2">
+          <div class="d-flex flex-column" style="transform:translate(4.5em,0)">
             <h4 class="profile-name my-0">Richard Hugessen</h4>
             <span class="profile-subheader my-0">Laurier BBA Candidate</span>
           </div>
         </div>
-        <button type="button" class="btn btn-danger" style="border-radius:0">Have something to share?</button>
 
         <div class="list-group">
           <button class="list-group-item list-group-item-action py-2" (click)="setNewsfeedState('all')" [ngClass]="{active: newsfeedState == 'all'}">Discover</button>
@@ -17,17 +17,16 @@
           <button class="list-group-item list-group-item-action py-2" (click)="setNewsfeedState('blog')" [ngClass]="{active: newsfeedState == 'blog'}">Posts</button>
           <button class="list-group-item list-group-item-action py-2" (click)="setNewsfeedState('case-comps')" [ngClass]="{active: newsfeedState == 'case-comps'}">Case Comps</button>
         </div>
-        <div class="card-block">
-          <span class="profile-name">Filters</span>
-        </div>
       </div>
-    </div>
+      <div class="card sticky-share mt-2">
+        <span class="list-group-item share_button">Have something to share?</span>
+      </div>
+    </div> -->
 
-    <div class="col-sm-5 col-md-5 col-lg-5 mt-4">
+    <!-- <div class="col-sm-5 col-md-5 col-lg-5 mt-4"> -->
 
 
       <div *ngFor="let event of events" style="margin-bottom:1rem">
-        <!-- Events section -->
         <div class="card" *ngIf="(event.typeof == 'event') && (newsfeedState == 'events' || newsfeedState == 'all')" (click)="onSelect(event)">
           <div class="card-img-top">
             <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
@@ -75,76 +74,44 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4">
-      <div class="card sticky">
+    <!-- </div> -->
+    <!-- <div class="col-sm-3 col-md-3 col-lg-3 mt-4"> -->
+      <!-- <div class="card sticky">
         <div class="card-header py-2" style="background-color:white">
           <b>Calendar</b>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <div class="d-flex w-100">
-              <img src="assets/img/calendar-icon.svg" class="mr-3">
-              <div class="d-flex flex-column">
-                <span class="event-title-font">Laurier Accounting Association General Member's Kickoff Info Session</span>
-                <span class="event-sub-heading">Peters Building</span>
+        <div *ngFor="let event of events; let i = index">
+          <ul class="list-group list-group-flush" *ngIf="i < 3">
+            <li class="list-group-item" style="border-bottom:1px solid lightgrey; height: 50px">
+              <div class="d-flex w-100">
+                <img src="assets/img/calendar-icon.svg" class="mr-3" style="height:30px">
+                <div class="d-flex flex-column">
+                  <span class="event-title-font">Microsoft Case Competition</span>
+                  <span class="event-sub-heading">Peters Building</span>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="d-flex w-100">
-              <img src="assets/img/calendar-icon.svg" class="mr-3">
-              <div class="d-flex flex-column">
-                <span class="event-title-font">Laurier Accounting Association General Member's Kickoff Info Session</span>
-                <span class="event-sub-heading">Peters Building</span>
-              </div>
-              </div>
-          </li>
-          <li class="list-group-item">
-            <div class="d-flex w-100">
-              <img src="assets/img/calendar-icon.svg" class="mr-3">
-              <div class="d-flex flex-column">
-                <span class="event-title-font">Laurier Accounting Association General Member's Kickoff Info Session</span>
-                <span class="event-sub-heading">Peters Building</span>
-              </div>
-              </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="card mt-3 sticky-updates">
         <div class="card-header py-2" style="background-color:white">
           <b>Updates</b>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <div class="d-flex w-100">
-              <img src="assets/img/calendar-icon.svg" class="mr-3">
-              <div class="d-flex flex-column">
-                <span class="event-title-font">Laurier Accounting Association General Member's Kickoff Info Session</span>
-                <span class="event-sub-heading">Peters Building</span>
+        <div *ngFor="let event of events; let i = index">
+          <ul class="list-group list-group-flush" *ngIf="i < 3">
+            <li class="list-group-item" style="border-bottom:1px solid lightgrey; height: 50px">
+              <div class="d-flex w-100">
+                <img src="assets/img/calendar-icon.svg" class="mr-3" style="height:30px">
+                <div class="d-flex flex-column">
+                  <span class="event-title-font">Microsoft Case Competition</span>
+                  <span class="event-sub-heading">Peters Building</span>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="d-flex w-100">
-              <img src="assets/img/calendar-icon.svg" class="mr-3">
-              <div class="d-flex flex-column">
-                <span class="event-title-font">Laurier Accounting Association General Member's Kickoff Info Session</span>
-                <span class="event-sub-heading">Peters Building</span>
-              </div>
-              </div>
-          </li>
-          <li class="list-group-item">
-            <div class="d-flex w-100">
-              <img src="assets/img/calendar-icon.svg" class="mr-3">
-              <div class="d-flex flex-column">
-                <span class="event-title-font">Laurier Accounting Association General Member's Kickoff Info Session</span>
-                <span class="event-sub-heading">Peters Building</span>
-              </div>
-              </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
 </div>

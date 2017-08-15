@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { WebAPI } from '../web-api.service';
+import { WebAPI } from '../services/web-api.service';
 
 @Component({
   selector: 'app-event-page',

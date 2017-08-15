@@ -1,0 +1,36 @@
+<div class="card sticky">
+  <div class="card-header py-2" style="background-color:white">
+    <b>Calendar</b>
+  </div>
+  <div *ngFor="let event of events; let i = index">
+    <ul class="list-group list-group-flush" *ngIf="i < 3">
+      <li class="list-group-item" style="border-bottom:1px solid lightgrey; height: 50px">
+        <div class="d-flex w-100">
+          <img src="assets/img/calendar-icon.svg" class="mr-3" style="height:30px">
+          <div class="d-flex flex-column">
+            <span class="event-title-font">Microsoft Case Competition</span>
+            <span class="event-sub-heading">Peters Building</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card mt-3 sticky-updates">
+  <div class="card-header py-2" style="background-color:white">
+    <b>Updates</b>
+  </div>
+  <div *ngFor="let event of events; let i = index">
+    <ul class="list-group list-group-flush" *ngIf="i < 3">
+      <li class="list-group-item" style="border-bottom:1px solid lightgrey; height: 50px">
+        <div class="d-flex w-100">
+          <img src="assets/img/calendar-icon.svg" class="mr-3" style="height:30px">
+          <div class="d-flex flex-column">
+            <span class="event-title-font">Microsoft Case Competition</span>
+            <span class="event-sub-heading">Peters Building</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { WebAPI } from './web-api.service';
+import { WebAPI } from '../services/web-api.service';
 
 describe('WebAPI', () => {
   beforeEach(() => {

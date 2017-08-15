@@ -1,0 +1,20 @@
+<div class="card sticky">
+  <img src="https://photos.smugmug.com/Art/Graffiti-Art/i-8h7jctZ/2/ff578e56/M/This%20is%20Paradise%202_Toronto1339-M.jpg" style="height:100px" class="card-image-top">
+  <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="profile-avatar mr-2">
+  <div class="card-header d-flex align-items-center py-2">
+    <div class="d-flex flex-column" style="transform:translate(4.5em,0)">
+      <h4 class="profile-name my-0">Richard Hugessen</h4>
+      <span class="profile-subheader my-0">Laurier BBA Candidate</span>
+    </div>
+  </div>
+
+  <div class="list-group">
+    <button class="list-group-item list-group-item-action py-2" (click)="setNewsfeedState('all')" [ngClass]="{active: newsfeedState == 'all'}">Discover</button>
+    <button class="list-group-item list-group-item-action py-2" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Events</button>
+    <button class="list-group-item list-group-item-action py-2" (click)="setNewsfeedState('blog')" [ngClass]="{active: newsfeedState == 'blog'}">Posts</button>
+    <button class="list-group-item list-group-item-action py-2" (click)="setNewsfeedState('case-comps')" [ngClass]="{active: newsfeedState == 'case-comps'}">Case Comps</button>
+  </div>
+</div>
+<div class="card sticky-share mt-2">
+  <span class="list-group-item share_button">Have something to share?</span>
+</div>
