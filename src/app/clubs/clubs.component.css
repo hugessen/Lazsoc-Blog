@@ -21,60 +21,24 @@ h5 {
 }
 
 h3 {
-	font-weight: 800;
-	font-size: 22px;
+	font-weight: 700;
+	font-size: 30px;
 	margin-bottom: 0;
 }
 
 .card {
-	border: 1px solid lightGray;
-}
-
-.img-circle {
-	border-radius: 50%;
-	height: 120px;
-	width: 120px;
-	margin-left: 15px;
-	margin-bottom: 5px;
-}
-
-.user-card-text {
-	margin-top: 50px;
-	padding-left: 10px;
-}
-
-.card-under-name-text {
-	color: rgba(138, 139, 139, 1);
-	font-weight: 500;
-}
-
-.thumbnail > img {
-	margin: 0;
-}
-
-.card-image-top {
-	display: block;
-	width: 100%;
-}
-
-.caption {
-	padding: 0;
-}
-
-.list-group-item {
-	border: none;
-	color: black;
-}
-
-
-.list-group-item:hover {
-	background: lightGray;
-}
-
-.content-card {
-	padding: 5px;
+	border: 1px solid darkgrey;
+	border-radius: 0;
 }
 
 .content-header {
 	padding: 20px;
+	padding-bottom: 0;
+}
+
+.under-header-text {
+	margin-top: 2px;
+	color: rgba(138, 139, 139, 1);
+	font-weight: 500;
+	font-style: italic;
 }
