@@ -1,6 +1,6 @@
 import { NgModule }              from '@angular/core';
-import { RouterModule, Routes }  from '@angular/router';
-
+import { RouterModule, Routes, Router }  from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { BeansComponent } from './beans/beans.component';
 import { LazNavbar } from './nav-bar/laz-navbar';
@@ -18,7 +18,8 @@ const appRoutes: Routes = [
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: LoginComponent },
   { path: 'resources',  component: ClubResourcesComponent },
-  { path: 'beans',  component: ArticleComposerComponent },
+  { path: 'beans',  component: BeansComponent },
+  { path: 'compose',  component: ArticleComposerComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
@@ -35,4 +36,9 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  public route:Observable<any>;
+  constructor(r:Router){
+    // r.events.subscribe((url:any) => console.log("URL", url.url));
+  }
+}

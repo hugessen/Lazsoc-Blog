@@ -11,8 +11,4 @@ export class LazNavbar {
 
   };
 
-  goto(route:String){
-    this.router.navigate([route]);
-  }
-
 }

@@ -1,18 +1,20 @@
-
 <laz-navbar></laz-navbar>
-  <div class="row justify-content-center">
-    <div *ngIf="hasSideMenus">
-      <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-0">
-        <profile-sidebar></profile-sidebar>
-      </div>
-      <div class="col-sm-5 col-md-5 col-lg-5 mt-4 px-0">
-        <router-outlet></router-outlet>
-      </div>
-      <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-0">
-        <sidebar-right></sidebar-right>
-      </div>
+<!-- {{pathStr}}
+  <div class="row justify-content-center" *ngIf="!fullScreen">
+    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-0">
+      <profile-sidebar></profile-sidebar>
     </div>
-    <div class="col-sm-9 col-md-9 col-lg-9 mt-4" *ngIf="!hasSideMenus">
+    <div class="col-sm-5 col-md-5 col-lg-5 mt-4 px-0">
       <router-outlet></router-outlet>
     </div>
-</div>
+    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-0">
+      <sidebar-right></sidebar-right>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-9 col-md-9 col-lg-9 mt-4" *ngIf="fullScreen">
+      <router-outlet></router-outlet>
+    </div>
+  </div> -->
+  <router-outlet></router-outlet>
