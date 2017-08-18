@@ -18,17 +18,13 @@ export class NewsfeedComponent implements OnInit {
   content = [];
 
   constructor(private router: Router, private webAPI: WebAPI) {
-    // Observable.forkJoin([
-    //   // Observable.fromPromise(webAPI.getNewsfeed()),
-    //   // Observable.fromPromise(webAPI.getClubs(true))
-    // ]).subscribe(data => {
-    //   // this.events = data[0];
-    //   // this.clubs = data[1];
-    //   // console.log(this.events);
-    //   console.log(this.events);
-    // })
-    this.webAPI.getBlogContent().then(res => {
-      this.events = res;
+    Observable.forkJoin([
+      Observable.fromPromise(webAPI.getNewsfeed()),
+      Observable.fromPromise(webAPI.getClubs(true))
+    ]).subscribe(data => {
+      this.events = data[0];
+      this.clubs = data[1];
+      console.log(this.events);
       console.log(this.events);
     })
   }

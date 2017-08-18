@@ -113,7 +113,6 @@ export class WebAPI {
             banner: "assets/img/LazHall.jpg"
           })
         }
-        result = this.createNewsfeed([],result,null);
         resolve(result);
       })
   }
