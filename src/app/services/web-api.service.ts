@@ -21,7 +21,6 @@ export class WebAPI {
         var events = data[0];
         var blogContent = data[1];
         var clubs = data[2];
-        console.log("blog content", blogContent);
         var content = this.createNewsfeed(events,blogContent,clubs);
         resolve(content);
       })
@@ -41,8 +40,6 @@ export class WebAPI {
       result.sort(function(a,b){
           return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
       })
-      console.log("Logging result");
-      console.log(result);
       return result;
   }
 

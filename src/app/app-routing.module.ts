@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ClubResourcesComponent } from './club-resources/club-resources.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { ArticleComposerComponent } from './article-composer/article-composer.component';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedComponent },
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: LoginComponent },
   { path: 'resources',  component: ClubResourcesComponent },
-  { path: 'beans',  component: BeansComponent },
+  { path: 'beans',  component: ArticleComposerComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }

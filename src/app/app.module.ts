@@ -1,10 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { LazNavbar } from './nav-bar/laz-navbar';
-import { AppRoutingModule } from './app-routing.module';
-import { WebAPI } from './services/web-api.service';
+
 import { HttpModule } from '@angular/http';
-import { AuthService } from './services/auth.service';
+
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
@@ -13,16 +11,26 @@ import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ClubResourcesComponent } from './club-resources/club-resources.component';
-
 import { EventPageComponent } from './event-page/event-page.component';
-import { Angular2TokenService } from 'angular2-token';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent,ProfileSidebar } from './sidebar/sidebar.component';
 import { BeansComponent } from './beans/beans.component';
+import { ArticleComposerComponent } from './article-composer/article-composer.component';
+
+//Modules
+import { FormsModule }   from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 //Pipes
 import { GetLongDate } from './pipes/get-long-date.pipe';
 import { MapToIterablePipe } from './pipes/mapToIterablePipe';
+
+//Services
+import { Angular2TokenService } from 'angular2-token';
+import { AuthService } from './services/auth.service';
+import { WebAPI } from './services/web-api.service';
 
 @NgModule({
   declarations: [
@@ -39,13 +47,17 @@ import { MapToIterablePipe } from './pipes/mapToIterablePipe';
     LoginComponent,
     SidebarComponent,
     ProfileSidebar,
-    BeansComponent
+    BeansComponent,
+    ArticleComposerComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [WebAPI, Angular2TokenService, AuthService],
   bootstrap: [AppComponent]

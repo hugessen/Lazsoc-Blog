@@ -10,6 +10,8 @@ import {environment} from "../../environments/environment";
 })
 export class LoginComponent implements OnInit {
   user:any;
+  loginObj = {email: "user@example.com", password: "monkey67"};
+  registerObj = {email:"",password:"", passConf:""};
   constructor(private authService: AuthService){
     // this.authToken.init(environment.token_auth_config);
   }
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   signIn(){
-    this.authService.logInUser({email: "user@example.com", password: "monkey67"}).subscribe(
+    this.authService.logInUser(this.loginObj).subscribe(
 
         res => {
 
