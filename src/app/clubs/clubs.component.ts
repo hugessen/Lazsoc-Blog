@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
+import { MapToIterablePipe } from '../pipes/MapToIterablePipe';
 import * as jquery from 'jquery';
 
 @Component({
@@ -14,10 +15,11 @@ export class ClubsComponent implements OnInit {
   constructor(private webAPI:WebAPI) {
     webAPI.getClubs(true).then(res => {
       this.clubs = res;
+      console.log(this.clubs);
     })
-    webAPI.getJobPostings().then(res => {
-      this.postings = res;
-    })
+    // webAPI.getJobPostings().then(res => {
+    //   this.postings = res;
+    // })
   }
 
   ngOnInit() {

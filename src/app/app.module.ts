@@ -13,12 +13,16 @@ import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ClubResourcesComponent } from './club-resources/club-resources.component';
-import { GetLongDate } from './get-long-date.pipe';
+
 import { EventPageComponent } from './event-page/event-page.component';
 import { Angular2TokenService } from 'angular2-token';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent,ProfileSidebar } from './sidebar/sidebar.component';
 import { BeansComponent } from './beans/beans.component';
+
+//Pipes
+import { GetLongDate } from './pipes/get-long-date.pipe';
+import { MapToIterablePipe } from './pipes/mapToIterablePipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { BeansComponent } from './beans/beans.component';
     OurTeamComponent,
     ClubResourcesComponent,
     GetLongDate,
+    MapToIterablePipe,
     EventPageComponent,
     LoginComponent,
     SidebarComponent,

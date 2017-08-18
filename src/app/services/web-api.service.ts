@@ -62,6 +62,7 @@ export class WebAPI {
 
   getClubs(doTransform){
     return new Promise((resolve,reject) => {
+        // this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
         this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
         .then(res => {
             if(doTransform)

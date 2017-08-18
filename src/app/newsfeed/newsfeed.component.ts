@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { Observable } from 'rxjs/Rx';
-import { GetLongDate } from '../get-long-date.pipe';
+import { GetLongDate } from '../pipes/get-long-date.pipe';
 import { Event } from '../event';
 import { Router } from '@angular/router';
 import * as Stickyfill from 'stickyfill';
