@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
+import { AuthService } from '../services/auth.service';
+import {Angular2TokenService} from "angular2-token";
 
 @Component({
   selector: 'sidebar-right',
@@ -26,7 +28,9 @@ export class SidebarComponent implements OnInit {
 })
 export class ProfileSidebar implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthService, private tokenService:Angular2TokenService) {
+    console.log("profile sidebar says: ", tokenService.currentUserData);
+  }
 
   ngOnInit() {
   }

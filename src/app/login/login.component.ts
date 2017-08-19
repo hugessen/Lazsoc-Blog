@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   user:any;
   loginObj = {email: "user@example.com", password: "monkey67"};
   registerObj = {email:"",password:"", passConf:""};
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService, private tokenService: Angular2TokenService){
     // this.authToken.init(environment.token_auth_config);
   }
 
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
           console.log('auth response headers: ', res.headers.toJSON()); //log the response header to show the auth token
           console.log('auth response body:', res.json()); //log the response body to show the user
           this.user = res.json().data;
+          console.log("login component says: ",this.tokenService.currentUserData)
         },
 
         err => {
