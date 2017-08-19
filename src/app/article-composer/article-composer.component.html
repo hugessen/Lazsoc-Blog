@@ -1,11 +1,15 @@
-<div class="btn btn-primary" (click)="editorView = !editorView">
-  Preview
-</div>
-<br><br>
-<div [froalaEditor]="options" [(froalaModel)]="editorContent" *ngIf="editorView"></div>
-<br><br>
-  <div class="card" *ngIf="!editorView">
-    <div class="card-block">
-      <div [froalaView]="editorContent"></div>
+<div class="row justify-content-center">
+  <div class="col-sm-9 col-md-9 col-lg-9">
+    <div class="btn btn-primary" (click)="editorView = !editorView">
+      Preview
     </div>
+    <br><br>
+    <div [froalaEditor]="options" [(froalaModel)]="editorContent" *ngIf="editorView"></div>
+    <br><br>
+      <div class="card" *ngIf="!editorView">
+        <div class="card-block">
+          <div [froalaView]="editorContent"></div>
+        </div>
+      </div>
   </div>
+</div>

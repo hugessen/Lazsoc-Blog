@@ -20,11 +20,11 @@ export class AppComponent {
     // });
   }
 
-  isFullScreen(url){
-    for(let path of this.fullScrPaths) {
-      if (url === path)
-        return true;
-    }
-    return false;
-  }
+  // isFullScreen(url){
+  //   for(let path of this.fullScrPaths) {
+  //     if (url === path)
+  //       return true;
+  //   }
+  //   return false;
+  // }
 }
