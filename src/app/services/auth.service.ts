@@ -49,9 +49,9 @@ export class AuthService {
             }
         }
     });
-    // this.authService.validateToken().subscribe(
-    //     res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
-    // )
+    this.authService.validateToken().subscribe(
+        res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
+    )
   }
 
   logOutUser():Observable<Response>{

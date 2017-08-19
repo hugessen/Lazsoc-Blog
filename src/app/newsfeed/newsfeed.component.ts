@@ -12,7 +12,7 @@ import * as Stickyfill from 'stickyfill';
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
-  events = [];
+  events:any;
   clubs = {};
   newsfeedState = "all";
   content = [];

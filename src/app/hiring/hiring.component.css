@@ -1,0 +1,25 @@
+.club-title {
+    font-size: 1.15em;
+    font-family:Calluna-Bold;
+    line-height: 1.2857em;
+    font-weight:500;
+}
+.card-datetime {
+  font-family:Calluna;
+  font-size:1em;
+}
+.club-avatar {
+    display: block;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    /*border: 1px solid darkgrey;*/
+}
+.card-text {
+    font-family:Calluna;
+    clear: both;
+    margin-top: .5em;
+    /*margin-left: 65px;*/
+    font-size:0.9em;
+    color: rgba(0, 0, 0, .68);
+}

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +7,9 @@ import { Location } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  fullScreen = false;
   title = 'app';
-  pathStr:string;
-  fullScrPaths = ["/compose"];
-  constructor(r:Router){
-    // r.events.subscribe((url:any) => {
-    //   this.pathStr = url.url;
-    //   this.fullScreen = this.isFullScreen(url.url);
-    //   console.log(this.fullScreen);
-    // });
+  constructor(private authService:AuthService){
+    // console.log("authservice", authService.userSignedIn$);
   }
 
-  // isFullScreen(url){
-  //   for(let path of this.fullScrPaths) {
-  //     if (url === path)
-  //       return true;
-  //   }
-  //   return false;
-  // }
 }

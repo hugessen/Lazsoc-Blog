@@ -1,12 +1,22 @@
-<img src="../assets/img/lazsoc-hiring.png" class="rounded mx-auto d-block" style="margin:15px;"alt="">
-<ul class="nav nav-tabs d-flex justify-content-center" style="background-color:#F0F0F0">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Newest</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Older</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Et Cetera</a>
-  </li>
-</ul>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-5 col-md-5 col-lg-5 mt-4 px-2">
+      <div class="" *ngFor="let posting of jobPostings">
+        <div class="card" (click)="onSelect(posting)">
+          <div class="card-block">
+            <div class="d-flex mb-2">
+              <img src="assets/img/thumbnails/{{clubs[posting.club_id].app_logo}}" class="club-avatar mr-3" alt="">
+              <div class="d-flex flex-column">
+                <h4 class="club-title mb-1">{{posting.title}}</h4>
+                <h4 class="card-datetime">{{clubs[posting.club_id].name}}</h4>
+              </div>
+            </div>
+          <div class="card-text mb-2">
+              {{posting.description}}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

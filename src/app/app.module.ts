@@ -31,6 +31,7 @@ import { MapToIterablePipe } from './pipes/mapToIterablePipe';
 import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './services/auth.service';
 import { WebAPI } from './services/web-api.service';
+import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { WebAPI } from './services/web-api.service';
     SidebarComponent,
     ProfileSidebar,
     BeansComponent,
-    ArticleComposerComponent
+    ArticleComposerComponent,
+    JobDetailPageComponent
   ],
   imports: [
     BrowserModule,
