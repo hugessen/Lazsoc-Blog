@@ -1,21 +1,29 @@
 <div class="container-fluid" style="background-color:#F5F5F5">
   	<div class="row justify-content-center">
-      <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
-        <profile-sidebar></profile-sidebar>
-      </div>
-      <div class="col-sm-5 col-md-5 col-lg-5 mt-4">
-        <div class="content-header card">
-          <h3>Our Clubs</h3>
-          <p class="under-header-text">The fun outside the classroom</p>
-        </div>
-        <div class="card" *ngFor="let club of clubs | mapToIterable">
-          {{club.val.name}}
-        </div>
-      </div>
+      	<div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
+        	<profile-sidebar></profile-sidebar>
+      	</div>
+      	<div class="col-sm-5 col-md-5 col-lg-5 mt-4">
+        	<div class="content-header card">
+          		<h3>Our Clubs</h3>
+          		<p class="under-header-text">The fun outside the classroom</p>
+        	</div>
+        	<div class="card" *ngFor="let club of clubs | mapToIterable">
+        		<div class="row container-fluid">
+	        		<div class="col-sm-4 col-md-4 col-lg-4">
+	          			<img class="logo" src="../../assets/img/thumbnails/{{club.val.app_logo}}" alt="Club Logo">
+	          		</div>
+	          		<div class="col-sm-8 col-md-8 col-lg-8">
+	          			<h6>{{club.val.name}}</h6>
+	          			<p>{{club.val.description}}</p>
+	          		</div>
+          		</div>
+        	</div>
+      	</div>
 
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
-      <sidebar-right></sidebar-right>
-    </div>
+	    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
+	      	<sidebar-right></sidebar-right>
+	    </div>
 	</div>
 
 </div>

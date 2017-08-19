@@ -26,12 +26,19 @@ h3 {
 	margin-bottom: 0;
 }
 
+h6 {
+	font-weight: 700;
+}
+
 .card {
-	border: 1px solid darkgrey;
+	border-left: 1px solid darkgrey;
+	border-right: 1px solid darkgrey;
 	border-radius: 0;
 }
 
 .content-header {
+	border-top: 1px solid darkgrey;;
+	border-bottom: 1px solid darkgrey;
 	padding: 20px;
 	padding-bottom: 0;
 }
@@ -41,4 +48,9 @@ h3 {
 	color: rgba(138, 139, 139, 1);
 	font-weight: 500;
 	font-style: italic;
+}
+
+.logo {
+	width: 160.325px;
+	height: 160.325px;
 }
