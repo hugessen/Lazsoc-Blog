@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { MapToIterablePipe } from '../pipes/MapToIterablePipe';
 import * as jquery from 'jquery';
+import lineClamp from 'line-clamp';
 
 @Component({
   selector: 'app-clubs',

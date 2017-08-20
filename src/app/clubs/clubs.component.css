@@ -39,7 +39,7 @@ h6 {
 	letter-spacing:0;
 	text-align:left;
 	margin-bottom: 0;
-	margin-top: 35px; 
+	margin-top: 30px; 
 }
 
 .card {
@@ -52,6 +52,7 @@ h6 {
 	border-top: 1px solid darkgrey;;
 	border-bottom: 1px solid darkgrey;
 	padding: 20px;
+	padding-left: 30px;
 	padding-bottom: 0;
 }
 
@@ -67,6 +68,18 @@ h6 {
 	height: 160.325px;
 }
 
+.line-clamp-wrapper {
+	height: 57px;
+ 	overflow: hidden;
+}
+
+.line-clamp {
+	width: 360px;
+	line-height: 15px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
 .club-description {
 	font-weight: 300;
 	font-size: 12px;
@@ -74,13 +87,9 @@ h6 {
 	color:#000000;
 	letter-spacing:0;
 	text-align:left;
-	line-height: 1.5em;
-    height: 4.2em;       /* height is 2x line-height, so two lines will display */
-    overflow: hidden; 
-    text-overflow: ellipsis;
 }
 
-.tags {
+#tags {
 	font-weight: 200;
 	font-style: italic;
 	font-size:12px;
