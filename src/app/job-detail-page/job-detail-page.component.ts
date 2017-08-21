@@ -9,12 +9,18 @@ import { WebAPI } from '../services/web-api.service';
 })
 export class JobDetailPageComponent implements OnInit {
   posting = {};
+  private club = {};
   constructor( private route: ActivatedRoute, private router: Router, private webAPI: WebAPI ) {}
 
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) =>
         this.webAPI.getJobPosting(+params.get('id')))
-      .subscribe((event) => this.posting = event);
+      .subscribe((event) => {
+          this.webAPI.getClub(+event.club_id).then(res => {
+            this.club = res;
+            this.posting = event;
+          })
+      });
   }
 }

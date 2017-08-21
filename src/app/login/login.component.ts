@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Angular2TokenService} from "angular2-token";
 import { AuthService } from '../services/auth.service';
 import {environment} from "../../environments/environment";
+import { WebAPI } from '../services/web-api.service';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,17 @@ import {environment} from "../../environments/environment";
 })
 export class LoginComponent implements OnInit {
   user:any;
+  private state = "LOGIN";
   loginObj = {email: "user@example.com", password: "monkey67"};
-  registerObj = {email:"",password:"", passConf:""};
-  constructor(private authService: AuthService, private tokenService: Angular2TokenService){
+  registerObj = {firstname:"", lastname:"", email:"",password:"", passwordConfirmation:""};
+  updateObj = {firstname:"Richard", lastname:"Hugessen", nickname:"Big Hoss",workExp:"I have some", program:"BBA/BCS"};
+  profileInfoObj = {
+    email:"",
+    firstName:"",
+    lastName:"",
+    program:"",
+  };
+  constructor(private authService: AuthService, private tokenService: Angular2TokenService, private webAPI:WebAPI){
     // this.authToken.init(environment.token_auth_config);
   }
 
@@ -41,6 +50,19 @@ export class LoginComponent implements OnInit {
         res =>      console.log(res),
         error =>    console.log(error)
     );
+  }
+
+  updateInfo(infoObj){
+
+  }
+
+  registerUser(){
+
+  }
+
+  postUpdates(){
+    console.log("posting updates");
+    this.webAPI.postData('api/update_user',this.updateObj);
   }
 
 }

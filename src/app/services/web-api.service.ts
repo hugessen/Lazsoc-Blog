@@ -57,7 +57,7 @@ export class WebAPI {
              .then(events => events.find(event => event.id === id));
   }
 
-  getClubs(doTransform){
+  getClubs(doTransform):Promise<any>{
     return new Promise((resolve,reject) => {
         // this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
         this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
@@ -68,6 +68,11 @@ export class WebAPI {
                 resolve(res);
         }).catch(err => reject(err));
       })
+  }
+
+  getClub(id:number):Promise<any>{
+    return this.getClubs(false)
+               .then(postings => postings.find(club => club.id === id));
   }
 
   getJobPostings():Promise<any>{
@@ -101,6 +106,15 @@ export class WebAPI {
       return result;
   }
 
+  postData(route:string, data:any){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.post("http://localhost:3000/"+route,JSON.stringify(data))
+    .toPromise().then(res => {
+      console.log("Success!",res);
+    })
+    .catch(err => console.log("This is a fucking mess",err));
+  }
 
   getBlogContent():Promise<any[]>{
     return new Promise((resolve,reject) => {

@@ -1,4 +1,14 @@
-<h2>
-  {{posting.title}}
-</h2>
-<h3>{{posting.description}}</h3>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      <img class="club-banner" src="assets/img/{{club.app_banner}}">
+      <span class="title-font">{{posting.title}}</span><br/>
+      <span class="job-detail">{{posting.description}}</span>
+      <br/><br/>
+      <div class="form-group" *ngFor="let question of posting.job_posting_questions">
+        <label for="exampleInputEmail1"><b>{{question.question}}</b></label>
+        <textarea rows="3" style="width:100%" required></textarea>
+      </div>
+    </div>
+  </div>
+</div>

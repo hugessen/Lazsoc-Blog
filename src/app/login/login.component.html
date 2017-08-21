@@ -1,27 +1,63 @@
-<button type="button" class="btn btn-primary" (click)="signIn()">Sign in</button>
-<button type="button" class="btn btn-primary" (click)="signOut()">Sign out</button>
-<div class="login-page" *ngIf="!(authService.userSignedIn$ | async)">
-  <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
-      <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
-      <button (click)="signIn()">login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
-  </div>
+<div class="container-fluid">
+  <div class="row justify-content-center">
 
-  <div class="card" style="width: 20rem" *ngIf="(authService.userSignedIn$ | async)">
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+
+      <div *ngIf="state === 'LOGIN'">
+        <button type="button" class="btn btn-primary" (click)="signIn()">Sign in</button>
+        <button type="button" class="btn btn-primary" (click)="signOut()">Sign out</button>
+        <button type="button" class="btn btn-primary" (click)="state = 'REGISTER'">Register</button>
+        <button type="button" class="btn btn-primary" (click)="state = 'UPDATE'">Update</button>
+        <div class="login-page" *ngIf="!(authService.userSignedIn$ | async)" >
+          <div class="form">
+            <form class="register-form">
+              <input type="text" placeholder="name"/>
+              <input type="password" placeholder="password"/>
+              <input type="text" placeholder="email address"/>
+              <button>create</button>
+              <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login-form">
+              <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
+              <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
+              <button (click)="signIn()">login</button>
+              <p class="message">Not registered? <a (click)="state = 'REGISTER'">Create an account</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="" *ngIf="state === 'REGISTER'">
+        <div class="login-page">
+          <div class="form">
+            <form class="login-form">
+              <div class="d-flex flex-row pt-2">
+                <input type="text" placeholder="First Name" name="firstname" class="mr-2" [(ngModel)]="registerObj.firstname"/>
+                <input type="text" placeholder="Last Name" name="lastname" class="ml-2" [(ngModel)]="registerObj.lastname"/>
+              </div>
+              <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
+              <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
+              <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
+
+              <button (click)="registerUser()">Create Account</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="" *ngIf="state === 'UPDATE'">
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.firstname">
+          <label for="firstname">Last Name</label>
+          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.lastname">
+          <label for="firstname">Nickname</label>
+          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.nickname">
+          <label for="firstname">Work Experience</label>
+          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.workExp">
+          <label for="firstname">School Program</label>
+          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.program">
+        </div>
+        <button type="button" class="btn btn-danger" name="button" (click)="postUpdates()">Submit!</button>
+      </div>
     </div>
   </div>
 </div>
