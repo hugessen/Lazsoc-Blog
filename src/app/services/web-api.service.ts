@@ -114,16 +114,16 @@ export class WebAPI {
       }
       return result;
   }
-
-  postData(route:string, data:any){
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    this.http.post("http://localhost:3000/"+route,JSON.stringify(data))
-    .toPromise().then(res => {
-      console.log("Success!",res);
-    })
-    .catch(err => console.log("This is a fucking mess",err));
-  }
+  // 
+  // postData(route:string, data:any){
+  //   var headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   this.http.post("http://localhost:3000/"+route,JSON.stringify(data))
+  //   .toPromise().then(res => {
+  //     console.log("Success!",res);
+  //   })
+  //   .catch(err => console.log("This is a fucking mess",err));
+  // }
 
   getBlogContent():Promise<any[]>{
     return new Promise((resolve,reject) => {

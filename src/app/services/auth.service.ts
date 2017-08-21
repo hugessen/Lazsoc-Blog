@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {Angular2TokenService} from "angular2-token";
 import {Subject, Observable} from "rxjs";
 import {Response} from "@angular/http";
+import {Http} from '@angular/http';
 
 @Injectable()
 export class AuthService {
 
   userSignedIn$:Subject<boolean> = new Subject();
 
-  constructor(public authService:Angular2TokenService) {
+  constructor(public authService:Angular2TokenService, private http:Http) {
     this.authService.init({
         apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
@@ -82,6 +83,11 @@ export class AuthService {
         }
     );
 
+  }
+  updateUser(path:string, data:any){
+    this.authService.post(path,data).toPromise().then(res => {
+      console.log(res);
+    })
   }
 
 }

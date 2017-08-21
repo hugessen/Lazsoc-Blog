@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   user:any;
   private state = "LOGIN";
   loginObj = {email: "user@example.com", password: "monkey67"};
-  registerObj = {firstname:"", lastname:"", email:"",password:"", passwordConfirmation:""};
-  updateObj = {firstname:"Richard", lastname:"Hugessen", nickname:"Big Hoss",workExp:"I have some", program:"BBA/BCS"};
+  registerObj = {email:"user@email.com",password:"password", passwordConfirmation:"password"};
+  updateObj = {firstName:"Richard", lastName:"Hugessen", nickname:"Big Hoss",workExp:"I have some", program:"BBA/BCS"};
   profileInfoObj = {
     email:"",
     firstName:"",
@@ -52,17 +52,24 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  updateInfo(infoObj){
-
-  }
-
   registerUser(){
-
+    console.log("Registering");
+    this.authService.registerUser(this.registerObj).subscribe(
+        res => {
+          if(res.status == 200){
+            console.log("Successful Registration",res);
+            // this.onFormResult.emit({signedIn: true, res});
+          }
+        },
+        err => {
+          console.log('Registration error', err);
+          // this.onFormResult.emit({signedIn: false, err});
+        }
+    );
   }
 
   postUpdates(){
-    console.log("posting updates");
-    this.webAPI.postData('api/update_user',this.updateObj);
+    this.authService.updateUser('update_user',this.updateObj);
   }
 
 }

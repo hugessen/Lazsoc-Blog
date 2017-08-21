@@ -2,7 +2,6 @@
   <div class="row justify-content-center">
 
     <div class="col-sm-6 col-md-6 col-lg-6">
-
       <div *ngIf="state === 'LOGIN'">
         <button type="button" class="btn btn-primary" (click)="signIn()">Sign in</button>
         <button type="button" class="btn btn-primary" (click)="signOut()">Sign out</button>
@@ -30,10 +29,10 @@
         <div class="login-page">
           <div class="form">
             <form class="login-form">
-              <div class="d-flex flex-row pt-2">
+              <!-- <div class="d-flex flex-row pt-2">
                 <input type="text" placeholder="First Name" name="firstname" class="mr-2" [(ngModel)]="registerObj.firstname"/>
                 <input type="text" placeholder="Last Name" name="lastname" class="ml-2" [(ngModel)]="registerObj.lastname"/>
-              </div>
+              </div> -->
               <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
               <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
               <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
@@ -46,9 +45,9 @@
       <div class="" *ngIf="state === 'UPDATE'">
         <div class="form-group">
           <label for="firstname">First Name</label>
-          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.firstname">
+          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.firstName">
           <label for="firstname">Last Name</label>
-          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.lastname">
+          <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.lastName">
           <label for="firstname">Nickname</label>
           <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.nickname">
           <label for="firstname">Work Experience</label>
