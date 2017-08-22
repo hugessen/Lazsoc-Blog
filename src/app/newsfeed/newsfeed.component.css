@@ -14,7 +14,7 @@ h5 {
     font-size: 1em;
     overflow: hidden;
     padding: 0;
-    border: 1px solid darkgrey;
+    border: 1px solid #83868a;
     border-radius: 0;
     /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
 }
@@ -38,17 +38,17 @@ h5 {
 
 .club-title {
     font-size: 1.15em;
-    font-family:Calluna-Bold;
+    font-family:Lato-Bold;
     line-height: 1.2857em;
     font-weight:500;
 }
 .card-datetime {
-  font-family:Calluna;
+  font-family:Lato-Regular;
   font-size:1em;
 }
 
 .card-text {
-    font-family:Calluna;
+    font-family:Lato-Regular;
     clear: both;
     margin-top: .5em;
     /*margin-left: 65px;*/
@@ -125,21 +125,21 @@ h5 {
 .profile-name {
   margin-left: 10px;
   font-size: 1.1em;
-  font-family:Calluna-Bold;
+  font-family:Lato-Bold;
   font-weight:500;
 }
 .profile-subheader {
   margin-left:10px;
   font-size: 0.8em;
-  font-family:Calluna;
+  font-family:Lato-Regular;
 }
 .event-title-font {
-  font-family:Calluna-Bold;
+  font-family:Lato-Bold;
   font-size:0.8em;
   font-weight:bolder;
 }
 .event-sub-heading {
-  font-family:Calluna;
+  font-family:Lato-Regular;
   font-size:0.7em;
 }
 
@@ -161,13 +161,13 @@ h5 {
 }
 
 .card-header{
-  font-family:Calluna-Bold;
+  font-family:Lato-Bold;
   font-size:1.1em;
   background-color: white;
 }
 .list-group-item{
   width:100%;
-  font-family:Calluna;
+  font-family:Lato-Regular;
   border-radius: 0;
 }
 

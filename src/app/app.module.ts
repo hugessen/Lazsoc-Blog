@@ -33,7 +33,7 @@ import { AuthService } from './services/auth.service';
 import { WebAPI } from './services/web-api.service';
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ClubDetailPageComponent } from './club-detail-page/club-detail-page.component';
+import { ClubDetailComponent } from './club-detail/club-detail.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { ClubDetailPageComponent } from './club-detail-page/club-detail-page.com
     ArticleComposerComponent,
     JobDetailPageComponent,
     ProfileComponent,
-    ClubDetailPageComponent
+    ClubDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { MapToIterablePipe } from '../pipes/MapToIterablePipe';
+import { Router } from '@angular/router';
 import * as jquery from 'jquery';
 import lineClamp from 'line-clamp';
 
@@ -13,7 +14,7 @@ export class ClubsComponent implements OnInit {
   clubs:{};
   postings:{};
 
-  constructor(private webAPI:WebAPI) {
+  constructor(private webAPI:WebAPI, private router:Router) {
     webAPI.getClubs(true).then(res => {
       this.clubs = res;
       console.log(this.clubs);
@@ -27,6 +28,11 @@ export class ClubsComponent implements OnInit {
 
   }
 
-  
+  onSelect(event){
+    this.router.navigate(['/clubs',event.id]);
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+  }
+
 
 }
