@@ -3,6 +3,7 @@ import {Angular2TokenService} from "angular2-token";
 import { AuthService } from '../services/auth.service';
 import {environment} from "../../environments/environment";
 import { WebAPI } from '../services/web-api.service';
+import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,8 @@ import { WebAPI } from '../services/web-api.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  state:string;
   user:any;
-  private state = "LOGIN";
   loginObj = {email: "user@example.com", password: "monkey67"};
   registerObj = {email:"user@email.com",password:"password", passwordConfirmation:"password"};
   updateObj = {firstName:"Richard", lastName:"Hugessen", nickname:"Big Hoss",workExp:"I have some", program:"BBA/BCS"};
@@ -21,13 +22,17 @@ export class LoginComponent implements OnInit {
     lastName:"",
     program:"",
   };
-  constructor(private authService: AuthService, private tokenService: Angular2TokenService, private webAPI:WebAPI){
+  constructor(private authService: AuthService, private tokenService: Angular2TokenService, private webAPI:WebAPI, private route: ActivatedRoute){
     // this.authToken.init(environment.token_auth_config);
   }
 
 
   ngOnInit() {
+    this.route.paramMap
+      .switchMap((params: ParamMap) =>
+        this.state = params.get('state'));
   }
+
   signIn(){
     this.authService.logInUser(this.loginObj).subscribe(
 

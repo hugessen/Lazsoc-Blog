@@ -32,6 +32,8 @@ import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './services/auth.service';
 import { WebAPI } from './services/web-api.service';
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ClubDetailPageComponent } from './club-detail-page/club-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { JobDetailPageComponent } from './job-detail-page/job-detail-page.compon
     ProfileSidebar,
     BeansComponent,
     ArticleComposerComponent,
-    JobDetailPageComponent
+    JobDetailPageComponent,
+    ProfileComponent,
+    ClubDetailPageComponent
   ],
   imports: [
     BrowserModule,
