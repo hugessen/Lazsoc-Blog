@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-beans',
@@ -8,14 +9,14 @@ import { WebAPI } from '../services/web-api.service';
 })
 export class BeansComponent implements OnInit {
 	beans:{}
-  constructor(private webAPI:WebAPI) {
-    webAPI.getBeans().then(res => {
-      this.beans = res;
-      console.log(this.beans);
-    });
+  constructor(private webAPI:WebAPI,private authService: AuthService,) {
 }
 
   ngOnInit() {
+  }
+
+  getBeans(){
+    this.authService.getBeans('beans/get_all.json');
   }
 
 }

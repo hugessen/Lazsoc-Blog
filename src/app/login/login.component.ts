@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
+
   postUpdates(){
     this.authService.updateUser('update_user',this.updateObj);
   }
