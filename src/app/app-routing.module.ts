@@ -12,17 +12,22 @@ import { ClubResourcesComponent } from './club-resources/club-resources.componen
 import { EventPageComponent } from './event-page/event-page.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
 import { JobDetailPageComponent} from './job-detail-page/job-detail-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ClubDetailComponent } from './club-detail/club-detail.component';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedComponent },
   { path: 'hiring',     component: HiringComponent },
   { path: 'clubs',      component: ClubsComponent },
-  { path: 'fullteam',   component: LoginComponent },
+  { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ClubResourcesComponent },
   { path: 'beans',  component: BeansComponent },
-  { path: 'compose',  component: ArticleComposerComponent },
+  // { path: 'compose',  component: ArticleComposerComponent },
+  { path: 'profile',  component: ProfileComponent },
+  { path: 'login/:state',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
+  { path: 'clubs/:id', component: ClubDetailComponent},
   { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
 ];

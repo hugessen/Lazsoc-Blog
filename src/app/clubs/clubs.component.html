@@ -8,22 +8,24 @@
           		<h3>Our Clubs</h3>
           		<p class="under-header-text">The fun outside the classroom</p>
         	</div>
-        	<div class="card" *ngFor="let club of clubs | mapToIterable">
-        		<div class="row container-fluid">
-	        		<div class="col-sm-4 col-md-4 col-lg-4">
-	          			<img class="logo" src="../../assets/img/thumbnails/{{club.val.app_logo}}" alt="Club Logo">
-	          		</div>
-	          		<div class="col-sm-8 col-md-8 col-lg-8">
-	          			<h6>{{club.val.name}}</h6>
-	          			<div class="row container" id="bottom_margin_2">
-	          				<p class="tags" *ngFor="let tag of club.val.club_tags">{{tag.tag}} &bull; &nbsp;</p>
-	          			</div>
-	          			<div class="line-clamp-wrapper">
-	          				<p class="club-description line-clamp">{{club.val.description}}</p>
-	          			</div>
-	          		</div>
-          		</div>
-        	</div>
+          <div *ngFor="let club of clubs | mapToIterable">
+            <div class="card" (click)="onSelect(club.val)">
+              <div class="row container-fluid">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                    <img class="logo" src="../../assets/img/thumbnails/{{club.val.app_logo}}" alt="Club Logo">
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8">
+                    <h6>{{club.val.name}}</h6>
+                    <div class="row container" id="bottom_margin_2">
+                      <p class="tags" *ngFor="let tag of club.val.club_tags">{{tag.tag}} &bull; &nbsp;</p>
+                    </div>
+                    <div class="line-clamp-wrapper">
+                      <p class="club-description line-clamp">{{club.val.description}}</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
       	</div>
 
 	    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">

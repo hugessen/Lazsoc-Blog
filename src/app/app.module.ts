@@ -13,7 +13,7 @@ import { OurTeamComponent } from './our-team/our-team.component';
 import { ClubResourcesComponent } from './club-resources/club-resources.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { LoginComponent } from './login/login.component';
-import { SidebarComponent,ProfileSidebar } from './sidebar/sidebar.component';
+import { SidebarComponent,ProfileSidebar, JobPostingSidebar } from './sidebar/sidebar.component';
 import { BeansComponent } from './beans/beans.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
 
@@ -32,6 +32,8 @@ import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './services/auth.service';
 import { WebAPI } from './services/web-api.service';
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ClubDetailComponent } from './club-detail/club-detail.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,10 @@ import { JobDetailPageComponent } from './job-detail-page/job-detail-page.compon
     ProfileSidebar,
     BeansComponent,
     ArticleComposerComponent,
-    JobDetailPageComponent
+    JobDetailPageComponent,
+    ProfileComponent,
+    ClubDetailComponent,
+    JobPostingSidebar
   ],
   imports: [
     BrowserModule,
