@@ -90,10 +90,10 @@ export class AuthService {
     })
   }
   getBeans(path:string){
-    this.authService.get(path).toPromise().then(res => {
+    this.authService.get(path).map(res => res.json()).toPromise()
+    .then(res => {
       console.log("Beans: ", res);
+      return res;
     })
   }
-
-
 }

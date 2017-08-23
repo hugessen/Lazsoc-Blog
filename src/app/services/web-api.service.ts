@@ -57,14 +57,6 @@ export class WebAPI {
              .then(events => events.find(event => event.id === id));
   }
 
-  getBeans():Promise<any>{
-    return new Promise((resolve,reject) => {
-        this.http.get("http://localhost:3000/api/beans/get_all.json").map(res => res.json()).toPromise()
-        .then(res => {
-          resolve(res);
-        }).catch(err => reject(err));
-      })
-  }
 
   getClubs(doTransform):Promise<any>{
     return new Promise((resolve,reject) => {
