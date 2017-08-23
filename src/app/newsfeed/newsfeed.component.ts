@@ -25,7 +25,6 @@ export class NewsfeedComponent implements OnInit {
       this.events = data[0];
       this.clubs = data[1];
       console.log(this.events);
-      console.log(this.events);
     })
   }
 

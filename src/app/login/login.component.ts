@@ -11,7 +11,7 @@ import { Router, ParamMap, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  state:string;
+  state:string = "login"
   user:any;
   loginObj = {email: "user@example.com", password: "monkey67"};
   registerObj = {email:"user@email.com",password:"password", passwordConfirmation:"password"};
@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this.state = params.get('state'));
+    // this.route.paramMap
+    //   .switchMap((params: ParamMap) =>
+    //     this.state = params.get('state'));
   }
 
   signIn(){
