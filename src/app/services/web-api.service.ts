@@ -33,10 +33,10 @@ export class WebAPI {
         event.typeof = "event";
         result.push(event);
       }
-      for (let post of blogContent){
-        post.typeof = "blog";
-        result.push(post);
-      }
+      // for (let post of blogContent){
+      //   post.typeof = "blog";
+      //   result.push(post);
+      // }
       result.sort(function(a,b){
           return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
       })
@@ -114,7 +114,7 @@ export class WebAPI {
       }
       return result;
   }
-  // 
+  //
   // postData(route:string, data:any){
   //   var headers = new Headers();
   //   headers.append('Content-Type', 'application/json');

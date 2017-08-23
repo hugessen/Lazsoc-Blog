@@ -44,7 +44,8 @@ h5 {
 }
 .card-datetime {
   font-family:Lato-Regular;
-  font-size:1em;
+  font-size:14px;
+  color:#83868a;
 }
 
 .card-text {

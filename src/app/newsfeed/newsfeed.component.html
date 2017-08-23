@@ -15,13 +15,12 @@
                 <img src="assets/img/thumbnails/{{clubs[event.club_id].app_logo}}" class="club-avatar mr-3" alt="">
                 <div class="d-flex flex-column">
                   <h4 class="club-title mb-1">{{event.title}}</h4>
-                  <h4 class="card-datetime">{{clubs[event.club_id].name}}</h4>
+                  <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
                 </div>
               </div>
               <div class="card-text mb-2">
                   {{event.event_description}}
               </div>
-              {{event.start_date_time | getLongDate}}
             </div>
             <div class="card-footer py-2">
               <img src="assets/img/icons/heart.svg" class="icon">
@@ -32,7 +31,7 @@
         </div>
 
         <!-- Laz Latest Section -->
-        <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
+        <!-- <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
           <div class="card-block">
             <div class="d-flex">
               <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar mr-3">
@@ -51,7 +50,7 @@
             <img src="assets/img/icons/arrow.svg" class="icon">
             <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
