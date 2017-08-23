@@ -10,17 +10,17 @@ import { AuthService } from '../services/auth.service';
 export class BeansComponent implements OnInit {
 	beans:{}
   constructor(private webAPI:WebAPI,private authService: AuthService,) {
-
-  }
+}
 
   ngOnInit() {
   }
 
   getBeans(){
-    this.authService.getBeans('beans/get_all.json').then(res => {
-      this.beans = res;
-      console.log(this.beans);
-    })
+     this.authService.getBeans('beans/get_all.json').then(res => {
+       this.beans = res;
+       console.log(this.beans);
+       console.log(this.beans[0].nickname,this.beans[0].lastName,this.beans[0].program);
+      })
   }
 
 }

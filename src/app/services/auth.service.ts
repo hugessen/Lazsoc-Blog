@@ -89,11 +89,12 @@ export class AuthService {
       console.log(res);
     })
   }
-  getBeans(path:string){
-    this.authService.get(path).map(res => res.json()).toPromise()
-    .then(res => {
-      console.log("Beans: ", res);
-      return res;
-    })
+  getBeans(path:string):Promise<any>{
+     return new Promise((resolve,reject)=> {
+      this.authService.get(path).map(res => res.json()).toPromise()
+      .then(res=>{
+        resolve(res);
+      }).catch(err => reject(err));  
+    });
   }
 }
