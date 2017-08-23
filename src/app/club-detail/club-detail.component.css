@@ -1,3 +1,14 @@
+.left-content-pane {
+  margin-left:3.5%;
+  margin-right: 8px;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 104px;
+}
+
 .card {
     font-size: 1em;
     overflow: hidden;
@@ -100,4 +111,16 @@
   color:#000000;
   letter-spacing:0;
   text-align:left;
+}
+
+.job-posting-subheader {
+  font-family:Lato-Medium;
+  font-size:10px;
+  color:#83868a;
+  letter-spacing:0;
+  text-align:left;
+}
+
+.open-positions-icon {
+  width:15%;
 }

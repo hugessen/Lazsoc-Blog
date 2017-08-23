@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ClubResourcesComponent },
   { path: 'beans',  component: BeansComponent },
-  { path: 'compose',  component: ArticleComposerComponent },
+  // { path: 'compose',  component: ArticleComposerComponent },
   { path: 'profile',  component: ProfileComponent },
   { path: 'login/:state',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },

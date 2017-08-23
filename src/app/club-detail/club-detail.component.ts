@@ -9,7 +9,7 @@ import { WebAPI } from '../services/web-api.service';
 })
 export class ClubDetailComponent implements OnInit {
 
-  private club;
+  private club ={};
 
   constructor(private route: ActivatedRoute, private router: Router, private webAPI: WebAPI) { }
 
