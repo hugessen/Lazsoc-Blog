@@ -9,6 +9,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class BeansComponent implements OnInit {
 	beans:{}
+  conversations:{}
+  obj= {
+    sender_id: 1,
+    recipient_id: 2
+  };
+  message={
+    body:"New message",
+    conversation_id: 1
+  }
   constructor(private webAPI:WebAPI,private authService: AuthService,) {
 }
 
@@ -16,11 +25,38 @@ export class BeansComponent implements OnInit {
   }
 
   getBeans(){
-     this.authService.getBeans('beans/get_all.json').then(res => {
+     this.authService.apiGet('beans/get_all.json').then(res => {
        this.beans = res;
        console.log(this.beans);
-       console.log(this.beans[0].nickname,this.beans[0].lastName,this.beans[0].program);
-      })
+      });
+  }
+
+  getConversations(){
+    this.authService.apiGet('beans/conversations.json').then(res => {
+       this.conversations = res;
+       console.log(this.conversations);
+      });
+  }
+
+  //TOOD: send proper sender_id, recipient_id instad of this.obj 
+  startConversation(){
+    this.authService.apiPost('beans/start_conversation',this.obj).then(res => {
+      console.log("start convos:", res);
+     });
+  }
+
+  displayConversation(){
+    //TODO: send proper sender_id, recipient_id and conversation_id
+    this.authService.apiGet('beans/display_conversation',{params: {sender_id: 1, recipient_id: 2, conversation_id:1}}).then(res => {
+      console.log("display convos:", res);
+     });
+  }
+
+  //TODO: send proper message obt
+  sendMessage(){
+    this.authService.apiPost('beans/send_message',this.message).then(res => {
+      console.log("message sent: ", res);
+     });
   }
 
 }

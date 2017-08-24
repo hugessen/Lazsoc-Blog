@@ -89,9 +89,19 @@ export class AuthService {
       console.log(res);
     })
   }
-  getBeans(path:string):Promise<any>{
+  
+  apiGet(path:string, data:any = null):Promise<any>{
      return new Promise((resolve,reject)=> {
-      this.authService.get(path).map(res => res.json()).toPromise()
+      this.authService.get(path,data).map(res => res.json()).toPromise()
+      .then(res=>{
+        resolve(res);
+      }).catch(err => reject(err));  
+    });
+  }
+
+  apiPost(path:string, data:any){
+    return new Promise((resolve,reject)=> {
+      this.authService.post(path,data).map(res => res.json()).toPromise()
       .then(res=>{
         resolve(res);
       }).catch(err => reject(err));  
