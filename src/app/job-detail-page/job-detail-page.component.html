@@ -5,6 +5,18 @@
       <span class="title-font">{{posting.title}}</span><br/>
       <span class="job-detail">{{posting.description}}</span>
       <br/><br/>
+      <div class="form-group">
+        <label for=""><b>Full Name</b></label>
+        <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.full_name">
+        <label for=""><b>Email</b></label>
+        <input type="email" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.email">
+        <label for=""><b>Program</b></label>
+        <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.program">
+        <label for=""><b>Year</b></label>
+        <select class="form-control" id="exampleSelect1" [(ngModel)]="jobApplication.year">
+          <option *ngFor="let option of getYearOptions()">{{option}}</option>
+        </select>
+      </div>
       <div class="form-group" *ngFor="let question of posting.job_posting_questions; let i = index">
         <label for="exampleInputEmail1"><b>{{question.question}}</b></label>
         <textarea rows="3" style="width:100%" required [(ngModel)]="jobApplication.job_question_answers_attributes[i].answer"></textarea>

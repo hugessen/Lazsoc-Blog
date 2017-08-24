@@ -32,6 +32,10 @@ export class JobDetailPageComponent implements OnInit {
 
   initApplication(postingId:number, questions:any[]){
     this.jobApplication = {
+      full_name:"",
+      email:"",
+      program:"",
+      year:1,
       job_posting_id:postingId,
       job_question_answers_attributes:[]
     };
@@ -46,5 +50,9 @@ export class JobDetailPageComponent implements OnInit {
   submitJobApp():void {
     console.log(this.jobApplication);
     this.webAPI.submitJobApplication(this.jobApplication);
+  }
+
+  getYearOptions(){
+    return ["1","2","3","4","5+"];
   }
 }

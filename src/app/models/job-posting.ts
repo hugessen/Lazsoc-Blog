@@ -18,6 +18,10 @@ export interface JobQuestionAnswer {
 }
 
 export interface JobPostingApplication {
+  full_name:string;
+  email:string;
+  program:string;
+  year:number;
   job_posting_id:number;
   job_question_answers_attributes:JobQuestionAnswer[];
 }

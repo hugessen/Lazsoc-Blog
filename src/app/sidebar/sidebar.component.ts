@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { AuthService } from '../services/auth.service';
 import { Angular2TokenService } from "angular2-token";
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -48,7 +49,7 @@ export class JobPostingSidebar implements OnInit {
   private jobPostings;
   private clubs;
   @Input() clubId: number;
-  constructor(private webAPI:WebAPI) {
+  constructor(private webAPI:WebAPI, private router:Router) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getJobPostings()),
       Observable.fromPromise(webAPI.getClubs(true))
@@ -63,6 +64,12 @@ export class JobPostingSidebar implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  viewJobPost(id:number){
+    this.router.navigate(['/hiring',id]);
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera
+    document.documentElement.scrollTop = 0; // For IE and Firefox
   }
 
 }
