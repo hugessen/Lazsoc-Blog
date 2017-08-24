@@ -1,0 +1,64 @@
+.card {
+  width:45%
+}
+
+.avatar {
+  display: block;
+  position:absolute;
+  transform: translate(74%, -50%);
+  width: 40%;
+  height:auto;
+  border-radius: 50%;
+  border:2px solid white;
+}
+.card-block {
+  text-align: center;
+}
+.profile-name {
+  font-family:Lato-Black;
+  font-size:18px;
+  color:#433089;
+  letter-spacing:0;
+  text-align:left;
+}
+.profile-subheading {
+  font-family:Lato-Semibold;
+  font-size:14px;
+  color:#83868a;
+  letter-spacing:0;
+  text-align:left;
+}
+.invite-button {
+  margin-left:20%;
+  background:#433089;
+  border:2px solid #433089;
+  border-radius:5px;
+  width:153px;
+  height:21px;
+  padding-bottom:11%;
+  text-align:center;
+}
+.invite-button span {
+  font-family:Lato-Semibold;
+  font-size:14px;
+  color:#ffffff;
+  letter-spacing:0;
+}
+
+.tags-label {
+  flex-basis:content;
+  padding:0% 8% 1% 8%;
+  opacity:0.99;
+  background:rgba(239,239,239,0.50);
+  border:0 solid #efefef;
+  border-radius:5px;
+  min-width: 30px;
+}
+
+.tags-label span {
+  font-family:Lato-Light;
+  font-size:10px;
+  color:#83868a;
+  letter-spacing:0;
+  text-align:left;
+}

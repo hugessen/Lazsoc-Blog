@@ -1,8 +1,34 @@
-<h1>LazBeans</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-7 col-md-7 col-lg-7" style="margin-top:45px">
+      <div class="d-flex flex-wrap">
+        <div class="card mx-2" *ngFor="let bean of beans">
+          <img src="https://media.giphy.com/media/26gsl2WC5tRxkemdi/giphy.gif" class="avatar">
+          <div class="card-block">
+            <br><br>
+            <span class="profile-name">Salt Bae</span><br>
+            <span class="profile-subheading">Laurier BBA Student</span>
+            <div class="invite-button mt-4"><span>Invite</span></div>
+            <div class="d-flex flex-wrap mt-4 justify-content-center">
+              <div class="tags-label m-1"><span>Technology</span></div>
+              <div class="tags-label m-1"><span>Design</span></div>
+              <div class="tags-label m-1"><span>UX</span></div>
+              <div class="tags-label m-1"><span>Entrepreneurship</span></div>
+              <div class="tags-label m-1"><span>Finance</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<button type="button" class="btn btn-primary" (click)="getBeans()">Get Beans (see console)</button>
 
+  </div>
+</div>
+<br>
 <hr>
+<h2> Rough work below</h2>
+<button type="button" class="btn btn-primary" (click)="getBeans()">Get Beans (see console)</button>
+<br>
 <h3>Messaging Test</h3>
 <p>A conversation between User.find(1) and User.find(2)</p>
 

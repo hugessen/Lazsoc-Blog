@@ -19,9 +19,6 @@ export class BeansComponent implements OnInit {
     conversation_id: 1
   }
   constructor(private webAPI:WebAPI,private authService: AuthService,) {
-}
-
-  ngOnInit() {
   }
 
   getBeans(){
@@ -57,6 +54,8 @@ export class BeansComponent implements OnInit {
     this.authService.apiPost('beans/send_message',this.message).then(res => {
       console.log("message sent: ", res);
      });
+  }
+  ngOnInit() {
   }
 
 }
