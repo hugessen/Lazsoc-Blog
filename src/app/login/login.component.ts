@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   user:any;
   loginObj = {email: "user@example.com", password: "monkey67"};
   registerObj = {email:"user@email.com",password:"password", passwordConfirmation:"password"};
-  updateObj = {firstName:"Richard", lastName:"Hugessen", nickname:"Big Hoss",workExp:"I have some", program:"BBA/BCS"};
+  updateObj = {first_name:"Richard", last_name:"Hugessen", nickname:"Big Hoss", work_exp:"I have some", program:"BBA/BCS"};
   profileInfoObj = {
     email:"",
     firstName:"",

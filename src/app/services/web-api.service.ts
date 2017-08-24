@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Event } from '../event';
+import { JobPosting,JobPostingApplication } from '../models/job-posting';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -85,9 +86,15 @@ export class WebAPI {
       })
   }
 
-  getJobPosting(id: number): Promise<any> {
+  getJobPosting(id: number): Promise<JobPosting> {
   return this.getJobPostings()
              .then(postings => postings.find(post => post.id === id));
+  }
+
+  submitJobApplication(data:JobPostingApplication){
+    this.http.post('http://localhost:3000/api/submit_job_app',{job_posting_application:data}).subscribe(res => {
+      console.log(res);
+    });
   }
 
   transformClubs(clubs:any[]):Object{
