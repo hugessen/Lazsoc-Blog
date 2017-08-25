@@ -1,62 +1,48 @@
 
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
-      <profile-sidebar></profile-sidebar>
-    </div>
-    <div class="col-sm-5 col-md-5 col-lg-5 mt-4 px-2">
-      <div *ngFor="let event of events" style="margin-bottom:1rem">
-        <div class="card" *ngIf="(event.typeof == 'event') && (newsfeedState == 'events' || newsfeedState == 'all')" (click)="onSelect(event)">
-          <div class="card-img-top">
-            <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
+  <div *ngFor="let event of events" style="margin-bottom:1rem">
+    <div class="card" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
+      <div class="card-img-top">
+        <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
+      </div>
+        <div class="card-block">
+          <div class="d-flex mb-2">
+            <img src="assets/img/thumbnails/{{clubs[event.club_id].app_logo}}" class="club-avatar mr-3" alt="">
+            <div class="d-flex flex-column">
+              <h4 class="club-title mb-1">{{event.title}}</h4>
+              <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
+            </div>
           </div>
-            <div class="card-block">
-              <div class="d-flex mb-2">
-                <img src="assets/img/thumbnails/{{clubs[event.club_id].app_logo}}" class="club-avatar mr-3" alt="">
-                <div class="d-flex flex-column">
-                  <h4 class="club-title mb-1">{{event.title}}</h4>
-                  <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
-                </div>
-              </div>
-              <div class="card-text mb-2">
-                  {{event.sub_heading}}
-              </div>
-            </div>
-            <div class="card-footer py-2">
-              <img src="assets/img/icons/heart.svg" class="icon">
-              <img src="assets/img/icons/bookmark.svg" class="icon">
-              <img src="assets/img/icons/arrow.svg" class="icon">
-              <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
-            </div>
+          <div class="card-text mb-2">
+              {{event.sub_heading}}
+          </div>
+        </div>
+        <div class="card-footer py-2">
+          <img src="assets/img/icons/heart.svg" class="icon">
+          <img src="assets/img/icons/bookmark.svg" class="icon">
+          <img src="assets/img/icons/arrow.svg" class="icon">
+          <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
+        </div>
+    </div>
+
+    <!-- Laz Latest Section -->
+    <!-- <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
+      <div class="card-block">
+        <div class="d-flex">
+          <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar mr-3">
+          <div class="d-flex flex-column">
+            <h4 class="club-title mb-1">Tips on Being a Laurier BBA Student #BBAProbs</h4>
+            <h4 class="card-datetime">{{event.author}}</h4>
+          </div>
         </div>
 
-        <!-- Laz Latest Section -->
-        <!-- <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
-          <div class="card-block">
-            <div class="d-flex">
-              <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar mr-3">
-              <div class="d-flex flex-column">
-                <h4 class="club-title mb-1">Tips on Being a Laurier BBA Student #BBAProbs</h4>
-                <h4 class="card-datetime">{{event.author}}</h4>
-              </div>
-            </div>
-
-            <h4 class="card-datetime mt-2">{{event.sub_heading}}</h4>
-            <img src="assets/img/LazHall.jpg" alt="" style="width:100%">
-          </div>
-          <div class="card-footer">
-            <img src="assets/img/icons/heart.svg" class="icon">
-            <img src="assets/img/icons/bookmark.svg" class="icon">
-            <img src="assets/img/icons/arrow.svg" class="icon">
-            <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
-          </div>
-        </div> -->
+        <h4 class="card-datetime mt-2">{{event.sub_heading}}</h4>
+        <img src="assets/img/LazHall.jpg" alt="" style="width:100%">
       </div>
-    </div>
-
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
-      <sidebar-right></sidebar-right>
-    </div>
+      <div class="card-footer">
+        <img src="assets/img/icons/heart.svg" class="icon">
+        <img src="assets/img/icons/bookmark.svg" class="icon">
+        <img src="assets/img/icons/arrow.svg" class="icon">
+        <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
+      </div>
+    </div> -->
   </div>
-
-</div>

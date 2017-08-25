@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { Observable } from 'rxjs/Rx';
 import { GetLongDate } from '../pipes/get-long-date.pipe';
@@ -16,10 +16,13 @@ export class NewsfeedComponent implements OnInit {
   clubs = {};
   newsfeedState = "all";
   content = [];
+  big_richard;
+
+  @Input() clubID;
 
   constructor(private router: Router, private webAPI: WebAPI) {
     Observable.forkJoin([
-      Observable.fromPromise(webAPI.getNewsfeed()),
+      Observable.fromPromise(webAPI.getNewsfeed(this.big_richard)),
       Observable.fromPromise(webAPI.getClubs(true))
     ]).subscribe(data => {
       this.events = data[0];
@@ -29,6 +32,7 @@ export class NewsfeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.clubID);
   }
 
   onSelect(event){

@@ -17,11 +17,14 @@
                   <div class="col-sm-8 col-md-8 col-lg-8">
                     <h6>{{club.val.name}}</h6>
                     <div class="row container" id="bottom_margin_2">
-                      <p class="tags" *ngFor="let tag of club.val.club_tags">{{tag.tag}} &bull; &nbsp;</p>
+                      <p class="tags" *ngFor="let tag of club.val.club_tags; let i = index">
+                        <span *ngIf="i > 0">&nbsp; &bull;</span>
+                        {{tag.tag}}
+                      </p>
                     </div>
-                    <!-- <div class="line-clamp-wrapper">
+                    <div class="line-clamp-wrapper">
                       <p class="club-description line-clamp">{{club.val.description}}</p>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
             </div>

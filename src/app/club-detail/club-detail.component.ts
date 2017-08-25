@@ -11,6 +11,7 @@ export class ClubDetailComponent implements OnInit {
 
   private club ={};
   private newsfeed;
+  private state = "about";
 
   constructor(private route: ActivatedRoute, private router: Router, private webAPI: WebAPI) { }
 

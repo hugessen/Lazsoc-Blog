@@ -1,7 +1,7 @@
 import { NgModule }              from '@angular/core';
 import { RouterModule, Routes, Router }  from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { BeansComponent } from './beans/beans.component';
 import { LazNavbar } from './nav-bar/laz-navbar';
 import { HiringComponent } from './hiring/hiring.component';
@@ -16,7 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
 
 const appRoutes: Routes = [
-  { path: 'newsfeed',   component: NewsfeedComponent },
+  { path: 'newsfeed',   component: NewsfeedContainerComponent },
   { path: 'hiring',     component: HiringComponent },
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: OurTeamComponent },

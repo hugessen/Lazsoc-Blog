@@ -32,12 +32,12 @@ export class WebAPI {
     })
   }
 
-  createNewsfeed(events, blogContent, clubs,club?):any[]{
+  createNewsfeed(events, blogContent, clubs,club_id?):any[]{
       var result = [];
       for (let event of events){
         event.typeof = "event";
-        if(club) {
-          if(club.id === event.club_id)
+        if(club_id) {
+          if(club_id === event.club_id)
             result.push(event);
         } else
           result.push(event);
