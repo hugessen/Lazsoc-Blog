@@ -51,7 +51,7 @@ export class BeansComponent implements OnInit {
       });
   }
 
-  //TOOD: send proper sender_id, recipient_id instad of this.obj 
+  //TOOD: send proper sender_id, recipient_id instad of this.obj
   startConversation(){
     this.authService.apiPost('beans/start_conversation',this.obj).then(res => {
       console.log("start convos:", res);
