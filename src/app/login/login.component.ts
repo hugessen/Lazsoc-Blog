@@ -63,6 +63,8 @@ export class LoginComponent implements OnInit {
         res => {
           if(res.status == 200){
             console.log("Successful Registration",res);
+            this.state = "UPDATE";
+            console.log(this.tokenService.currentUserData);
             // this.onFormResult.emit({signedIn: true, res});
           }
         },
