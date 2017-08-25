@@ -12,7 +12,7 @@ export class WebAPI {
   constructor(private http:Http) { }
 
 
-  getNewsfeed():Promise<any[]>{
+  getNewsfeed(club?):Promise<any[]>{
     return new Promise((resolve,reject) => {
       Observable.forkJoin([
         Observable.fromPromise(this.getEvents()),
@@ -22,17 +22,25 @@ export class WebAPI {
         var events = data[0];
         var blogContent = data[1];
         var clubs = data[2];
-        var content = this.createNewsfeed(events,blogContent,clubs);
+        var content;
+        if(club)
+          content = this.createNewsfeed(events,blogContent,clubs,club);
+        else
+          content = this.createNewsfeed(events,blogContent,clubs);
         resolve(content);
       })
     })
   }
 
-  createNewsfeed(events, blogContent, clubs):any[]{
+  createNewsfeed(events, blogContent, clubs,club?):any[]{
       var result = [];
       for (let event of events){
         event.typeof = "event";
-        result.push(event);
+        if(club) {
+          if(club.id === event.club_id)
+            result.push(event);
+        } else
+          result.push(event);
       }
       // for (let post of blogContent){
       //   post.typeof = "blog";
