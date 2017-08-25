@@ -30,12 +30,17 @@
 <button type="button" class="btn btn-primary" (click)="getBeans()">Get Beans (see console)</button>
 <br>
 <h3>Messaging Test</h3>
-<p>A conversation between User.find(1) and User.find(2)</p>
+<p>onversation between richard.hugessen@example.com and test2@wlu.ca</p>
 
 <button type="button" class="btn btn-primary" (click)="startConversation()">Start Conversation Between user1 and user2 (i.e. "connect")</button>
 <br>
 <button type="button" class="btn btn-primary" (click)="getConversations()">Get Signed in User's Conversations (see console)</button>
 <br>
 <button type="button" class="btn btn-primary" (click)="displayConversation()">Display Conversation Between user1 and user2 (see console)</button>
+<hr>
+<h3> Conversation between richard.hugessen@example.com and test2@wlu.ca</h3>
+
+<br>
+<input type="text" placeholder="type message" [(ngModel)]="message.body" name="message"/>
 <br>
 <button type="button" class="btn btn-primary" (click)="sendMessage()">  Sending message between user1 and user2 (see console)</button>

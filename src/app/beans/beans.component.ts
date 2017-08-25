@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { AuthService } from '../services/auth.service';
 
+
 @Component({
   selector: 'app-beans',
   templateUrl: './beans.component.html',
@@ -18,7 +19,22 @@ export class BeansComponent implements OnInit {
     body:"New message",
     conversation_id: 1
   }
-  constructor(private webAPI:WebAPI,private authService: AuthService,) {
+  
+  oldRes;
+
+  constructor(private webAPI:WebAPI,private authService: AuthService) {
+     /*setInterval(function(){
+    authService.apiGet('beans/display_conversation',{params: {sender_id: 1, recipient_id: 2, conversation_id:1}}).then(res => {
+      console.log("display conversation between 1 and 2:", res);
+      if(this.oldRes){
+        if(this.oldRes.length != res.length){
+          //display new messages
+          console.log("NEW MESSSAGE ARRIVED: ", res[res.length-1])
+        } 
+      }
+      this.oldRes = res;
+     });},2500);*/
+
   }
 
   getBeans(){
@@ -44,10 +60,11 @@ export class BeansComponent implements OnInit {
 
   displayConversation(){
     //TODO: send proper sender_id, recipient_id and conversation_id
-    this.authService.apiGet('beans/display_conversation',{params: {sender_id: 1, recipient_id: 2, conversation_id:1}}).then(res => {
+     this.authService.apiGet('beans/display_conversation',{params: {sender_id: 1, recipient_id: 2, conversation_id:1}}).then(res => {
       console.log("display convos:", res);
-     });
+    });
   }
+
 
   //TODO: send proper message obt
   sendMessage(){
