@@ -25,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
   // { path: 'compose',  component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
+  { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'login/:state',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},

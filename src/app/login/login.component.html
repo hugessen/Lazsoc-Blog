@@ -57,7 +57,7 @@
               <label for="firstname">What's your story?</label><br>
               <textarea name="name" rows="3" style="width:100%" [(ngModel)]="updateObj.summary"></textarea>
               <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="is_bean">
+                <input type="checkbox" class="form-check-input" [(ngModel)]="updateObj.is_bean">
                 Would you like to sign up for LazBeans?
               </label>
             </div>
@@ -82,7 +82,7 @@
               </div>
 
               <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="exp.is_current">
+                <input type="checkbox" class="form-check-input" data-toggle="toggle" [(ngModel)]="exp.is_current">
                 I currently work here
               </label><br><br>
               <label for="firstname">Job Summary</label><br>

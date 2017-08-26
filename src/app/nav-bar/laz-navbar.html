@@ -14,7 +14,7 @@
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">LAZBEANS</a>
       </li>
       <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
-        <a class="nav-link" routerLink="/profile" routerLinkActive="active">PROFILE</a>
+        <a class="nav-link" routerLink="/profile/{{authService.authService.currentUserData.id}}" routerLinkActive="active">PROFILE</a>
       </li>
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/clubs" routerLinkActive="active">GET INVOLVED</a>

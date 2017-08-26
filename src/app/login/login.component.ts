@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     nickname:"Big Hoss",
     program:"BBA/BCS",
     summary:"oblique iracundia. Eam mutat adhuc semper ex, sit et quis tamquam assentior, iudico euismod sea ea.",
-    is_bean:false,
+    is_bean:true,
     work_experiences_attributes: [{
       title:"Title",
       summary:"Lorem ipsum dolor sit amet, eam in facer liberavisse. Integre nostrud ceteros ex per, cu qui iriure oblique iracundia. Eam mutat adhuc semper ex, sit et quis tamquam assentior, iudico euismod sea ea. Eu usu nullam invidunt torquatos, eu tamquam argumentum mel.",

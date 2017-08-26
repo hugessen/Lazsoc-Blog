@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-7 col-md-7 col-lg-7" style="margin-top:45px">
-      
-      <div class="d-flex flex-wrap">
-        <div class="card mx-2" *ngFor="let bean of beans">
+
+      <div class="d-flex flex-wrap" >
+        <div class="card mx-2" *ngFor="let bean of beans" routerLink="/profile/{{bean.id}}">
           <img src="https://media.giphy.com/media/26gsl2WC5tRxkemdi/giphy.gif" class="avatar">
           <div class="card-block">
             <br><br>

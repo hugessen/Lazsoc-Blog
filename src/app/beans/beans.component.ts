@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
+import { Router } from "@angular/router";
 import { AuthService } from '../services/auth.service';
 
 
@@ -35,15 +36,12 @@ export class BeansComponent implements OnInit {
       }
       this.oldRes = res;
      });},2500);*/
-     this.getBeans();
+     this.authService.getBeans().then(res => {
+       this.beans = res;
+     })
   }
 
-  getBeans(){
-     this.authService.apiGet('beans/get_all.json').then(res => {
-       this.beans = res;
-       console.log(this.beans);
-      });
-  }
+
 
   getConversations(){
     this.authService.apiGet('beans/conversations.json').then(res => {

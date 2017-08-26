@@ -99,6 +99,7 @@ export class WebAPI {
              .then(postings => postings.find(post => post.id === id));
   }
 
+
   submitJobApplication(data:JobPostingApplication){
     this.http.post('http://localhost:3000/api/submit_job_app',{job_posting_application:data}).subscribe(res => {
       console.log(res);

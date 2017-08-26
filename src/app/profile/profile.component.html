@@ -9,8 +9,8 @@
         <div class="card-block" style="text-align:center">
 
           <br><br><br>
-          <h2 class="name-font">{{tokenService.currentUserData.first_name}} {{tokenService.currentUserData.last_name}}</h2>
-          <h2 class="program">{{tokenService.currentUserData.program}}</h2>
+          <h2 class="name-font">{{currentUser.first_name}} {{currentUser.last_name}}</h2>
+          <h2 class="program">{{currentUser.program}}</h2>
         </div>
       </div>
       <div class="row mt-2">
@@ -28,7 +28,7 @@
             <h3 class="card-header card-header-text">About</h3>
             <div class="card-block">
               <span class="club-detail-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae lacus tempor, molestie quam ut, ultrices velit. Nulla facilisi. Morbi scelerisque ex ultrices libero sagittis tincidunt. Ut eget neque in elit venenatis euismod sed vestibulum justo. Sed imperdiet libero ut nunc maximus, non fringilla turpis vehicula. Cras nec hendrerit nisi, vitae efficitur ipsum. Suspendisse id orci leo. Suspendisse consequat eleifend bibendum. Integer et arcu arcu. Aliquam finibus sem eget auctor fringilla. Fusce viverra magna sit amet elit ultrices scelerisque. Pellentesque vitae arcu a tortor porta tempor vel quis nulla. Proin quis accumsan lacus.
+                {{currentUser.summary}}
               </span>
             </div>
           </div>
