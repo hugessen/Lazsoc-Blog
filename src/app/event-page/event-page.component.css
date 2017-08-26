@@ -12,20 +12,25 @@ h1, h2, h3, h4{
     /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
 }
 
+.card-1-block {
+  margin-left:12%;
+}
+
 .card-1 {
   height:14.1em;
 }
 
 .event-title {
+  /*position:absolute;*/
   font-family:Lato-Medium;
   font-size:26px;
-  margin-left:12%;
+  /*margin-left:12%;*/
 }
 
 .event-club-subheading {
   font-family:Lato-Semibold;
   font-size:16px;
-  margin-left:12%;
+  /*margin-left:12%;*/
   color:#0083c1;
 }
 
@@ -33,7 +38,7 @@ h1, h2, h3, h4{
   font-family:Lato-Semibold;
   font-size:12px;
   color:#83868a;
-  margin-left:12%
+  /*margin-left:12%*/
 }
 
 .event-banner {
@@ -48,7 +53,7 @@ h1, h2, h3, h4{
   width:212px;
   height:34px;
   text-align: center;
-  margin-left:12%;
+  /*margin-left:12%;*/
 }
 .register-text {
   font-family:Lato-Regular;
@@ -70,4 +75,53 @@ h1, h2, h3, h4{
   color:#83868a;
   letter-spacing:0;
   text-align:left;
+}
+
+.card-4-surprise {
+  font-family:Lato-Black;
+  font-size:40px;
+  color:#fcb518;
+  letter-spacing:0;
+  text-align:left;
+}
+.surprise-subtext {
+  font-family:Lato-Black;
+  font-size:16px;
+  color:#000000;
+  letter-spacing:0;
+  text-align:center;
+}
+
+.tags-label {
+  border:1px solid #433089;
+  padding-bottom:5%;
+  border-radius:92px;
+  width:99px;
+  height:21px;
+  text-align:center;
+  padding-bottom:3%;
+}
+
+.tags-label span {
+  font-family:Lato-Semibold;
+  font-size:12px;
+  color:#433089;
+  letter-spacing:0;
+  text-align:left;
+}
+
+.subscribe-btn {
+  margin-top:1%;
+  border:2px solid #433089;
+  border-radius:92px;
+  width:130px;
+  height:30px;
+  text-align:center;
+}
+
+.subscribe-btn-text {
+  font-family:Lato-Heavy;
+  font-size:16px;
+  color:#433089;
+  letter-spacing:0;
 }

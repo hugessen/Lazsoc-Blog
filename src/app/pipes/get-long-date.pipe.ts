@@ -12,3 +12,19 @@ export class GetLongDate {
     return result;
   }
 }
+
+@Pipe({
+  name: 'getTime'
+})
+export class GetTime {
+  transform(dateStr:string) {
+    var hour = new Date(dateStr).getUTCHours();
+    var min = new Date(dateStr).getUTCMinutes();
+    var minStr = (min < 10) ? min+"0":min;
+    var ampm = (hour < 12) ? "AM" : "PM";
+    if(hour > 12) {
+      hour = hour%12;
+    }
+    return (hour + ":" + minStr + " " + ampm);
+  }
+}

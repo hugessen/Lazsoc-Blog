@@ -25,7 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 //Pipes
-import { GetLongDate } from './pipes/get-long-date.pipe';
+import { GetLongDate, GetTime } from './pipes/get-long-date.pipe';
 import { MapToIterablePipe } from './pipes/mapToIterablePipe';
 
 //Services
@@ -60,7 +60,8 @@ import { UpdateComponent } from './update/update.component';
     ClubDetailComponent,
     JobPostingSidebar,
     NewsfeedContainerComponent,
-    UpdateComponent
+    UpdateComponent,
+    GetTime
   ],
   imports: [
     BrowserModule,
