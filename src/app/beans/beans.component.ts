@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
+import { Router } from "@angular/router";
 import { AuthService } from '../services/auth.service';
 
 
@@ -19,7 +20,8 @@ export class BeansComponent implements OnInit {
     body:"New message",
     conversation_id: 1
   }
-  
+
+
   oldRes;
 
   constructor(private webAPI:WebAPI,private authService: AuthService) {
@@ -30,19 +32,16 @@ export class BeansComponent implements OnInit {
         if(this.oldRes.length != res.length){
           //display new messages
           console.log("NEW MESSSAGE ARRIVED: ", res[res.length-1])
-        } 
+        }
       }
       this.oldRes = res;
      });},2500);*/
-
-  }
-
-  getBeans(){
-     this.authService.apiGet('beans/get_all.json').then(res => {
+     this.authService.getBeans().then(res => {
        this.beans = res;
-       console.log(this.beans);
-      });
+     })
   }
+
+
 
   getConversations(){
     this.authService.apiGet('beans/conversations.json').then(res => {

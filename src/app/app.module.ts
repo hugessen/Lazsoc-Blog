@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { SidebarComponent,ProfileSidebar, JobPostingSidebar } from './sidebar/sidebar.component';
 import { BeansComponent } from './beans/beans.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
+import { AuthGuard } from './guards/auth.guard';
 
 //Modules
 import { FormsModule }   from '@angular/forms';
@@ -34,6 +35,7 @@ import { WebAPI } from './services/web-api.service';
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
+import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { ClubDetailComponent } from './club-detail/club-detail.component';
     JobDetailPageComponent,
     ProfileComponent,
     ClubDetailComponent,
-    JobPostingSidebar
+    JobPostingSidebar,
+    NewsfeedContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,7 @@ import { ClubDetailComponent } from './club-detail/club-detail.component';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AuthService],
+  providers: [WebAPI, Angular2TokenService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

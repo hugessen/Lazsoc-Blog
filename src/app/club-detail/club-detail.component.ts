@@ -10,6 +10,8 @@ import { WebAPI } from '../services/web-api.service';
 export class ClubDetailComponent implements OnInit {
 
   private club ={};
+  private newsfeed;
+  private state = "about";
 
   constructor(private route: ActivatedRoute, private router: Router, private webAPI: WebAPI) { }
 
@@ -17,7 +19,15 @@ export class ClubDetailComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) =>
         this.webAPI.getClub(+params.get('id')))
-      .subscribe((club) => this.club = club);
+      .subscribe((club) => {
+        this.webAPI.getNewsfeed(club).then(res => {
+          this.club = club;
+          this.newsfeed = res;
+          console.log("Newsfeed",this.newsfeed);
+        })
+
+
+      } );
   }
 
 }

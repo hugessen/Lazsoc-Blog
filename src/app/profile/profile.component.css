@@ -1,19 +1,54 @@
 .profile-img {
-  width:200px;
-  height:200px;
+  display: block;
+  position:absolute;
+  transform:translate(175%,50%);
+  width:22%;
+  height:auto;
   border-radius:50%;
-  margin-right:20px;
+  border: 5px solid white;
 }
 .name-font {
-  font-family:Calluna-Bold;
+  font-family:Lato-Black;
   font-size:30px;
 }
 .program {
-  font-family: Calluna;
+  font-family: Lato;
   font-size:25px;
 }
 .social-logo {
   border-radius:20%;
   width:30px;
   height:30px;
+}
+.banner-img {
+  width:100%;
+  height:auto;
+}
+.card-img-top {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius:0;
+}
+.program {
+  font-family:Lato-Regular;
+  clear: both;
+  margin-top: .5em;
+  font-size:0.9em;
+  color: rgba(0, 0, 0, .68);
+}
+
+.card-header-text {
+  font-family:Lato-Black;
+  font-size:16px;
+  color:#83868a;
+  letter-spacing:0;
+  text-align:left;
+}
+.club-detail-text {
+  font-family:Lato-Medium;
+  font-size:13px;
+  color: black;
+  letter-spacing:0;
+  text-align:left;
 }

@@ -8,18 +8,21 @@
         <img src="assets/img/thumbnails/{{club.app_logo}}" class="club-avatar">
         <div class="card-block">
           <div class="row">
-            <div class="col-sm-4 col-md-4 col-lg-4">
-              <div class="subscribe-btn">
-                <span class="subscribe-btn-text">Subscribe</span>
-              </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8" style="padding:none">
-              <span class="club-title">{{club.name}}</span><br>
-              <span class="club-tags">Advertising &bull; Marketing &bull; Design</span>
+            <div class="col-sm-9 col-md-9 col-lg-9" style="padding-left:20px;">
+							<div class="d-flex flex-row mb-2 justify-content-start">
+								<span class="club-title">{{club.name}}</span>
+								<div class="subscribe-btn ml-auto">
+									<span class="subscribe-btn-text">Subscribe</span>
+								</div>
+							</div>
+              <span class="club-tags" *ngFor="let tag of club.club_tags; let i = index">
+								<span *ngIf="i > 0">&bull;</span>
+								{{tag.tag}}
+							</span>
               <br><br>
-              <span class="club-detail-text">
-                {{club.description}}
-              </span>
+
             </div>
           </div>
         </div>
@@ -31,31 +34,25 @@
             <!-- <div class="card-block">
 
             </div> -->
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                Lorem
-              </li>
-              <li class="list-group-item">
-                Lorem
-              </li>
-              <li class="list-group-item">
-                Lorem
-              </li>
-              <li class="list-group-item">
-                Lorem
-              </li>
-            </ul>
+						<div class="list-group">
+							<button class="list-group-item list-group-item-action py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">About</button>
+							<button class="list-group-item list-group-item-action py-2" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</button>
+						</div>
           </div>
         </div>
         <div class="col-sm-8 col-md-8 col-lg-8 pl-1">
-          <div class="card sticky">
+          <div class="card sticky" *ngIf="state === 'about'">
             <h3 class="card-header card-header-text">About</h3>
             <div class="card-block">
-              <h2 style="font-family:Lato-Bold; font-size:16px;">Who are we?</h2>
-              <span style="font-family:Lato-Medium; font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consectetur
-ante at venenatis ornare. Nullam gravida neque sit amet nunc aliquam pharetra. Nulla pulvinar justo in lectus sagittis sodales. Quisque consectetur ante at venenatis ornare. Nullam gravida neque sit amet nunc aliquam pharetra.</span>
+							<span class="club-detail-text">
+								{{club.description}}
+							</span>
             </div>
           </div>
+					<div *ngIf="state === 'events'">
+						<app-newsfeed [clubID]="club.id"></app-newsfeed>
+					</div>
+
         </div>
       </div>
     </div>

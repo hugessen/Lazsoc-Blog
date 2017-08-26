@@ -1,7 +1,7 @@
 import { NgModule }              from '@angular/core';
 import { RouterModule, Routes, Router }  from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { BeansComponent } from './beans/beans.component';
 import { LazNavbar } from './nav-bar/laz-navbar';
 import { HiringComponent } from './hiring/hiring.component';
@@ -14,16 +14,18 @@ import { ArticleComposerComponent } from './article-composer/article-composer.co
 import { JobDetailPageComponent} from './job-detail-page/job-detail-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
-  { path: 'newsfeed',   component: NewsfeedComponent },
+  { path: 'newsfeed',   component: NewsfeedContainerComponent },
   { path: 'hiring',     component: HiringComponent },
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ClubResourcesComponent },
-  { path: 'beans',  component: BeansComponent },
+  { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
   // { path: 'compose',  component: ArticleComposerComponent },
-  { path: 'profile',  component: ProfileComponent },
+  { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
+  { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'login/:state',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
