@@ -51,28 +51,6 @@
           </div>
 					<div *ngIf="state === 'events'">
 						<app-newsfeed [clubID]="club.id"></app-newsfeed>
-						<!-- <div class="mb-2" *ngFor="let event of newsfeed">
-							<div class="card" (click)="onSelect(event)">
-									<div class="card-block">
-										<div class="d-flex mb-2">
-											<img src="assets/img/thumbnails/{{club.app_logo}}" class="club-event-avatar mr-3" alt="">
-											<div class="d-flex flex-column">
-												<h4 class="club-event-title mb-1">{{event.title}}</h4>
-												<h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
-											</div>
-										</div>
-										<div class="card-text mb-2">
-												{{event.sub_heading}}
-										</div>
-									</div>
-									<div class="card-footer py-2">
-										<img src="assets/img/icons/heart.svg" class="icon">
-										<img src="assets/img/icons/bookmark.svg" class="icon">
-										<img src="assets/img/icons/arrow.svg" class="icon">
-										<img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
-									</div>
-							</div>
-						</div> -->
 					</div>
 
         </div>
