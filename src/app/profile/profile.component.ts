@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from '../services/auth.service';
+import { Angular2TokenService } from "angular2-token";
 
 @Component({
   selector: 'app-profile',
@@ -9,8 +10,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService:AuthService) {
-    console.log(authService.userSignedIn$);
+  current_user = {};
+
+  constructor(private tokenService: Angular2TokenService) {
   }
 
   ngOnInit() {
