@@ -17,6 +17,7 @@ import { SidebarComponent,ProfileSidebar, JobPostingSidebar } from './sidebar/si
 import { BeansComponent } from './beans/beans.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
 import { AuthGuard } from './guards/auth.guard';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 //Modules
 import { FormsModule }   from '@angular/forms';
@@ -61,7 +62,8 @@ import { UpdateComponent } from './update/update.component';
     JobPostingSidebar,
     NewsfeedContainerComponent,
     UpdateComponent,
-    GetTime
+    GetTime,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

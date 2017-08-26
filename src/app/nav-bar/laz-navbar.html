@@ -23,7 +23,7 @@
         <a class="nav-link" routerLinkActive="active" href="http://www.shop.lazsoc.ca">SHOP</a>
       </li>
       <li class="nav-item mr-4" *ngIf="!(authService.userSignedIn$ | async)">
-        <a class="nav-link" routerLink="/login/login" routerLinkActive="active">LOGIN</a>
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModalLong">LOGIN</a>
       </li>
       <li class="nav-item dropdown" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,3 +40,20 @@
 </nav>
 <nav class="gold-bar sticky-top">
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-login></app-login>
+      </div>
+    </div>
+  </div>
+</div>

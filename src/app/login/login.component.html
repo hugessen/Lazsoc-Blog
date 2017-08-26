@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-6 col-md-6 col-lg-6">
       <div *ngIf="state === 'login'">
@@ -30,10 +30,6 @@
         <div class="login-page">
           <div class="form">
             <form class="login-form">
-              <!-- <div class="d-flex flex-row pt-2">
-                <input type="text" placeholder="First Name" name="firstname" class="mr-2" [(ngModel)]="registerObj.firstname"/>
-                <input type="text" placeholder="Last Name" name="lastname" class="ml-2" [(ngModel)]="registerObj.lastname"/>
-              </div> -->
               <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
               <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
               <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
@@ -45,4 +41,32 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div *ngIf="state == 'login'">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already Richard? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
+      <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
+      <button (click)="signIn()">login</button>
+      <p class="message">Not Richard? <a (click)="state = 'REGISTER'">Create an account</a></p>
+    </form>
+  </div>
+</div>
+<div class="" *ngIf="state === 'REGISTER'">
+    <div class="form">
+      <form class="login-form">
+        <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
+        <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
+        <button (click)="registerUser()">Create Account</button>
+      </form>
+    </div>
 </div>

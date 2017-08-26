@@ -1,10 +1,9 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4 col-md-4 col-lg-4">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-3 col-md-3 col-lg-3">
       <profile-sidebar></profile-sidebar>
     </div>
-    <div class="col-sm-7 col-md-7 col-lg-7" style="margin-top:45px">
-
+    <div class="col-sm-8 col-md-8 col-lg-8" style="margin-top:45px">
       <div class="d-flex flex-wrap">
         <div class="card my-4 mx-1" *ngFor="let bean of beans" routerLink="/profile/{{bean.id}}">
           <img src="https://media.giphy.com/media/26gsl2WC5tRxkemdi/giphy.gif" class="avatar">
@@ -28,7 +27,7 @@
 
   </div>
 </div>
-<br>
+<!-- <br>
 <hr>
 <h2> Rough work below</h2>
 <button type="button" class="btn btn-primary" (click)="getBeans()">Get Beans (see console)</button>
@@ -47,4 +46,4 @@
 <br>
 <input type="text" placeholder="type message" [(ngModel)]="message.body" name="message"/>
 <br>
-<button type="button" class="btn btn-primary" (click)="sendMessage()">  Sending message between user1 and user2 (see console)</button>
+<button type="button" class="btn btn-primary" (click)="sendMessage()">  Sending message between user1 and user2 (see console)</button> -->
