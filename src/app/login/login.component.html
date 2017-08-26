@@ -7,6 +7,7 @@
         <button type="button" class="btn btn-primary" (click)="state = 'REGISTER'" *ngIf="!(authService.userSignedIn$ | async)">Register</button>
         <button type="button" class="btn btn-primary" (click)="state = 'UPDATE'" *ngIf="(authService.userSignedIn$ | async)">Update</button>
 
+
         <div class="login-page" *ngIf="!(authService.userSignedIn$ | async)" >
           <div class="form">
             <form class="register-form">
@@ -43,7 +44,7 @@
         </div>
       </div>
       <div class="" *ngIf="state === 'UPDATE'">
-        
+
         <div class="form-group">
           <label for="firstname">First Name</label>
           <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.first_name">

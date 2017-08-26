@@ -8,6 +8,7 @@ import {Http} from '@angular/http';
 export class AuthService {
 
   userSignedIn$:Subject<boolean> = new Subject();
+  currentUser$:Subject<any> = new Subject();
 
   constructor(public authService:Angular2TokenService, private http:Http) {
     this.authService.init({
@@ -51,7 +52,16 @@ export class AuthService {
         }
     });
     this.authService.validateToken().subscribe(
-        res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
+        res => {
+          if(res.status == 200){
+            this.userSignedIn$.next(res.json().success);
+            this.currentUser$.next(this.authService.currentUserData);
+          }
+          else {
+            this.userSignedIn$.next(false);
+            this.currentUser$.next(null);
+          }
+        }
     )
   }
 
@@ -60,6 +70,7 @@ export class AuthService {
     return this.authService.signOut().map(
         res => {
           this.userSignedIn$.next(false);
+          this.currentUser$.next(null);
           return res;
         }
     );
@@ -69,6 +80,7 @@ export class AuthService {
     return this.authService.registerAccount(signUpData).map(
         res => {
           this.userSignedIn$.next(true);
+          this.currentUser$.next(this.authService.currentUserData);
           return res
         }
     );
@@ -79,6 +91,7 @@ export class AuthService {
     return this.authService.signIn(signInData).map(
         res => {
           this.userSignedIn$.next(true);
+          this.currentUser$.next(this.authService.currentUserData);
           return res
         }
     );
@@ -89,13 +102,13 @@ export class AuthService {
       console.log(res);
     })
   }
-  
+
   apiGet(path:string, data:any = null):Promise<any>{
      return new Promise((resolve,reject)=> {
       this.authService.get(path,data).map(res => res.json()).toPromise()
       .then(res=>{
         resolve(res);
-      }).catch(err => reject(err));  
+      }).catch(err => reject(err));
     });
   }
 
@@ -104,7 +117,7 @@ export class AuthService {
       this.authService.post(path,data).map(res => res.json()).toPromise()
       .then(res=>{
         resolve(res);
-      }).catch(err => reject(err));  
+      }).catch(err => reject(err));
     });
   }
 }

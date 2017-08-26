@@ -13,17 +13,20 @@
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">LAZBEANS</a>
       </li>
-      <li class="nav-item mr-4">
+      <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/profile" routerLinkActive="active">PROFILE</a>
       </li>
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/clubs" routerLinkActive="active">GET INVOLVED</a>
       </li>
       <li class="nav-item mr-4">
+        <a class="nav-link" routerLink="/hiring" routerLinkActive="active">HIRING</a>
+      </li>
+      <li class="nav-item mr-4" *ngIf="!(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/login/login" routerLinkActive="active">LOGIN</a>
       </li>
-      <li class="nav-item mr-4">
-        <a class="nav-link" routerLink="/hiring" routerLinkActive="active">HIRING</a>
+      <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
+        <a class="nav-link" routerLink="/login/login" routerLinkActive="active">SIGN OUT</a>
       </li>
     </ul>
   </div>

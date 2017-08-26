@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { SidebarComponent,ProfileSidebar, JobPostingSidebar } from './sidebar/sidebar.component';
 import { BeansComponent } from './beans/beans.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
+import { AuthGuard } from './guards/auth.guard';
 
 //Modules
 import { FormsModule }   from '@angular/forms';
@@ -68,7 +69,7 @@ import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-contai
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AuthService],
+  providers: [WebAPI, Angular2TokenService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
