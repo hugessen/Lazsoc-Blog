@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ClubResourcesComponent },
-  { path: 'beans',  component: BeansComponent },
+  { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
   // { path: 'compose',  component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'login/:state',   component: LoginComponent },

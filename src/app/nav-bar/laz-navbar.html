@@ -10,7 +10,7 @@
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">NEWSFEED</a>
       </li>
-      <li class="nav-item mr-4">
+      <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">LAZBEANS</a>
       </li>
       <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
@@ -26,7 +26,10 @@
         <a class="nav-link" routerLink="/login/login" routerLinkActive="active">LOGIN</a>
       </li>
       <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
-        <a class="nav-link" routerLink="/login/login" routerLinkActive="active">SIGN OUT</a>
+        <a class="nav-link" routerLinkActive="active" (click)="signOut()">SIGN OUT</a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" routerLinkActive="active" href="http://www.shop.lazsoc.ca">SHOP</a>
       </li>
     </ul>
   </div>

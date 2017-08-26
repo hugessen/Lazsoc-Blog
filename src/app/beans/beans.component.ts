@@ -19,7 +19,8 @@ export class BeansComponent implements OnInit {
     body:"New message",
     conversation_id: 1
   }
-  
+
+
   oldRes;
 
   constructor(private webAPI:WebAPI,private authService: AuthService) {
@@ -30,11 +31,11 @@ export class BeansComponent implements OnInit {
         if(this.oldRes.length != res.length){
           //display new messages
           console.log("NEW MESSSAGE ARRIVED: ", res[res.length-1])
-        } 
+        }
       }
       this.oldRes = res;
      });},2500);*/
-
+     this.getBeans();
   }
 
   getBeans(){

@@ -8,7 +8,6 @@ import {Http} from '@angular/http';
 export class AuthService {
 
   userSignedIn$:Subject<boolean> = new Subject();
-  currentUser$:Subject<any> = new Subject();
 
   constructor(public authService:Angular2TokenService, private http:Http) {
     this.authService.init({
@@ -55,11 +54,9 @@ export class AuthService {
         res => {
           if(res.status == 200){
             this.userSignedIn$.next(res.json().success);
-            this.currentUser$.next(this.authService.currentUserData);
           }
           else {
             this.userSignedIn$.next(false);
-            this.currentUser$.next(null);
           }
         }
     )
@@ -70,7 +67,6 @@ export class AuthService {
     return this.authService.signOut().map(
         res => {
           this.userSignedIn$.next(false);
-          this.currentUser$.next(null);
           return res;
         }
     );
@@ -80,7 +76,6 @@ export class AuthService {
     return this.authService.registerAccount(signUpData).map(
         res => {
           this.userSignedIn$.next(true);
-          this.currentUser$.next(this.authService.currentUserData);
           return res
         }
     );
@@ -91,7 +86,6 @@ export class AuthService {
     return this.authService.signIn(signInData).map(
         res => {
           this.userSignedIn$.next(true);
-          this.currentUser$.next(this.authService.currentUserData);
           return res
         }
     );

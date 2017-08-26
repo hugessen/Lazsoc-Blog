@@ -12,4 +12,8 @@ export class LazNavbar {
 
   };
 
+  signOut(){
+    this.authService.logOutUser();
+  }
+
 }
