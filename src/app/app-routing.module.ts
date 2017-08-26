@@ -14,6 +14,7 @@ import { ArticleComposerComponent } from './article-composer/article-composer.co
 import { JobDetailPageComponent} from './job-detail-page/job-detail-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
+import { UpdateComponent } from './update/update.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   // { path: 'compose',  component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
+  { path: 'update', canActivate: [AuthGuard],  component: UpdateComponent },
   { path: 'login/:state',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},

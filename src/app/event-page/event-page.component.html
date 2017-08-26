@@ -1,3 +1,50 @@
-<h1>{{event.title}}</h1>
-<h2>{{event.sub_heading}}</h2>
-<h4>{{event.event_description}}</h4>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-4 col-md-4 col-lg-4 mt-4 pr-1">
+      <div class="card card-1">
+        <div class="card-block">
+          <span class="event-title">{{event.title}}</span><br>
+          <a class="event-club-subheading" routerLink="/clubs/{{club.id}}">{{club.name}}</a><br>
+          <span class="datetime-location">{{event.start_date_time | getLongDate}}</span><br>
+          <span class="datetime-location">{{event.location}}</span>
+          <br><br>
+          <div class="register-button">
+            <span class="register-text">Register</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8 mt-4 pl-1">
+      <div class="card">
+        <div class="card-img-top">
+          <img src="{{event.banner}}" class="card-img-top event-banner" *ngIf="event.banner != ''">
+          <img src="assets/img/{{club.app_banner}}" class="card-img-top event-banner" *ngIf="event.banner === ''">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 col-md-8 col-lg-8 mt-4 pr-1">
+      <div class="card">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+              <span class="content-header">DATE & TIME</span><br>
+              <span class="content-datetime">{{event.start_date_time | getLongDate}}</span>
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+              Some things
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 mt-4 pl-1">
+      <div class="card">
+        <div class="card-block">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,22 +15,6 @@ export class LoginComponent implements OnInit {
   user:any;
   loginObj = {email: "user@example.com", password: "monkey67"};
   registerObj = {email:"user@email.com",password:"password", passwordConfirmation:"password"};
-  updateObj = {
-    first_name:"Richard",
-    last_name:"Hugessen",
-    nickname:"Big Hoss",
-    program:"BBA/BCS",
-    summary:"oblique iracundia. Eam mutat adhuc semper ex, sit et quis tamquam assentior, iudico euismod sea ea.",
-    is_bean:true,
-    work_experiences_attributes: [{
-      title:"Title",
-      summary:"Lorem ipsum dolor sit amet, eam in facer liberavisse. Integre nostrud ceteros ex per, cu qui iriure oblique iracundia. Eam mutat adhuc semper ex, sit et quis tamquam assentior, iudico euismod sea ea. Eu usu nullam invidunt torquatos, eu tamquam argumentum mel.",
-      started_date:"11/08/1995",
-      end_date:"11/09/1995",
-      is_current:false,
-      company:"Lazaridis Students' Society"
-    }]
-  };
   profileInfoObj = {
     email:"",
     firstName:"",
@@ -89,23 +73,6 @@ export class LoginComponent implements OnInit {
         }
     );
   }
-  addWorkExp(){
-    this.updateObj.work_experiences_attributes.push({
-      title:"Title",
-      summary:"",
-      started_date:"",
-      end_date:"",
-      is_current:false,
-      company:""
-    })
-  }
-  removeWorkExp(index){
-    this.updateObj.work_experiences_attributes.splice(index,1);
-    console.log(this.updateObj.work_experiences_attributes);
-  }
 
-  postUpdates(){
-    this.authService.updateUser('update_user',this.updateObj);
-  }
 
 }

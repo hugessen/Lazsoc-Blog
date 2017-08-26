@@ -43,58 +43,6 @@
           </div>
         </div>
       </div>
-      <div class="" *ngIf="state === 'UPDATE'">
-        <div class="card mt-4">
-          <div class="card-block">
-            <h4 class="card-title">Personal Information</h4>
-            <div class="form-group">
-              <label for="firstname">First Name</label>
-              <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.first_name">
-              <label for="firstname">Last Name</label>
-              <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.last_name">
-              <label for="firstname">School Program</label>
-              <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.program">
-              <label for="firstname">What's your story?</label><br>
-              <textarea name="name" rows="3" style="width:100%" [(ngModel)]="updateObj.summary"></textarea>
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="updateObj.is_bean">
-                Would you like to sign up for LazBeans?
-              </label>
-            </div>
-          </div>
-        </div>
-        <br>
-        <h2>Work Experience</h2>
-        <div class="card mt-2" *ngFor="let exp of updateObj.work_experiences_attributes; let i = index">
-          <div class="card-block">
-            <div class="form-group">
-              <label for="firstname">Title</label>
-              <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="exp.title">
-              <div class="d-flex flex-row align-content-end">
-                <div class="d-flex flex-column mr-auto" style="width:48%">
-                  <label for="firstname">Start Date</label>
-                  <input type="email" class="form-control mb-3" id="firstname" placeholder="mm/dd/yyyy" [(ngModel)]="exp.started_date">
-                </div>
-                <div class="d-flex flex-column" style="width:48%">
-                  <label for="firstname">End Date</label>
-                  <input type="email" class="form-control mb-3" id="firstname" placeholder="mm/dd/yyyy" [(ngModel)]="exp.end_date">
-                </div>
-              </div>
-
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" data-toggle="toggle" [(ngModel)]="exp.is_current">
-                I currently work here
-              </label><br><br>
-              <label for="firstname">Job Summary</label><br>
-              <textarea name="name" rows="3" style="width:100%" [(ngModel)]="exp.summary"></textarea>
-            </div>
-            <button type="button" class="btn btn-danger" (click)="removeWorkExp(i)">Remove Work Experience</button>
-          </div>
-        </div>
-
-        <button type="button" class="btn btn-primary" (click)="addWorkExp()">Add more work experience</button>
-        <button type="button" class="btn btn-danger" name="button" (click)="postUpdates()" routerLink="/newsfeed">Submit!</button>
-      </div>
     </div>
   </div>
 </div>

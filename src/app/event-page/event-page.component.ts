@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { WebAPI } from '../services/web-api.service';
+import { GetLongDate } from '../pipes/get-long-date.pipe';
 
 @Component({
   selector: 'app-event-page',
@@ -9,13 +10,21 @@ import { WebAPI } from '../services/web-api.service';
 })
 export class EventPageComponent implements OnInit {
   event = {};
-  constructor( private route: ActivatedRoute, private router: Router, private webAPI: WebAPI ) {}
+  club = {};
+  constructor( private route: ActivatedRoute, private router: Router, private webAPI: WebAPI ) {
+
+  }
 
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) =>
         this.webAPI.getEvent(+params.get('id')))
-      .subscribe((event) => this.event = event);
+      .subscribe((event) => {
+        this.webAPI.getClub(+event.club_id).then(res => {
+          this.event = event;
+          this.club = res;
+        })
+      })
   }
 
 }

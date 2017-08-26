@@ -25,13 +25,13 @@
       <li class="nav-item mr-4" *ngIf="!(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/login/login" routerLinkActive="active">LOGIN</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           PROFILE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
           <a class="dropdown-item" routerLink="/profile/{{authService.authService.currentUserData.id}}">View Profile</a>
-          <a class="dropdown-item" routerLink="">Update Profile Info</a>
+          <a class="dropdown-item" routerLink="/update">Update Profile Info</a>
           <a class="dropdown-item" (click)="signOut()">Sign Out</a>
         </div>
       </li>

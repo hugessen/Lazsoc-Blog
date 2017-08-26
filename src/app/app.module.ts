@@ -36,6 +36,7 @@ import { JobDetailPageComponent } from './job-detail-page/job-detail-page.compon
 import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-contai
     ProfileComponent,
     ClubDetailComponent,
     JobPostingSidebar,
-    NewsfeedContainerComponent
+    NewsfeedContainerComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

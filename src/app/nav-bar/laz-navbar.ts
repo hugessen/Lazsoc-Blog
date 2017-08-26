@@ -17,4 +17,11 @@ export class LazNavbar {
     location.reload();
   }
 
+  getUser() {
+    if(this.authService.userSignedIn$){
+      return this.authService.authService.currentUserData;
+    }
+    else return null;
+  }
+
 }
