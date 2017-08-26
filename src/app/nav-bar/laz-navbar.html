@@ -8,13 +8,10 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav mr-4">
       <li class="nav-item mr-4">
-        <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">NEWSFEED</a>
+        <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">EVENTS</a>
       </li>
       <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">LAZBEANS</a>
-      </li>
-      <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
-        <a class="nav-link" routerLink="/profile/{{authService.authService.currentUserData.id}}" routerLinkActive="active">PROFILE</a>
       </li>
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/clubs" routerLinkActive="active">GET INVOLVED</a>
@@ -22,14 +19,21 @@
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/hiring" routerLinkActive="active">HIRING</a>
       </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" routerLinkActive="active" href="http://www.shop.lazsoc.ca">SHOP</a>
+      </li>
       <li class="nav-item mr-4" *ngIf="!(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/login/login" routerLinkActive="active">LOGIN</a>
       </li>
-      <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
-        <a class="nav-link" routerLinkActive="active" (click)="signOut()">SIGN OUT</a>
-      </li>
-      <li class="nav-item mr-4">
-        <a class="nav-link" routerLinkActive="active" href="http://www.shop.lazsoc.ca">SHOP</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          PROFILE
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/profile/{{authService.authService.currentUserData.id}}">View Profile</a>
+          <a class="dropdown-item" routerLink="">Update Profile Info</a>
+          <a class="dropdown-item" (click)="signOut()">Sign Out</a>
+        </div>
       </li>
     </ul>
   </div>

@@ -11,4 +11,10 @@
   position: -webkit-sticky;
   position: sticky;
   top: 70px;
+  z-index: 1;
+}
+.dropdown-menu{
+  position:absolute;
+  transform:translateX(-50%);
+  z-index:2;
 }
