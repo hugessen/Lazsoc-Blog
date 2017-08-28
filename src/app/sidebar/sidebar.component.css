@@ -171,6 +171,16 @@ h5 {
   border-radius: 0;
 }
 
+.month {
+  font-family:Lato-Regular;
+  font-size:10px;
+}
+
+.date-number {
+  font-family:Lato-Black;
+  font-size:20px;
+}
+
 .share_button {
   font-weight:bold;
   color:rgba(66,44,137,1);
@@ -195,6 +205,14 @@ h5 {
   font-family:Lato-Black;
   font-size:16px;
   color:#83868a;
+  letter-spacing:0;
+  text-align:left;
+}
+
+.see-other-postings {
+  font-family:Lato-Semibold;
+  font-size:10px;
+  color:#433089;
   letter-spacing:0;
   text-align:left;
 }

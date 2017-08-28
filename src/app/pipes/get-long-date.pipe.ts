@@ -28,3 +28,23 @@ export class GetTime {
     return (hour + ":" + minStr + " " + ampm);
   }
 }
+
+@Pipe({
+  name: 'getMonth'
+})
+export class GetMonth {
+  transform(dateStr:string) {
+    var months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEPT","OCT","NOV","DEC"];
+    var date = new Date(dateStr).getMonth();
+    return months[date];
+  }
+}
+
+@Pipe({
+  name: 'getDate'
+})
+export class GetDate {
+  transform(dateStr:string) {
+    return new Date(dateStr).getDate();
+  }
+}

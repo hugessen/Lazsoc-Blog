@@ -5,8 +5,11 @@
       <img src="assets/img/thumbnails/{{clubs[posting.club_id].app_logo}}" class="open-positions-icon mr-4">
       <div class="d-flex flex-column">
         <h2 style="font-family:Lato-Bold; font-size:16px;">{{posting.title}}</h2>
-        <span class="job-posting-subheader">Expires on</span>
+        <span class="job-posting-subheader">Expires on {{posting.expiry_date}}</span>
       </div>
     </li>
   </ul>
+  <div class="card-footer py-2" style="text-align:center">
+    <a class="see-other-postings" routerLink="/hiring">See all job postings</a>
+  </div>
 </div>

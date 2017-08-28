@@ -5,28 +5,34 @@
           		<h3>Our Clubs</h3>
           		<p class="under-header-text">The fun outside the classroom</p>
         	</div>
-          	<div *ngFor="let club of clubs | mapToIterable">
-	            <div class="card" (click)="onSelect(club.val)">
-	              	<div class="row container-fluid">
-		                <div class="col-sm-4 col-md-4 col-lg-4">
-		                    <img class="logo" src="../../assets/img/thumbnails/{{club.val.app_logo}}" alt="Club Logo">
-		              	</div>
-		                <div class="col-sm-8 col-md-8 col-lg-8 mt-3">
-		                    <h6>{{club.val.name}}</h6>
-		                    <div class="tags" id="bottom_margin_4">
-		                     	<span *ngFor="let tag of club.val.club_tags">{{tag.tag}} &bull; &nbsp;</span>
-		                    </div>
-	                      	<p class="club-description">{{club.val.description}}</p>
-	                	</div>
-	                </div>
-	            </div>
+          <div *ngFor="let club of clubs | mapToIterable">
+            <div class="card" (click)="onSelect(club.val)">
+              <div class="row container-fluid py-3 pr-0">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <img class="logo" src="../../assets/img/thumbnails/{{club.val.app_logo}}" alt="Club Logo">
+                  </div>
+                  <div class="col-sm-8 col-md-8 col-lg-8">
+                    <div class="d-flex flex-column align-content-center">
+                      <br>
+                      <span class="title">{{club.val.name}}</span>
+                      <div class="row container" id="bottom_margin_2">
+                        <p class="tags" *ngFor="let tag of club.val.club_tags; let i = index">
+                          <span *ngIf="i > 0">&nbsp; &bull;</span>
+                          {{tag.tag}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="line-clamp-wrapper">
+                      <p class="club-description">{{club.val.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-      	</div>
+          </div>
+      	    <div class="col-sm-3 col-md-3 col-lg-3 mt-4">
+      	      	<job-posting-sidebar></job-posting-sidebar>
+      	    </div>
 
-	    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
-
-	      	<sidebar-right></sidebar-right>
-	    </div>
-	</div>
-
-</div>
+        </div>
+      </div>
