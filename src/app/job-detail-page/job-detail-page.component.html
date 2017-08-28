@@ -1,27 +1,32 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-8 col-md-8 col-lg-8">
-      <img class="club-banner" src="assets/img/{{club.app_banner}}">
+      <img class="club-banner mt-3" src="assets/img/{{club.app_banner}}">
       <span class="title-font">{{posting.title}}</span><br/>
       <span class="job-detail">{{posting.description}}</span>
       <br/><br/>
+      <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+        <strong>Submission error:</strong> {{error}}
+      </div>
       <div class="form-group">
         <label for=""><b>Full Name</b></label>
-        <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.full_name">
+        <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.full_name" required="required">
         <label for=""><b>Email</b></label>
-        <input type="email" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.email">
+        <input type="email" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.email" required="required">
         <label for=""><b>Program</b></label>
-        <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.program">
+        <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.program" required="required">
         <label for=""><b>Year</b></label>
-        <select class="form-control" id="exampleSelect1" [(ngModel)]="jobApplication.year">
+        <select class="form-control mb-2" id="exampleSelect1" [(ngModel)]="jobApplication.year" required="required">
           <option *ngFor="let option of getYearOptions()">{{option}}</option>
         </select>
+        <label for=""><b>Please upload your resume to <a href="https://uploadfiles.io/" target="_blank">uploadfiles.io</a> and paste the link here</b></label>
+        <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.resume_link" required="required">
       </div>
       <div class="form-group" *ngFor="let question of posting.job_posting_questions; let i = index">
         <label for="exampleInputEmail1"><b>{{question.question}}</b></label><br>
-        <textarea rows="3" style="width:100%" required [(ngModel)]="jobApplication.job_question_answers_attributes[i].answer"></textarea>
+        <textarea rows="3" style="width:100%" required="required" [(ngModel)]="jobApplication.job_question_answers_attributes[i].answer"></textarea>
       </div>
-      <button type="button" class="btn btn-primary" (click)="submitJobApp()">Submit!</button>
+      <button type="button" type="submit" class="btn btn-primary" (click)="submitJobApp()">Submit!</button>
     </div>
   </div>
 </div>

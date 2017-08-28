@@ -22,6 +22,7 @@ export interface JobPostingApplication {
   email:string;
   program:string;
   year:number;
+  resume_link:string;
   job_posting_id:number;
   job_question_answers_attributes:JobQuestionAnswer[];
 }

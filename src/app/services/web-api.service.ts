@@ -54,7 +54,7 @@ export class WebAPI {
 
   getEvents():Promise<any[]>{
     return new Promise((resolve,reject) => {
-        this.http.get("https://moria.lazsoc.ca/v2/api/events.json").map(res => res.json()).toPromise()
+        this.http.get("http://localhost:3000/v2/api/events.json").map(res => res.json()).toPromise()
         .then(res => {
           resolve(res.events);
         }).catch(err => reject(err));
@@ -64,6 +64,15 @@ export class WebAPI {
   getEvent(id: number): Promise<any> {
   return this.getEvents()
              .then(events => events.find(event => event.id === id));
+  }
+
+  registerForEvent(id:number){
+    return new Promise((resolve,reject) => {
+        this.http.get("http://localhost:3000/v2/api/events/register/"+id).map(res => res.json()).toPromise()
+        .then(res => {
+          resolve(res.events);
+        }).catch(err => reject(err));
+      })
   }
 
 

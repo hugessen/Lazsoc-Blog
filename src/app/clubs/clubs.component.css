@@ -50,7 +50,7 @@ h6 {
 
 .title {
   font-family:Lato-Black;
-  font-size:1.3em;
+  font-size:22px;
 }
 
 .content-header {
@@ -69,8 +69,8 @@ h6 {
 }
 
 .logo {
-	width: 75%;
-	height: auto;
+	width: 100%;
+	height: 100%;
 }
 
 .line-clamp-wrapper {
