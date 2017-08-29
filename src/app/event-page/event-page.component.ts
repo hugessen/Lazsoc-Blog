@@ -48,4 +48,8 @@ export class EventPageComponent implements OnInit {
     return (hour + ":" + minStr + " " + ampm);
   }
 
+  registerForEvent(){
+    this.webAPI.registerForEvent(this.event.id).then(res => console.log(res));
+  }
+
 }

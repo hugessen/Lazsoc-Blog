@@ -7,7 +7,7 @@ h2 {margin:1em 0;}
 
 
 .collapse-accordion .card a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
-.collapse-accordion .card-header {padding:0;} 
+.collapse-accordion .card-header {padding:0;}
 
 html {
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -39,14 +39,18 @@ h6 {
 	letter-spacing:0;
 	text-align:left;
 	margin-bottom: 0;
-	margin-top: 60px; 
+	margin-top: 60px;
 	text-align: left;
 }
 
 .card {
-	border-left: 1px solid darkgrey;
-	border-right: 1px solid darkgrey;
+  border: 1 solid #83868a;
 	border-radius: 0;
+}
+
+.title {
+  font-family:Lato-Black;
+  font-size:22px;
 }
 
 .content-header {
@@ -69,6 +73,18 @@ h6 {
 	height: 90%;
 }
 
+.line-clamp-wrapper {
+	height: 57px;
+ 	overflow: hidden;
+}
+
+.line-clamp {
+	width: 450px;
+	line-height: 15px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
 .club-description {
 	font-weight: 300;
 	font-size: 12px;
@@ -79,15 +95,11 @@ h6 {
 }
 
 .tags {
-	font-weight: 200;
-	font-style: italic;
-	font-size:112%;
-	font-family: Montserrat, sans-serif;
-	color:#83868a;
-	letter-spacing:0;
-	margin: 0;
-	letter-spacing:0;
-	text-align: left;
+  font-family:Lato-Regular;
+  font-size:16px;
+  color:#83868a;
+  letter-spacing:0;
+  text-align:left;
 }
 
 #bottom_margin_4 {

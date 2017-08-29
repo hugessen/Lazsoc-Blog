@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { Angular2TokenService } from "angular2-token";
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
+import { GetMonth, GetDate } from '../pipes/get-long-date.pipe';
 
 @Component({
   selector: 'sidebar-right',
@@ -12,9 +13,14 @@ import { Observable } from 'rxjs/Rx';
 })
 export class SidebarComponent implements OnInit {
   events = [];
+  clubs = {};
   constructor(private webAPI:WebAPI) {
-    this.webAPI.getBlogContent().then(res => {
-      this.events = res;
+    Observable.forkJoin([
+      Observable.fromPromise(webAPI.getNewsfeed()),
+      Observable.fromPromise(webAPI.getClubs(true))
+    ]).subscribe(data => {
+      this.events = data[0];
+      this.clubs = data[1];
     })
   }
 

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Angular2TokenService} from "angular2-token";
 import {Subject, Observable} from "rxjs";
-import {Response} from "@angular/http";
-import {Http} from '@angular/http';
+import {Response, Http, RequestOptions} from "@angular/http";
 
 @Injectable()
 export class AuthService {
@@ -125,5 +124,28 @@ export class AuthService {
         resolve(res);
       }).catch(err => reject(err));
     });
+  }
+
+  private getAuthDataFromStorage() {
+    return {
+        accessToken:    localStorage.getItem('accessToken'),
+        client:         localStorage.getItem('client'),
+        expiry:         localStorage.getItem('expiry'),
+        tokenType:      localStorage.getItem('tokenType'),
+        uid:            localStorage.getItem('uid')
+    };
+  }
+
+  upload(formData) {
+    let headers = this.authService.currentAuthHeaders;
+    headers.delete('Content-Type');
+    let options = new RequestOptions({ headers: headers });
+    console.log(formData);
+    return this.authService.request({
+      method: 'post',
+      url: `http://localhost:3000/api/upload_avatar`,
+      body: formData,
+      headers: options.headers
+    }).map(res => res.json());
   }
 }

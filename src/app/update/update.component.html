@@ -17,11 +17,9 @@
               <input type="checkbox" class="form-check-input" [(ngModel)]="updateObj.is_bean">
               Would you like to sign up for LazBeans?
             </label>
-            <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+            <input type="file" #fileInput (change)='fileChangeEvents($event)'/>
+            <button type="button" class="btn btn-primary" (click)="upload()">Upload</button>
           </div>
-          <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-              Upload with ng-2 file uploader
-          </button>
         </div>
       </div>
       <br>

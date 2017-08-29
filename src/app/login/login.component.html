@@ -55,7 +55,7 @@
     <form class="login-form">
       <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
       <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
-      <button (click)="signIn()">login</button>
+      <button (click)="signIn()" data-dismiss="modal">login</button>
       <p class="message">Not Richard? <a (click)="state = 'REGISTER'">Create an account</a></p>
     </form>
   </div>
