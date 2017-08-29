@@ -13,9 +13,9 @@
             <div class="col-sm-9 col-md-9 col-lg-9" style="padding-left:20px;">
 							<div class="d-flex flex-row mb-2 justify-content-start">
 								<span class="club-title">{{club.name}}</span>
-								<div class="subscribe-btn ml-auto">
-									<span class="subscribe-btn-text">Subscribe</span>
-								</div>
+								<!-- <div class="subscribe-btn ml-auto">
+									<span class="subscribe-btn-text" style="cursor: pointer;">Subscribe</span>
+								</div> -->
 							</div>
               <span class="club-tags" *ngFor="let tag of club.club_tags; let i = index">
 								<span *ngIf="i > 0">&bull;</span>
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="col-sm-3 col-md-3 col-lg-3 mt-4" style="padding-left:0">
-      <job-posting-sidebar></job-posting-sidebar>
+      <job-posting-sidebar [clubId]="club.id"></job-posting-sidebar>
     </div>
   </div>
 </div>

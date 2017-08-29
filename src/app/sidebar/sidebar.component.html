@@ -3,7 +3,7 @@
     <span class="card-header-text">Upcoming Events</span>
   </div>
   <div *ngFor="let event of events; let i = index">
-    <ul class="list-group list-group-flush" *ngIf="i < 5">
+    <ul class="list-group list-group-flush" *ngIf="i < 5" style="cursor: pointer;">
       <li class="list-group-item py-2" style="border-bottom:1px solid lightgrey" routerLink="/events/{{event.id}}">
         <div class="d-flex w-100">
           <div class="d-flex flex-column pr-4 pl-2" style="text-align:center">

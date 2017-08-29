@@ -43,6 +43,7 @@
   width: 22.2%;
   height:auto;
   border:5px solid white;
+  border-radius:10px;
 }
 
 .club-event-avatar {

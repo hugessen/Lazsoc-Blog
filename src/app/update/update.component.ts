@@ -12,20 +12,19 @@ const URL = 'http://localhost:3000/api/upload_avatar';
 export class UpdateComponent implements OnInit {
 
   updateObj = {
-    first_name:"",
-    last_name:"",
-    nickname:"",
-    program:"",
-    summary:"",
+    first_name:"Richard",
+    last_name:"Hugessen",
+    program:"BBA/BCS",
+    summary:"Something Lorem",
     is_bean:true,
     avatar_file: null,
     work_experiences_attributes: [{
-      title:"",
-      summary:"",
-      started_date:"",
-      end_date:"",
+      title:"Property Manager",
+      summary:"I work here",
+      started_date:"11/08/1995",
+      end_date:"11/08/1995",
       is_current:false,
-      company:""
+      company:"Manulife"
     }]
   };
   @ViewChild('fileInput') fileInput;

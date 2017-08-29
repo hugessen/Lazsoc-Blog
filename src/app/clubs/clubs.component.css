@@ -69,8 +69,8 @@ h6 {
 }
 
 .logo {
-	width: 100%;
-	height: 100%;
+	width: 170px;
+	height: auto;
 }
 
 .line-clamp-wrapper {
@@ -86,17 +86,16 @@ h6 {
 }
 
 .club-description {
-	font-weight: 300;
-	font-size: 12px;
-	font-family: Montserrat, sans-serif;
-	color:#000000;
-	letter-spacing:0;
-	text-align:left;
+  font-family:Lato-Regular;
+  font-size:14px;
+  color:#000000;
+  letter-spacing:0;
+  text-align:left;
 }
 
 .tags {
   font-family:Lato-Regular;
-  font-size:16px;
+  font-size:15px;
   color:#83868a;
   letter-spacing:0;
   text-align:left;
