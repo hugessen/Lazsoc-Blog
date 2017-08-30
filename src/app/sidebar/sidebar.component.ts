@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit {
 })
 export class ProfileSidebar implements OnInit {
 
-  constructor(public authService:AuthService, public tokenService:Angular2TokenService) {
+  constructor(public authService:AuthService, public tokenService:Angular2TokenService, private router:Router) {
     console.log("profile sidebar says: ", tokenService.currentUserData);
   }
 
@@ -54,7 +54,9 @@ export class JobPostingSidebar implements OnInit {
 
   public jobPostings;
   public clubs;
-  @Input() clubId: number;
+  hasPostings = true;
+  @Input() clubID;
+
   constructor(public webAPI:WebAPI, public router:Router) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getJobPostings()),
@@ -62,9 +64,6 @@ export class JobPostingSidebar implements OnInit {
     ]).subscribe(data => {
       this.jobPostings = data[0];
       this.clubs = data[1];
-      if(this.clubId){
-
-      }
       console.log(this.jobPostings);
     })
   }

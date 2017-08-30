@@ -1,28 +1,29 @@
-
-  <div *ngFor="let event of events" style="margin-bottom:1rem">
-    <div class="card" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
-      <div class="card-img-top">
-        <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
-      </div>
+  <div class="" *ngIf="hasEvents">
+    <div *ngFor="let event of events" style="margin-bottom:1rem">
+      <div class="card" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
+        <div class="card-img-top">
+          <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
+        </div>
         <div class="card-block">
-          <div class="d-flex mb-2">
+          <div class="d-flex flex-row mb-2">
             <img src="assets/img/thumbnails/{{clubs[event.club_id].app_logo}}" class="club-avatar mr-3" alt="">
             <div class="d-flex flex-column">
               <h4 class="club-title mb-1">{{event.title}}</h4>
               <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
             </div>
+            <img src="assets/img/icons/bookmark.svg" class="bookmark" (click)="saveEvent(event)">
           </div>
           <div class="card-text mb-2">
               {{event.sub_heading}} <br>
           </div>
         </div>
-        <div class="card-footer py-2">
+        <!-- <div class="card-footer py-2">
           <img src="assets/img/icons/heart.svg" class="icon">
           <img src="assets/img/icons/bookmark.svg" class="icon">
           <img src="assets/img/icons/arrow.svg" class="icon">
           <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
-        </div>
-    </div>
+        </div> -->
+      </div>
 
     <!-- Laz Latest Section -->
     <!-- <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
@@ -46,3 +47,13 @@
       </div>
     </div> -->
   </div>
+</div>
+
+<div class="card" *ngIf="!hasEvents">
+  <div class="card-header card-header-text">
+    Events
+  </div>
+  <div class="card-block">
+      <span class="club-detail-text">Sorry, this club doesn't appear to have any events</span>
+  </div>
+</div>

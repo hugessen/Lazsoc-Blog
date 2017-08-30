@@ -16,18 +16,19 @@ export class NewsfeedComponent implements OnInit {
   clubs = {};
   newsfeedState = "all";
   content = [];
-  big_richard;
+  hasEvents:boolean = true;
 
   @Input() clubID;
 
   constructor(public router: Router, public webAPI: WebAPI) {
     Observable.forkJoin([
-      Observable.fromPromise(webAPI.getNewsfeed(this.big_richard)),
+      Observable.fromPromise(webAPI.getNewsfeed(this.clubID)),
       Observable.fromPromise(webAPI.getClubs(true))
     ]).subscribe(data => {
       this.events = data[0];
       this.clubs = data[1];
       console.log(this.events);
+      this.hasEvents = this.checkHasEvents();
     })
   }
 
@@ -54,5 +55,14 @@ export class NewsfeedComponent implements OnInit {
   }
   Stickyfill.add(document.getElementsByClassName('sticky-updates'));
 
+  }
+  checkHasEvents():boolean{
+    if(this.clubID != 0){
+      for(let event of this.events){
+        if (event.club_id === this.clubID)
+          return true;
+      }
+      return false;
+    } else return true;
   }
 }
