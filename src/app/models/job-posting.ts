@@ -2,6 +2,7 @@ export class JobPosting {
   club_id:number;
   contact_email:string;
   created_at:string;
+  description:string;
   id:number;
   job_posting_questions:any[];
   title:string;

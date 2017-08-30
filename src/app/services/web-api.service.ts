@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class WebAPI {
 
-  constructor(private http:Http) { }
+  constructor(public http:Http) { }
 
 
   getNewsfeed(club?):Promise<any[]>{

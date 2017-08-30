@@ -14,7 +14,7 @@ import { GetMonth, GetDate } from '../pipes/get-long-date.pipe';
 export class SidebarComponent implements OnInit {
   events = [];
   clubs = {};
-  constructor(private webAPI:WebAPI) {
+  constructor(public webAPI:WebAPI) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getNewsfeed()),
       Observable.fromPromise(webAPI.getClubs(true))
@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit {
 })
 export class ProfileSidebar implements OnInit {
 
-  constructor(private authService:AuthService, private tokenService:Angular2TokenService) {
+  constructor(public authService:AuthService, public tokenService:Angular2TokenService) {
     console.log("profile sidebar says: ", tokenService.currentUserData);
   }
 
@@ -52,10 +52,10 @@ export class ProfileSidebar implements OnInit {
 })
 export class JobPostingSidebar implements OnInit {
 
-  private jobPostings;
-  private clubs;
+  public jobPostings;
+  public clubs;
   @Input() clubId: number;
-  constructor(private webAPI:WebAPI, private router:Router) {
+  constructor(public webAPI:WebAPI, public router:Router) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getJobPostings()),
       Observable.fromPromise(webAPI.getClubs(true))

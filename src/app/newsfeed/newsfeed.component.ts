@@ -20,7 +20,7 @@ export class NewsfeedComponent implements OnInit {
 
   @Input() clubID;
 
-  constructor(private router: Router, private webAPI: WebAPI) {
+  constructor(public router: Router, public webAPI: WebAPI) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getNewsfeed(this.big_richard)),
       Observable.fromPromise(webAPI.getClubs(true))

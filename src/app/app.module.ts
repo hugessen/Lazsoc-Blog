@@ -17,7 +17,6 @@ import { SidebarComponent,ProfileSidebar, JobPostingSidebar } from './sidebar/si
 import { BeansComponent } from './beans/beans.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
 import { AuthGuard } from './guards/auth.guard';
-import { FileSelectDirective } from 'ng2-file-upload';
 
 //Modules
 import { FormsModule }   from '@angular/forms';
@@ -27,7 +26,7 @@ import { NgModule } from '@angular/core';
 
 //Pipes
 import { GetLongDate, GetTime,GetMonth,GetDate } from './pipes/get-long-date.pipe';
-import { MapToIterablePipe } from './pipes/mapToIterablePipe';
+import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
 
 //Services
 import { Angular2TokenService } from 'angular2-token';
@@ -64,8 +63,7 @@ import { UpdateComponent } from './update/update.component';
     JobPostingSidebar,
     NewsfeedContainerComponent,
     UpdateComponent,
-    GetTime,
-    FileSelectDirective
+    GetTime
   ],
   imports: [
     BrowserModule,

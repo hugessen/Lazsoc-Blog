@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { WebAPI } from '../services/web-api.service';
 import { GetLongDate, GetTime } from '../pipes/get-long-date.pipe';
 import { Event } from '../models/event';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-event-page',
@@ -10,14 +11,14 @@ import { Event } from '../models/event';
   styleUrls: ['./event-page.component.css']
 })
 export class EventPageComponent implements OnInit {
-  private event:Event = new Event();
-  private club = {};
-  private startTime:string;
-  private endTime:string;
-  private multiDay:boolean;
-  private hasTags:boolean;
+  public event:Event = new Event();
+  public club:Club = new Club();
+  public startTime:string;
+  public endTime:string;
+  public multiDay:boolean;
+  public hasTags:boolean;
 
-  constructor( private route: ActivatedRoute, private router: Router, private webAPI: WebAPI ) {
+  constructor( public route: ActivatedRoute, public router: Router, public webAPI: WebAPI ) {
     this.startTime = this.getTime(this.event.start_date_time);
     console.log(new Date(this.event.start_date_time));
     this.endTime = this.getTime(this.event.end_date_time);
@@ -49,7 +50,7 @@ export class EventPageComponent implements OnInit {
   }
 
   registerForEvent(){
-    this.webAPI.registerForEvent(this.event.id).then(res => console.log(res));
+    // this.webAPI.registerForEvent(this.event.id).then(res => console.log(res));
   }
 
 }

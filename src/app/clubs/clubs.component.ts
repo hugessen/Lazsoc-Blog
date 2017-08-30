@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
-import { MapToIterablePipe } from '../pipes/MapToIterablePipe';
+import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 import { Router } from '@angular/router';
 import * as jquery from 'jquery';
 import lineClamp from 'line-clamp';
@@ -14,7 +14,7 @@ export class ClubsComponent implements OnInit {
   clubs:{};
   postings:{};
 
-  constructor(private webAPI:WebAPI, private router:Router) {
+  constructor(public webAPI:WebAPI, public router:Router) {
     webAPI.getClubs(true).then(res => {
       this.clubs = res;
       console.log(this.clubs);

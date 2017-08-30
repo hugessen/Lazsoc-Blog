@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { WebAPI } from '../services/web-api.service';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-club-detail',
@@ -9,11 +10,11 @@ import { WebAPI } from '../services/web-api.service';
 })
 export class ClubDetailComponent implements OnInit {
 
-  private club ={};
-  private newsfeed;
-  private state = "about";
+  public club:Club = new Club();
+  public newsfeed;
+  public state = "about";
 
-  constructor(private route: ActivatedRoute, private router: Router, private webAPI: WebAPI) { }
+  constructor(public route: ActivatedRoute, public router: Router, public webAPI: WebAPI) { }
 
   ngOnInit() {
     this.route.paramMap

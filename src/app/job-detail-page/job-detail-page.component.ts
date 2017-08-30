@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { WebAPI } from '../services/web-api.service';
 import { JobPosting, JobQuestionAnswer, JobPostingApplication } from '../models/job-posting';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-job-detail-page',
@@ -10,11 +11,11 @@ import { JobPosting, JobQuestionAnswer, JobPostingApplication } from '../models/
 })
 export class JobDetailPageComponent implements OnInit {
   posting:JobPosting = new JobPosting();
-  private club = {};
-  private errors = [];
-  private jobApplication:JobPostingApplication;
+  public club:Club = new Club();
+  public errors = [];
+  public jobApplication:JobPostingApplication;
 
-  constructor( private route: ActivatedRoute, private router: Router, private webAPI: WebAPI ) {
+  constructor( public route: ActivatedRoute, public router: Router, public webAPI: WebAPI ) {
 
   }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FileUploader, FileUploaderOptions } from 'ng2-file-upload/ng2-file-upload';
 
 const URL = 'http://localhost:3000/api/upload_avatar';
 
@@ -28,9 +27,9 @@ export class UpdateComponent implements OnInit {
     }]
   };
   @ViewChild('fileInput') fileInput;
-  private currentUser;
+  public currentUser;
 
-  constructor(private authService:AuthService) {
+  constructor(public authService:AuthService) {
     this.currentUser = authService.authService.currentUserData;
   }
 

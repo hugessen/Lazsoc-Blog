@@ -3,7 +3,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({
   name: 'mapToIterable'
 })
-export class MapToIterablePipe implements PipeTransform  {
+export class MapToIterablePipe  {
   transform(dict:any, args:any = []): any {
     var a:any[] = [];
     for (var key in dict) {
@@ -15,6 +15,6 @@ export class MapToIterablePipe implements PipeTransform  {
   }
 }
 
-export var MAPTOITERABLE_PROVIDERS = [
-    MapToIterablePipe
-];
+// // export var MAPTOITERABLE_PROVIDERS = [
+// //     MapToIterablePipe
+// // ];

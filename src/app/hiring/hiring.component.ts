@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./hiring.component.css']
 })
 export class HiringComponent implements OnInit {
-  private jobPostings;
-  private clubs;
-  constructor(private webAPI: WebAPI, private router:Router) {
+  jobPostings;
+  public clubs;
+  constructor(public webAPI: WebAPI, public router:Router) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getJobPostings()),
       Observable.fromPromise(webAPI.getClubs(true))

@@ -5,8 +5,8 @@ import {Angular2TokenService} from "angular2-token";
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private authTokenService:Angular2TokenService,
-              private router:Router){}
+  constructor(public authTokenService:Angular2TokenService,
+              public router:Router){}
 
   canActivate() {
     if(this.authTokenService.userSignedIn()){

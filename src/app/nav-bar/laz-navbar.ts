@@ -11,7 +11,7 @@ export class LazNavbar {
 
   modalActions = new EventEmitter<string>();
 
-  constructor(private router:Router, private authService:AuthService){
+  constructor(public router:Router, public authService:AuthService){
 
   };
 

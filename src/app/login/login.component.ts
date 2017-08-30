@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     lastName:"",
     program:"",
   };
-  constructor(private authService: AuthService, private tokenService: Angular2TokenService, private webAPI:WebAPI, private route: ActivatedRoute){
+  constructor(public authService: AuthService, public tokenService: Angular2TokenService, public webAPI:WebAPI, public route: ActivatedRoute){
     // this.authToken.init(environment.token_auth_config);
   }
 

@@ -8,7 +8,7 @@ export class AuthService {
 
   userSignedIn$:Subject<boolean> = new Subject();
 
-  constructor(public authService:Angular2TokenService, private http:Http) {
+  constructor(public authService:Angular2TokenService, public http:Http) {
     this.authService.init({
         apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
@@ -126,7 +126,7 @@ export class AuthService {
     });
   }
 
-  private getAuthDataFromStorage() {
+  public getAuthDataFromStorage() {
     return {
         accessToken:    localStorage.getItem('accessToken'),
         client:         localStorage.getItem('client'),
