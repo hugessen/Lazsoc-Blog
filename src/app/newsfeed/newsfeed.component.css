@@ -178,9 +178,6 @@ h5 {
 
 .bookmark {
   height:26px;
-  display:block;
-  position:absolute;
-  transform:translate(32em);
 }
 .card-header-text {
   font-family:Lato-Black;
@@ -195,4 +192,10 @@ h5 {
   color:#83868a;
   letter-spacing:0;
   text-align:left;
+}
+.event-divider {
+  font-family:Lato-Medium;
+  font-size:15px;
+  color:#83868a;
+  letter-spacing:0;
 }

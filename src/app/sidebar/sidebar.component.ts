@@ -5,6 +5,7 @@ import { Angular2TokenService } from "angular2-token";
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { GetMonth, GetDate } from '../pipes/get-long-date.pipe';
+import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 
 @Component({
   selector: 'sidebar-right',
@@ -14,14 +15,21 @@ import { GetMonth, GetDate } from '../pipes/get-long-date.pipe';
 export class SidebarComponent implements OnInit {
   events = [];
   clubs = {};
+  eventCount = 0;
   constructor(public webAPI:WebAPI) {
     Observable.forkJoin([
-      Observable.fromPromise(webAPI.getNewsfeed()),
+      Observable.fromPromise(webAPI.getEvents()),
       Observable.fromPromise(webAPI.getClubs(true))
     ]).subscribe(data => {
       this.events = data[0];
       this.clubs = data[1];
     })
+  }
+
+  isThisWeek(event){
+    var eventStart = Date.parse(event.start_date_time);
+    var currentTime = new Date().getTime();
+    return eventStart <= currentTime + 60*60*24*7*1000;
   }
 
   ngOnInit() {

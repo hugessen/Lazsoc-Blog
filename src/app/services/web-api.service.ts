@@ -32,23 +32,31 @@ export class WebAPI {
     })
   }
 
-  createNewsfeed(events, blogContent, clubs,club_id?):any[]{
-      var result = [];
+  createNewsfeed(events, blogContent, clubs,club_id?):any{
+      var result = {}
       for (let event of events){
-        event.typeof = "event";
-        if(club_id) {
-          if(club_id === event.club_id)
-            result.push(event);
-        } else
-          result.push(event);
+        var eventStart = Date.parse(event.start_date_time);
+        var currentTime = new Date().getTime();
+        if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
+          var eventDateKey:string = this.generateDateKey(event.start_date_time);
+          event.visible = false; //initially
+          event.timeframe = "";
+
+          if (eventStart >= currentTime && eventStart <= currentTime + 60*60*24*7*1000)
+              event.timeframe = "thisweek";
+          else
+              event.timeframe = "upcoming";
+
+          if(!result.hasOwnProperty(eventDateKey)){ //Does an entry exist for this key?
+              var dividerVal = this.getLongDate(new Date(event.start_date_time));
+              result[eventDateKey] = {divider:dividerVal, events:[], visible:false}
+          }
+          if (event.visible)
+              result[eventDateKey].visible = true; //So we know whether to show the divider
+          result[eventDateKey].events.push(event);
+        }
       }
-      // for (let post of blogContent){
-      //   post.typeof = "blog";
-      //   result.push(post);
-      // }
-      result.sort(function(a,b){
-          return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
-      })
+
       return result;
   }
 
@@ -56,6 +64,9 @@ export class WebAPI {
     return new Promise((resolve,reject) => {
         this.http.get("https://moria.lazsoc.ca/v2/api/events.json").map(res => res.json()).toPromise()
         .then(res => {
+          res.events.sort(function(a,b){
+              return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
+          })
           resolve(res.events);
         }).catch(err => reject(err));
       })
@@ -158,7 +169,17 @@ export class WebAPI {
         resolve(result);
       })
   }
+
   randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  }
+  generateDateKey(date:string):string{
+      return (new Date(date).getDate().toString() + "-" + new Date(date).getMonth().toString() + "-" + new Date(date).getFullYear().toString()).toString();
+  }
+  getLongDate(date:Date):string{
+      var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      var result:string = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+      return result;
   }
 }

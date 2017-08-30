@@ -1,21 +1,21 @@
 <div class="card sticky">
   <div class="card-header py-2" style="background-color:white">
-    <span class="card-header-text">Upcoming Events</span>
+    <span class="card-header-text">Events this week</span>
   </div>
-  <div *ngFor="let event of events; let i = index">
-    <ul class="list-group list-group-flush" *ngIf="i < 5" style="cursor: pointer;">
-      <li class="list-group-item py-2" style="border-bottom:1px solid lightgrey" routerLink="/events/{{event.id}}">
-        <div class="d-flex w-100">
-          <div class="d-flex flex-column pr-4 pl-2" style="text-align:center">
-            <span class="month">{{event.start_date_time | getMonth}}</span>
-            <span class="date-number">{{event.start_date_time | getDate}}</span>
+    <div *ngFor="let event of events; let i = index">
+      <ul class="list-group list-group-flush" style="cursor: pointer">
+        <li class="list-group-item py-2" style="border-bottom:1px solid lightgrey" routerLink="/events/{{event.id}}" *ngIf="i < 3 && isThisWeek(event)">
+          <div class="d-flex w-100" >
+            <div class="d-flex flex-column pr-4 pl-2" style="text-align:center">
+              <span class="month">{{event.start_date_time | getMonth}}</span>
+              <span class="date-number">{{event.start_date_time | getDate}}</span>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="event-title-font">{{event.title}}</span>
+              <span class="event-sub-heading">{{clubs[event.club_id].name}}</span>
+            </div>
           </div>
-          <div class="d-flex flex-column">
-            <span class="event-title-font">{{event.title}}</span>
-            <span class="event-sub-heading">{{clubs[event.club_id].name}}</span>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+        </li>
+      </ul>
+    </div>
 </div>

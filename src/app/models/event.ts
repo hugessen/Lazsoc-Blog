@@ -12,10 +12,11 @@ export class Event {
   location:string;
   sub_heading:string;
   title:string;
+  timeframe:string;
   typeof:string;
   updated_at:string;
 
   constructor(){
-    
+
   }
 }
