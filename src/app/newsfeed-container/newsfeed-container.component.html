@@ -2,9 +2,22 @@
   <div class="row justify-content-center">
     <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
       <profile-sidebar></profile-sidebar>
+      <div class="card mt-3 sticky-filters">
+        <div class="card-header">
+          <span class="card-header-text">Filter</span>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item py-3"
+          style="border-radius:0"
+          *ngFor="let tag of tags"
+          (click)="toggle(tag)"
+          [ngClass]="{selected: tag.selected}">
+          {{tag.tag}}</li>
+        </ul>
+      </div>
     </div>
     <div class="col-sm-5 col-md-5 col-lg-5 mt-4 px-2">
-      <app-newsfeed [clubID]="0"></app-newsfeed>
+      <app-newsfeed [clubID]="0" #mainFeed></app-newsfeed>
     </div>
     <div class="col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
       <sidebar-right></sidebar-right>
