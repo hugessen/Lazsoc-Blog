@@ -11,7 +11,8 @@
           style="border-radius:0"
           *ngFor="let tag of tags | mapToIterable"
           (click)="toggle(tag.key)"
-          [ngClass]="{selected: tag.val.selected}">
+          [ngClass]="{selected: tag.val.selected}"
+          style="cursor: pointer">
           {{tag.key}}</li>
         </ul>
         <button type="button" class="btn btn-primary" *ngIf="!feed.filtersApplied" (click)="feed.filtersApplied = true">Apply filters</button>

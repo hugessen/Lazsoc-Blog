@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'update', canActivate: [AuthGuard],  component: UpdateComponent },
-  { path: 'login/:state',   component: LoginComponent },
+  { path: 'login',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
   { path: 'clubs/:id', component: ClubDetailComponent},

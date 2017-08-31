@@ -37,8 +37,6 @@ export class NewsfeedContainerComponent implements OnInit {
                 "Marketing",
                 "Sales",
                 "Consulting",
-                "Journalism and Media",
-                "Debate",
                 "Finance",
                 "Economics",
                 "Social",
@@ -46,6 +44,8 @@ export class NewsfeedContainerComponent implements OnInit {
                 "Entrepreneurship",
                 "Technology",
                 "Philanthropy"];
+                //Combine Exam Review and Academic Help into "Academics"
+                
     var result = {};
     for(let tag of tags) {
       result[tag] = {selected:false};

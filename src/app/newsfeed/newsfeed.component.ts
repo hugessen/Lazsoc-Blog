@@ -86,8 +86,6 @@ export class NewsfeedComponent implements OnInit {
                 "Marketing",
                 "Sales",
                 "Consulting",
-                "Journalism and Media",
-                "Debate",
                 "Finance",
                 "Economics",
                 "Social",

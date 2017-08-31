@@ -107,3 +107,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.err-msg {
+  font-family:Lato-Regular;
+  font-size:12px;
+  color:red;
+  letter-spacing:0;
+  text-align:left;
+}

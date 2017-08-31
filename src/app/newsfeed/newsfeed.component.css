@@ -178,6 +178,9 @@ h5 {
 
 .bookmark {
   height:26px;
+  display: block;
+  position: absolute;
+  transform:translate(510px);
 }
 .card-header-text {
   font-family:Lato-Black;

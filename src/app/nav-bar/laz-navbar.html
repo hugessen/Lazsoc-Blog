@@ -13,23 +13,27 @@
       <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">LAZBEANS</a>
       </li>
-      <li class="nav-item mr-4">
-        <a class="nav-link" routerLink="/clubs" routerLinkActive="active">GET INVOLVED</a>
-      </li>
-      <li class="nav-item mr-4">
-        <a class="nav-link" routerLink="/hiring" routerLinkActive="active">HIRING</a>
+      <li class="nav-item dropdown mr-3">
+        <a class="nav-link dropdown-toggle" id="getInvolvedDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          GET INVOLVED
+        </a>
+        <div class="dropdown-menu get-involved-dropdown" aria-labelledby="getInvolvedDropdown" >
+          <a class="dropdown-item" routerLink="/clubs">Our Clubs</a>
+          <a class="dropdown-item" routerLink="/hiring">Hiring</a>
+        </div>
       </li>
       <li class="nav-item mr-4">
         <a class="nav-link" routerLinkActive="active" href="http://www.shop.lazsoc.ca">SHOP</a>
       </li>
       <li class="nav-item mr-4" *ngIf="!(authService.userSignedIn$ | async)">
-        <a class="nav-link" data-toggle="modal" data-target="#myModal">LOGIN</a>
+        <!-- <a class="nav-link" data-toggle="modal" data-target="#myModal">LOGIN</a> -->
+        <a class="nav-link" routerLink="/login">LOGIN</a>
       </li>
       <li class="nav-item dropdown" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           PROFILE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+        <div class="dropdown-menu profile-dropdown" aria-labelledby="navbarDropdownMenuLink" >
           <a class="dropdown-item" routerLink="/profile/{{authService.authService.currentUserData.id}}">View Profile</a>
           <a class="dropdown-item" routerLink="/update">Update Profile Info</a>
           <a class="dropdown-item" (click)="signOut()">Sign Out</a>
@@ -42,7 +46,7 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -51,35 +55,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div *ngIf="state == 'login'">
-          <div class="form">
-            <form class="register-form">
-              <input type="text" placeholder="name"/>
-              <input type="password" placeholder="password"/>
-              <input type="text" placeholder="email address"/>
-              <button>create</button>
-              <p class="message">Already Richard? <a href="#">Sign In</a></p>
-            </form>
-            <form class="login-form">
-              <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
-              <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
-              <button (click)="signIn()">login</button>
-              <p class="message">Not Richard? <a (click)="state = 'REGISTER'">Create an account</a></p>
-            </form>
-          </div>
-        </div>
-        <div class="" *ngIf="state === 'REGISTER'">
-            <div class="form">
-              <form class="login-form">
-                <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
-                <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
-                <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
-                <button (click)="registerUser()">Create Account</button>
-              </form>
-            </div>
-        </div>
-      </div>
+
     </div>
   </div>
-</div>
+</div> -->

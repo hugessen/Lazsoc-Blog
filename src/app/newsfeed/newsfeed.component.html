@@ -1,7 +1,7 @@
   <div class="" *ngIf="hasEvents">
-    <div *ngIf="filtersApplied" class="d-flex flex-row">
+    <div *ngIf="filtersApplied" class="d-flex flex-row" style="flex-wrap:wrap">
       <div  *ngFor="let tag of tags | mapToIterable">
-        <div class="filter-tag" *ngIf="tag.val.selected">
+        <div class="filter-tag mb-1" *ngIf="tag.val.selected">
           <span class="tag-text">{{tag.key}}</span>
         </div>
       </div>
@@ -21,7 +21,7 @@
                   <h4 class="club-title mb-1">{{event.title}}</h4>
                   <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
                 </div>
-                <!-- <img src="assets/img/icons/bookmark.svg" class="bookmark" (click)="saveEvent(event)"> -->
+                <img src="assets/img/icons/bookmark.svg" class="bookmark" (click)="saveEvent(event)">
               </div>
               <div class="card-text mb-2">
                   {{event.sub_heading}} <br>
