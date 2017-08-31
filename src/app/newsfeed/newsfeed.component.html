@@ -1,4 +1,11 @@
   <div class="" *ngIf="hasEvents">
+    <div *ngIf="filtersApplied" class="d-flex flex-row">
+      <div  *ngFor="let tag of tags | mapToIterable">
+        <div class="filter-tag" *ngIf="tag.val.selected">
+          <span class="tag-text">{{tag.key}}</span>
+        </div>
+      </div>
+    </div>
     <div *ngFor="let object of events | mapToIterable" style="margin-bottom:1rem">
       <div *ngFor="let event of object.val.events">
         <div *ngIf="matchesTags(event) || !filtersApplied">

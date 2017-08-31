@@ -18,7 +18,7 @@ export class NewsfeedComponent implements OnInit {
   content = [];
   hasEvents:boolean = true;
   tags = this.getTags();
-  filtersApplied = true;
+  filtersApplied = false;
 
   @Input() clubID;
 
