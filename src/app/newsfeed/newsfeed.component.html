@@ -1,7 +1,8 @@
   <div class="" *ngIf="hasEvents">
     <div *ngFor="let object of events | mapToIterable" style="margin-bottom:1rem">
       <div *ngFor="let event of object.val.events">
-        <span class="event-divider">{{object.val.divider}}</span><hr/>
+        <div *ngIf="matchesTags(event) || !filtersApplied">
+        <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
           <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
             <div class="card-img-top">
               <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
@@ -27,6 +28,7 @@
             </div> -->
           </div>
         </div>
+      </div>
 
 
     <!-- Laz Latest Section -->

@@ -17,6 +17,8 @@ export class NewsfeedComponent implements OnInit {
   newsfeedState = "all";
   content = [];
   hasEvents:boolean = true;
+  tags = this.getTags();
+  filtersApplied = true;
 
   @Input() clubID;
 
@@ -65,4 +67,48 @@ export class NewsfeedComponent implements OnInit {
       return false;
     } else return true;
   }
+
+  updateTags(tag){
+    this.tags[tag].selected = !this.tags[tag].selected;
+    console.log(this.tags);
+  }
+
+  getTags(){
+    var tags = ["Competitions",
+                "Networking",
+                "Accounting",
+                "Sports Management",
+                "First Year",
+                "Leadership",
+                "Exam Review",
+                "Public Speaking",
+                "Academic Help",
+                "Marketing",
+                "Sales",
+                "Consulting",
+                "Journalism and Media",
+                "Debate",
+                "Finance",
+                "Economics",
+                "Social",
+                "Startups",
+                "Entrepreneurship",
+                "Technology",
+                "Philanthropy"];
+    var result = {};
+    for(let tag of tags) {
+      result[tag] = {selected:false};
+    }
+    return result;
+  }
+
+  matchesTags(event){
+    for(let tag of event.event_tags){
+      // console.log(tag);
+      if(this.tags[tag.tag].selected)
+        return true
+    }
+    return false;
+  }
+
 }

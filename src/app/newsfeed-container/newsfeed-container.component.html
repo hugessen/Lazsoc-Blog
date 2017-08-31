@@ -9,11 +9,13 @@
         <ul class="list-group">
           <li class="list-group-item py-3"
           style="border-radius:0"
-          *ngFor="let tag of tags"
-          (click)="toggle(tag)"
-          [ngClass]="{selected: tag.selected}">
-          {{tag.tag}}</li>
+          *ngFor="let tag of tags | mapToIterable"
+          (click)="toggle(tag.key)"
+          [ngClass]="{selected: tag.val.selected}">
+          {{tag.key}}</li>
         </ul>
+        <button type="button" class="btn btn-primary" *ngIf="!feed.filtersApplied" (click)="feed.filtersApplied = true">Apply filters</button>
+        <button type="button" class="btn btn-primary" *ngIf="feed.filtersApplied" (click)="feed.filtersApplied = false">View all events</button>
       </div>
     </div>
     <div class="col-sm-5 col-md-5 col-lg-5 mt-4 px-2">

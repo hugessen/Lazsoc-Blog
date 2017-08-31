@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { NewsfeedComponent } from '../newsfeed/newsfeed.component';
+import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 
 @Component({
   selector: 'app-newsfeed-container',
@@ -8,15 +10,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class NewsfeedContainerComponent implements OnInit {
 
+  @ViewChild('mainFeed') feed:NewsfeedComponent;
+
   tags = this.getTags();
-  // @ViewChild = 
 
   constructor(public authService:AuthService) {
-
   }
 
   ngOnInit() {}
 
+  toggle(tag){
+    this.tags[tag].selected = !this.tags[tag].selected;
+    this.feed.updateTags(tag);
+  }
 
   getTags(){
     var tags = ["Competitions",
@@ -40,17 +46,11 @@ export class NewsfeedContainerComponent implements OnInit {
                 "Entrepreneurship",
                 "Technology",
                 "Philanthropy"];
-    var result = [];
+    var result = {};
     for(let tag of tags) {
-      result.push({tag:tag, selected:false});
+      result[tag] = {selected:false};
     }
     return result;
   }
-
-  toggle(tag){
-    tag.selected = !tag.selected;
-    console.log("Toggle!",tag.tag);
-  }
-
 
 }
