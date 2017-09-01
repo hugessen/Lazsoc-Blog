@@ -33,27 +33,28 @@ export class WebAPI {
   }
 
   createNewsfeed(events, blogContent, clubs,club_id?):any{
-      var result = {}
+      var result = []
       for (let event of events){
         var eventStart = Date.parse(event.start_date_time);
         var currentTime = new Date().getTime();
         if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
-          var eventDateKey:string = this.generateDateKey(event.start_date_time);
-          event.visible = false; //initially
-          event.timeframe = "";
-
-          if (eventStart >= currentTime && eventStart <= currentTime + 60*60*24*7*1000)
-              event.timeframe = "thisweek";
-          else
-              event.timeframe = "upcoming";
-
-          if(!result.hasOwnProperty(eventDateKey)){ //Does an entry exist for this key?
-              var dividerVal = this.getLongDate(new Date(event.start_date_time));
-              result[eventDateKey] = {divider:dividerVal, events:[], visible:false}
-          }
-          if (event.visible)
-              result[eventDateKey].visible = true; //So we know whether to show the divider
-          result[eventDateKey].events.push(event);
+          result.push(event);
+          // var eventDateKey:string = this.generateDateKey(event.start_date_time);
+          // event.visible = false; //initially
+          // event.timeframe = "";
+          //
+          // if (eventStart >= currentTime && eventStart <= currentTime + 60*60*24*7*1000)
+          //     event.timeframe = "thisweek";
+          // else
+          //     event.timeframe = "upcoming";
+          //
+          // if(!result.hasOwnProperty(eventDateKey)){ //Does an entry exist for this key?
+          //     var dividerVal = this.getLongDate(new Date(event.start_date_time));
+          //     result[eventDateKey] = {divider:dividerVal, events:[], visible:false}
+          // }
+          // if (event.visible)
+          //     result[eventDateKey].visible = true; //So we know whether to show the divider
+          // result[eventDateKey].events.push(event);
         }
       }
 

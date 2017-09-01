@@ -10,7 +10,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { OurTeamComponent } from './our-team/our-team.component';
-import { ClubResourcesComponent } from './club-resources/club-resources.component';
+import { ResourcesComponent } from './resources/resources.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent,ProfileSidebar, JobPostingSidebar, SocialLinksSidebar } from './sidebar/sidebar.component';
@@ -46,7 +46,7 @@ import { UpdateComponent } from './update/update.component';
     HiringComponent,
     ClubsComponent,
     OurTeamComponent,
-    ClubResourcesComponent,
+    ResourcesComponent,
     GetLongDate,
     GetMonth,
     GetDate,

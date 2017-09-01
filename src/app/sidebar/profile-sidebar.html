@@ -1,16 +1,25 @@
-<div class="card sticky">
-  <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top">
-  <img src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg" class="profile-avatar mr-2">
-  <div class="card-header d-flex align-items-center py-2">
-    <div class="d-flex flex-column" style="transform:translate(4.5em,0)">
-      <h4 class="profile-name my-0">{{tokenService.currentUserData.first_name}} {{tokenService.currentUserData.last_name}}</h4>
-      <span class="profile-subheader my-0">{{tokenService.currentUserData.program}}</span>
+<div class="card sticky" *ngIf="tokenService.userSignedIn()">
+    <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top">
+    <img src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg" class="profile-avatar mr-2">
+    <div class="card-header d-flex align-items-center py-2">
+      <div class="d-flex flex-column" style="transform:translate(4.5em,0)">
+        <h4 class="profile-name my-0">{{tokenService.currentUserData.first_name}} {{tokenService.currentUserData.last_name}}</h4>
+        <span class="profile-subheader my-0">{{tokenService.currentUserData.program}}</span>
+      </div>
     </div>
-  </div>
-
 
   <ul class="list-group">
-    <li class="list-group-item list-group-item-action py-2" style="border-radius:0" routerLink="/update">Update Profile</li>
+    <li class="list-group-item list-group-item-action py-2" style="border-radius:0" routerLink="/update" *ngIf="tokenService.userSignedIn()">Update Profile</li>
+    <li class="list-group-item list-group-item-action py-2" style="border-radius:0" (click)="setNewsfeedState('all')" [ngClass]="{active: newsfeedState == 'all'}">All Events</li>
+    <li class="list-group-item list-group-item-action py-2" style="border-radius:0" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Saved Events</li>
+  </ul>
+</div>
+<div class="card sticky" *ngIf="!tokenService.userSignedIn()">
+  <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top">
+  <div class="card-block">
+    <span class="card-header-text">Sign up for LazBeans here!</span>
+  </div>
+  <ul class="list-group">
     <li class="list-group-item list-group-item-action py-2" style="border-radius:0" (click)="setNewsfeedState('all')" [ngClass]="{active: newsfeedState == 'all'}">All Events</li>
     <li class="list-group-item list-group-item-action py-2" style="border-radius:0" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Saved Events</li>
   </ul>
