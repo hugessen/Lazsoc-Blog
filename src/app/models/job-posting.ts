@@ -18,7 +18,7 @@ export interface JobQuestionAnswer {
   answer:string;
 }
 
-export interface JobPostingApplication {
+export class JobPostingApplication {
   full_name:string;
   email:string;
   program:string;
@@ -26,4 +26,6 @@ export interface JobPostingApplication {
   resume_link:string;
   job_posting_id:number;
   job_question_answers_attributes:JobQuestionAnswer[];
+
+  constructor(){}
 }

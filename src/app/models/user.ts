@@ -2,7 +2,6 @@ export class User {
   first_name:string;
   last_name:string;
   avatar:any;
-  bio:string;
   current_term:string;
   email:string
   field_tags:string[];
@@ -10,7 +9,6 @@ export class User {
   image:any;
   is_bean:boolean;
   linkedin:string;
-  nickname:string;
   program:string;
   provider:string; //"Email"
   school_involvement:string;

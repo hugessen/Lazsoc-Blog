@@ -1,0 +1,18 @@
+.card {
+  border-radius: 0;
+}
+.form-group label{
+  font-family:Lato-Regular;
+}
+.form-group input{
+  font-family:Lato-Regular;
+  border:1px solid darkgrey;
+  border-radius: 0;
+}
+.card-title{
+  font-family:Lato-Semibold;
+}
+
+h2 {
+  font-family:Lato-Semibold;
+}

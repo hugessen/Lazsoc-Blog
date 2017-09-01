@@ -10,39 +10,34 @@ const URL = 'http://localhost:3000/api/upload_avatar';
 })
 export class UpdateComponent implements OnInit {
 
-  updateObj = {
-    first_name:"Richard",
-    last_name:"Hugessen",
-    program:"BBA/BCS",
-    summary:"Something Lorem",
-    is_bean:true,
-    avatar_file: null,
-    work_experiences_attributes: [{
-      title:"Property Manager",
-      summary:"I work here",
-      started_date:"11/08/1995",
-      end_date:"11/08/1995",
-      is_current:false,
-      company:"Manulife"
-    }]
-  };
-  @ViewChild('fileInput') fileInput;
+  updateObj:{};
+  work_experiences_attributes = [{
+    title:"",
+    summary:"",
+    started_date:"",
+    end_date:"",
+    is_current:false,
+    company:""
+  }];
+  // @ViewChild('fileInput') fileInput;
   public currentUser;
 
   constructor(public authService:AuthService) {
     this.currentUser = authService.authService.currentUserData;
+    console.log(this.currentUser);
+    this.initUpdateObj();
   }
 
   ngOnInit() {
   }
 
-  fileChangeEvents(fileInput: any) {
-      this.updateObj.avatar_file = fileInput.target.files;
-    }
+  // fileChangeEvents(fileInput: any) {
+  //     this.updateObj.avatar_file = fileInput.target.files;
+  //   }
 
   addWorkExp(){
-    this.updateObj.work_experiences_attributes.push({
-      title:"Title",
+    this.work_experiences_attributes.push({
+      title:"",
       summary:"",
       started_date:"",
       end_date:"",
@@ -51,23 +46,36 @@ export class UpdateComponent implements OnInit {
     })
   }
   removeWorkExp(index){
-    this.updateObj.work_experiences_attributes.splice(index,1);
-    console.log(this.updateObj.work_experiences_attributes);
+    this.work_experiences_attributes.splice(index,1);
+    console.log(this.work_experiences_attributes);
   }
 
   postUpdates(){
-    this.authService.updateUser('update_user',this.updateObj);
+    this.authService.updateUser('update_user',this.updateObj).then(res => {
+      console.log(res);
+      console.log(this.authService.authService.currentUserData);
+    })
   }
 
-  upload(){
-    let fileBrowser = this.fileInput.nativeElement;
-      if (fileBrowser.files && fileBrowser.files[0]) {
-        const formData = new FormData();
-        formData.append("image", fileBrowser.files[0]);
-        this.authService.upload(formData).subscribe(res => {
-          // do stuff w/my uploaded file
-        });
-    }
+  initUpdateObj(){
+    this.updateObj = {
+      first_name:this.currentUser.first_name,
+      last_name:this.currentUser.last_name,
+      program:this.currentUser.program,
+      summary:this.currentUser.summary,
+      is_bean:this.currentUser.isBean,
+    };
   }
+
+  // upload(){
+  //   let fileBrowser = this.fileInput.nativeElement;
+  //     if (fileBrowser.files && fileBrowser.files[0]) {
+  //       const formData = new FormData();
+  //       formData.append("image", fileBrowser.files[0]);
+  //       this.authService.upload(formData).subscribe(res => {
+  //         // do stuff w/my uploaded file
+  //       });
+  //   }
+  // }
 
 }

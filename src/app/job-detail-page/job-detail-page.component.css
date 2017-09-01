@@ -1,3 +1,7 @@
+.card {
+  border-radius:0;
+}
+
 .club-banner {
   width:100%;
   height:auto;
@@ -8,7 +12,45 @@
   font-size: 30px;
 }
 
+.club-name-font {
+  font-family:Lato-Semibold;
+  font-size:18px;
+  color:#83868a;
+}
+
+.card-header {
+  background-color: white;
+}
+
 .job-detail {
   font-family: Lato-Regular;
   font-size: 18px;
+}
+
+.job-header-font {
+  font-family:Lato-Semibold;
+  font-size:12px;
+  color:#000000;
+  text-transform:uppercase;
+}
+
+.description-font{
+  font-family:Lato-Regular;
+  font-size:15px;
+  color:#83868a;
+}
+
+.logo {
+  width:90px;
+  height:90px;
+}
+
+.form-group label {
+  font-family:Lato-Regular;
+}
+
+.form-group input{
+  font-family:Lato-Regular;
+  border:1px solid darkgrey;
+  border-radius: 0;
 }

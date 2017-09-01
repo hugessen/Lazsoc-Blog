@@ -13,7 +13,7 @@ export class JobDetailPageComponent implements OnInit {
   posting:JobPosting = new JobPosting();
   public club:Club = new Club();
   public errors = [];
-  public jobApplication:JobPostingApplication;
+  public jobApplication:JobPostingApplication = new JobPostingApplication();
 
   constructor( public route: ActivatedRoute, public router: Router, public webAPI: WebAPI ) {
 

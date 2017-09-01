@@ -90,10 +90,12 @@ export class AuthService {
     );
 
   }
-  updateUser(path:string, data:any){
-    this.authService.post(path,data).toPromise().then(res => {
-      console.log(res);
-    })
+  updateUser(path:string, data:any):Promise<any>{
+    return new Promise((resolve,reject) => {
+      this.authService.post(path,data).toPromise().then(res => {
+        resolve(res);
+      })
+    });
   }
 
   getBeans(): Promise<any>{
@@ -136,16 +138,16 @@ export class AuthService {
     };
   }
 
-  upload(formData) {
-    let headers = this.authService.currentAuthHeaders;
-    headers.delete('Content-Type');
-    let options = new RequestOptions({ headers: headers });
-    console.log(formData);
-    return this.authService.request({
-      method: 'post',
-      url: `http://localhost:3000/api/upload_avatar`,
-      body: formData,
-      headers: options.headers
-    }).map(res => res.json());
-  }
+  // upload(formData) {
+  //   let headers = this.authService.currentAuthHeaders;
+  //   headers.delete('Content-Type');
+  //   let options = new RequestOptions({ headers: headers });
+  //   console.log(formData);
+  //   return this.authService.request({
+  //     method: 'post',
+  //     url: `http://localhost:3000/api/upload_avatar`,
+  //     body: formData,
+  //     headers: options.headers
+  //   }).map(res => res.json());
+  // }
 }
