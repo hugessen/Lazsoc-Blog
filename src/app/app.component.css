@@ -71,3 +71,10 @@
   font-family: Lato-Heavy;
   src: url('../assets/fonts/Lato/Lato-Heavy.ttf');
 }
+
+#feedback {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
