@@ -7,7 +7,7 @@
       </div>
     </div>
     <div *ngFor="let event of events" style="margin-bottom:1rem">
-        <div *ngIf="matchesTags(event) || !filtersApplied">
+        <div *ngIf="!filtersApplied || matchesTags(event)">
         <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
           <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
             <div class="card-img-top">
