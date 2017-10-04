@@ -9,9 +9,9 @@
     </div>
 
   <ul class="list-group">
-    <li class="list-group-item list-group-item-action py-2" style="border-radius:0" routerLink="/update" *ngIf="tokenService.userSignedIn()">Update Profile</li>
-    <li class="list-group-item list-group-item-action py-2" style="border-radius:0" (click)="setNewsfeedState('all')" [ngClass]="{active: newsfeedState == 'all'}">All Events</li>
-    <li class="list-group-item list-group-item-action py-2" style="border-radius:0" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Saved Events</li>
+    <li class="list-group-item list-group-item-action py-2" style="border-radius:0; cursor:pointer" routerLink="/update" *ngIf="tokenService.userSignedIn()">Update Profile</li>
+    <li class="list-group-item list-group-item-action py-2" style="border-radius:0; cursor:pointer" (click)="setNewsfeedState('all')" [ngClass]="{active: newsfeedState == 'all'}">All Events</li>
+    <li class="list-group-item list-group-item-action py-2" style="border-radius:0; cursor:pointer" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Saved Events</li>
   </ul>
 </div>
 <div class="card sticky" *ngIf="!tokenService.userSignedIn()">

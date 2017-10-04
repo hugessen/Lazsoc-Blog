@@ -1,62 +1,39 @@
-  <div class="" *ngIf="hasEvents">
-    <div *ngIf="filtersApplied" class="d-flex flex-row" style="flex-wrap:wrap">
-      <div  *ngFor="let tag of tags | mapToIterable">
-        <div class="filter-tag mb-1" *ngIf="tag.val.selected">
-          <span class="tag-text">{{tag.key}}</span>
-        </div>
+<div class="" *ngIf="hasEvents">
+  <div *ngIf="filtersApplied" class="d-flex flex-row" style="flex-wrap:wrap">
+    <div  *ngFor="let tag of tags | mapToIterable">
+      <div class="filter-tag mb-1" *ngIf="tag.val.selected">
+        <span class="tag-text">{{tag.key}}</span>
       </div>
     </div>
-    <div *ngFor="let event of events" style="margin-bottom:1rem">
-        <div *ngIf="!filtersApplied || matchesTags(event)">
-        <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
-          <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
-            <div class="card-img-top">
-              <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
+  </div>
+  <div *ngFor="let event of events" style="margin-bottom:1rem; cursor:pointer">
+    <div *ngIf="!filtersApplied || matchesTags(event)">
+    <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
+      <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
+        <div class="card-img-top">
+          <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
+        </div>
+        <div class="card-block">
+          <div class="d-flex flex-row mb-2">
+            <img src="assets/img/thumbnails/{{clubs[event.club_id].app_logo}}" class="club-avatar mr-3" alt="">
+            <div class="d-flex flex-column">
+              <h4 class="club-title mb-1">{{event.title}}</h4>
+              <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
             </div>
-            <div class="card-block">
-              <div class="d-flex flex-row mb-2">
-                <img src="assets/img/thumbnails/{{clubs[event.club_id].app_logo}}" class="club-avatar mr-3" alt="">
-                <div class="d-flex flex-column">
-                  <h4 class="club-title mb-1">{{event.title}}</h4>
-                  <h4 class="card-datetime">{{event.start_date_time | getLongDate}}</h4>
-                </div>
-                <img src="assets/img/icons/bookmark.svg" class="bookmark" (click)="saveEvent(event)">
-              </div>
-              <div class="card-text mb-2">
-                  {{event.sub_heading}} <br>
-              </div>
-            </div>
-            <!-- <div class="card-footer py-2">
-              <img src="assets/img/icons/heart.svg" class="icon">
-              <img src="assets/img/icons/bookmark.svg" class="icon">
-              <img src="assets/img/icons/arrow.svg" class="icon">
-              <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
-            </div> -->
+            <!-- <img src="assets/img/icons/bookmark.svg" class="bookmark" (click)="saveEvent(event)"> -->
+          </div>
+          <div class="card-text mb-2">
+              {{event.sub_heading}} <br>
           </div>
         </div>
-
-
-    <!-- Laz Latest Section -->
-    <!-- <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
-      <div class="card-block">
-        <div class="d-flex">
-          <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar mr-3">
-          <div class="d-flex flex-column">
-            <h4 class="club-title mb-1">Tips on Being a Laurier BBA Student #BBAProbs</h4>
-            <h4 class="card-datetime">{{event.author}}</h4>
-          </div>
-        </div>
-
-        <h4 class="card-datetime mt-2">{{event.sub_heading}}</h4>
-        <img src="assets/img/LazHall.jpg" alt="" style="width:100%">
+        <!-- <div class="card-footer py-2">
+          <img src="assets/img/icons/heart.svg" class="icon">
+          <img src="assets/img/icons/bookmark.svg" class="icon">
+          <img src="assets/img/icons/arrow.svg" class="icon">
+          <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
+        </div> -->
       </div>
-      <div class="card-footer">
-        <img src="assets/img/icons/heart.svg" class="icon">
-        <img src="assets/img/icons/bookmark.svg" class="icon">
-        <img src="assets/img/icons/arrow.svg" class="icon">
-        <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
-      </div>
-    </div> -->
+    </div>
   </div>
 </div>
 

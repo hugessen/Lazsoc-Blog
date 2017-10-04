@@ -33,44 +33,48 @@ export class WebAPI {
   }
 
   createNewsfeed(events, blogContent, clubs,club_id?):any{
-      var result = []
-      for (let event of events){
-        var eventStart = Date.parse(event.start_date_time);
-        var currentTime = new Date().getTime();
-        if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
-          result.push(event);
-          // var eventDateKey:string = this.generateDateKey(event.start_date_time);
-          // event.visible = false; //initially
-          // event.timeframe = "";
-          //
-          // if (eventStart >= currentTime && eventStart <= currentTime + 60*60*24*7*1000)
-          //     event.timeframe = "thisweek";
-          // else
-          //     event.timeframe = "upcoming";
-          //
-          // if(!result.hasOwnProperty(eventDateKey)){ //Does an entry exist for this key?
-          //     var dividerVal = this.getLongDate(new Date(event.start_date_time));
-          //     result[eventDateKey] = {divider:dividerVal, events:[], visible:false}
-          // }
-          // if (event.visible)
-          //     result[eventDateKey].visible = true; //So we know whether to show the divider
-          // result[eventDateKey].events.push(event);
-        }
+    var result = []
+    for (let event of events){
+      var eventStart = Date.parse(event.start_date_time);
+      var currentTime = new Date().getTime();
+      if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
+        result.push(event);
+        // var eventDateKey:string = this.generateDateKey(event.start_date_time);
+        // event.visible = false; //initially
+        // event.timeframe = "";
+        //
+        // if (eventStart >= currentTime && eventStart <= currentTime + 60*60*24*7*1000)
+        //     event.timeframe = "thisweek";
+        // else
+        //     event.timeframe = "upcoming";
+        //
+        // if(!result.hasOwnProperty(eventDateKey)){ //Does an entry exist for this key?
+        //     var dividerVal = this.getLongDate(new Date(event.start_date_time));
+        //     result[eventDateKey] = {divider:dividerVal, events:[], visible:false}
+        // }
+        // if (event.visible)
+        //     result[eventDateKey].visible = true; //So we know whether to show the divider
+        // result[eventDateKey].events.push(event);
       }
-
-      return result;
+    }
+    return result;
   }
 
   getEvents():Promise<any[]>{
     return new Promise((resolve,reject) => {
         this.http.get("https://moria.lazsoc.ca/v2/api/events.json").map(res => res.json()).toPromise()
         .then(res => {
-          res.events.sort(function(a,b){
-              return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
-          })
+          this.sortByDate(res.events);
           resolve(res.events);
         }).catch(err => reject(err));
       })
+  }
+
+  sortByDate(events){
+    events.sort(function(a,b){
+      return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
+    })
+    return events;
   }
 
   getEvent(id: number): Promise<any> {
@@ -80,25 +84,24 @@ export class WebAPI {
 
   registerForEvent(id:number){
     return new Promise((resolve,reject) => {
-        this.http.get("http://localhost:3000/v2/api/events/register/"+id).map(res => res.json()).toPromise()
-        .then(res => {
-          resolve(res.events);
-        }).catch(err => reject(err));
-      })
+      this.http.get("http://localhost:3000/v2/api/events/register/"+id).map(res => res.json()).toPromise()
+      .then(res => {
+        resolve(res.events);
+      }).catch(err => reject(err));
+    })
   }
 
 
   getClubs(doTransform):Promise<any>{
     return new Promise((resolve,reject) => {
-        // this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
-        this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
-        .then(res => {
-            if(doTransform)
-                resolve(this.transformClubs(res));
-            else
-                resolve(res);
-        }).catch(err => reject(err));
-      })
+      this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
+      .then(res => {
+          if(doTransform)
+            resolve(this.transformClubs(res));
+          else
+            resolve(res);
+      }).catch(err => reject(err));
+    })
   }
 
   getClub(id:number):Promise<any>{
@@ -108,11 +111,11 @@ export class WebAPI {
 
   getJobPostings():Promise<any>{
     return new Promise((resolve,reject) => {
-        this.http.get("http://localhost:3000/api/job_postings.json").map(res => res.json()).toPromise()
-        .then(res => {
-          resolve(res);
-        }).catch(err => reject(err));
-      })
+      this.http.get("http://localhost:3000/api/job_postings.json").map(res => res.json()).toPromise()
+      .then(res => {
+        resolve(res);
+      }).catch(err => reject(err));
+    })
   }
 
   getJobPosting(id: number): Promise<JobPosting> {
@@ -128,20 +131,20 @@ export class WebAPI {
   }
 
   transformClubs(clubs:any[]):Object{
-      var result:Object = {};
-      for (let club of clubs){
-          club.club_social_links = this.formatSocialLinks(club.club_social_links);
-          result[club.id.toString()] = club;
-      }
-      return result;
+    var result:Object = {};
+    for (let club of clubs){
+        club.club_social_links = this.formatSocialLinks(club.club_social_links);
+        result[club.id.toString()] = club;
+    }
+    return result;
   }
 
   formatSocialLinks(socialLinks:any[]):Object{
-      var result:Object = {};
-      for (let link of socialLinks){
-          result[link.link_type] = link.url;
-      }
-      return result;
+    var result:Object = {};
+    for (let link of socialLinks){
+        result[link.link_type] = link.url;
+    }
+    return result;
   }
   //
   // postData(route:string, data:any){
