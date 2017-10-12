@@ -36,18 +36,19 @@
 
             </div> -->
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-action py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">Team</li>
+							<li class="list-group-item list-group-item-action py-2" (click)="state = 'team'" [ngClass]="{active: state == 'team'}">Team</li>
 							
 						</ul>
           </div>
         </div>
         <div class="col-sm-8 col-md-8 col-lg-8 pl-1">
-          <div class="card sticky" *ngIf="state === 'about'">
+          <div class="card sticky" *ngIf="state === 'team'">
             <h3 class="card-header card-header-text">Team</h3>
             <div class="card-block">
-							<span>
-								
-							</span>
+            	<div class="d-flex justify-content-center">
+            		<h6>Presidential & Internal</h6>
+            	</div>
+            	
             </div>
           </div>
         </div>
