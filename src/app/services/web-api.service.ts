@@ -70,13 +70,6 @@ export class WebAPI {
       })
   }
 
-  sortByDate(events){
-    events.sort(function(a,b){
-      return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
-    })
-    return events;
-  }
-
   getEvent(id: number): Promise<any> {
   return this.getEvents()
              .then(events => events.find(event => event.id === id));
@@ -113,7 +106,8 @@ export class WebAPI {
     return new Promise((resolve,reject) => {
       this.http.get("http://localhost:3000/api/job_postings.json").map(res => res.json()).toPromise()
       .then(res => {
-        resolve(res);
+        var postings = this.trimJobPostings(res);
+        resolve(postings);
       }).catch(err => reject(err));
     })
   }
@@ -177,13 +171,28 @@ export class WebAPI {
   randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
+
   generateDateKey(date:string):string{
       return (new Date(date).getDate().toString() + "-" + new Date(date).getMonth().toString() + "-" + new Date(date).getFullYear().toString()).toString();
   }
+
   getLongDate(date:Date):string{
       var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
       var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
       var result:string = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
       return result;
+  }
+
+  sortByDate(events){
+    return events.sort(function(a,b){
+      return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
+    })
+  }
+
+  trimJobPostings(jobPostings){
+    return jobPostings.filter(function(posting){
+      var currentTime = new Date().getTime();
+      return Date.parse(posting.expiry_date) > currentTime;
+    })
   }
 }

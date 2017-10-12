@@ -25,7 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 //Pipes
-import { GetLongDate, GetTime,GetMonth,GetDate } from './pipes/get-long-date.pipe';
+import { GetLongDate, GetShortDate, GetTime,GetMonth,GetDate } from './pipes/get-long-date.pipe';
 import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
 
 //Services
@@ -48,6 +48,7 @@ import { UpdateComponent } from './update/update.component';
     OurTeamComponent,
     ResourcesComponent,
     GetLongDate,
+    GetShortDate,
     GetMonth,
     GetDate,
     MapToIterablePipe,
