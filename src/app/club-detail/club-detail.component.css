@@ -5,6 +5,11 @@ h5, h5 > a {
   text-align: center;
 }
 
+h5 {
+  font-family: Lato; 
+  text-align: center;
+}
+
 .left-content-pane {
   margin-left:3.5%;
   margin-right: 8px;
@@ -169,4 +174,9 @@ h5, h5 > a {
   height: 160px;
   width: 160px;
   border: 1px solid black;
+}
+
+.persons {
+  width: 160px;
+  text-align: center;
 }

@@ -13,6 +13,7 @@ export class ClubDetailComponent implements OnInit {
   public club:Club = new Club();
   public newsfeed;
   public state = "about";
+  public fullTeam;
 
   constructor(public route: ActivatedRoute, public router: Router, public webAPI: WebAPI) { }
 
@@ -29,6 +30,7 @@ export class ClubDetailComponent implements OnInit {
 
 
       } );
+      this.fullTeam = this.getFullTeam();
   }
 
   getFullTeam() {
@@ -36,6 +38,7 @@ export class ClubDetailComponent implements OnInit {
       portfolios: [
         {
           title: "President & Internal",
+          id: "One",
           team: [
             { name: "Angelo Fousteris", title: "President", image: "assets/img/thumbnails/LazSoc.png" }, 
             { name: "Kara McDowell", title: "Internal Director", image: "assets/img/thumbnails/LazSoc.png" },
@@ -43,9 +46,10 @@ export class ClubDetailComponent implements OnInit {
           ]
         },
         {
-          title: "Marketing ^ Communications",
+          title: "Marketing & Communications",
+          id: "Two",
           team: [
-            { name: "Rebecca Knight", title: "VP of Marketing and Communications", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Rebecca Knight", title: "VP of Marketing & Communications", image: "assets/img/thumbnails/LazSoc.png" },
             { name: "Rachel Guerreiro", title: "Director", image: "assets/img/thumbnails/LazSoc.png" },
             { name: "Mahad Aamir", title: "Design Director", image: "assets/img/thumbnails/LazSoc.png" },
             { name: "Vanessa Morsink", title: "Public Relations", image: "assets/img/thumbnails/LazSoc.png" },
@@ -58,7 +62,9 @@ export class ClubDetailComponent implements OnInit {
         }
 
       ]
+
     }
+    return team;
   }
 
 }
