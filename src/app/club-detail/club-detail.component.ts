@@ -31,4 +31,34 @@ export class ClubDetailComponent implements OnInit {
       } );
   }
 
+  getFullTeam() {
+    let team = {
+      portfolios: [
+        {
+          title: "President & Internal",
+          team: [
+            { name: "Angelo Fousteris", title: "President", image: "assets/img/thumbnails/LazSoc.png" }, 
+            { name: "Kara McDowell", title: "Internal Director", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Manpreet Brar", title: "International Ambassador", image: "assets/img/thumbnails/LazSoc.png" }
+          ]
+        },
+        {
+          title: "Marketing ^ Communications",
+          team: [
+            { name: "Rebecca Knight", title: "VP of Marketing and Communications", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Rachel Guerreiro", title: "Director", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Mahad Aamir", title: "Design Director", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Vanessa Morsink", title: "Public Relations", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Parry Rickers", title: "Social Media", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Dayna Nairn", title: "Design Manager", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Sam Weinberger", title: "Merch & Apparel", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Keerthi Ravichandran", title: "Multimedia", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Heba Hussein", title: "Photographer", image: "assets/img/thumbnails/LazSoc.png" }
+          ]
+        }
+
+      ]
+    }
+  }
+
 }
