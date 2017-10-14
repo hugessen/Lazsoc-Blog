@@ -1,12 +1,17 @@
 h5, h5 > a {
-  font-family: Lato;
+  font-family: Lato-Black;
   font-weight: 600;
   color: black;
   text-align: center;
+  text-decoration: none;
 }
 
-h5 {
-  font-family: Lato; 
+h5 > a:hover, h5 > a:active, h5 > a:visited {
+  text-decoration: none;
+}
+
+h6 {
+  font-family: Lato-Black; 
   text-align: center;
 }
 
@@ -179,4 +184,8 @@ h5 {
 .persons {
   width: 160px;
   text-align: center;
+}
+
+.title-text {
+  font-family: Lato-Light;
 }
