@@ -1,3 +1,9 @@
+h5 {
+  font-family: Lato;
+  text-align: center;
+  color: black;
+}
+
 .left-content-pane {
   margin-left:3.5%;
   margin-right: 8px;
