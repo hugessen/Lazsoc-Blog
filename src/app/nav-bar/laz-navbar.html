@@ -10,9 +10,12 @@
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">EVENTS</a>
       </li>
-      <!-- <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
+       <li class="nav-item mr-4">
+        <a class="nav-link" routerLink="/compose" routerLinkActive="active">COMPOSE</a>
+      </li>
+      <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">LAZBEANS</a>
-      </li> -->
+      </li>
       <li class="nav-item mr-4" style="cursor:pointer">
         <a class="nav-link" routerLink="/resources" routerLinkActive="active">RESOURCES</a>
       </li>

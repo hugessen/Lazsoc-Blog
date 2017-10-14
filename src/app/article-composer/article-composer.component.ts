@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-article-composer',
@@ -15,9 +16,28 @@ export class ArticleComposerComponent implements OnInit {
 
   editorContent = "";
   editorView = true;
-
-  constructor() { }
+  article:{} 
+  articles = []
+  title:string = ""
+  constructor(public authService: AuthService) { 
+    this.getArticles()
+  }
 
   ngOnInit() {
+  }
+
+  submit(){
+    this.article = {
+      title: this.title,
+      body: this.editorContent
+    }
+    this.authService.apiPost('post_article', this.article).then(res => {
+    });
+  }
+
+  getArticles(){
+    this.authService.apiGet('get_articles.json').then(res => {
+       this.articles = res;
+    });
   }
 }
