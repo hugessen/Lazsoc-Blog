@@ -1,4 +1,4 @@
-.list-group {
+.tags-group {
   height:200px;
   overflow-y: scroll;
 }
@@ -28,4 +28,73 @@
   position: -webkit-sticky;
   position: sticky;
   top: 400px;
+}
+
+.search-container {
+  width:100%;
+  z-index: 2;
+  background-color:#F5F5F5;
+}
+
+.search-bar {
+  outline: none !important;
+  flex-grow:7;
+  padding: 0 0 0 5px;
+  font-family: Lato-Regular;
+  font-size: 12px;
+	height: 31px;
+  border-radius: 3px 0 0 3px;
+	border: 1px solid #D4D4D4;
+	background-color: #FFFFFF;
+}
+
+.search-button {
+  cursor:pointer;
+  flex-grow:1;
+	height: 31px;
+	width: 80px;
+  border-radius: 0 3px 3px 0;
+	border: 2px solid #FCB518;
+	background-color: #FCB518;
+}
+
+.search-text {
+	height: 15px;
+	width: 36px;
+	color: #FFFFFF;
+	font-family: Lato-Regular;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 15px;
+	text-align: center;
+}
+
+.center-align {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 104px;
+}
+
+.filters-text {
+	height: 17px;
+	width: 44px;
+	color: #83868A;
+	font-family: Lato-Regular;
+	font-size: 14px;
+	font-weight: 900;
+	line-height: 17px;
+}
+
+.club-dropdown {
+  width:300px;
+  height:300px;
+  overflow:scroll;
 }

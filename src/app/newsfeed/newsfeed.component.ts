@@ -5,6 +5,7 @@ import { GetLongDate } from '../pipes/get-long-date.pipe';
 import { Event } from '../event';
 import { Router } from '@angular/router';
 import * as Stickyfill from 'stickyfill';
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-newsfeed',
@@ -15,10 +16,10 @@ export class NewsfeedComponent implements OnInit {
   events:any;
   clubs = {};
   newsfeedState = "all";
-  content = [];
   hasEvents:boolean = true;
-  tags = this.getTags();
-  filtersApplied = false;
+  tagFilters:any[] = [];
+  clubFilters:any[] = [];
+
 
   @Input() clubID;
 
@@ -68,45 +69,36 @@ export class NewsfeedComponent implements OnInit {
     } else return true;
   }
 
-  updateTags(tag){
-    this.tags[tag].selected = !this.tags[tag].selected;
-    console.log(this.tags);
+  addTagFilter(tag){
+    this.tagFilters.push(tag);
   }
 
-  getTags(){
-    var tags = ["Competitions",
-                "Networking",
-                "Accounting",
-                "Sports Management",
-                "First Year",
-                "Leadership",
-                "Exam Review",
-                "Public Speaking",
-                "Academic Help",
-                "Marketing",
-                "Sales",
-                "Consulting",
-                "Finance",
-                "Economics",
-                "Social",
-                "Startups",
-                "Entrepreneurship",
-                "Technology",
-                "Philanthropy"];
-    var result = {};
-    for(let tag of tags) {
-      result[tag] = {selected:false};
-    }
-    return result;
+  removeTagFilter(tag){
+    _.pull(this.tagFilters,tag);
+  }
+
+  addClubFilter(clubSlug){
+    this.clubFilters.push(clubSlug);
+  }
+
+  removeClubFilter(clubSlug) {
+    _.pull(this.clubFilters,clubSlug);
   }
 
   matchesTags(event){
     for(let tag of event.event_tags){
-      // console.log(tag);
-      if(this.tags[tag.tag].selected)
-        return true
+      if(_.indexOf(this.tagFilters, tag.tag) != -1)
+        return true;
     }
     return false;
+  }
+
+  matchesClub(event) {
+    return _.indexOf(this.clubFilters, event.club) != -1;
+  }
+
+  hasFilters() {
+    return this.tagFilters.length > 0;
   }
 
 }
