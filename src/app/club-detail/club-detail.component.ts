@@ -59,8 +59,66 @@ export class ClubDetailComponent implements OnInit {
             { name: "Keerthi Ravichandran", title: "Multimedia", image: "assets/img/thumbnails/LazSoc.png" },
             { name: "Heba Hussein", title: "Photographer", image: "assets/img/thumbnails/LazSoc.png" }
           ]
+        },
+        {
+          title: "Corporate Relations",
+          id: "Three",
+          team: [
+            { name: "Michelle Stratulat", title: "VP of Corporate Relations", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Madison MacLead", title: "Manager-Internal", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Justin Dube", title: "Manager-Internal", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Xavier Prosper", title: "Manager-Internal", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Jack Heinzl", title: "Manager-Internal", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Hannah Klien", title: "Specialistr", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Justin Sung", title: "C & C Outreach", image: "assets/img/thumbnails/LazSoc.png" }
+          ]
+        },
+        {
+          title: "Finance",
+          id: "Four",
+          team: [
+            { name: "Raluca Truta", title: "VP of Finance", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Diane Oliver", title: "Internal Director", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Soo-Ah Youn", title: "Internal Director", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Shruti Uppal", title: "Internal Director", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Jacob Krohnert", title: "Internal Director", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Jack Fischer", title: "Director of C & C", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Sam Hall", title: "Financial Assistant", image: "assets/img/thumbnails/LazSoc.png" } 
+          ]
+        },
+        {
+          title: "Clubs & Associations",
+          id: "Five",
+          team: [
+            { name: "Emily Fraser", title: "VP of Clubs & Associations", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Yohan Billmoria", title: "Club Specialist", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "James Varley", title: "Club Specialist", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Theo Will-Dryden", title: "Director of Philanthrophy", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Sarah Arnott", title: "Philanthrophy Manager", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Kristen Marshall", title: "Philanthrophy Manager", image: "assets/img/thumbnails/LazSoc.png" }
+          ]
+        },
+        {
+          title: "Student Engagement",
+          id: "Six",
+          team: [
+            { name: "Marnie McCormac", title: "VP of Student Engagement", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Yohan Billmoria", title: "Director of Social Events", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "James Varley", title: "Director of Academic Events", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Theo Will-Dryden", title: "Events Manager", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Sarah Arnott", title: "Events Manager", image: "assets/img/thumbnails/LazSoc.png" }
+          ] 
+        },
+        {
+          title: "Technology Development",
+          id: "Five",
+          team: [
+            { name: "Richard Hugessen", title: "VP of Technology Development", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Riyaz Shaikh", title: "Web Developer", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Owen Van Valkenberg", title: "Mobile App Developer", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Hamzah Zia", title: "Web Developer", image: "assets/img/thumbnails/LazSoc.png" },
+          ]
         }
-
       ]
 
     }
