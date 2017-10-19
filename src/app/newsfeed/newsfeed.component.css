@@ -207,3 +207,22 @@ h5 {
   color:#83868a;
   letter-spacing:0;
 }
+
+.filter-tag {
+  background:rgba(67,48,137,0.20);
+  border-radius:100px;
+  width:148px;
+  height:24px;
+  text-align:center;
+  /*border:1px solid #433089;*/
+}
+.tag-text {
+  font-family:Lato-Semibold;
+  font-size:14px;
+  color:#433089;
+  letter-spacing:0;
+  text-align:left;
+}
+.article {
+  padding: 7px;
+}

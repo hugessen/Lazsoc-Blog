@@ -16,33 +16,54 @@ export class WebAPI {
     return new Promise((resolve,reject) => {
       Observable.forkJoin([
         Observable.fromPromise(this.getEvents()),
-        Observable.fromPromise(this.getBlogContent()),
+        Observable.fromPromise(this.getArticles()),
         Observable.fromPromise(this.getClubs(true))
       ]).subscribe(data => {
-        let events = data[0];
-        let blogContent = data[1];
-        let clubs = data[2];
-        let content;
+        var events = data[0];
+        var articles = data[1];
+        var clubs = data[2];
+        var content;
         if(club)
-          content = this.createNewsfeed(events,blogContent,clubs,club);
+          content = this.createNewsfeed(events,articles,clubs,club);
         else
-          content = this.createNewsfeed(events,blogContent,clubs);
+          content = this.createNewsfeed(events,articles,clubs);
         resolve(content);
       })
     })
   }
 
-  createNewsfeed(events, blogContent, clubs,club_id?):any{
-    let result = []
+  createNewsfeed(events, articles, clubs,club_id?):any{
+    var result = []
     for (let event of events){
-      const eventStart = Date.parse(event.start_date_time);
-      const currentTime = new Date().getTime();
-      event.club_name = clubs[event.club_id].name
+      event.typeof = "event";
+      event.sortDate = event.start_date_time;
+      var eventStart = Date.parse(event.start_date_time);
+      var currentTime = new Date().getTime();
       if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
         result.push(event);
       }
     }
+    for(let article of articles){
+      article.typeof = "article";
+      article.sortDate = article.created_at;
+      result.push(article);
+    }
+
+    result.sort(function(a,b){ 
+      return Date.parse(a.sortDate) - Date.parse(b.sortDate)
+    });
+    
     return result;
+  }
+
+  getArticles():Promise<any[]>{    
+    return new Promise((resolve,reject) => {
+        this.http.get("http://localhost:3000/api/get_articles.json").map(res => res.json()).toPromise()
+        .then(res => {
+          console.log(res)
+          resolve(res);
+        }).catch(err => reject(err));
+      })  
   }
 
   getEvents():Promise<any[]>{

@@ -2,7 +2,7 @@
   <div *ngFor="let event of events" style="margin-bottom:1rem; cursor:pointer">
     <div *ngIf="isVisible(event)">
     <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
-      <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
+      <div class="card mt-3" *ngIf="( event.typeof == 'event' && (clubID == 0 || clubID === event.club_id))" (click)="onSelect(event)">
         <div class="card-img-top">
           <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
           <img class="card-img-top" [src]="event.banner" *ngIf="event.banner != ''">
@@ -26,6 +26,10 @@
           <img src="assets/img/icons/Share.svg" class="icon">
           <!-- <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right"> -->
         </div>
+      </div>
+      <div class="card mt-3 article" *ngIf="event.typeof=='article'">
+        <h4 class="club-title mb-1">{{event.title}}</h4>
+        <div class="card-text mb-2" [innerHTML]="event.body"></div>
       </div>
     </div>
   </div>
