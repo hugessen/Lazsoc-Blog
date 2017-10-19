@@ -136,23 +136,6 @@ export class WebAPI {
     return result;
   }
 
-  getBlogContent():Promise<any[]>{
-    return new Promise((resolve,reject) => {
-        var result = [];
-        for(var i = 0; i < 10; i++) {
-          result.push({
-            title: "Blog Post #" + i,
-            start_date_time: this.randomDate(new Date(2017,9,1),new Date(2017,10,1)).toString(),
-            sub_heading: "So, you're a Laurier business student now. What next?",
-            author: "Richard Hugessen",
-            text_body:"",
-            banner: "assets/img/LazHall.jpg"
-          })
-        }
-        resolve(result);
-      })
-  }
-
   randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
