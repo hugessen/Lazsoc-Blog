@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { Angular2TokenService } from "angular2-token";
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { GetMonth, GetDate } from '../pipes/get-long-date.pipe';
+import { GetMonth, GetDate, GetShortDate } from '../pipes/get-long-date.pipe';
 import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 import { Club } from '../models/club';
 

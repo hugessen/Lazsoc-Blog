@@ -14,6 +14,18 @@ export class GetLongDate {
 }
 
 @Pipe({
+  name: 'getShortDate'
+})
+export class GetShortDate {
+  transform(dateStr:string) {
+    var date = new Date(dateStr);
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    var result:string = months[date.getMonth()] + " " + date.getDate();
+    return result;
+  }
+}
+
+@Pipe({
   name: 'getTime'
 })
 export class GetTime {
