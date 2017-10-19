@@ -179,10 +179,15 @@ h6 {
   height: 160px;
   width: 160px;
   border: 1px solid black;
+  overflow: hidden;
+}
+
+.head-shot > img {
+  width: 100%;
 }
 
 .persons {
-  width: 160px;
+  width: 30%;
   text-align: center;
 }
 
