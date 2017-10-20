@@ -38,7 +38,7 @@
 
 .search-bar {
   outline: none !important;
-  flex-grow:7;
+  flex-grow:6;
   padding: 0 0 0 5px;
   font-family: Lato-Regular;
   font-size: 12px;
@@ -66,7 +66,6 @@
 	font-size: 12px;
 	font-weight: 600;
 	line-height: 15px;
-	text-align: center;
 }
 
 .center-align {
@@ -84,17 +83,49 @@
 }
 
 .filters-text {
-	height: 17px;
-	width: 44px;
+	/*height: 17px;
+	width: 44px;*/
 	color: #83868A;
 	font-family: Lato-Regular;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 900;
 	line-height: 17px;
 }
 
 .club-dropdown {
-  width:300px;
-  height:300px;
+  max-height:300px;
   overflow:scroll;
+}
+.filter-tag {
+  margin-top:5px;
+  cursor:pointer;
+	box-sizing: border-box;
+  flex-basis:content;
+  padding: 3px 8px 3px 8px;
+	border: 1px solid rgba(131,134,138,1);
+	border-radius: 5px;
+	background-color: rgba(131,134,138,0.2);
+  text-align:center;
+}
+.filter-tag span {
+  font-family:Lato-Semibold;
+  font-size:14px;
+  color:rgba(131,134,138,1);
+  letter-spacing:0;
+  text-align:left;
+}
+/*.filter-tag:hover{
+  border: 1px solid #DD423C;
+  background-color:rgba(221,66,60,0.2);
+}
+.filter-tag:hover span{
+  color:#DD423C;
+}*/
+
+.filter-tag:hover{
+  border:1px solid rgba(131,134,138,0.5);
+  background-color:rgba(131,134,138,0.1);
+}
+.filter-tag:hover span{
+  color:rgba(131,134,138,0.5);
 }

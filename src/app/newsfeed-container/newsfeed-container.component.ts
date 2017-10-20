@@ -4,6 +4,7 @@ import { WebAPI } from '../services/web-api.service';
 import { NewsfeedComponent } from '../newsfeed/newsfeed.component';
 import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 import * as $ from 'jquery';
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-newsfeed-container',
@@ -14,9 +15,13 @@ export class NewsfeedContainerComponent implements OnInit {
 
   @ViewChild('mainFeed') feed:NewsfeedComponent;
 
-  tags = this.getTags();
-  public clubs:any;
-  private filters:any[]
+  tags:any = this.getTags();
+  times:any = this.getTimeFilters();
+  clubs:any
+
+  tagFilters:any[] = [];
+  clubFilters:any[] = [];
+  timeFilters:any[] = [];
 
   constructor(public authService:AuthService, private webAPI: WebAPI) {
     this.clubs = webAPI.getClubs(true).then(res => {
@@ -24,6 +29,7 @@ export class NewsfeedContainerComponent implements OnInit {
       this.clubs.map(function(club) {
         club.selected = false;
       })
+
       console.log(this.clubs);
     });
   }
@@ -38,23 +44,35 @@ export class NewsfeedContainerComponent implements OnInit {
     let tag = this.tags[tag_key];
     if (tag.selected){
       tag.selected = false;
-      this.feed.removeTagFilter(tag_key);
+      this.removeTagFilter(tag_key);
     }
     else if (!tag.selected){
       tag.selected = true;
-      this.feed.addTagFilter(tag_key);
+      this.addTagFilter(tag_key);
     }
   }
 
-  toggleClubFilter(club_id){
-    let club = this.clubs[club_id];
+  toggleClubFilter(club_slug){
+    let club = this.getClubBySlug(club_slug);
     if (club.selected){
       club.selected = false;
-      this.feed.removeClubFilter(club.slug.toUpperCase());
+      this.removeClubFilter(club.slug);
     }
     else if (!club.selected){
       club.selected = true;
-      this.feed.addClubFilter(club.slug.toUpperCase());
+      this.addClubFilter(club.slug);
+    }
+  }
+
+  toggleTimeFilter(time_key){
+    let timeframe = this.times[time_key];
+    if (timeframe.selected){
+      timeframe.selected = false;
+      this.removeTimeFilter(time_key);
+    }
+    else if (!timeframe.selected){
+      timeframe.selected = true;
+      this.addTimeFilter(time_key);
     }
   }
 
@@ -85,6 +103,54 @@ export class NewsfeedContainerComponent implements OnInit {
       result[tag] = {selected:false};
     }
     return result;
+  }
+
+  getTimeFilters(){
+    let filters = ["Today", "Tomorrow","This Week","Next Two Weeks","Past"];
+    let result = {};
+    for(let timeframe of filters) {
+      result[timeframe] = {selected:false};
+    }
+    return result;
+  }
+
+  addTagFilter(tag){
+    this.tagFilters.push(tag);
+    this.feed.tagFilters.push(tag);
+  }
+
+  removeTagFilter(tag){
+    _.pull(this.tagFilters,tag);
+    _.pull(this.feed.tagFilters,tag);
+  }
+
+  addClubFilter(clubSlug){
+    this.clubFilters.push(clubSlug);
+    this.feed.clubFilters.push(clubSlug);
+  }
+
+  removeClubFilter(clubSlug) {
+    _.pull(this.clubFilters,clubSlug);
+    _.pull(this.feed.clubFilters,clubSlug);
+  }
+
+  addTimeFilter(timeframe){
+    this.timeFilters.push(timeframe);
+    this.feed.timeFilter = timeframe;
+  }
+
+  removeTimeFilter(timeframe) {
+    _.pull(this.timeFilters,timeframe);
+    this.feed.timeFilter = "";
+  }
+
+  getClubBySlug(slug){
+    let club:any;
+    for(let key in this.clubs) {
+      if (this.clubs[key].slug == slug)
+        return this.clubs[key];
+    }
+    return null;
   }
 
 }

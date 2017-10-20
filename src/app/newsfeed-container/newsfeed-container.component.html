@@ -20,26 +20,23 @@
       </div> -->
     </div>
     <div class="col-sm-5 col-md-5 col-lg-5 px-2 mt-2">
-      <div class="d-flex flex-row mt-3">
+      <!-- <div class="d-flex flex-row mt-3">
         <input class="search-bar" id="exampleInputEmail1">
         <div class="search-button">
           <span class="search-text center-align">Search</span>
         </div>
-      </div>
+      </div> -->
       <div class="d-flex flex-row mt-2 justify-content-left">
         <span class="filters-text mx-2 mt-1" style="font-family:Lato-Bold">Filters:</span>
         <div class="dropdown m-0 p-0">
           <a class="dropdown-toggle filters-text mx-2" style="cursor:pointer; color:#83868A" id="club-dropdown" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
             Clubs
           </a>
-          <div class="dropdown-menu club-dropdown" aria-labelledby="club-dropdown"
+          <div class="dropdown-menu club-dropdown" aria-labelledby="club-dropdown" style="width:300px"
                                                    onmouseover="document.body.style.overflow='hidden';"
                                                    onmouseout="document.body.style.overflow='auto';">
             <ul class="list-group" *ngFor="let club of clubs | mapToIterable">
-              <li class="list-group-item py-0"
-                  style="cursor:pointer"
-                  [ngClass]="{selected: club.val.selected}"
-                  (click)="toggleClubFilter(club.val.id)">{{club.val.name}}</li>
+              <li class="list-group-item py-0" style="cursor:pointer" [ngClass]="{selected: club.val.selected}" (click)="toggleClubFilter(club.val.slug)">{{club.val.name}}</li>
             </ul>
           </div>
         </div>
@@ -50,16 +47,43 @@
           <div class="dropdown-menu club-dropdown" aria-labelledby="tag-dropdown"
                                                    onmouseover="document.body.style.overflow='hidden';"
                                                    onmouseout="document.body.style.overflow='auto';">
-
             <ul class="list-group" *ngFor="let tag of tags | mapToIterable">
               <li class="list-group-item py-0"
-                  style="cursor:pointer"
-                  [ngClass]="{selected: tag.val.selected}"
-                  (click)="toggleTagFilter(tag.key)">{{tag.key}}</li>
+                  style="cursor:pointer" [ngClass]="{selected: tag.val.selected}" (click)="toggleTagFilter(tag.key)">{{tag.key}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dropdown m-0 p-0">
+          <a class="dropdown-toggle filters-text mx-2" style="cursor:pointer; color:#83868A" id="club-dropdown" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+            Time
+          </a>
+          <div class="dropdown-menu club-dropdown" aria-labelledby="club-dropdown" style="width:170px"
+                                                   onmouseover="document.body.style.overflow='hidden';"
+                                                   onmouseout="document.body.style.overflow='auto';">
+            <ul class="list-group" *ngFor="let timeframe of times | mapToIterable">
+              <li class="list-group-item py-0" style="cursor:pointer" [ngClass]="{selected: timeframe.val.selected}" (click)="toggleTimeFilter(timeframe.key)">{{timeframe.key}}</li>
             </ul>
           </div>
         </div>
       </div>
+      <div class="d-flex flex-row" style="flex-wrap:wrap">
+        <div *ngFor="let clubSlug of clubFilters">
+          <div class="filter-tag mb-1 mx-1" (click)="toggleClubFilter(clubSlug)">
+            <span>{{clubSlug}}</span>
+          </div>
+        </div>
+        <div *ngFor="let tag of tagFilters">
+          <div class="filter-tag mb-1 mx-1" (click)="toggleTagFilter(tag)">
+            <span>{{tag}}</span>
+          </div>
+        </div>
+        <div *ngFor="let tag of timeFilters">
+          <div class="filter-tag mb-1 mx-1" (click)="toggleTimeFilter(tag)">
+            <span>{{tag}}</span>
+          </div>
+        </div>
+      </div>
+
       <app-newsfeed [clubID]="0" #mainFeed></app-newsfeed>
     </div>
     <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3 mt-4 px-2">

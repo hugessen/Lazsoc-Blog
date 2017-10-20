@@ -5,6 +5,7 @@ export class JobPosting {
   description:string;
   id:number;
   job_posting_questions:any[];
+  job_posting_descriptions:any[];
   title:string;
   updated_at:string;
 
