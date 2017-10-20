@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row justify-content-center">
+  <!-- <div class="row justify-content-center">
     <div class="col-sm-3 col-md-3 col-lg-3 mt-4 pr-1">
       <div class="card card-1">
         <div class="card-block card-1-block">
@@ -22,13 +22,38 @@
         </div>
       </div>
     </div>
+  </div> -->
+  <div class="row justify-content-center">
+    <div class="col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4">
+      <div class="d-flex flex-row">
+        <div class="card mr-2">
+          <div class="card-block card-1-block">
+            <span class="event-title">{{event.title}}</span><br>
+            <a class="event-club-subheading" routerLink="/clubs/{{club.id}}">{{club.name}}</a><br>
+            <hr>
+            <span class="datetime-location">{{event.start_date_time | getLongDate}}</span><br>
+            <span class="datetime-location">{{event.location}}</span>
+            <br><br>
+            <div class="register-button" style="cursor: pointer">
+              <span class="register-text" (click)="registerForEvent()">Register</span>
+            </div>
+          </div>
+        </div>
+        <div class="card ml-2">
+          <div class="card-img-top">
+            <img src="{{event.banner}}" class="card-img-top event-banner" *ngIf="event.banner != ''">
+            <img src="assets/img/{{club.app_banner}}" class="card-img-top event-banner" *ngIf="event.banner === ''">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row justify-content-center">
     <div class="col-sm-9 col-md-9 col-lg-9 mt-2 pr-1">
       <div class="card">
         <div class="card-block">
           <div class="row">
-            <div class="col-sm-4 col-md-4 col-lg-4 pr-3">
+            <div class="col-sm-3 col-md-3 col-lg-3 mr-4">
               <span class="content-header">DATE & TIME</span><br>
               <div *ngIf="!multiDay">
                 <span class="content-datetime">{{event.start_date_time | getLongDate}}</span>
@@ -40,7 +65,7 @@
               <span class="content-header">LOCATION</span><br>
               <span class="content-datetime">{{event.location}}</span>
             </div>
-            <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="col-sm-8 col-md-8 col-lg-8 ml-4">
               <span class="content-header">DESCRIPTION</span><br>
               <span class="content-datetime">{{event.event_description}}</span><br><br>
               <span class="content-header" *ngIf="hasTags">TAGS</span>

@@ -166,6 +166,7 @@ h5 {
   background-color: white;
 }
 .list-group-item{
+  outline: none !important;
   font-family:Lato-Semibold;
   font-size:14px;
   color:#000000;

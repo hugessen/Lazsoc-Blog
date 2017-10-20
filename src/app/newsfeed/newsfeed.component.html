@@ -1,13 +1,6 @@
 <div class="" *ngIf="hasEvents">
-  <div *ngIf="filtersApplied" class="d-flex flex-row" style="flex-wrap:wrap">
-    <div  *ngFor="let tag of tags | mapToIterable">
-      <div class="filter-tag mb-1" *ngIf="tag.val.selected">
-        <span class="tag-text">{{tag.key}}</span>
-      </div>
-    </div>
-  </div>
   <div *ngFor="let event of events" style="margin-bottom:1rem; cursor:pointer">
-    <div *ngIf="!filtersApplied || matchesTags(event)">
+    <div *ngIf="isVisible(event)">
     <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
       <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
         <div class="card-img-top">
@@ -26,12 +19,12 @@
               {{event.sub_heading}} <br>
           </div>
         </div>
-        <!-- <div class="card-footer py-2">
+        <div class="card-footer py-2">
           <img src="assets/img/icons/heart.svg" class="icon">
           <img src="assets/img/icons/bookmark.svg" class="icon">
           <img src="assets/img/icons/arrow.svg" class="icon">
           <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
