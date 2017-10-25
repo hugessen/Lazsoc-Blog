@@ -56,8 +56,8 @@ h6 {
 .club-avatar {
   display: block;
   position:absolute;
-  transform: translate(15%, 80%);
-  width: 22.2%;
+  transform: translate(20%, 70%);
+  width: 19%;
   height:auto;
   border:5px solid white;
   border-radius:10px;
@@ -180,6 +180,8 @@ h6 {
   width: 160px;
   border: 1px solid black;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .head-shot > img {
