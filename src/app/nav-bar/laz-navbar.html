@@ -10,10 +10,10 @@
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">EVENTS</a>
       </li>
-      <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
+      <!-- <li class="nav-item mr-4" *ngIf="(authService.userSignedIn$ | async)">
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">LAZBEANS</a>
-      </li>
-      <li class="nav-item mr-4">
+      </li> -->
+      <li class="nav-item mr-4" style="cursor:pointer">
         <a class="nav-link" routerLink="/resources" routerLinkActive="active">RESOURCES</a>
       </li>
       <li class="nav-item dropdown mr-3">
@@ -33,7 +33,7 @@
         <a class="nav-link" routerLink="/login">LOGIN</a>
       </li>
       <li class="nav-item dropdown" *ngIf="(authService.userSignedIn$ | async)">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer">
           PROFILE
         </a>
         <div class="dropdown-menu profile-dropdown" aria-labelledby="navbarDropdownMenuLink" >

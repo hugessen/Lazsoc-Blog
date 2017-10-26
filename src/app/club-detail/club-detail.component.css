@@ -39,8 +39,8 @@
 .club-avatar {
   display: block;
   position:absolute;
-  transform: translate(15%, 80%);
-  width: 22.2%;
+  transform: translate(15%, 70%);
+  width: 20%;
   height:auto;
   border:5px solid white;
   border-radius:10px;

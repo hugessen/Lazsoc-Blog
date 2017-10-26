@@ -31,6 +31,7 @@
     "line": "^0.1.8",
     "line-clamp": "0.0.4",
     "lodash": "^4.17.4",
+    "ng2-fittext": "^1.0.24",
     "rxjs": "^5.1.0",
     "stickyfill": "^1.1.1",
     "zone.js": "^0.8.4"

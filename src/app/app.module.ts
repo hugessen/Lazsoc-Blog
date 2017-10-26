@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
+// import {Ng2FittextModule} from "ng2-fittext/ng2fittext";
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { RouterModule, Routes, Router } from '@angular/router';
@@ -37,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { UpdateComponent } from './update/update.component';
+import { HiringContainerComponent } from './hiring-container/hiring-container.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { UpdateComponent } from './update/update.component';
     JobPostingSidebar,
     NewsfeedContainerComponent,
     UpdateComponent,
-    GetTime
+    GetTime,
+    HiringContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import { UpdateComponent } from './update/update.component';
     AppRoutingModule,
     HttpModule,
     FormsModule,
+    // Ng2FittextModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { BeansComponent } from './beans/beans.component';
 import { LazNavbar } from './nav-bar/laz-navbar';
-import { HiringComponent } from './hiring/hiring.component';
+import { HiringContainerComponent } from './hiring-container/hiring-container.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { LoginComponent } from './login/login.component';
 import { OurTeamComponent } from './our-team/our-team.component';
@@ -19,11 +19,11 @@ import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent },
-  { path: 'hiring',     component: HiringComponent },
+  { path: 'hiring',     component: HiringContainerComponent },
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ResourcesComponent },
-  { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
+  // { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
   { path: 'compose',  component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },

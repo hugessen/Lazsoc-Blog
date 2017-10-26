@@ -102,7 +102,6 @@ h5 {
     /*border: 1px solid darkgrey;*/
 }
 
-
 .profile-inline {
     position: relative;
     top: 0px;
@@ -165,11 +164,9 @@ h5 {
   font-size:1.1em;
   background-color: white;
 }
-.list-group-item{
-  outline: none !important;
-  font-family:Lato-Semibold;
-  font-size:14px;
-  color:#000000;
+
+.active {
+  border: 3px solid black;
 }
 
 .month {
