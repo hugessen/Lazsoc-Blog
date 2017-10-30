@@ -38,7 +38,6 @@ export class ClubDetailComponent implements OnInit {
       portfolios: [
         {
           title: "President & Internal",
-          id: "One",
           team: [
             { name: "Angelo Fousteris", title: "President", image: "assets/img/Head Shots/Angelo1.jpg" }, 
             { name: "Kara McDowell", title: "Internal Director", image: "assets/img/Head Shots/Kara1.jpg" },
@@ -47,7 +46,6 @@ export class ClubDetailComponent implements OnInit {
         },
         {
           title: "Marketing & Communications",
-          id: "Two",
           team: [
             { name: "Rebecca Knight", title: "VP of Marketing & Communications", image: "assets/img/thumbnails/LazSoc.png" },
             { name: "Rachel Guerreiro", title: "Director", image: "assets/img/thumbnails/LazSoc.png" },
@@ -62,7 +60,6 @@ export class ClubDetailComponent implements OnInit {
         },
         {
           title: "Corporate Relations",
-          id: "Three",
           team: [
             { name: "Michelle Stratulat", title: "VP of Corporate Relations", image: "assets/img/Head Shots/Michelle.jpg" },
             { name: "Madison MacLead", title: "Manager-Internal", image: "assets/img/thumbnails/LazSoc.png" },
@@ -75,7 +72,6 @@ export class ClubDetailComponent implements OnInit {
         },
         {
           title: "Finance",
-          id: "Four",
           team: [
             { name: "Raluca Truta", title: "VP of Finance", image: "assets/img/Head Shots/Raluca.jpg" },
             { name: "Diane Oliver", title: "Internal Director", image: "assets/img/Head Shots/Diane.jpg" },
@@ -88,7 +84,6 @@ export class ClubDetailComponent implements OnInit {
         },
         {
           title: "Clubs & Associations",
-          id: "Five",
           team: [
             { name: "Emily Fraser", title: "VP of Clubs & Associations", image: "assets/img/Head Shots/Emily1.jpg" },
             { name: "Yohan Billmoria", title: "Club Specialist", image: "assets/img/thumbnails/LazSoc.png" },
@@ -100,7 +95,6 @@ export class ClubDetailComponent implements OnInit {
         },
         {
           title: "Student Engagement",
-          id: "Six",
           team: [
             { name: "Marnie McCormac", title: "VP of Student Engagement", image: "assets/img/Head Shots/Marnie.jpg" },
             { name: "Olivia Bowe", title: "Director of Social Events", image: "assets/img/Head Shots/OliviaB.jpg" },
@@ -111,16 +105,23 @@ export class ClubDetailComponent implements OnInit {
         },
         {
           title: "Technology Development",
-          id: "Five",
           team: [
             { name: "Richard Hugessen", title: "VP of Technology Development", image: "assets/img/Head Shots/Richard.jpg" },
             { name: "Riyaz Shaikh", title: "Web Developer", image: "assets/img/Head Shots/Riyaz.jpg" },
             { name: "Owen Van Valkenberg", title: "Mobile App Developer", image: "assets/img/thumbnails/LazSoc.png" },
-            { name: "Hamzah Zia", title: "Web Developer", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Hamzah Zia", title: "Web Developer", image: "assets/img/thumbnails/LazSoc.png" }
+          ]
+        },
+        {
+          title: "First Year Representatives",
+          team: [
+            { name: "Gabriela Morales", title: "First Year Rep", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Adam Wali", title: "First Year Rep", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Hayden Carver", title: "First Year Rep", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Ian Fraser", title: "First Year Rep", image: "assets/img/thumbnails/LazSoc.png" }
           ]
         }
       ]
-
     }
     return team;
   }
