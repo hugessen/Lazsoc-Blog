@@ -42,38 +42,47 @@
     </div>
   </div>
 </div> -->
-
-<div class="container-fluid mt-4">
-  <div *ngIf="state == 'login'">
-    <div class="form">
-      <img src="assets/img/Lazsoc-logo.png" style="width:100px; height:auto; margin-bottom:10px;">
-      <form class="register-form">
-        <input type="text" placeholder="name"/>
-        <input type="password" placeholder="password"/>
-        <input type="text" placeholder="email address"/>
-        <button>create</button>
-        <p class="message">Already Registered? <a href="#">Sign In</a></p>
-      </form>
-      <form class="login-form">
-        <span class="err-msg" *ngIf="hasLoginError">Invalid login credentials. Please try again.</span>
-        <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
-        <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
-        <button (click)="signIn()" data-dismiss="modal">login</button>
-        <p class="message">Not Registered? <a (click)="state = 'register'" style="cursor:pointer">Create an account</a></p>
-      </form>
-    </div>
-  </div>
-  <div class="" *ngIf="state === 'register'">
-      <div class="form">
-        <img src="assets/img/Lazsoc-logo.png" style="width:100px; height:auto; margin-bottom:10px;">
-        <form class="login-form">
-          <span class="err-msg" *ngIf="hasRegisterError">Invalid login credentials. Please try again.</span>
-          <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
-          <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
-          <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
-          <button (click)="registerUser()">Create Account</button>
-          <p class="message">Already Registered? <a (click)="state = login" style="cursor:pointer">Sign In</a></p>
-        </form>
+<div class="container-fluid">
+  <div class="d-flex justify-content-center card mt-4">
+    <div class="container-fluid mt-4">
+      <div *ngIf="state == 'login'">
+        <div class="forum_container">
+          <div class="form">
+            <img src="assets/img/Lazsoc-logo.png" style="width:100px; height:auto; margin-bottom:10px;">
+            <form class="register-form">
+              <input type="text" placeholder="name"/>
+              <input type="password" placeholder="password"/>
+              <input type="text" placeholder="email address"/>
+              <button>create</button>
+              <p class="message">Already Registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login-form">
+              <span class="err-msg" *ngIf="hasLoginError">Invalid login credentials. Please try again.</span>
+              <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
+              <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
+              <button (click)="signIn()" data-dismiss="modal">login</button>
+              <p class="message">Not Registered? <a (click)="state = 'register'" style="cursor:pointer">Create an account</a></p>
+            </form>
+          </div>
+        </div>
       </div>
+      
+      <div class="" *ngIf="state === 'register'">
+        <h1>Join the Community</h1>
+        <div class="forum_container">
+            <div class="form">
+              <img src="assets/img/Lazsoc-logo.png" style="width:100px; height:auto; margin-bottom:10px;">
+              <form class="login-form">
+                <span class="err-msg" *ngIf="hasRegisterError">Invalid login credentials. Please try again.</span>
+                <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
+                <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
+                <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
+                <button (click)="registerUser()">Create Account</button>
+                <p class="message">Already Registered? <a (click)="state = 'login'" style="cursor:pointer">Sign-in</a></p>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
