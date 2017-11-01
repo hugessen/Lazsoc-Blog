@@ -28,6 +28,7 @@ import { NgModule } from '@angular/core';
 //Pipes
 import { GetLongDate, GetShortDate, GetTime,GetMonth,GetDate } from './pipes/get-long-date.pipe';
 import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
+import { SafePipe } from './pipes/safe.pipe';
 
 //Services
 import { Angular2TokenService } from 'angular2-token';
@@ -39,6 +40,7 @@ import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { UpdateComponent } from './update/update.component';
 import { HiringContainerComponent } from './hiring-container/hiring-container.component';
+import { DiscountComponent } from './discount/discount.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { HiringContainerComponent } from './hiring-container/hiring-container.co
     NewsfeedContainerComponent,
     UpdateComponent,
     GetTime,
-    HiringContainerComponent
+    SafePipe,
+    HiringContainerComponent,
+    DiscountComponent
   ],
   imports: [
     BrowserModule,

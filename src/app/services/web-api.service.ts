@@ -112,6 +112,15 @@ export class WebAPI {
     })
   }
 
+  getDiscountPartners():Promise<any[]>{
+    return new Promise((resolve,reject) => {
+        this.http.get("https://moria.lazsoc.ca/v2/api/discount_partners.json").map(res => res.json()).toPromise()
+        .then(res => {
+          resolve(res);
+        }).catch(err => reject(err));
+      })
+  }
+
   getJobPosting(id: number): Promise<JobPosting> {
   return this.getJobPostings()
              .then(postings => postings.find(post => post.id === id));

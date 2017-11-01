@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-block">
+    <div class="d-flex flex-row flex-wrap">
+    	<div *ngFor="let partner of discountPartners" style="width:33%">
+	      <div class="d-flex flex-column" >
+        	<img src="assets/img/{{partner.logo}}" alt="">
+        	{{partner.name}}
+      	</div>
+    	</div>
+    </div>
+  </div>
+</div>
