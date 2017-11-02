@@ -224,5 +224,24 @@ h5 {
   text-align:left;
 }
 .article {
-  padding: 7px;
+  padding: 15px;
+  font-family:Lato-Bold;
+    line-height: 1.2857em;
+    font-weight:500;
+
 }
+
+.article .avatar {
+  width:30px;
+  height:30px;
+}
+
+.article .title {
+    font-size: 30px;
+  }
+
+  .article .author {
+    font-size: 18px;
+    padding:7px;
+  }
+    

@@ -66,6 +66,16 @@ export class WebAPI {
       })  
   }
 
+  getArticle(id: number):Promise<any>{    
+    return new Promise((resolve,reject) => {
+        this.http.get("http://localhost:3000/api/get_article/"+id).map(res => res.json()).toPromise()
+        .then(res => {
+          console.log(res);
+          resolve(res);
+        }).catch(err => reject(err));
+      })
+  }
+
   getEvents():Promise<any[]>{
     return new Promise((resolve,reject) => {
         this.http.get("https://moria.lazsoc.ca/v2/api/events.json").map(res => res.json()).toPromise()

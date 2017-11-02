@@ -27,9 +27,15 @@
           <!-- <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right"> -->
         </div>
       </div>
-      <div class="card mt-3 article" *ngIf="event.typeof=='article'">
-        <h4 class="club-title mb-1">{{event.title}}</h4>
-        <div class="card-text mb-2" [innerHTML]="event.body"></div>
+      <div class="card mt-3 article" routerLink="/article/{{event.id}}" *ngIf="event.typeof=='article'">
+        
+        <!--TODO: Support User Profile pictures -->
+        <div class="mb-2">
+          <img class="avatar" src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg"/>
+          <h4 class="author mb-0 inline-block">{{event.first_name}}&nbsp;{{event.last_name}}</h4>
+        </div>
+        <h1 class="title mb-0">{{event.title}}</h1>
+
       </div>
     </div>
   </div>

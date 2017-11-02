@@ -4,6 +4,7 @@
     flex-direction:row;
 }
 
+<<<<<<< HEAD
 .pointer {
   cursor:pointer;
 }
@@ -15,3 +16,13 @@
   font-size:14px;
   color:#000000;
 }
+=======
+
+.inline-block {
+  display:inline-block;
+}
+
+.float-left {
+	float:left;
+}
+>>>>>>> fe4282a... Displaying articles + composing articles

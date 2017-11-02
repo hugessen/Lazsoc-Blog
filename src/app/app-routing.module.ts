@@ -15,6 +15,7 @@ import { JobDetailPageComponent} from './job-detail-page/job-detail-page.compone
 import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { UpdateComponent } from './update/update.component';
+import { ArticleComponent } from './article/article.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
   { path: 'clubs/:id', component: ClubDetailComponent},
+  { path: 'article/:id', component: ArticleComponent},
   { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
 ];

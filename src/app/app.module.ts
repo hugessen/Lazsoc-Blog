@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { SidebarComponent,ProfileSidebar, JobPostingSidebar, SocialLinksSidebar } from './sidebar/sidebar.component';
 import { BeansComponent } from './beans/beans.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
+import { ArticleComponent } from './article/article.component';
 import { AuthGuard } from './guards/auth.guard';
 
 //Modules
@@ -72,7 +73,8 @@ import { DiscountComponent } from './discount/discount.component';
     GetTime,
     SafePipe,
     HiringContainerComponent,
-    DiscountComponent
+    DiscountComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

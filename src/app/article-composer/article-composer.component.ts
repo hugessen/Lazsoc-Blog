@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-composer',
@@ -19,7 +20,7 @@ export class ArticleComposerComponent implements OnInit {
   article:{} 
   articles = []
   title:string = ""
-  constructor(public authService: AuthService) { 
+  constructor(public authService: AuthService, private router: Router) { 
     this.getArticles()
   }
 
@@ -32,6 +33,9 @@ export class ArticleComposerComponent implements OnInit {
       body: this.editorContent
     }
     this.authService.apiPost('post_article', this.article).then(res => {
+      console.log("line 34")
+      console.log(res)
+      this.router.navigate(['./newsfeed']);
     });
   }
 

@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row justify-content-center mt-4">
+    <div class="col-sm-11 col-md-11 col-lg-11">
+      <div class="card article">
+        <div class="card-block">
+          <div class="mb-2">
+            <!-- TODO: Support User avatars -->
+            <img class="avatar" src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg"/>
+            <h3 class="author mb-0 inline-block">{{articleObj.user.first_name}}&nbsp;{{articleObj.user.last_name}}</h3>
+          </div>
+          <h1>{{articleObj.article.title}}</h1>
+          <p [innerHTML]="articleObj.article.body"></p>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
