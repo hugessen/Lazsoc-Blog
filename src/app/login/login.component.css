@@ -4,7 +4,7 @@ h1 {
   font-family: Lato-Bold;
   color: #433089;
   margin-top: 50px;
-  font-size: 350%;
+  font-size: 300%;
   text-align: center; 
 }
 
@@ -133,7 +133,7 @@ body {
 
 .forum_container {
   background-color: #FFFFFF;  
-  box-shadow: 0 19px 30px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 12px 50px 0 rgba(0,0,0,0.2);
   margin-top: 5px;
   margin-bottom: 10px;
   min-width: 500.837px;
