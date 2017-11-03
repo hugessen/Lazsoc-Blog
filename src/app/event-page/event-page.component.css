@@ -17,7 +17,7 @@ h1, h2, h3, h4{
 }
 
 .card-1 {
-  height:14.1em;
+  height: 96%;
 }
 
 .event-title {
@@ -51,7 +51,7 @@ h1, h2, h3, h4{
   border:2px solid #fcb518;
   border-radius:2px;
   width:212px;
-  height:34px;
+  height:30px;
   text-align: center;
   /*margin-left:12%;*/
 }
@@ -104,7 +104,7 @@ h1, h2, h3, h4{
 
 .tags-label span {
   font-family:Lato-Semibold;
-  font-size:12px;
+  font-size:14px;
   color:#433089;
   letter-spacing:0;
   text-align:left;
