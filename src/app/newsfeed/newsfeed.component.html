@@ -5,6 +5,7 @@
       <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
         <div class="card-img-top">
           <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
+          <img class="card-img-top" [src]="event.banner" *ngIf="event.banner != ''">
         </div>
         <div class="card-block">
           <div class="d-flex flex-row mb-2">
@@ -20,10 +21,10 @@
           </div>
         </div>
         <div class="card-footer py-2">
-          <img src="assets/img/icons/heart.svg" class="icon">
-          <img src="assets/img/icons/bookmark.svg" class="icon">
-          <img src="assets/img/icons/arrow.svg" class="icon">
-          <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
+          <img src="assets/img/icons/Like.svg" class="icon">
+          <img src="assets/img/icons/Save.svg" class="icon">
+          <img src="assets/img/icons/Share.svg" class="icon">
+          <!-- <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right"> -->
         </div>
       </div>
     </div>
