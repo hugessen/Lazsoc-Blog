@@ -68,14 +68,27 @@ h5 {
     top: 0;
     left: 0;
     max-width: 100%;
-    padding: .75em 1em;
+    padding-left: 0px;
     color: rgba(0, 0, 0, .4);
     border-top: 1px solid rgba(0, 0, 0, .05) !important;
     background: #fff;
 }
 
+.icon {
+  width:35px;
+  height: 31px;  
+}
+
 .card-inverse .btn {
     border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.red_heart {
+  fill:red;
+}
+
+.reg_heart {
+  fill:black;
 }
 
 .profile {
@@ -238,6 +251,7 @@ h5 {
 
 .article .title {
     font-size: 30px;
+    margin-bottom: 5px;
   }
 
   .article .author {

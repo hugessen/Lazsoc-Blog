@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { GetLongDate } from '../pipes/get-long-date.pipe';
 import { Event } from '../event';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import * as Stickyfill from 'stickyfill';
 import * as _ from "lodash";
 
@@ -24,7 +25,7 @@ export class NewsfeedComponent implements OnInit {
 
   @Input() clubID;
 
-  constructor(public router: Router, public webAPI: WebAPI) {
+  constructor(public router: Router, public webAPI: WebAPI, public authService: AuthService) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getNewsfeed(this.clubID)),
       Observable.fromPromise(webAPI.getClubs(true))
@@ -38,6 +39,12 @@ export class NewsfeedComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.clubID);
+  }
+
+  vote(event){
+    this.authService.apiPost('articles/'+event.id+'/vote', null).then(res => {
+      console.log(res)
+    });
   }
 
   onSelect(event){

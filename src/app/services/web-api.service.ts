@@ -56,6 +56,12 @@ export class WebAPI {
     return result;
   }
 
+  /*vote(event):any{
+    this.http.post('http://localhost:3000/api/articles/'+event.id +'/vote',null).subscribe(res => {
+      console.log(res);
+    });
+  } */
+
   getArticles():Promise<any[]>{    
     return new Promise((resolve,reject) => {
         this.http.get("http://localhost:3000/api/get_articles.json").map(res => res.json()).toPromise()
