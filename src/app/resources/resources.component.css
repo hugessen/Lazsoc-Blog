@@ -1,7 +1,33 @@
+.card {
+  border-radius: 0;
+}
 .side-heading {
   font-family:Lato-Semibold;
-  font-size:14px;
-  color:#000000;
-  letter-spacing:0;
-  text-align:left;
+  font-size:15px;
+  color:#83868A;
+  padding-left:15px;
+  cursor:pointer;
+}
+
+.top-heading {
+  font-family:Lato-Semibold;
+  font-size:17px;
+  color:#83868A;
+  cursor:pointer;
+}
+
+.topactive {
+  border-bottom:6px solid #FCB518;
+  color:black;
+}
+
+.active {
+  border-left:6px solid #FCB518;
+  padding-left:9px;
+  color:black;
+}
+
+.top-text-active {
+  border-bottom:6px solid #FCB518;
+  color:black;
 }

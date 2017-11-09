@@ -29,6 +29,11 @@ h5 {
     box-shadow: none;
 }
 
+.icon {
+   height:20px;
+   margin-right:10px;
+ }
+
 .card-img-top {
     display: block;
     width: 100%;
@@ -201,19 +206,4 @@ h5 {
   font-size:15px;
   color:#83868a;
   letter-spacing:0;
-}
-.filter-tag {
-  background:rgba(67,48,137,0.20);
-  border-radius:100px;
-  width:148px;
-  height:24px;
-  text-align:center;
-  /*border:1px solid #433089;*/
-}
-.tag-text {
-  font-family:Lato-Semibold;
-  font-size:14px;
-  color:#433089;
-  letter-spacing:0;
-  text-align:left;
 }

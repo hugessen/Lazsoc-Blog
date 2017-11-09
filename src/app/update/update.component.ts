@@ -10,7 +10,14 @@ const URL = 'http://localhost:3000/api/upload_avatar';
 })
 export class UpdateComponent implements OnInit {
 
-  updateObj:{};
+  updateObj = {
+    first_name:"",
+    last_name:"",
+    program:"",
+    summary:"",
+    is_bean:"",
+  };
+
   work_experiences_attributes = [{
     title:"",
     summary:"",
@@ -68,16 +75,5 @@ export class UpdateComponent implements OnInit {
       school_year:this.currentUser.school_year,
     };
   }
-
-  // upload(){
-  //   let fileBrowser = this.fileInput.nativeElement;
-  //     if (fileBrowser.files && fileBrowser.files[0]) {
-  //       const formData = new FormData();
-  //       formData.append("image", fileBrowser.files[0]);
-  //       this.authService.upload(formData).subscribe(res => {
-  //         // do stuff w/my uploaded file
-  //       });
-  //   }
-  // }
 
 }

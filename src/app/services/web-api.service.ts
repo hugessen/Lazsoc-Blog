@@ -35,8 +35,8 @@ export class WebAPI {
   createNewsfeed(events, blogContent, clubs,club_id?):any{
     var result = []
     for (let event of events){
-      var eventStart = Date.parse(event.start_date_time);
-      var currentTime = new Date().getTime();
+      let eventStart = Date.parse(event.start_date_time);
+      let currentTime = new Date().getTime();
       if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
         result.push(event);
         // var eventDateKey:string = this.generateDateKey(event.start_date_time);
@@ -44,7 +44,7 @@ export class WebAPI {
         // event.timeframe = "";
         //
         // if (eventStart >= currentTime && eventStart <= currentTime + 60*60*24*7*1000)
-        //     event.timeframe = "thisweek";
+        //     event.timeframe = "This Week";
         // else
         //     event.timeframe = "upcoming";
         //
@@ -110,6 +110,15 @@ export class WebAPI {
         resolve(postings);
       }).catch(err => reject(err));
     })
+  }
+
+  getDiscountPartners():Promise<any[]>{
+    return new Promise((resolve,reject) => {
+        this.http.get("https://moria.lazsoc.ca/v2/api/discount_partners.json").map(res => res.json()).toPromise()
+        .then(res => {
+          resolve(res);
+        }).catch(err => reject(err));
+      })
   }
 
   getJobPosting(id: number): Promise<JobPosting> {

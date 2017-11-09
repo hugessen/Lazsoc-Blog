@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-sm-3 col-md-3 col-lg-3 pl-0 pr-1">
+			<div class="card">
+				<div class="card-block" style="text-align:center">
+					<span class="big-gold-text">20+</span><br>
+					<span class="sub-font">Locations where the program is active</span>
+					<br><hr>
+					<span class="sub-font">Want to be another location on our list?</span>
+					<div class="gold-button mt-3">
+						<span class="white-font">Let's Chat</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-9 col-md-9 col-lg-9 pr-0 pl-1">
+			<div class="card">
+			  <div class="card-block">
+			    <div class="d-flex flex-row flex-wrap">
+			    	<div *ngFor="let partner of discountPartners" style="width:33%">
+				      <div class="d-flex flex-column" >
+			        	<img src="assets/img/{{partner.logo}}" alt="">
+			        	{{partner.name}}
+			      	</div>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+

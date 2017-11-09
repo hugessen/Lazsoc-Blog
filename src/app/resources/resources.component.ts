@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SafePipe } from '../pipes/safe.pipe';
 
 @Component({
   selector: 'app-resources',
@@ -7,24 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourcesComponent implements OnInit {
 
-  documents = this.getDocuments();
-  selectedDoc;
+  resourceType = "discountProgram";
+  selectedDoc = 0;
+  studentResources:any[];
+  officialDocs:any[];
 
   constructor() {
-    this.selectedDoc = 0;
   }
 
   ngOnInit() {
+    this.setDocuments();
   }
 
-  getDocuments(){
-    var result = [
-      {name:"Lazsoc constitution", path: "Lazaridis-Students-Society-Constitution.pdf"},
-      {name:"Lazsoc Elections Policy 17/18", path: "LazSoc-Elections-Policy_17-18"},
+  setDocuments(){
+    this.studentResources = [
+      {name:"Clubs Guide", path: "Clubs Guide.pdf"},
+      {name:"Core Values", path: "Core Values.pdf"},
+    ],
+    this.officialDocs = [
+      {name:"Lazsoc Constitution", path: "Lazaridis-Students-Society-Constitution.pdf"},
+      {name:"Lazsoc Elections Policy 17/18", path: "LazSoc-Elections-Policy_17-18.pdf"},
       {name:"Financial Policy", path: "Financial Policy.pdf"}
     ]
-    return result;
   }
+
   selectDoc(doc){
     this.selectedDoc = doc;
   }

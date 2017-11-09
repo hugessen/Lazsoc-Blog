@@ -3,3 +3,15 @@
     display:flex;
     flex-direction:row;
 }
+
+.pointer {
+  cursor:pointer;
+}
+
+.timothy {
+  border: none;
+  outline: none !important;
+  font-family:Lato-Semibold;
+  font-size:14px;
+  color:#000000;
+}

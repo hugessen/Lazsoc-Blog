@@ -1,29 +1,51 @@
-
 <div class="container-fluid">
   <div class="row justify-content-center mt-4">
     <div class="col-sm-11 col-md-11 col-lg-11">
       <div class="card">
-        <div class="card-block">
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row justify-content-center mt-4">
-    <div class="col-sm-3 col-md-3 col-lg-3">
-      <div class="card">
-        <div class="card-block">
-          <div *ngFor="let document of documents; let i = index">
-            <span class="side-heading" (click)="selectedDoc = i">{{document.name}}</span>
+        <div class="card-block d-flex flex-row justify-content-center">
+          <div class="top-heading mx-3" (click)="resourceType = 'discountProgram'" [ngClass]="{topactive: resourceType == 'discountProgram'}">
+            Discount Program
+          </div>
+          <div class="top-heading mx-3" (click)="resourceType = 'studentResources'" [ngClass]="{topactive: resourceType == 'studentResources'}">
+            Student Resources
+          </div>
+          <div class="top-heading mx-3" (click)="resourceType = 'officialDocs'" [ngClass]="{topactive: resourceType == 'officialDocs'}">
+            Official Documents
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-8 col-md-8 col-lg-8">
-      <embed src="assets/pdfs/Lazaridis-Students-Society-Constitution.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 0"/>
-      <embed src="assets/pdfs/LazSoc-Elections-Policy_17-18.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 1"/>
-      <embed src="assets/pdfs/Financial Policy.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 2"/>
-      <!-- <embed src="assets/pdfs/Lazaridis-Students-Society-Constitution.pdf" width="100%" height="1000px"/> -->
+  </div>
+  <div class="row justify-content-center mt-1" *ngIf="resourceType != 'discountProgram'">
+    <div class="col-sm-3 col-md-3 col-lg-3 pr-1">
+      <div class="card" *ngIf="resourceType == 'studentResources'">
+        <div *ngFor="let document of studentResources; let i = index">
+          <div class="side-heading py-2" (click)="selectedDoc = i" [ngClass]="{active: selectedDoc == i}">{{document.name}}</div>
+        </div>
+      </div>
+      <div class="card" *ngIf="resourceType == 'officialDocs'">
+        <div *ngFor="let document of officialDocs; let i = index">
+          <div class="side-heading py-2" (click)="selectedDoc = i" [ngClass]="{active: selectedDoc == i}">{{document.name}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8 pl-1">
+
+      <div *ngIf="resourceType == 'studentResources'">
+        <embed [src]="'assets/pdfs/' + studentResources[0].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 0"/>
+        <embed [src]="'assets/pdfs/' + studentResources[1].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 1"/>
+        <embed [src]="'assets/pdfs/' + studentResources[2].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 2"/>
+      </div>
+      <div *ngIf="resourceType == 'officialDocs'">
+        <embed [src]="'assets/pdfs/' + officialDocs[0].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 0"/>
+        <embed [src]="'assets/pdfs/' + officialDocs[1].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 1"/>
+        <embed [src]="'assets/pdfs/' + officialDocs[2].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 2"/>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-4" *ngIf="resourceType == 'discountProgram'">
+    <div class="col-sm-11 col-md-11 col-lg-11">
+      <app-discount></app-discount>
     </div>
   </div>
 </div>
