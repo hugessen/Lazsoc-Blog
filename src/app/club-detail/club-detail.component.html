@@ -1,6 +1,6 @@
 <div class="container-fluid" style="background-color:#F5F5F5">
-	<div class="row justify-content-center">
-  	<div class="col-sm-11 col-md-11 col-lg-11 mt-4">
+  <div class="row">
+    <div class="col-sm-11 col-md-11 col-lg-11 mt-4 left-content-pane">
       <div class="card">
         <div class="card-img-top">
           <img class="card-img-top club-banner" src="assets/img/{{club.app_banner}}">
@@ -32,26 +32,68 @@
       </div>
     </div>
   </div>
-  <div class="row mt-3 justify-content-center">
-    <div class="col-sm-3 col-md-3 col-lg-3">
-      <div class="card sticky">
-        <h3 class="card-header card-header-text">View</h3>
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-action py-2 pointer" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</li>
-          <li class="list-group-item list-group-item-action py-2 pointer" (click)="state = 'hiring'" [ngClass]="{active: state == 'hiring'}">Hiring</li>
-				</ul>
+  <div class="row">
+    <div class="col-sm-8 col-md-8 col-lg-8 mt-4 left-content-pane">
+      <div class="row mt-2">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <div class="card sticky">
+            <h3 class="card-header card-header-text">View</h3>
+            <!-- <div class="card-block">
+
+            </div> -->
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-action py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">About</li>
+							<li class="list-group-item list-group-item-action py-2" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</li>
+              <li class="list-group-item list-group-item-action py-2" *ngIf="club.id == 2" (click)="state = 'team'" [ngClass]="{active: state == 'team'}">Team</li>
+						</ul>
+          </div>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8 pl-1">
+          <div class="card sticky" *ngIf="state === 'about'">
+            <h3 class="card-header card-header-text">About</h3>
+            <div class="card-block">
+							<span class="club-detail-text">
+								{{club.description}}
+							</span>
+            </div>
+          </div>
+					<div *ngIf="state === 'events'">
+						<app-newsfeed [clubID]="club.id"></app-newsfeed>
+					</div>
+          <div class="card sticky" *ngIf="state === 'team'">
+            <h3 class="card-header card-header-text">Team</h3>
+            <div class="card-block">
+              <div id="accordion" role="tablist" aria-multiselectable="true">
+                
+                <div [attr.id]="'accordion_' + i" *ngFor="let portfolio of fullTeam.portfolios; let i = index;">
+                  
+                  <div class="card-header" role="tab" id="headingOne">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i" aria-expanded="true" aria-controls="collapseOne">
+                        {{portfolio.title}}&nbsp;<div><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+                      </a>
+                    </h5>
+                  </div>
+                  
+                  <div [attr.id]="'collapseOne_' + i" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-block d-flex justify-content-around flex-wrap">
+                      <div *ngFor="let person of portfolio.team" class="persons">
+                        <div class="head-shot"><img src="{{person.image}}"></div>
+                        <h6 class="mt-2">{{person.name}}</h6>
+                        <p class="title-text">{{person.title}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-sm-5 col-md-5 col-lg-5 pl-1">
-			<div *ngIf="state === 'events'">
-				<app-newsfeed [clubID]="club.id"></app-newsfeed>
-			</div>
-      <div *ngIf="state === 'hiring'">
-        <hiring-feed [clubID]="club.id"></hiring-feed>
-      </div>
-    </div>
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4" style="padding-left:0">
-      <social-links-sidebar [club]="club"></social-links-sidebar>
+    <div class="col-sm-3 col-md-3 col-lg-3 mt-5" style="padding-top: 12px padding-left: 0px">
+			<social-links-sidebar [club]="club"></social-links-sidebar>
+      <job-posting-sidebar [clubID]="club.id"></job-posting-sidebar>
     </div>
   </div>
 </div>

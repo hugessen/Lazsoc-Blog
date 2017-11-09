@@ -71,6 +71,8 @@ export class UpdateComponent implements OnInit {
       program:this.currentUser.program,
       summary:this.currentUser.summary,
       is_bean:this.currentUser.isBean,
+      profile_header:this.currentUser.profile_header,
+      school_year:this.currentUser.school_year,
     };
   }
 

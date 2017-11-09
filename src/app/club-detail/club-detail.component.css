@@ -1,3 +1,20 @@
+h5, h5 > a {
+  font-family: Lato-Black;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+}
+
+h5 > a:hover, h5 > a:active, h5 > a:visited {
+  text-decoration: none;
+}
+
+h6 {
+  font-family: Lato-Black; 
+  text-align: center;
+}
+
 .left-content-pane {
   margin-left:3.5%;
   margin-right: 8px;
@@ -156,4 +173,26 @@
 .icon {
   height:18px;
   margin-right:10px;
+}
+
+.head-shot {
+  height: 160px;
+  width: 160px;
+  border: 1px solid black;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.head-shot > img {
+  width: 100%;
+}
+
+.persons {
+  width: 30%;
+  text-align: center;
+}
+
+.title-text {
+  font-family: Lato-Light;
 }

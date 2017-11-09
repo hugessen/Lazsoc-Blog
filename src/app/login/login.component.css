@@ -1,5 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+h1 {
+  font-family: Lato-Bold;
+  color: #433089;
+  margin-top: 50px;
+  font-size: 300%;
+  text-align: center; 
+}
+
+.card {
+  box-sizing: border-box;
+  border: 1px solid #D4D4D4;
+  background-color: #FFFFFF; 
+  height: 100%;
+}
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -21,6 +36,7 @@
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
+  margin-bottom: 50px;
   padding: 45px;
   text-align: center;
 }
@@ -113,4 +129,12 @@ body {
   color:red;
   letter-spacing:0;
   text-align:left;
+}
+
+.forum_container {
+  background-color: #FFFFFF;  
+  box-shadow: 0 12px 50px 0 rgba(0,0,0,0.2);
+  margin-top: 5px;
+  margin-bottom: 10px;
+  min-width: 500.837px;
 }
