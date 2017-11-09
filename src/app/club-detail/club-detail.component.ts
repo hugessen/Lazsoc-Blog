@@ -66,7 +66,7 @@ export class ClubDetailComponent implements OnInit {
             { name: "Justin Dube", title: "Manager-Internal", image: "assets/img/Head Shots/JustinD.jpg" },
             { name: "Xavier Prosper", title: "Manager-Internal", image: "assets/img/Head Shots/Xavier.jpg" },
             { name: "Jack Heinzl", title: "Manager-Internal", image: "assets/img/Head Shots/JackH.jpg" },
-            { name: "Hannah Klien", title: "Specialistr", image: "assets/img/Head Shots/Hannah.jpg" },
+            { name: "Hannah Klein", title: "Discount Specialist", image: "assets/img/Head Shots/Hannah.jpg" },
             { name: "Justin Sung", title: "C & C Outreach", image: "assets/img/thumbnails/LazSoc.png" }
           ]
         },
@@ -108,7 +108,7 @@ export class ClubDetailComponent implements OnInit {
           team: [
             { name: "Richard Hugessen", title: "VP of Technology Development", image: "assets/img/Head Shots/Richard.jpg" },
             { name: "Riyaz Shaikh", title: "Web Developer", image: "assets/img/Head Shots/Riyaz.jpg" },
-            { name: "Owen Van Valkenberg", title: "Mobile App Developer", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Owen Van Valkenburg", title: "Mobile App Developer", image: "assets/img/thumbnails/LazSoc.png" },
             { name: "Hamzah Zia", title: "Web Developer", image: "assets/img/thumbnails/LazSoc.png" }
           ]
         },

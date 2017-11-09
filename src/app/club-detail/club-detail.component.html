@@ -38,9 +38,6 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
           <div class="card sticky">
             <h3 class="card-header card-header-text">View</h3>
-            <!-- <div class="card-block">
-
-            </div> -->
 						<ul class="list-group">
 							<li class="list-group-item list-group-item-action py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">About</li>
 							<li class="list-group-item list-group-item-action py-2" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</li>
@@ -73,8 +70,7 @@
                         {{portfolio.title}}&nbsp;<div><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
                       </a>
                     </h5>
-                  </div>
-                  
+                  </div>  
                   <div [attr.id]="'collapseOne_' + i" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                     <div class="card-block d-flex justify-content-around flex-wrap">
                       <div *ngFor="let person of portfolio.team" class="persons">
