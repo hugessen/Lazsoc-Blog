@@ -1,6 +1,13 @@
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 104px;
+}
+
 .discount-logo {
   width: 33%;
 }
+
 .card {
 	border-radius:0;
 }
@@ -40,4 +47,22 @@
 	font-weight: 900;
 	line-height: 19px;
 	text-align: center;
+}
+
+.discount-tag {
+	display:block;
+	transform:translate(50%,0%);
+	width:50%;
+}
+
+.description-text {
+	color: #83868A;
+	font-family: Lato-Regular;
+	font-size: 16px;
+}
+.header-text {
+	color: #000000;
+	font-family: Lato-Bold;
+	font-size: 14px;
+	font-weight: 600;
 }

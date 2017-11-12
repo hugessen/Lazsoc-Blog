@@ -12,7 +12,6 @@ import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   state:string = "login"
-  user:any;
   loginObj = {email: "", password: ""};
   registerObj = {email:"",password:"", passwordConfirmation:""};
   profileInfoObj = {
@@ -36,16 +35,7 @@ export class LoginComponent implements OnInit {
 
   signIn(){
     this.authService.logInUser(this.loginObj).subscribe(
-
-        res => {
-
-          console.log('auth response:', res);
-          console.log('auth response headers: ', res.headers.toJSON()); //log the response header to show the auth token
-          console.log('auth response body:', res.json()); //log the response body to show the user
-          this.user = res.json().data;
-          console.log("login component says: ",this.tokenService.currentUserData);
-          this.router.navigateByUrl('/newsfeed');
-        },
+        res => this.router.navigateByUrl('/newsfeed'),
 
         err => {
           this.hasLoginError = true;

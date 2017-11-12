@@ -16,6 +16,8 @@ export class UpdateComponent implements OnInit {
     program:"",
     summary:"",
     is_bean:"",
+    profile_header:"",
+    school_year:"",
   };
 
   work_experiences_attributes = [{

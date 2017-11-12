@@ -82,10 +82,10 @@ export class AuthService {
   logInUser(signInData: {email:string, password:string}):Observable<Response>{
 
     return this.authService.signIn(signInData).map(
-        res => {
-          this.userSignedIn$.next(true);
-          return res
-        }
+      res => {
+        this.userSignedIn$.next(true);
+        return res
+      }
     );
 
   }
