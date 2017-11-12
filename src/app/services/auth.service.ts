@@ -62,7 +62,6 @@ export class AuthService {
   }
 
   logOutUser():Observable<Response>{
-
     return this.authService.signOut().map(
         res => {
           this.userSignedIn$.next(false);
@@ -107,7 +106,7 @@ export class AuthService {
   }
   getBean(id: number): Promise<any> {
   return this.getBeans()
-             .then(beans => beans.find(bean => bean.id === id));
+   .then(beans => beans.find(bean => bean.id === id));
   }
 
   apiGet(path:string, data:any = null):Promise<any>{

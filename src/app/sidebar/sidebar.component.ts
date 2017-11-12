@@ -28,8 +28,8 @@ export class SidebarComponent implements OnInit {
   }
 
   isThisWeek(event){
-    var eventStart = new Date(event.start_date_time).getTime();
-    var currentTime = new Date().getTime();
+    let eventStart = new Date(event.start_date_time).getTime();
+    let currentTime = new Date().getTime();
     return (eventStart <= currentTime + 60*60*24*7*1000);
   }
 

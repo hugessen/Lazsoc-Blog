@@ -1,6 +1,6 @@
-<div class="card sticky" *ngIf="tokenService.userSignedIn()">
+<div class="card sticky" *ngIf="(authService.userSignedIn$ | async)">
   <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top">
-  <img src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg" class="profile-avatar mr-2">
+  <img src="assets/img/Blank Avatar.jpg" class="profile-avatar mr-2">
   <div class="card-header d-flex align-items-center py-2">
     <div class="d-flex flex-column" style="transform:translate(4.5em,0); cursor:pointer" routerLink="/profile/{{tokenService.currentUserData.id}}">
       <h4 class="profile-name my-0">{{tokenService.currentUserData.first_name}} {{tokenService.currentUserData.last_name}}</h4>
@@ -14,17 +14,17 @@
     <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Blog</li>
   </ul>
 </div>
-<div class="card sticky" *ngIf="!tokenService.userSignedIn()">
+<div class="card sticky" *ngIf="!(authService.userSignedIn$ | async)">
   <div class="card-block" style="text-align:center">
     <img src="assets/img/icons/Profile.svg" style="width:40%">
     <br>
     <span class="join-the-community">Join the Community</span><br>
     <span class="signup-subheader">Learn about all Lazsoc has to offer</span>
     <br><br>
-    <div class="signup-button mb-2">
+    <div class="signup-button mb-2" style="cursor:pointer">
       <span class="signup-btn-text">Sign up!</span>
     </div>
-    <span class="login-text">Or just log in!</span>
+    <span class="login-text" style="cursor:pointer">Or just log in!</span>
   </div>
 </div>
 <!-- If user not signed in -->

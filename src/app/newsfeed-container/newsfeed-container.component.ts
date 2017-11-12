@@ -26,10 +26,6 @@ export class NewsfeedContainerComponent implements OnInit {
   constructor(public authService:AuthService, private webAPI: WebAPI) {
     this.clubs = webAPI.getClubs(true).then(res => {
       this.clubs = res;
-      this.clubs.map(function(club) {
-        club.selected = false;
-      })
-
       console.log(this.clubs);
     });
   }

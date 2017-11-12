@@ -19,10 +19,10 @@ export class WebAPI {
         Observable.fromPromise(this.getBlogContent()),
         Observable.fromPromise(this.getClubs(true))
       ]).subscribe(data => {
-        var events = data[0];
-        var blogContent = data[1];
-        var clubs = data[2];
-        var content;
+        let events = data[0];
+        let blogContent = data[1];
+        let clubs = data[2];
+        let content;
         if(club)
           content = this.createNewsfeed(events,blogContent,clubs,club);
         else
@@ -33,28 +33,12 @@ export class WebAPI {
   }
 
   createNewsfeed(events, blogContent, clubs,club_id?):any{
-    var result = []
+    let result = []
     for (let event of events){
       let eventStart = Date.parse(event.start_date_time);
       let currentTime = new Date().getTime();
       if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
         result.push(event);
-        // var eventDateKey:string = this.generateDateKey(event.start_date_time);
-        // event.visible = false; //initially
-        // event.timeframe = "";
-        //
-        // if (eventStart >= currentTime && eventStart <= currentTime + 60*60*24*7*1000)
-        //     event.timeframe = "This Week";
-        // else
-        //     event.timeframe = "upcoming";
-        //
-        // if(!result.hasOwnProperty(eventDateKey)){ //Does an entry exist for this key?
-        //     var dividerVal = this.getLongDate(new Date(event.start_date_time));
-        //     result[eventDateKey] = {divider:dividerVal, events:[], visible:false}
-        // }
-        // if (event.visible)
-        //     result[eventDateKey].visible = true; //So we know whether to show the divider
-        // result[eventDateKey].events.push(event);
       }
     }
     return result;
@@ -136,8 +120,9 @@ export class WebAPI {
   transformClubs(clubs:any[]):Object{
     var result:Object = {};
     for (let club of clubs){
-        club.club_social_links = this.formatSocialLinks(club.club_social_links);
-        result[club.id.toString()] = club;
+      club.club_social_links = this.formatSocialLinks(club.club_social_links);
+      club.selected = false;
+      result[club.id.toString()] = club;
     }
     return result;
   }
@@ -149,16 +134,6 @@ export class WebAPI {
     }
     return result;
   }
-  //
-  // postData(route:string, data:any){
-  //   var headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   this.http.post("http://localhost:3000/"+route,JSON.stringify(data))
-  //   .toPromise().then(res => {
-  //     console.log("Success!",res);
-  //   })
-  //   .catch(err => console.log("This is a fucking mess",err));
-  // }
 
   getBlogContent():Promise<any[]>{
     return new Promise((resolve,reject) => {
@@ -179,17 +154,6 @@ export class WebAPI {
 
   randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-  }
-
-  generateDateKey(date:string):string{
-      return (new Date(date).getDate().toString() + "-" + new Date(date).getMonth().toString() + "-" + new Date(date).getFullYear().toString()).toString();
-  }
-
-  getLongDate(date:Date):string{
-      var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-      var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-      var result:string = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
-      return result;
   }
 
   sortByDate(events){
