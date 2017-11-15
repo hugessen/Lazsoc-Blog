@@ -30,8 +30,10 @@ h5 {
 }
 
 .list-group-item {
-  font-family:Lato-Regular;
-  font-size:1.1em;
+  font-family:Lato-Medium;
+  font-size:16px;
+  border-radius:0 !important;
+  border:none;
 }
 
 .card-img-top {

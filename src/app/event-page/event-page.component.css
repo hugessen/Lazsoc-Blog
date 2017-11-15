@@ -4,31 +4,48 @@ h1, h2, h3, h4{
 }
 
 .card {
-    font-size: 1em;
-    overflow: hidden;
-    padding: 0;
-    border:1 solid #83868a;
-    border-radius: 0;
-    /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+  border:1 solid #83868a;
+  border-radius: 0;
+  /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+}
+
+.icon {
+  width:25px;
+}
+
+.when-where {
+  font-family:Lato-Medium;
+  font-size:15px;
+}
+
+.description-card {
+  flex-grow: 1;
+}
+
+.banner-card {
+  flex-grow: 3;
 }
 
 .event-title {
   /*position:absolute;*/
-  font-family:Lato-Medium;
-  font-size:20px;
+  font-family:Lato-Black;
+  font-size:25px;
   /*margin-left:12%;*/
 }
 
 .event-club-subheading {
   font-family:Lato-Semibold;
-  font-size:16px;
+  font-size:18px;
   /*margin-left:12%;*/
   color:#0083c1;
 }
 
 .datetime-location {
-  font-family:Lato-Semibold;
-  font-size:12px;
+  font-family:Lato-Medium;
+  font-size:15px;
   color:#83868a;
   /*margin-left:12%*/
 }

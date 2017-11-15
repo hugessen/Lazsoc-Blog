@@ -26,8 +26,8 @@
   <div class="row justify-content-center">
     <div class="col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4">
       <div class="d-flex flex-row">
-        <div class="card mr-2">
-          <div class="card-block card-1-block">
+        <div class="card mr-2" style="width:25%">
+          <div class="card-block">
             <span class="event-title">{{event.title}}</span><br>
             <a class="event-club-subheading" routerLink="/clubs/{{club.id}}">{{club.name}}</a><br>
             <hr>
@@ -36,10 +36,10 @@
             <br><br>
           </div>
         </div>
-        <div class="card ml-2">
+        <div class="card ml-2" style="width:75%">
           <div class="card-img-top">
             <img src="{{event.banner}}" class="card-img-top event-banner" *ngIf="event.banner != ''">
-            <img src="assets/img/{{club.app_banner}}" class="card-img-top event-banner" *ngIf="event.banner === ''">
+            <img src="assets/img/O-Day.png" class="card-img-top event-banner" *ngIf="event.banner === ''">
           </div>
         </div>
       </div>

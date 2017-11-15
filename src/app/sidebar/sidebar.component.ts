@@ -46,6 +46,7 @@ export class SidebarComponent implements OnInit {
 export class ProfileSidebar implements OnInit {
 
   constructor(public authService:AuthService, public tokenService:Angular2TokenService, private router:Router) {
+    console.log("Auth SErvice:",authService);
     console.log("profile sidebar says: ", tokenService.currentUserData);
   }
 

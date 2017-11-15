@@ -1,8 +1,8 @@
-<div class="card sticky" *ngIf="(authService.userSignedIn$ | async)">
-  <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top">
-  <img src="assets/img/Blank Avatar.jpg" class="profile-avatar mr-2">
-  <div class="card-header d-flex align-items-center py-2">
-    <div class="d-flex flex-column" style="transform:translate(4.5em,0); cursor:pointer" routerLink="/profile/{{tokenService.currentUserData.id}}">
+<div class="card sticky" *ngIf="(authService.userSignedIn$)">
+  <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top" routerLink="/profile/{{tokenService.currentUserData.id}}">
+  <img src="assets/img/Blank Avatar.jpg" class="profile-avatar mr-2" routerLink="/profile/{{tokenService.currentUserData.id}}">
+  <div class="card-header d-flex align-items-center py-2" routerLink="/profile/{{tokenService.currentUserData.id}}">
+    <div class="d-flex flex-column" style="transform:translate(4.5em,0); cursor:pointer">
       <h4 class="profile-name my-0">{{tokenService.currentUserData.first_name}} {{tokenService.currentUserData.last_name}}</h4>
       <span class="profile-subheader my-0">{{tokenService.currentUserData.program}}</span>
     </div>
@@ -14,7 +14,7 @@
     <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Blog</li>
   </ul>
 </div>
-<div class="card sticky" *ngIf="!(authService.userSignedIn$ | async)">
+<div class="card sticky" *ngIf="!(authService.userSignedIn$)">
   <div class="card-block" style="text-align:center">
     <img src="assets/img/icons/Profile.svg" style="width:40%">
     <br>

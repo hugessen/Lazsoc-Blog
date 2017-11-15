@@ -38,14 +38,9 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
           <div class="card sticky">
             <h3 class="card-header card-header-text">View</h3>
-            <!-- <div class="card-block">
-
-            </div> -->
-						<ul class="list-group">
-							<li class="list-group-item list-group-item-action py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">About</li>
-							<li class="list-group-item list-group-item-action py-2" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</li>
-              <li class="list-group-item list-group-item-action py-2" *ngIf="club.id == 2" (click)="state = 'team'" [ngClass]="{active: state == 'team'}">Team</li>
-						</ul>
+						<div class="side-heading py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">About</div>
+						<div class="side-heading py-2" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</div>
+            <div class="side-heading py-2" *ngIf="club.id == 2" (click)="state = 'team'" [ngClass]="{active: state == 'team'}">Team</div>
           </div>
         </div>
         <div class="col-sm-8 col-md-8 col-lg-8 pl-1">
@@ -67,7 +62,7 @@
                 
                 <div [attr.id]="'accordion_' + i" *ngFor="let portfolio of fullTeam.portfolios; let i = index;">
                   
-                  <div class="card-header" role="tab" id="headingOne">
+                  <div class="card-header portfolio-header" role="tab" id="headingOne">
                     <h5 class="mb-0">
                       <a class="collapsed" data-toggle="collapse" [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i" aria-expanded="true" aria-controls="collapseOne">
                         {{portfolio.title}}&nbsp;<div><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>

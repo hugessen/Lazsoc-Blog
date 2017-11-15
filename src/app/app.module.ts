@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
-// import {Ng2FittextModule} from "ng2-fittext/ng2fittext";
+// import { Ng2FittextModule } from 'ng2-fittext/ng2fittext';
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { RouterModule, Routes, Router } from '@angular/router';

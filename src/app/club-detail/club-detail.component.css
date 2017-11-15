@@ -15,6 +15,20 @@ h6 {
   text-align: center;
 }
 
+.active {
+  border-left:6px solid #FCB518;
+  padding-left:9px;
+  color:black;
+}
+
+.side-heading {
+  font-family:Lato-Medium;
+  font-size:16px;
+  color:#83868A;
+  padding-left:15px;
+  cursor:pointer;
+}
+
 .left-content-pane {
   margin-left:3.5%;
   margin-right: 8px;
@@ -27,12 +41,13 @@ h6 {
 }
 
 .card {
-    font-size: 1em;
-    overflow: hidden;
-    padding: 0;
-    border:1 solid #83868a;
-    border-radius: 0;
-    /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+  overflow: hidden;
+  border:1 solid #83868a;
+  border-radius: 0;
+}
+
+.portfolio-header {
+  background-color:white;
 }
 
 .club-detail-card {
@@ -60,6 +75,7 @@ h6 {
   width: 20%;
   height:auto;
   border:5px solid white;
+  padding:0;
   border-radius:10px;
 }
 
@@ -178,7 +194,8 @@ h6 {
 .head-shot {
   height: 160px;
   width: 160px;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  border-radius:10%;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;

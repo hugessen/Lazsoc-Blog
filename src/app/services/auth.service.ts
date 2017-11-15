@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {Angular2TokenService} from "angular2-token";
 import {Subject, Observable} from "rxjs";
 import {Response, Http, RequestOptions} from "@angular/http";
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnInit {
 
-  userSignedIn$:Subject<boolean> = new Subject();
+  userSignedIn$:boolean = false;
 
-  constructor(public authService:Angular2TokenService, public http:Http) {
+  constructor(public authService:Angular2TokenService, public http:Http)  {
     this.authService.init({
         apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
@@ -52,19 +52,26 @@ export class AuthService {
     this.authService.validateToken().subscribe(
         res => {
           if(res.status == 200){
-            this.userSignedIn$.next(res.json().success);
+            console.log("Signed in");
+            this.userSignedIn$ = true;
+            console.log(authService.currentUserData);
           }
           else {
-            this.userSignedIn$.next(false);
+            console.log("Sign in failed");
+            this.userSignedIn$ = false;
           }
         }
     )
   }
 
+  ngOnInit(){
+    console.log("I am run");
+  }
+
   logOutUser():Observable<Response>{
     return this.authService.signOut().map(
         res => {
-          this.userSignedIn$.next(false);
+          this.userSignedIn$ = false;
           return res;
         }
     );
@@ -73,7 +80,7 @@ export class AuthService {
   registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
     return this.authService.registerAccount(signUpData).map(
         res => {
-          this.userSignedIn$.next(true);
+          this.userSignedIn$ = true;
           return res
         }
     );
@@ -83,7 +90,7 @@ export class AuthService {
 
     return this.authService.signIn(signInData).map(
       res => {
-        this.userSignedIn$.next(true);
+        this.userSignedIn$ = true;
         return res
       }
     );
