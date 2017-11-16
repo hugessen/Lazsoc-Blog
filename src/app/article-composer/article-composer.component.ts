@@ -21,7 +21,6 @@ export class ArticleComposerComponent implements OnInit {
   articles = []
   title:string = ""
   constructor(public authService: AuthService, private router: Router) { 
-  //  this.getArticles()
   }
 
   ngOnInit() {
@@ -38,10 +37,4 @@ export class ArticleComposerComponent implements OnInit {
       this.router.navigate(['./newsfeed']);
     });
   }
-
- /* getArticles(){
-    this.authService.apiGet('get_articles.json').then(res => {
-       this.articles = res;
-    });
-  } */
 }
