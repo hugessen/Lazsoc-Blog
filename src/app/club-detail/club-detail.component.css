@@ -110,8 +110,8 @@ h6 {
   font-family:Lato-Regular;
   clear: both;
   margin-top: .5em;
-  font-size:0.9em;
-  color: rgba(0, 0, 0, .68);
+  font-size:15px;
+  /*color: rgba(0, 0, 0, .68);*/
 }
 
 .card-datetime {
@@ -136,8 +136,8 @@ h6 {
 
 .club-detail-text {
   font-family:Lato-Medium;
-  font-size:13px;
-  color:#83868a;
+  font-size:14px;
+  /*color:#83868a;*/
   letter-spacing:0;
   text-align:left;
 }

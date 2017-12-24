@@ -2,7 +2,7 @@
   border-radius: 0;
 }
 .form-group label{
-  font-family:Lato-Regular;
+  font-family:Lato-Bold;
 }
 .form-group input{
   font-family:Lato-Regular;
@@ -16,6 +16,10 @@
 	border-radius: 50%;
 	width: 30%;
 	height: auto;
+}
+
+.form-element {
+  width:48%;
 }
 
 h2 {

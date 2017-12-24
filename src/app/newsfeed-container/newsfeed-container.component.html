@@ -2,22 +2,6 @@
   <div class="row justify-content-center">
     <div class="col-xs-0 col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
       <profile-sidebar></profile-sidebar>
-      <!-- <div class="card mt-3 sticky-filters">
-        <div class="card-header">
-          <span class="card-header-text">Filter By:</span>
-        </div>
-        <ul class="list-group tags-group">
-          <li class="list-group-item py-3"
-          style="border-radius:0"
-          *ngFor="let tag of tags | mapToIterable"
-          (click)="toggle(tag.key)"
-          [ngClass]="{selected: tag.val.selected}"
-          style="cursor: pointer">
-          {{tag.key}}</li>
-        </ul>
-        <button type="button" class="btn btn-primary" *ngIf="!feed.filtersApplied" (click)="feed.filtersApplied = true">Apply filters</button>
-        <button type="button" class="btn btn-primary" *ngIf="feed.filtersApplied" (click)="feed.filtersApplied = false">View all events</button>
-      </div> -->
     </div>
     <div class="col-sm-5 col-md-5 col-lg-5 px-2 mt-2">
       <div class="d-flex flex-row mt-3">
@@ -87,7 +71,7 @@
       <app-newsfeed [clubID]="0" #mainFeed></app-newsfeed>
     </div>
     <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3 mt-4 px-2">
-      <sidebar-right></sidebar-right>
+      <event-sidebar></event-sidebar>
     </div>
   </div>
 </div>

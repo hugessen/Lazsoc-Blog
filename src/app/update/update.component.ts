@@ -60,7 +60,7 @@ export class UpdateComponent implements OnInit {
   }
 
   postUpdates(){
-    this.authService.updateUser('update_user',this.updateObj).then(res => {
+    this.authService.updateUser(this.updateObj).then(res => {
       console.log("Res:", res);
       console.log(this.authService.authService.currentUserData);
     })

@@ -35,8 +35,9 @@ export class WebAPI {
   createNewsfeed(events, blogContent, clubs,club_id?):any{
     let result = []
     for (let event of events){
-      let eventStart = Date.parse(event.start_date_time);
-      let currentTime = new Date().getTime();
+      const eventStart = Date.parse(event.start_date_time);
+      const currentTime = new Date().getTime();
+      event.club_name = clubs[event.club_id].name
       if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
         result.push(event);
       }
@@ -88,7 +89,7 @@ export class WebAPI {
 
   getJobPostings():Promise<any>{
     return new Promise((resolve,reject) => {
-      this.http.get("http://localhost:3000/api/job_postings.json").map(res => res.json()).toPromise()
+      this.http.get("https://moria.lazsoc.ca/api/job_postings.json").map(res => res.json()).toPromise()
       .then(res => {
         var postings = this.trimJobPostings(res);
         resolve(postings);

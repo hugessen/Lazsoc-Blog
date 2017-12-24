@@ -9,31 +9,22 @@ import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 import { Club } from '../models/club';
 
 @Component({
-  selector: 'sidebar-right',
+  selector: 'event-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   events = [];
   clubs = {};
   eventCount = 0;
   constructor(public webAPI:WebAPI) {
-    Observable.forkJoin([
-      Observable.fromPromise(webAPI.getNewsfeed()),
-      Observable.fromPromise(webAPI.getClubs(true))
-    ]).subscribe(data => {
-      this.events = data[0];
-      this.clubs = data[1];
-    })
+    this.webAPI.getNewsfeed().then(res => this.events = res)
   }
 
   isThisWeek(event){
     let eventStart = new Date(event.start_date_time).getTime();
     let currentTime = new Date().getTime();
-    return (eventStart <= currentTime + 60*60*24*7*1000);
-  }
-
-  ngOnInit() {
+    return (eventStart <= currentTime + 60*60*24*30*1000);
   }
 
 }
@@ -96,9 +87,10 @@ export class JobPostingSidebar implements OnInit {
 })
 export class SocialLinksSidebar implements OnInit {
 
-  @Input() club:Club;
+  @Input() club: Club;
 
   constructor(public elementRef: ElementRef) {
+    console.log("Club", this.club);
     // for(let link in this.club.club_social_links){
     //   console.log(this.club.club_social_links[link]);
     // }
