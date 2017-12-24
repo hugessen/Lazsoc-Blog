@@ -18,7 +18,7 @@ export class SidebarComponent {
   clubs = {};
   eventCount = 0;
   constructor(public webAPI:WebAPI) {
-    this.webAPI.getNewsfeed().then(res => this.events = res)
+    this.webAPI.getNewsfeed().then(res => this.events = res.filter(this.isThisWeek))
   }
 
   isThisWeek(event){
