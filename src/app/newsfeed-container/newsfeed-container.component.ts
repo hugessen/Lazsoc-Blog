@@ -17,7 +17,7 @@ export class NewsfeedContainerComponent implements OnInit {
 
   tags:any = this.getTags();
   times:any = this.getTimeFilters();
-  clubs: { selected: any }
+  clubs: { selected: any };
 
   tagFilters:any[] = [];
   clubFilters:any[] = [];

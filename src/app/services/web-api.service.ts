@@ -35,6 +35,7 @@ export class WebAPI {
   createNewsfeed(events, articles, clubs,club_id?):any{
     var result = []
     for (let event of events){
+      event.club_name = clubs[event.club_id].name
       event.typeof = "event";
       event.sortDate = event.start_date_time;
       var eventStart = Date.parse(event.start_date_time);
@@ -43,11 +44,11 @@ export class WebAPI {
         result.push(event);
       }
     }
-    for(let article of articles){
-      article.typeof = "article";
-      article.sortDate = article.created_at;
-      result.push(article);
-    }
+    // for(let article of articles){
+    //   article.typeof = "article";
+    //   article.sortDate = article.created_at;
+    //   result.push(article);
+    // }
 
     result.sort(function(a,b){ 
       return Date.parse(a.sortDate) - Date.parse(b.sortDate)
