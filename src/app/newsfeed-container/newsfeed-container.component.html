@@ -20,7 +20,11 @@
                                                    onmouseover="document.body.style.overflow='hidden';"
                                                    onmouseout="document.body.style.overflow='auto';">
             <ul class="list-group" *ngFor="let club of clubs | mapToIterable">
-              <li class="list-group-item py-0" style="cursor:pointer" [ngClass]="{selected: club.val.selected}" (click)="toggleClubFilter(club.val.slug)">{{club.val.name}}</li>
+              <li class="list-group-item py-0" style="cursor:pointer" 
+                [ngClass]="{selected: club.val.selected}" 
+                (click)="toggleClubFilter(club.val.slug)">
+                {{club.val.name}}
+              </li>
             </ul>
           </div>
         </div>

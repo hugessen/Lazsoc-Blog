@@ -10,7 +10,7 @@ export class AuthService implements OnInit {
 
   constructor(public authService:Angular2TokenService, public http:Http)  {
     this.authService.init({
-        apiBase:                    'https://moria.lazsoc.ca/api',
+        apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -125,7 +125,7 @@ export class AuthService implements OnInit {
     });
   }
 
-  apiPost(path:string, data:any){
+  public apiPost(path:string, data:any){
     return new Promise((resolve,reject)=> {
       this.authService.post(path,data).map(res => res.json()).toPromise()
       .then(res=>{
@@ -134,15 +134,15 @@ export class AuthService implements OnInit {
     });
   }
 
-  public getAuthDataFromStorage() {
-    return {
-        accessToken:    localStorage.getItem('accessToken'),
-        client:         localStorage.getItem('client'),
-        expiry:         localStorage.getItem('expiry'),
-        tokenType:      localStorage.getItem('tokenType'),
-        uid:            localStorage.getItem('uid')
-    };
-  }
+  // public getAuthDataFromStorage() {
+  //   return {
+  //       accessToken:    localStorage.getItem('accessToken'),
+  //       client:         localStorage.getItem('client'),
+  //       expiry:         localStorage.getItem('expiry'),
+  //       tokenType:      localStorage.getItem('tokenType'),
+  //       uid:            localStorage.getItem('uid')
+  //   };
+  // }
 
   // upload(formData) {
   //   let headers = this.authService.currentAuthHeaders;
