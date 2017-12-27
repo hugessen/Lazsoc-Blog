@@ -61,10 +61,9 @@ export class JobPostingSidebar implements OnInit {
   constructor(public webAPI:WebAPI, public router:Router) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getJobPostings()),
-      Observable.fromPromise(webAPI.getClubs(true))
+      Observable.fromPromise(webAPI.getClubs())
     ]).subscribe(data => {
-      this.jobPostings = data[0];
-      this.clubs = data[1];
+      [this.jobPostings, this.clubs] = data;
       console.log(this.jobPostings);
     })
   }

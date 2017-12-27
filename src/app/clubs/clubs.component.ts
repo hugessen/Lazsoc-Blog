@@ -15,7 +15,7 @@ export class ClubsComponent implements OnInit {
   postings:{};
 
   constructor(public webAPI:WebAPI, public router:Router) {
-    webAPI.getClubs(true).then(res => {
+    webAPI.getClubs().then(res => {
       this.clubs = res;
       console.log(this.clubs);
     })

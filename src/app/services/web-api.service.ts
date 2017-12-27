@@ -5,6 +5,7 @@ import { Event } from '../event';
 import { JobPosting,JobPostingApplication } from '../models/job-posting';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+const API_PATH = "https://moria.lazsoc.ca"
 
 @Injectable()
 export class WebAPI {
@@ -17,16 +18,13 @@ export class WebAPI {
       Observable.forkJoin([
         Observable.fromPromise(this.getEvents()),
         Observable.fromPromise(this.getArticles()),
-        Observable.fromPromise(this.getClubs(true))
+        Observable.fromPromise(this.getClubs())
       ]).subscribe(data => {
-        var events = data[0];
-        var articles = data[1];
-        var clubs = data[2];
-        var content;
+        let [events, articles, clubs] = data;
         if(club)
-          content = this.createNewsfeed(events,articles,clubs,club);
+          var content = this.createNewsfeed(events,articles,clubs,club);
         else
-          content = this.createNewsfeed(events,articles,clubs);
+          var content = this.createNewsfeed(events,articles,clubs);
         resolve(content);
       })
     })
@@ -44,11 +42,11 @@ export class WebAPI {
         result.push(event);
       }
     }
-    // for(let article of articles){
-    //   article.typeof = "article";
-    //   article.sortDate = article.created_at;
-    //   result.push(article);
-    // }
+    for(let article of articles){
+      article.typeof = "article";
+      article.sortDate = article.created_at;
+      result.push(article);
+    }
 
     result.sort(function(a,b){ 
       return Date.parse(a.sortDate) - Date.parse(b.sortDate)
@@ -75,7 +73,7 @@ export class WebAPI {
 
   getArticle(id: number):Promise<any>{    
     return new Promise((resolve,reject) => {
-        this.http.get("http://localhost:3000/api/get_article/"+id).map(res => res.json()).toPromise()
+        this.http.get(`http://localhost:3000/api/get_article/${id}`).map(res => res.json()).toPromise()
         .then(res => {
           console.log(res);
           resolve(res);
@@ -85,7 +83,7 @@ export class WebAPI {
 
   getEvents():Promise<any[]>{
     return new Promise((resolve,reject) => {
-        this.http.get("https://moria.lazsoc.ca/v2/api/events.json").map(res => res.json()).toPromise()
+        this.http.get(`${API_PATH}/v2/api/events.json`).map(res => res.json()).toPromise()
         .then(res => {
           this.sortByDate(res.events);
           resolve(res.events);
@@ -107,27 +105,25 @@ export class WebAPI {
     })
   }
 
-
-  getClubs(doTransform):Promise<any>{
+  getClubs(arrayFormat = false):Promise<any>{
     return new Promise((resolve,reject) => {
-      this.http.get("https://moria.lazsoc.ca/v2/api/clubs.json").map(res => res.json()).toPromise()
-      .then(res => {
-          if(doTransform)
-            resolve(this.transformClubs(res));
-          else
-            resolve(res);
-      }).catch(err => reject(err));
+      this.http.get(`${API_PATH}/v2/api/clubs.json`).map(res => res.json()).toPromise()
+        .then(res => {
+          if (arrayFormat) resolve(res)
+          else resolve(this.transformClubs(res))
+        })
+        .catch(err => reject(err));
     })
   }
 
   getClub(id:number):Promise<any>{
-    return this.getClubs(false)
+    return this.getClubs(true)
                .then(postings => postings.find(club => club.id === id));
   }
 
   getJobPostings():Promise<any>{
     return new Promise((resolve,reject) => {
-      this.http.get("https://moria.lazsoc.ca/api/job_postings.json").map(res => res.json()).toPromise()
+      this.http.get(`${API_PATH}/api/job_postings.json`).map(res => res.json()).toPromise()
       .then(res => {
         var postings = this.trimJobPostings(res);
         resolve(postings);
@@ -137,7 +133,7 @@ export class WebAPI {
 
   getDiscountPartners():Promise<any[]>{
     return new Promise((resolve,reject) => {
-        this.http.get("https://moria.lazsoc.ca/v2/api/discount_partners.json").map(res => res.json()).toPromise()
+        this.http.get(`${API_PATH}/v2/api/discount_partners.json`).map(res => res.json()).toPromise()
         .then(res => {
           resolve(res);
         }).catch(err => reject(err));
