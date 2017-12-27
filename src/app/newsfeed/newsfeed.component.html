@@ -2,7 +2,7 @@
   <div *ngFor="let event of events" style="margin-bottom:1rem; cursor:pointer">
     <div *ngIf="isVisible(event)">
     <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
-      <div class="card mt-3" *ngIf="( event.typeof == 'event' && (clubID == 0 || clubID === event.club_id))" (click)="onSelect(event)">
+      <div class="card mt-3" *ngIf="event.typeof == 'event'" (click)="onSelect(event)">
         <div class="card-img-top">
           <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
           <img class="card-img-top" [src]="event.banner" *ngIf="event.banner != ''">
@@ -27,16 +27,13 @@
           <!-- <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right"> -->
         </div>
       </div>
-      <div class="card mt-3 article"  *ngIf="event.typeof=='article'">
-        
+      <div class="card mt-3 article"  *ngIf="event.typeof=='article' && (newsfeedState == 'all' || newsfeedState == 'articles')">
         <!--TODO: Support User Profile pictures -->
         <div class="mb-2" routerLink="/article/{{event.id}}" >
           <img class="avatar" src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg"/>
           <h4 class="author mb-0 inline-block">{{event.first_name}}&nbsp;{{event.last_name}}</h4>
         </div>
         <h1 class="title mb-1" routerLink="/article/{{event.id}}">{{event.title}}</h1>
-
-
         <div class="card-footer py-2">
           <svg class="icon" (click)="vote(event); event.liked = !event.liked" [ngClass]="{'red_heart': event.liked, 'reg_heart': !event.liked}" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
           <path d="M250,416.2c-2.6,0-5.2-1-7-2.9L101.8,272c-21-20.8-32.6-48.6-32.6-78.2c0-60.7,49.4-110,110-110c26.2,0,51,9.1,70.8,25.8

@@ -8,6 +8,8 @@ import { AuthService } from '../services/auth.service';
 import * as Stickyfill from 'stickyfill';
 import * as _ from "lodash";
 
+const ONE_DAY = 60*60*24*1000
+
 @Component({
   selector: 'app-newsfeed',
   templateUrl: './newsfeed.component.html',
@@ -54,6 +56,7 @@ export class NewsfeedComponent implements OnInit {
   }
 
   setNewsfeedState(state:string){
+    console.log(state);
     this.newsfeedState = state;
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
@@ -100,8 +103,21 @@ export class NewsfeedComponent implements OnInit {
     _.pull(this.timeFilter,timeframe);
   }
 
-  isVisible(event) {
-    return (this.matchesTags(event) && this.matchesClub(event) && this.matchesTimeframe(event))
+  isVisible(feedItem) {
+    if (this.newsfeedState != "all") {
+      if (this.newsfeedState == "events") {
+        if (this.clubID != 0 && this.clubID != feedItem.club_id) return false
+        if (feedItem.typeOf != "event") return false
+      }
+      else if (this.newsfeedState == "articles" && feedItem.typeOf != "article") return false
+    }
+    return this.matchesFilters(feedItem);
+  }
+
+  matchesFilters(event){
+    return (this.matchesTags(event) 
+         && this.matchesClub(event) 
+         && this.matchesTimeframe(event));
   }
 
   matchesTags(event){
@@ -127,11 +143,11 @@ export class NewsfeedComponent implements OnInit {
       return true;
     else if(this.timeFilter == "Today" && this.sameDay(currentTime,eventStart))
       return true;
-    else if (this.timeFilter == "Tomorrow" && this.sameDay(currentTime,new Date(eventStart.getTime() + 60*60*24*1000))) // Confirm this works
+    else if (this.timeFilter == "Tomorrow" && this.sameDay(currentTime,new Date(eventStart.getTime() + ONE_DAY))) // Confirm this works
       return true;
-    else if (this.timeFilter == "This Week" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(),60*60*24*7*1000))
+    else if (this.timeFilter == "This Week" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(), ONE_DAY * 7))
       return true;
-    else if (this.timeFilter == "Next Two Weeks" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(),60*60*24*14*1000))
+    else if (this.timeFilter == "Next Two Weeks" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(), ONE_DAY * 14))
       return true;
     else if (this.timeFilter == "Past" && eventStart < currentTime)
       return true;

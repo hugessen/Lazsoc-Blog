@@ -6,7 +6,9 @@
   font-family:Lato-Regular;
   font-size:14px;
   color:#83868a;
-  border:none;
+  border:0;
+  border-radius: 0 !important;
+  padding-left:15px;
 }
 
 .card-header-text {
@@ -15,6 +17,13 @@
   color:#83868a;
   letter-spacing:0;
   text-align:left;
+}
+
+.card {
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 0;
 }
 
 .selected {
@@ -126,6 +135,15 @@
   border:1px solid rgba(131,134,138,0.5);
   background-color:rgba(131,134,138,0.1);
 }
+
 .filter-tag:hover span{
   color:rgba(131,134,138,0.5);
+}
+
+.active {
+  background-color: white !important;
+  border-left:6px solid #FCB518 !important;
+  padding-left:9px;
+  font-family:Lato-Semibold;
+  color:black !important;
 }

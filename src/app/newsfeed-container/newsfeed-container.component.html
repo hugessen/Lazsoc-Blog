@@ -1,7 +1,14 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-xs-0 col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
-      <profile-sidebar></profile-sidebar>
+      <div class="card sticky">
+        <profile-sidebar></profile-sidebar>
+        <ul class="list-group" style="border-radius:0">
+          <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('all')" [ngClass]="{active: feed.newsfeedState == 'all'}">Events and Articles</li>
+          <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('events')" [ngClass]="{active: feed.newsfeedState == 'events'}">Events</li>
+          <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('articles')" [ngClass]="{active: feed.newsfeedState == 'articles'}">Articles</li>
+        </ul>
+      </div>
     </div>
     <div class="col-sm-5 col-md-5 col-lg-5 px-2 mt-2">
       <div class="d-flex flex-row mt-3">

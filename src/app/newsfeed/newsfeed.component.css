@@ -250,12 +250,12 @@ h5 {
 }
 
 .article .title {
-    font-size: 30px;
-    margin-bottom: 5px;
-  }
+  font-size: 30px;
+  margin-bottom: 5px;
+}
 
-  .article .author {
-    font-size: 18px;
-    padding:7px;
-  }
+.article .author {
+  font-size: 18px;
+  padding:7px;
+}
     

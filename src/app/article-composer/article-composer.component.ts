@@ -12,7 +12,8 @@ export class ArticleComposerComponent implements OnInit {
   public options: Object = {
     placeholder: "Edit Me",
     toolbarButtons:['bold', 'italic', 'underline', 'fontFamily', 'fontSize', '|', 'formatOL', 'formatUL', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'emoticons', 'insertHR', 'selectAll', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
-    fontSize: ['2.5','8', '10', '12', '14', '18', '30', '60', '96']
+    fontSize: ['2.5','8', '10', '12', '14', '18', '30', '60', '96'],
+    height: 500
   }
 
   editorContent = "";
@@ -27,6 +28,7 @@ export class ArticleComposerComponent implements OnInit {
   }
 
   submit(){
+    console.log(this.editorContent);
     this.article = {
       title: this.title,
       body: this.editorContent
