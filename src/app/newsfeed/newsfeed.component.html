@@ -3,7 +3,7 @@
     <div *ngIf="isVisible(event)">
     <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
       <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
-        <div class="card-img-top crop">
+        <div class="card-img-top">
           <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
           <img class="card-img-top" [src]="event.banner" *ngIf="event.banner != ''">
         </div>
