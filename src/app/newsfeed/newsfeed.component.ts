@@ -119,6 +119,8 @@ export class NewsfeedComponent implements OnInit {
   matchesFilters(feedItem){
     if (feedItem.typeof == "event")
       return (this.matchesTags(feedItem) && this.matchesClub(feedItem) && this.matchesTimeframe(feedItem));
+    else if (feedItem.typeof == "article")
+      return true
     // TODO: Implement filtering for articles
   }
 

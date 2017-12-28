@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-sm-9 col-md-9 col-lg-9 mt-4">
     <form>
-      <input #titleValdation="ngModel" type="text" placeholder="Article Title" name="title" [(ngModel)]="title" required minlength="4" maxlength="100">
+      <input class="remove-glow" #titleValdation="ngModel" type="text" placeholder="Article Title" name="title" [(ngModel)]="title" required minlength="4" maxlength="100">
 <!--       <div *ngIf="titleValdation.errors && (titleValdation.dirty || titleValdation.touched)" class="alert alert-danger">
         <div [hidden]="!titleValdation.errors.required">
           Article title is required!

@@ -1,51 +1,46 @@
-html {
-    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-size: 14px;
-}
-
 h5 {
-    font-size: 1.28571429em;
-    font-weight: 700;
-    line-height: 1.2857em;
-    margin: 0;
+  font-size: 1.28571429em;
+  font-weight: 700;
+  line-height: 1.2857em;
+  margin: 0;
 }
 
 .card {
-    font-size: 1em;
-    overflow: hidden;
-    padding: 0;
-    border: 1 solid #83868a;
-    border-radius: 0;
-    /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+  border: 1 solid #83868a;
+  border-radius: 0;
+  /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
 }
 
 .card-block {
-    font-size: 1em;
-    position: relative;
-    margin: 0;
-    padding: 1em;
-    border: none;
-    border-top: 1px solid rgba(34, 36, 38, .1);
-    box-shadow: none;
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, .1);
+  box-shadow: none;
 }
 
 .icon {
-   height:20px;
-   margin-right:10px;
- }
+ height:20px;
+ margin-right:10px;
+}
 
 .card-img-top {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius:0;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius:0;
 }
 
 .club-title {
-    font-size: 1.15em;
-    font-family:Lato-Bold;
-    line-height: 1.2857em;
-    font-weight:500;
+  font-size: 1.15em;
+  font-family:Lato-Black;
+  line-height: 1.2857em;
+  font-weight:500;
 }
 .card-datetime {
   font-family:Lato-Regular;
@@ -54,24 +49,24 @@ h5 {
 }
 
 .card-text {
-    font-family:Lato-Regular;
-    clear: both;
-    margin-top: .5em;
-    /*margin-left: 65px;*/
-    font-size:0.9em;
-    color: rgba(0, 0, 0, .68);
+  font-family:Lato-Regular;
+  clear: both;
+  margin-top: .5em;
+  /*margin-left: 65px;*/
+  font-size:0.9em;
+  color: rgba(0, 0, 0, .68);
 }
 
 .card-footer {
-    font-size: 1em;
-    position: static;
-    top: 0;
-    left: 0;
-    max-width: 100%;
-    padding-left: 0px;
-    color: rgba(0, 0, 0, .4);
-    border-top: 1px solid rgba(0, 0, 0, .05) !important;
-    background: #fff;
+  font-size: 1em;
+  position: static;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  padding-left: 0px;
+  color: rgba(0, 0, 0, .4);
+  border-top: 1px solid rgba(0, 0, 0, .05) !important;
+  background: #fff;
 }
 
 .icon {
@@ -80,7 +75,7 @@ h5 {
 }
 
 .card-inverse .btn {
-    border: 1px solid rgba(0, 0, 0, .05);
+  border: 1px solid rgba(0, 0, 0, .05);
 }
 
 .red_heart {
@@ -92,47 +87,46 @@ h5 {
 }
 
 .profile {
-    position: absolute;
-    top: -12px;
-    display: inline-block;
-    overflow: hidden;
-    box-sizing: border-box;
-    width: 50px;
-    height: 50px;
-    margin: 0;
-    border: 1px solid #fff;
-    border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  border: 1px solid #fff;
+  border-radius: 50%;
 }
 
 .profile-avatar {
-    display: block;
-    position:absolute;
-    transform: translate(10px, 50px);
-    width: 90px;
-    height:90px;
-    border-radius: 50%;
-    border:2px solid white;
+  display: block;
+  position:absolute;
+  transform: translate(10px, 50px);
+  width: 90px;
+  height:90px;
+  border-radius: 50%;
+  border:2px solid white;
 }
 .club-avatar {
-    display: block;
-    width: 50px;
-    height:50px;
-    border-radius: 50%;
-    /*border: 1px solid darkgrey;*/
+  display: block;
+  width: 50px;
+  height:50px;
+  border-radius: 50%;
+  /*border: 1px solid darkgrey;*/
 }
 
-
 .profile-inline {
-    position: relative;
-    top: 0px;
-    display: inline-block;
-    /*border: 1px solid grey;*/
+  position: relative;
+  top: 0px;
+  display: inline-block;
+  /*border: 1px solid grey;*/
 }
 
 .profile-inline ~ .card-title {
-    display: inline-block;
-    margin-left: 4px;
-    vertical-align: top;
+  display: inline-block;
+  margin-left: 4px;
+  vertical-align: top;
 }
 
 .avatar{
@@ -141,31 +135,32 @@ h5 {
   height:50px;
 }
 
-.profile-name {
-  margin-left: 10px;
-  font-size: 1.1em;
+.article-title {
+  font-size: 16px;
   font-family:Lato-Bold;
-  font-weight:500;
 }
+
 .profile-subheader {
   margin-left:10px;
   font-size: 0.8em;
   font-family:Lato-Regular;
 }
+
 .event-title-font {
   font-family:Lato-Bold;
   font-size:0.8em;
   font-weight:bolder;
 }
+
 .event-sub-heading {
   font-family:Lato-Regular;
   font-size:0.7em;
 }
 
 .sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 104px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 104px;
 }
 .sticky-share {
   position: -webkit-sticky;
@@ -239,9 +234,8 @@ h5 {
 .article {
   padding: 15px;
   font-family:Lato-Bold;
-    line-height: 1.2857em;
-    font-weight:500;
-
+  line-height: 1.2857em;
+  font-weight:500;
 }
 
 .article .avatar {
@@ -257,5 +251,15 @@ h5 {
 .article .author {
   font-size: 18px;
   padding:7px;
+}
+
+.article-cover {
+  height:12em;
+  overflow:hidden;
+}
+
+.article-cover img {
+  width:100%;
+  height:auto;
 }
     

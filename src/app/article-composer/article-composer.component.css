@@ -1,14 +1,19 @@
 input {
-  font-family: Lato-Regular;
-  background: white;
+  font-family: Lato-Bold;
+  background-color:#F5F5F5;
   width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 10px 15px 10px 15px;
-  box-sizing: border-box;
-  font-size: 18px;
+  margin-bottom:20px;
+  font-size: 35px;
 }
 
 .cursor-pointer {
 	cursor: pointer;
+}
+
+.remove-glow {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
 }

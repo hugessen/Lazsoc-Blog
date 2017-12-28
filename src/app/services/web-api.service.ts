@@ -12,7 +12,6 @@ export class WebAPI {
 
   constructor(public http:Http) { }
 
-
   getNewsfeed(club?):Promise<any[]>{
     return new Promise((resolve,reject) => {
       Observable.forkJoin([
@@ -168,10 +167,6 @@ export class WebAPI {
         result[link.link_type] = link.url;
     }
     return result;
-  }
-
-  randomDate(start, end) {
-    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
 
   sortByDate(events){
