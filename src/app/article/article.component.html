@@ -1,30 +1,31 @@
 <div class="container-fluid">
-  <div class="row justify-content-center mt-4">
-    <div class="col-sm-11 col-md-11 col-lg-11">
-      <div class="card article">
-        <div class="card-block">
-          <div class="mb-2">
-            <!-- TODO: Support User avatars -->
-            <img class="avatar" src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg"/>
-            <h3 class="author mb-0 inline-block">{{articleObj.user.first_name}}&nbsp;{{articleObj.user.last_name}}</h3>
-          </div>
-          <h1>{{articleObj.article.title}}</h1>
-          <p [innerHTML]="articleObj.article.body"></p>
-        </div>
-        <br>  
-        <div class="card-block">
-          <input type="text" placeholder="Say something about this..." [(ngModel)]="commentObj.body"  name="comment"/>
-          <button (click)="comment()">Comment</button>
-        </div>
-         <hr>
-         <h1> Comments</h1>
-      <p class="" *ngFor="let comment of comments.reverse()">
-        {{comment.body}} by: 
-      </p>
-
-
-      </div> 
-
+  <div class="row justify-content-center">
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" style="margin-bottom:100px">
+      <img src="assets/img/SampleArticleCover.jpg" class="article-cover">
+      <span class="article-title mt-4">{{article.title}}</span>
+      <br><br>
+      <div class="article-body" [innerHTML]="article.body">
+      </div>
+      <div class="row justify-content-center">
+      	<div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
+		      <div class="card mt-3" *ngIf="isCommentActive" (click)="toggleCommentActive()" style="cursor:pointer">
+		      	<div class="card-block d-flex flex-row">
+		      		<img src="assets/img/Blank Avatar.jpg" class="avatar mr-3">
+		      		<span class="comment-placeholder mt-2">What are your thoughts?</span>
+		      	</div>
+		      </div>
+		      <div class="card mt-3 px-3" *ngIf="!isCommentActive">
+		      	<div class="d-flex flex-row mt-3">
+		      		<img src="assets/img/Blank Avatar.jpg" class="avatar mr-3">
+		      		<span class="comment-name-text mt-2">Richard Hugessen</span>
+		      	</div>
+		      	<textarea autofocus class="comment-text mt-2" rows="4" style="width:100%"></textarea>
+		      	<div class="d-flex flex-row-reverse mb-2">
+		      		<button class="btn">Publish</button>
+		      	</div>
+		      </div>
+      	</div>
+      </div>
 
     </div>
   </div>

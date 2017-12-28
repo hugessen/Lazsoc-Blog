@@ -1,0 +1,22 @@
+{
+	"ProjectName": "lazsoc-blog",
+	"ProjectPath": "/Users/richard/Documents/lazsoc-blog",
+	"SourceDir": "documents/lazsoc-blog",
+	"DistributionDir": "documents/lazsoc-blog/dist",
+	"BuildCommand": "ng build --prod",
+	"StartCommand": "ng serve",
+	"InitializationTime": "2017-12-28-17-36-02",
+	"LastConfigurationTime": "2017-12-28-17-37-20",
+	"LastNPMInstallTime": "",
+	"FrontendLastBuildTime": "",
+	"LastPublishTime": "",
+	"BackendFormat": "yml",
+	"BackendLastBuildTime": "",
+	"BackendLastUpdateTime": "",
+	"BackendLastUpdateSuccessful": false,
+	"BackendProjectID": "",
+	"BackendProjectName": "",
+	"BackendProjectConsoleUrl": "",
+	"BackendProjectCreationTime": "",
+	"BackendProjectLastUpdatedTime": ""
+}

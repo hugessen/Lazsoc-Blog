@@ -13,12 +13,9 @@ import { WebAPI } from '../services/web-api.service';
 })
 export class ArticleComponent implements OnInit {
 
-  articleObj:{}
-  commentObj={
-    body:""
-  }
-  comments=[]
-  articleID:number;
+  article:any;
+  isCommentActive = true;
+
   constructor(public route: ActivatedRoute, public authService:AuthService, public webAPI: WebAPI) {
 
   }
@@ -28,21 +25,19 @@ export class ArticleComponent implements OnInit {
        .switchMap((params: ParamMap) =>
          this.webAPI.getArticle(+params.get('id')))
        .subscribe((article) => {
-         this.articleID = article.article.id
-         this.articleObj = article;
-         this.comments = article.comments
+         this.article = article;
+         console.log(article)
        }); 
    }
 
-   comment(){
-     console.log(this.commentObj)
-     console.log(this.articleObj)
-     this.authService.apiPost('articles/'+this.articleID+'/comment', this.commentObj).then(res => {
-      console.log(res)
-      this.comments.push(res)
-      //display comment on screen
-      // websockets??
+   comment(comment){
+     this.authService.apiPost(`articles/${this.article.id}/comment`, comment).then(res => {
+      console.log(res);
     });
+   }
+
+   toggleCommentActive(){
+     this.isCommentActive = !this.isCommentActive;
    }
 
 }

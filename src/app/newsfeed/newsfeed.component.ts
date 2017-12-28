@@ -48,8 +48,13 @@ export class NewsfeedComponent implements OnInit {
     });
   }
 
-  onSelect(event){
+  viewEvent(event){
     this.router.navigate(['/events',event.id]);
+    this.scrollTop();
+  }
+
+  viewArticle(article) {
+    this.router.navigate(['/article',article.id]);
     this.scrollTop();
   }
 

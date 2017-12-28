@@ -1,9 +1,59 @@
-.article .avatar {
- border-radius: 50%;
-  width: 50px;
-  height:50px;
+.article-body {
+	font-family: "Times New Roman", Times, serif;
+	font-size:20px;
 }
 
-.author {
-  vertical-align: middle;
+.article-title {
+	font-family: Lato-Black;
+	font-size:40px;
+}
+
+.avatar {
+  display: block;
+  width: 50px;
+  height:50px;
+  border-radius: 50%;
+}
+
+.comment-text {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
+}
+
+.comment-placeholder {
+	font-family: "Times New Roman", Times, serif;
+	color:rgba(0,0,0,0.7);
+	font-size: 20px;
+}
+
+.comment-name-text {
+	font-family: Lato-Bold;
+	font-size: 16px;
+	color:green;
+}
+
+textarea {
+	outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  resize:none;
+}
+
+.btn {
+	box-shadow: none !important;
+	width: 18%;
+	background-color: #422c89;
+	color:white;
+	cursor:pointer;
+}
+
+img {
+	max-width: 100% !important;
+}
+
+.card {
+	border-radius: 0px;
+	background-color: white;
 }

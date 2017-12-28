@@ -17,3 +17,8 @@ input {
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 }
+.image-upload > input {
+  visibility:hidden;
+  width:0;
+  height:0
+}

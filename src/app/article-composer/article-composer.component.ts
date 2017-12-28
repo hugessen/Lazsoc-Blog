@@ -18,9 +18,10 @@ export class ArticleComposerComponent implements OnInit {
 
   editorContent = "";
   editorView = true;
-  article:{} 
-  articles = []
-  title:string = ""
+  article:{};
+  articles = [];
+  title:string = "";
+  coverURL = "assets/img/Image Upload.png";
   constructor(public authService: AuthService, private router: Router) { 
   }
 
@@ -38,4 +39,16 @@ export class ArticleComposerComponent implements OnInit {
       this.router.navigate(['./newsfeed']);
     });
   }
+
+  readUrl(event:any) {
+  if (event.target.files && event.target.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = (event:any) => {
+      this.coverURL = event.target.result;
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
+}
 }
