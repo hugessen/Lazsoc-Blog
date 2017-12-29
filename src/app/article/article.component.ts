@@ -5,8 +5,7 @@ import { Angular2TokenService } from "angular2-token";
 import { User } from '../models/user';
 import { WebAPI } from '../services/web-api.service';
 import { PublicationPipe } from '../pipes/publication.pipe';
-import * as $ from "jquery";
-
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-article',
@@ -20,7 +19,6 @@ export class ArticleComponent implements OnInit {
   commentStr = "";
 
   constructor(public route: ActivatedRoute, public authService:AuthService, public webAPI: WebAPI) {
-
   }
 
    ngOnInit() {
@@ -40,6 +38,17 @@ export class ArticleComponent implements OnInit {
      this.authService.apiPost(`articles/${this.article.id}/comment`, {comment: { body: this.commentStr } } ).then(res => {
       this.article.comments.unshift(res);
     });
+   }
+
+   didUserPublish(publishable) {
+     return this.authService.currentUser().id == publishable.user_id
+   }
+
+   delete(comment) {
+     this.authService.apiGet(`articles/${comment.id}/delete_comment`).then(deletedID => {
+       console.log(deletedID);
+       _.remove(this.article.comments, function(currComment) { return currComment.id == deletedID });
+     })
    }
 
    toggleCommentActive(){

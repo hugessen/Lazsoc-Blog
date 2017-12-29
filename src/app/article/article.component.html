@@ -8,16 +8,16 @@
       </div>
       <div class="row justify-content-center">
       	<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
-		      <div class="card mt-1" *ngIf="!isCommentActive" (click)="toggleCommentActive()" style="cursor:pointer">
+		      <div class="card mt-1" *ngIf="!isCommentActive && authService.userSignedIn$" (click)="toggleCommentActive()" style="cursor:pointer">
 		      	<div class="card-block d-flex flex-row">
 		      		<img src="assets/img/Blank Avatar.jpg" class="avatar mr-3">
-		      		<span class="comment-placeholder mt-2">What are your thoughts?</span>
+		      		<span class="comment-placeholder mt-3">Join the discussion</span>
 		      	</div>
 		      </div>
-		      <div class="card mt-1 px-3" *ngIf="isCommentActive">
+		      <div class="card mt-1 px-3" *ngIf="isCommentActive && authService.userSignedIn$">
 		      	<div class="d-flex flex-row mt-3">
 		      		<img src="assets/img/Blank Avatar.jpg" class="avatar mr-3">
-		      		<span class="comment-name-text mt-3">Richard Hugessen</span>
+		      		<span class="comment-name-text mt-3">{{authService.currentUser().first_name}} {{authService.currentUser().last_name}}</span>
 		      	</div>
 		      	<textarea 
 		      		autofocus 
@@ -37,6 +37,7 @@
 		      			<span class="comment-name-text mt-1">{{comment.author}}</span>
 		      			<span class="comment-name-text mt-1">{{comment.created_at | getPublicationDate}}</span>
 		      		</div>
+		      		<div class="ml-auto p-2 delete-btn" *ngIf="didUserPublish(comment)" (click)="delete(comment)">Delete</div>
 		      	</div>
 		      	<div class="comment-text m-2">
 		      		{{comment.body}}

@@ -77,6 +77,10 @@ export class AuthService implements OnInit {
     );
   }
 
+  currentUser(){
+    return this.authService.currentUserData;
+  }
+
   registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
     return this.authService.registerAccount(signUpData).map(
         res => {
@@ -94,8 +98,8 @@ export class AuthService implements OnInit {
         return res
       }
     );
-
   }
+
   updateUser(data:any):Promise<any>{
     return new Promise((resolve,reject) => {
       this.authService.post('update_user',data).toPromise().then(res => {
@@ -111,6 +115,7 @@ export class AuthService implements OnInit {
        });
     })
   }
+
   getBean(id: number): Promise<any> {
   return this.getBeans()
    .then(beans => beans.find(bean => bean.id === id));

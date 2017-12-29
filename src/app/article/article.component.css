@@ -50,6 +50,12 @@ textarea {
 	cursor:pointer;
 }
 
+.delete-btn {
+	cursor:pointer;
+	font-family: Lato-Regular;
+	color:blue;
+}
+
 .richard {
   border: none !important;
   -webkit-box-shadow: none !important;
