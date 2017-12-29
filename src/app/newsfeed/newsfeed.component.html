@@ -33,7 +33,7 @@
             <img src="assets/img/Blank Avatar.jpg" class="club-avatar mr-3">
             <div class="d-flex flex-column">
               <span class="club-title">{{event.author}}</span>
-              <span class="card-datetime">Posted 5 hours ago</span>
+              <span class="card-datetime">{{event.created_at | getPublicationDate }}</span>
             </div>
           </div>
           <div class="card mt-3">

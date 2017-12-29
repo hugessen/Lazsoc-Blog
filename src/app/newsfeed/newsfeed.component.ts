@@ -5,6 +5,7 @@ import { GetLongDate } from '../pipes/get-long-date.pipe';
 import { Event } from '../event';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { PublicationPipe } from '../pipes/publication.pipe';
 import * as Stickyfill from 'stickyfill';
 import * as _ from "lodash";
 

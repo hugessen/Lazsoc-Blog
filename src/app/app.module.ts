@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // import { Ng2FittextModule } from 'ng2-fittext/ng2fittext';
-import { FileUploaderComponent } from './file-uploader.component';
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { RouterModule, Routes, Router } from '@angular/router';
@@ -30,6 +29,7 @@ import { NgModule } from '@angular/core';
 //Pipes
 import { GetLongDate, GetShortDate, GetTime,GetMonth,GetDate } from './pipes/get-long-date.pipe';
 import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
+import { PublicationPipe } from './pipes/publication.pipe';
 import { SafePipe } from './pipes/safe.pipe';
 
 //Services
@@ -73,6 +73,7 @@ import { DiscountComponent } from './discount/discount.component';
     UpdateComponent,
     GetTime,
     SafePipe,
+    PublicationPipe,
     HiringContainerComponent,
     DiscountComponent,
     ArticleComponent
