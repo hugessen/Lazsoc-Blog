@@ -15,7 +15,7 @@ export class ArticleComposerComponent implements OnInit {
 
   public options: Object = {
     placeholder: "Edit Me",
-    toolbarButtons:['bold', 'italic', 'underline', 'fontFamily', 'fontSize', '|', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage'],
+    toolbarButtons:['bold', 'italic', 'underline', 'fontSize', '|', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage'],
     fontSize: ['2.5','8', '10', '12', '14', '18', '30', '60', '96'],
     height: 500
   //   imageUploadToS3: {
@@ -54,6 +54,7 @@ export class ArticleComposerComponent implements OnInit {
   articles = [];
   title:string = "";
   coverURL = "assets/img/Image Upload.png";
+  hasCover = false;
   constructor(public authService: AuthService, private router: Router, public awsService:AwsService) { 
   }
 

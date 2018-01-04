@@ -1,9 +1,8 @@
 input {
-  font-family: Lato-Bold;
-  background-color:#F5F5F5;
+  font-family: Lato-Black;
   width: 100%;
   margin-bottom:20px;
-  font-size: 35px;
+  font-size: 40px;
 }
 
 .cursor-pointer {
@@ -39,4 +38,25 @@ img {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+.cover-background {
+  background-color: rgba(67,48,137,0.05);
+  vertical-align: middle;
+  padding-top:65px;
+  height:250px;
+  width:100%;
+  text-align:center;
+}
+.cover-background img {
+  display: block;
+  margin: auto;
+  max-width:10%;
+  height:auto;
+}
+.cover-text {
+  margin-top:5px;
+  font-family:Lato-Regular;
+  font-size:14px;
+  color:rgb(67,48,137);;
 }

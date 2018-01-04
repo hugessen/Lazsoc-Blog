@@ -6,7 +6,7 @@
 .gold-bar {
   /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);*/
   background-color:#F2A900;
-  height:10px;
+  height:8px;
   position: -webkit-sticky;
   position: sticky;
   top: 70px;
@@ -40,4 +40,30 @@
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.story {
+  font-family: Lato-Black;
+  font-size: 23px;
+  color:white; 
+}
+.board {
+  font-family: Lato-Regular;
+  font-size: 23px;
+  color:white; 
+}
+.storyboard {
+  display:block;
+  position:relative;
+  margin:auto;
+  transform: translate(-20%);
+}
+
+.publish-btn {
+  background-color:#F2A900;
+}
+
+.publish-text {
+  font-family: Lato-Regular;
+  font-size:15px;
+  color:white;
 }

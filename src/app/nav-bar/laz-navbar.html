@@ -1,11 +1,8 @@
 <nav class="navbar sticky-top navbar-toggleable-md navbar-inverse bg-faded nav" style="background-color:rgba(66,44,137,1); height:70px">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <a class="navbar-brand" routerLink="/newsfeed">
     <img src="../../assets/img/LazsocWhiteLogo.png" width="auto" height="105" class="ml-3" alt="">
   </a>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav" *ngIf="url.url != '/compose'">
     <ul class="navbar-nav mr-4">
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">EVENTS</a>
@@ -46,6 +43,16 @@
         </div>
       </li>
     </ul>
+  </div>
+  <div class="collapse navbar-collapse" *ngIf="url.url == '/compose'">
+    <div class="storyboard">
+      <span class="story">STORY</span><span class="board">BOARD</span>
+    </div>
+    <div>
+      <button class="btn publish-btn">
+        <span class="publish-text">Publish</span>
+      </button>
+    </div>
   </div>
 </nav>
 <nav class="gold-bar sticky-top">
