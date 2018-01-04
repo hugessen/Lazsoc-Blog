@@ -36,6 +36,7 @@ import { SafePipe } from './pipes/safe.pipe';
 import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './services/auth.service';
 import { WebAPI } from './services/web-api.service';
+import { AwsService } from './services/aws.service';
 import { JobDetailPageComponent } from './job-detail-page/job-detail-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
@@ -88,7 +89,7 @@ import { DiscountComponent } from './discount/discount.component';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AuthService, AuthGuard],
+  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

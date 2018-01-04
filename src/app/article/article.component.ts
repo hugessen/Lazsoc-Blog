@@ -14,7 +14,7 @@ import * as _ from "lodash";
 })
 export class ArticleComponent implements OnInit {
 
-  article: { title: string, id: number, comments: any };
+  article: { title: string, id: number, comments: any, body:any };
   isCommentActive = false;
   commentStr = "";
 

@@ -273,3 +273,9 @@ h5 {
   font-size: 10px;
   color: #0083c1;
 }
+
+.none-found {
+  font-family: Lato-Regular;
+  font-size: 14px;
+  color:#83868a;;
+}

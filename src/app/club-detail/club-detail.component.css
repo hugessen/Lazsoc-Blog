@@ -71,7 +71,7 @@ h6 {
 .club-avatar {
   display: block;
   position:absolute;
-  transform: translate(15%, 70%);
+  transform: translate(15%, 150%);
   width: 20%;
   height:auto;
   border:5px solid white;

@@ -21,7 +21,7 @@ export class PublicationPipe {
     		return `${num} hours ago`;
     }
     else if (diff < 5*ONE_DAY) {
-    	let num = Math.floor(diff / (60*60*1000));
+    	let num = Math.floor(diff / (60*60*24*1000));
     	if (num == 1)
     		return `1 day ago`;
     	else

@@ -41,12 +41,13 @@ export class WebAPI {
         result.push(event);
       }
     }
-    for(let article of articles){
-      article.typeof = "article";
-      article.sortDate = article.created_at;
-      result.push(article);
+    if (!club_id) {
+      for(let article of articles){
+        article.typeof = "article";
+        article.sortDate = article.created_at;
+        result.push(article);
+      }
     }
-
     result.sort(function(a,b){ 
       return Date.parse(a.sortDate) - Date.parse(b.sortDate)
     });

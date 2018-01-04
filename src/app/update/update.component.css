@@ -33,3 +33,22 @@ p {
 .form-group[_ngcontent-c2] label[_ngcontent-c2] {
 	font-family: Lato-Semibold;
 }
+
+.upload-img {
+  max-width:150px;
+  background-color:lightgreen;
+  border-radius: 50%;
+}
+
+.upload-img {
+  width: 100%;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}

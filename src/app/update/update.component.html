@@ -6,10 +6,12 @@
         <div class="card-block">
           <div class="form-group">
             <div class="d-flex flex-row align-items-end">
-              
               <div class="d-flex flex-column mr-4 align-items-center mr-3" style="width:47%">
-                 <img src="assets/img/Richard.jpg" class="avatar mr-2">
-                 <p class="mb-0"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit</p>
+                <input type="file" name="file" id="file" class="inputfile" (change)="fileEvent($event)" />
+                <label for="file" style="cursor:pointer">
+                  <img src="assets/img/Upload.png" class="upload-img">
+                  <p class="mb-0"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Upload Profile Photo</p>
+                </label> 
               </div>
               <div class="d-flex flex-column ml-2" style="width:45%">
                 <label for="firstname">Email Address (Username)</label>
@@ -40,46 +42,16 @@
 
             <label for="summary">What's your story?</label><br>
             <textarea rows="3" style="width:100%" [(ngModel)]="updateObj.summary"></textarea>
-            <label class="form-check-label">
+<!--             <label class="form-check-label">
               <input type="checkbox" class="form-check-input" [(ngModel)]="updateObj.is_bean">
               Would you like to sign up for LazBeans?
-            </label>
+            </label> -->
             <!-- <input type="file" #fileInput (change)='fileChangeEvents($event)'/>
             <button type="button" class="btn btn-primary" (click)="upload()">Upload</button> -->
           </div>
         </div>
       </div>
       <br>
-      <h2 class="card card-title card-block mt-2 mb-0">Work Experience</h2>
-      <div class="card mb-3" *ngFor="let exp of work_experiences_attributes; let i = index">
-        <div class="card-block">
-          <div class="form-group">
-            <div class="d-flex flex-row align-content-end">
-              <div class="d-flex flex-column mr-auto" style="width:48%">
-                <label for="firstname">Company</label>
-                <input type="text" class="form-control mb-3" id="firstname" [(ngModel)]="exp.company">
-                <label for="firstname">Start Date</label>
-                <input type="text" class="form-control mb-3" id="firstname" placeholder="mm/dd/yyyy" [(ngModel)]="exp.started_date">
-              </div>
-              <div class="d-flex flex-column" style="width:48%">
-                <label for="firstname">Title</label>
-                <input type="text" class="form-control mb-3" id="firstname" [(ngModel)]="exp.title">
-                <label for="firstname">End Date</label>
-                <input type="text" class="form-control mb-3" id="firstname" placeholder="mm/dd/yyyy" [(ngModel)]="exp.end_date">
-              </div>
-            </div>
-
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" data-toggle="toggle" [(ngModel)]="exp.is_current">
-              I currently work here
-            </label><br><br>
-            <label for="firstname">Job Summary</label><br>
-            <textarea name="name" rows="3" style="width:100%" [(ngModel)]="exp.summary"></textarea>
-          </div>
-          <button type="button" class="btn btn-danger" (click)="removeWorkExp(i)">Remove Work Experience</button>
-          <button type="button" class="btn btn-primary" (click)="addWorkExp()">Add more work experience</button>
-        </div>
-      </div>
       <div class="d-flex flex-row justify-content-center mb-4">
         <button type="button" class="btn btn-success" name="button" (click)="postUpdates()" routerLink="/newsfeed">Submit!</button>
       </div>

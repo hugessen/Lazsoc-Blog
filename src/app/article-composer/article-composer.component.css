@@ -22,3 +22,21 @@ input {
   width:0;
   height:0
 }
+
+img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+
+.crop-container {
+  max-width: 100%;
+  margin: 20px auto;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}

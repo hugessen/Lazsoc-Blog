@@ -25,22 +25,21 @@ export class NewsfeedComponent implements OnInit {
   clubFilters:any[] = [];
   timeFilter:any = "";
 
-
   @Input() clubID;
 
   constructor(public router: Router, public webAPI: WebAPI, public authService: AuthService) {
+  }
+
+  ngOnInit() {
+    console.log("club id: " + this.clubID);
     Observable.forkJoin([
-      Observable.fromPromise(webAPI.getNewsfeed(this.clubID)),
-      Observable.fromPromise(webAPI.getClubs())
+      Observable.fromPromise(this.webAPI.getNewsfeed(this.clubID)),
+      Observable.fromPromise(this.webAPI.getClubs())
     ]).subscribe(data => {
       [this.events, this.clubs] = data;
       console.log(this.events);
       this.hasEvents = this.checkHasEvents();
     })
-  }
-
-  ngOnInit() {
-    console.log(this.clubID);
   }
 
   vote(event){

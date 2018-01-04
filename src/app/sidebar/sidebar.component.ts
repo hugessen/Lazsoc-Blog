@@ -17,14 +17,18 @@ export class SidebarComponent {
   events = [];
   clubs = {};
   eventCount = 0;
+  anyEvents = true;
   constructor(public webAPI:WebAPI) {
-    this.webAPI.getNewsfeed().then(res => this.events = res.filter(this.isThisWeek))
+    this.webAPI.getNewsfeed().then(res => {
+      this.events = res.filter(this.isThisWeek);
+      if (this.events.length == 0) this.anyEvents = false;
+    })
   }
 
   isThisWeek(event){
     let eventStart = new Date(event.start_date_time).getTime();
     let currentTime = new Date().getTime();
-    return (eventStart <= currentTime + 60*60*24*30*1000);
+    return (eventStart <= currentTime + 60*60*24*7*1000);
   }
 
 }
@@ -55,7 +59,7 @@ export class JobPostingSidebar implements OnInit {
 
   public jobPostings;
   public clubs;
-  hasPostings = true;
+  hasPostings = false;
   @Input() clubID;
 
   constructor(public webAPI:WebAPI, public router:Router) {
@@ -64,7 +68,7 @@ export class JobPostingSidebar implements OnInit {
       Observable.fromPromise(webAPI.getClubs())
     ]).subscribe(data => {
       [this.jobPostings, this.clubs] = data;
-      console.log(this.jobPostings);
+      if (this.jobPostings.length > 0) this.hasPostings = true;
     })
   }
 
