@@ -116,8 +116,14 @@ export class WebAPI {
   }
 
   getClub(id:number):Promise<any>{
-    return this.getClubs(true)
-               .then(postings => postings.find(club => club.id === id));
+    return new Promise((resolve,reject) => {
+    this.getClubs(true)
+       .then(res => {
+         let club = res.find(club => club.id === id);
+         club.club_social_links = this.formatSocialLinks(club.club_social_links);
+         resolve(club);
+       });
+     })
   }
 
   getJobPostings():Promise<any>{

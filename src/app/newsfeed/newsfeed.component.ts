@@ -19,7 +19,7 @@ const ONE_DAY = 60*60*24*1000
 export class NewsfeedComponent implements OnInit {
   events:any;
   clubs = {};
-  newsfeedState = "all";
+  newsfeedState = "events";
   hasEvents:boolean = true;
   tagFilters:any[] = [];
   clubFilters:any[] = [];

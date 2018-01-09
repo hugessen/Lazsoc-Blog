@@ -215,3 +215,14 @@ h6 {
 .title-text {
   font-family: Lato-Light;
 }
+
+.social-link-title {
+  font-family: Lato-Semibold;
+  font-size: 12px;
+}
+
+.social-link-link {
+  font-family: Lato-Regular;
+  font-size: 10px;
+  color: #0083c1;
+}

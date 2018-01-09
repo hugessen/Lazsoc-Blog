@@ -42,7 +42,8 @@
           </div>
         </div>
         <div class="card-footer py-2 px-4">
-          <span class="footer-text">{{event.total_votes}} Likes</span>
+          <span class="footer-text" *ngIf="event.total_votes != 1">{{event.total_votes}} Likes</span>
+          <span class="footer-text" *ngIf="event.total_votes == 1">1 Like</span>
           <span class="footer-text" style="float:right">{{event.comments.length}} Comments</span>
         </div>
       </div>

@@ -4,7 +4,6 @@
       <div class="card sticky" style="border:none">
         <profile-sidebar></profile-sidebar>
         <ul class="list-group" style="border: 1px solid lightgrey; border-radius:0">
-          <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('all')" [ngClass]="{active: feed.newsfeedState == 'all'}">Events and Articles</li>
           <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('events')" [ngClass]="{active: feed.newsfeedState == 'events'}">Events</li>
           <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('articles')" [ngClass]="{active: feed.newsfeedState == 'articles'}">Articles</li>
         </ul>

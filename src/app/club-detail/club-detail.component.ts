@@ -21,7 +21,10 @@ export class ClubDetailComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) =>
         this.webAPI.getClub(+params.get('id')))
-          .subscribe((club) => this.club = club);
+          .subscribe((club) => {
+            console.log(club);
+            this.club = club
+          });
     this.fullTeam = this.getFullTeam();
   }
 
@@ -54,7 +57,7 @@ export class ClubDetailComponent implements OnInit {
           title: "Corporate Relations",
           team: [
             { name: "Michelle Stratulat", title: "VP of Corporate Relations", image: "assets/img/Head Shots/MichelleS.jpg" },
-            { name: "Madison MacLead", title: "Manager-Internal", image: "assets/img/thumbnails/LazSoc.png" },
+            { name: "Madison MacLeod", title: "Manager-Internal", image: "assets/img/thumbnails/LazSoc.png" },
             { name: "Justin Dube", title: "Manager-Internal", image: "assets/img/Head Shots/JustinD.jpg" },
             { name: "Xavier Prosper", title: "Manager-Internal", image: "assets/img/Head Shots/Xavier.jpg" },
             { name: "Jack Heinzl", title: "Manager-Internal", image: "assets/img/Head Shots/JackH.jpg" },
