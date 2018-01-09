@@ -63,16 +63,26 @@ export class JobPostingSidebar implements OnInit {
   @Input() clubID;
 
   constructor(public webAPI:WebAPI, public router:Router) {
-    Observable.forkJoin([
-      Observable.fromPromise(webAPI.getJobPostings()),
-      Observable.fromPromise(webAPI.getClubs())
-    ]).subscribe(data => {
-      [this.jobPostings, this.clubs] = data;
-      if (this.jobPostings.length > 0) this.hasPostings = true;
-    })
   }
 
   ngOnInit() {
+    Observable.forkJoin([
+      Observable.fromPromise(this.webAPI.getJobPostings()),
+      Observable.fromPromise(this.webAPI.getClubs())
+    ]).subscribe(data => {
+      [this.jobPostings, this.clubs] = data;
+      if (this.clubID != 0) {
+        for(let posting of this.jobPostings) {
+          console.log(posting.club_id);
+          console.log(this.clubID);
+          if (posting.club_id == this.clubID) {
+            this.hasPostings = true;
+            break;
+          }
+        }
+      }
+      else if (this.jobPostings.length > 0) this.hasPostings = true;
+    })
   }
 
   viewJobPost(id:number){

@@ -33,6 +33,20 @@
 	color:green;
 }
 
+.comment-time {
+	font-family: Lato-Semibold;
+	font-size: 14px;
+}
+
+.like-box {
+	text-align: center;
+	font-family: Lato-Semibold;
+	font-size: 16px;
+	border-radius: 5%;
+	direction: flex;
+	flex-direction: row;
+} 
+
 textarea {
 	outline: none;
   border: none !important;
@@ -53,14 +67,7 @@ textarea {
 .delete-btn {
 	cursor:pointer;
 	font-family: Lato-Regular;
-	color:blue;
-}
-
-.richard {
-  border: none !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
+	color:lightblue;
 }
 
 .article-body img { 
@@ -70,4 +77,8 @@ textarea {
 .card {
 	border-radius: 0px;
 	background-color: white;
+}
+
+.heart {
+	width:50px;
 }

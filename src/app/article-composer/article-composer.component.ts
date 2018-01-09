@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import * as Crypto from 'crypto-js';
 import * as Cropper from 'cropperjs';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-article-composer',
@@ -21,29 +22,20 @@ export class ArticleComposerComponent implements OnInit {
   //   imageUploadToS3: {
   //     bucket: 'lazsoc-images',
   //     // Your bucket region.
-  //     region: 'us-east-1',
+  //     region: 's3-us-east-2',
   //     keyStart: 'article_images/',
   //     params: {
   //       acl: 'public-read', // ACL according to Amazon Documentation.
   //       AWSAccessKeyId: environment.aws_access, // Access Key from Amazon.
-  //       policy: `{ 
-  //         "Id": "Policy1514599679096",
-  //         "Version": "2012-10-17",
-  //         "Statement": [
-  //           {
-  //             "Sid": "Stmt1514599674967",
-  //             "Action": "s3:*",
-  //             "Effect": "Allow",
-  //             "Resource": "arn:aws:s3:::lazsoc-images/AKIAIGEQRRLJR7KOXTAA",
-  //             "Principal": {
-  //               "AWS": [
-  //                 "arn:aws:iam:: 257311162376:root"
-  //               ]
-  //             }
-  //           }
-  //         ]
-  //       }`, // Policy string computed in the backend.
-  //       signature: this.awsService.getSignatureKey(Crypto,environment.aws_access,this.getDatestamp(),'us-east-1','s3'), // Signature computed in the backend.
+  //       AWSSecretAccessKey: environment.aws_secret,
+  //       policy: btoa(`
+  //         { "expiration": "${new Date(new Date().getTime() + 12 * 60 * 60 * 1000).toISOString()}",
+  //           "conditions": [
+  //             {"acl": "public-read" },
+  //             {"bucket": "lazsoc-images" }
+  //           ]
+  //       }`), // Policy string computed in the backend.
+  //       signature: this.awsService.getSignatureKey(Crypto,environment.aws_access,this.getDatestamp(),'us-east-2','s3'), // Signature computed in the backend.
   //   }
   // }
   }
@@ -53,9 +45,10 @@ export class ArticleComposerComponent implements OnInit {
   article:{};
   articles = [];
   title:string = "";
-  coverURL = "assets/img/Image Upload.png";
   hasCover = false;
-  constructor(public authService: AuthService, private router: Router, public awsService:AwsService) { 
+  cropper:any;
+  url:any;
+  constructor(public authService: AuthService, private router: Router, public awsService:AwsService) {
   }
 
   ngOnInit() {
@@ -75,17 +68,19 @@ export class ArticleComposerComponent implements OnInit {
 
   readUrl(event:any) {
     if (event.target.files && event.target.files[0]) {
+      this.hasCover = true;
       var reader = new FileReader();
       reader.onload = (event:any) => {
-        this.coverURL = event.target.result;
-        this.doCropper(event.target);
+        $('#cover').attr('src', event.target.result);
+        var cover = document.querySelector('#cover');
+        this.doCropper(cover);
       }
       reader.readAsDataURL(event.target.files[0]);
     }
   }
 
   doCropper(image){
-    var cropper = new Cropper(image, {
+    this.cropper = new Cropper(image, {
         viewMode: 3,
         dragMode: 'move',
         autoCropArea: 1,
@@ -100,7 +95,20 @@ export class ArticleComposerComponent implements OnInit {
   }
 
   getDatestamp(){
-    let date = new Date();
-    return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`
+    var date = new Date(); //Using this we can convert any date format to JS Date
+    var mm = date.getMonth() + 1; // getMonth() is zero-based
+    var dd = date.getDate();
+
+    return [date.getFullYear(),
+            (mm>9 ? '' : '0') + mm,
+            (dd>9 ? '' : '0') + dd
+           ].join('');
+  }
+
+  uploadCoverToS3() {
+    // let data = this.cropper.getCroppedCanvas().toBlob(function(blob) {
+
+    // });
+    // this.awsService.uploadToAWS(data,"Cover.jpg");
   }
 }

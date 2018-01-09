@@ -14,8 +14,9 @@ import * as _ from "lodash";
 })
 export class ArticleComponent implements OnInit {
 
-  article: { title: string, id: number, comments: any, body:any };
+  article: { title: string, id: number, comments: any, body:any, votes_for:any[], userVoted:any };
   isCommentActive = false;
+  userVoted = null;
   commentStr = "";
 
   constructor(public route: ActivatedRoute, public authService:AuthService, public webAPI: WebAPI) {
@@ -41,13 +42,27 @@ export class ArticleComponent implements OnInit {
    }
 
    didUserPublish(publishable) {
-     return this.authService.currentUser().id == publishable.user_id
+     if (!this.authService.userSignedIn$)
+       return false
+     return this.authService.currentUser().id == publishable.user_id;
    }
 
-   delete(comment) {
+   didUserUpvote(){
+     if (this.userVoted != null) return this.userVoted;
+     if (!this.authService.userSignedIn$) return false;
+     return this.article.votes_for.findIndex(vote => vote.voter_id == this.authService.currentUser().id) != -1;
+   }
+
+   deleteComment(comment) {
      this.authService.apiGet(`articles/${comment.id}/delete_comment`).then(deletedID => {
        console.log(deletedID);
        _.remove(this.article.comments, function(currComment) { return currComment.id == deletedID });
+     })
+   }
+
+   deleteArticle(){
+     this.authService.apiGet(`articles/${this.article.id}/delete_article`).then(deletedID => {
+       console.log("Deleted");
      })
    }
 
@@ -55,5 +70,14 @@ export class ArticleComponent implements OnInit {
      this.isCommentActive = !this.isCommentActive;
    }
 
+  like() {
+    this.authService.apiGet(`articles/${this.article.id}/vote`).then(res => {
+      if (this.userVoted == null)
+        this.userVoted = !this.didUserUpvote();
+      else
+        this.userVoted = !this.userVoted;
+      console.log(res);
+    })
+  }
 
 }

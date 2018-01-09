@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,12 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'app';
-  constructor(public authService:AuthService){
-    // console.log("authservice", authService.userSignedIn$);
+  url:any = {url:""};
+  isUpdate = false;
+  constructor(public authService:AuthService, private router:Router){
+    router.events.subscribe((url) => {
+      this.url = url;
+    });
   }
 
 }

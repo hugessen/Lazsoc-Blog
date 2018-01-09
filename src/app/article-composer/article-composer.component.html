@@ -1,36 +1,43 @@
-<label for="file" class="crop-container">
-  <!-- <img id="cover" class="crop-cover" [src]="coverURL" style="cursor:pointer"> -->
-</label>
-<input type='file' name="file" id="file" class="inputfile" (change)="readUrl($event)" [src]="coverURL">
+<nav class="navbar sticky-top navbar-toggleable-md navbar-inverse bg-faded nav">
+  <a class="navbar-brand" routerLink="/newsfeed">
+    <img src="../../assets/img/LazsocWhiteLogo.png" width="auto" height="105" class="ml-3" alt="">
+  </a>
+  <div class="collapse navbar-collapse">
+    <div class="storyboard">
+      <span class="story">STORY</span><span class="board">BOARD</span>
+    </div>
+    <div>
+      <button class="btn publish-btn" (click)="submit()">
+        <span class="publish-text">Publish</span>
+      </button>
+    </div>
+  </div>
+</nav>
+<nav class="gold-bar sticky-top"></nav>
+<input type='file' name="file" id="file" class="inputfile" (change)="readUrl($event)">
 <div class="row justify-content-center">
-  <div class="col-sm-9 col-md-9 col-lg-9 mt-4">
+  <div class="col-sm-11 col-md-11 col-lg-11 mt-4">
     <div class="card">
       <div class="card-block">
-        <div class="cover-background" *ngIf="!hasCover">
+        <label for="file" class="cover-background" *ngIf="!hasCover" style="cursor:pointer">
           <img src="assets/img/UploadCover.png">
           <span class="cover-text">Articles look better with cover photos</span>
+        </label>
+        <div class="crop-container" *ngIf="hasCover">
+          <img id="cover" src="" class="crop-cover">
         </div>
         <form>
-          <input class="remove-glow" autofocus #titleValdation="ngModel" type="text" placeholder="Title" name="title" [(ngModel)]="title" required minlength="4" maxlength="100">
-    <!--       <div *ngIf="titleValdation.errors && (titleValdation.dirty || titleValdation.touched)" class="alert alert-danger">
-            <div [hidden]="!titleValdation.errors.required">
-              Article title is required!
+          <div class="row justify-content-center">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+              <input class="remove-glow" autofocus #titleValdation="ngModel" type="text" placeholder="Title" name="title" [(ngModel)]="title" required minlength="4" maxlength="100">
+              <div [froalaEditor]="options" [(froalaModel)]="editorContent" *ngIf="editorView"></div>
             </div>
-            <div [hidden]="!titleValdation.errors.minlength">
-              Title must be at least 4 characters long.
-            </div>
-            <div [hidden]="!titleValdation.errors.maxlength">
-              Title cannot be more than 30 characters long.
-            </div>
-          </div> -->
-          <div [froalaEditor]="options" [(froalaModel)]="editorContent" *ngIf="editorView"></div>
+          </div>
           <br>
         </form>
       </div>
     </div>
-
-    <button class="btn btn-danger" (click)="submit()">Submit</button>
-    <br>
+    <button class="btn btn-success" (click)="uploadCoverToS3()">Upload to S3</button>
   </div>
 </div>
 

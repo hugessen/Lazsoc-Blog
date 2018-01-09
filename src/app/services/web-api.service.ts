@@ -9,7 +9,6 @@ const API_PATH = "https://moria.lazsoc.ca"
 
 @Injectable()
 export class WebAPI {
-
   constructor(public http:Http) { }
 
   getNewsfeed(club?):Promise<any[]>{
@@ -63,7 +62,7 @@ export class WebAPI {
 
   getArticles():Promise<any[]>{    
     return new Promise((resolve,reject) => {
-        this.http.get("http://localhost:3000/api/get_articles.json").map(res => res.json()).toPromise()
+        this.http.get(`http://localhost:3000/api/get_articles.json`).map(res => res.json()).toPromise()
         .then(res => {
           console.log(res)
           resolve(res);
@@ -98,7 +97,7 @@ export class WebAPI {
 
   registerForEvent(id:number){
     return new Promise((resolve,reject) => {
-      this.http.get("http://localhost:3000/v2/api/events/register/"+id).map(res => res.json()).toPromise()
+      this.http.get(`${API_PATH}/v2/api/events/register/`+id).map(res => res.json()).toPromise()
       .then(res => {
         resolve(res.events);
       }).catch(err => reject(err));
@@ -147,7 +146,7 @@ export class WebAPI {
 
 
   submitJobApplication(data:JobPostingApplication){
-    this.http.post('http://localhost:3000/api/submit_job_app',{job_posting_application:data}).subscribe(res => {
+    this.http.post(`${API_PATH}/api/submit_job_app`,{job_posting_application:data}).subscribe(res => {
       console.log(res);
     });
   }

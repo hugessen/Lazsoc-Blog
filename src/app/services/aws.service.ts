@@ -6,14 +6,15 @@ import * as AWS from 'aws-sdk';
 export class AwsService {
 	s3;
   constructor() {
-    this.s3 = new AWS.S3();
+    this.s3 = new AWS.S3({apiVersion: '2006-03-01'});
     AWS.config.accessKeyId = environment.aws_access;
     AWS.config.secretAccessKey = environment.aws_secret;
   }
 
-  uploadToAWS(file){
+  uploadToAWS(file,fileName?){
+    var key = fileName ? fileName : file.name;
     var bucket = new AWS.S3({params: {Bucket: 'lazsoc-images'}});
-    var params = {Bucket: 'lazsoc-images', Key: file.name, Body: file};
+    var params = {Bucket: 'lazsoc-images', Key: key, Body: file};
     bucket.upload(params, function (err, data) {
       console.log(err, data);
     });   

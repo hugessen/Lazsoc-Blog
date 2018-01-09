@@ -16,9 +16,11 @@ h6 {
 }
 
 .active {
-  border-left:6px solid #FCB518;
+  background-color: white !important;
+  border-left:6px solid #FCB518 !important;
   padding-left:9px;
-  color:black;
+  font-family:Lato-Semibold;
+  color:black !important;
 }
 
 .side-heading {

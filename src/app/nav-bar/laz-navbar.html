@@ -2,7 +2,7 @@
   <a class="navbar-brand" routerLink="/newsfeed">
     <img src="../../assets/img/LazsocWhiteLogo.png" width="auto" height="105" class="ml-3" alt="">
   </a>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav" *ngIf="url.url != '/compose'">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav mr-4">
       <li class="nav-item mr-4">
         <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">EVENTS</a>
@@ -32,27 +32,17 @@
         <!-- <a class="nav-link" data-toggle="modal" data-target="#myModal">LOGIN</a> -->
         <a class="nav-link" routerLink="/login">LOGIN</a>
       </li>
-      <li class="nav-item dropdown" *ngIf="(authService.userSignedIn$) && url.url != '/update'">
+      <li class="nav-item dropdown" *ngIf="(authService.userSignedIn$) && !isUpdate()">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer">
           PROFILE
         </a>
         <div class="dropdown-menu profile-dropdown" aria-labelledby="navbarDropdownMenuLink" >
-          <a class="dropdown-item" routerLink="/profile/{{authService.currentUser().id}}">View Profile</a>
+          <!-- <a class="dropdown-item" routerLink="/profile/{{authService.currentUser().id}}">View Profile</a> -->
           <a class="dropdown-item" routerLink="/update">Update Profile Info</a>
           <a class="dropdown-item" style="cursor:pointer" (click)="signOut()">Sign Out</a>
         </div>
       </li>
     </ul>
-  </div>
-  <div class="collapse navbar-collapse" *ngIf="url.url == '/compose'">
-    <div class="storyboard">
-      <span class="story">STORY</span><span class="board">BOARD</span>
-    </div>
-    <div>
-      <button class="btn publish-btn">
-        <span class="publish-text">Publish</span>
-      </button>
-    </div>
   </div>
 </nav>
 <nav class="gold-bar sticky-top">

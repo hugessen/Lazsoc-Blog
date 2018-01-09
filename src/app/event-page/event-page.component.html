@@ -1,28 +1,4 @@
 <div class="container-fluid">
-  <!-- <div class="row justify-content-center">
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4 pr-1">
-      <div class="card card-1">
-        <div class="card-block card-1-block">
-          <span class="event-title">{{event.title}}</span><br>
-          <a class="event-club-subheading" routerLink="/clubs/{{club.id}}">{{club.name}}</a><br>
-          <span class="datetime-location">{{event.start_date_time | getLongDate}}</span><br>
-          <span class="datetime-location">{{event.location}}</span>
-          <br><br>
-          <div class="register-button" style="cursor: pointer">
-            <span class="register-text" (click)="registerForEvent()">Register</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-8 col-md-8 col-lg-8 mt-4 pl-1">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="{{event.banner}}" class="card-img-top event-banner" *ngIf="event.banner != ''">
-          <img src="assets/img/{{club.app_banner}}" class="card-img-top event-banner" *ngIf="event.banner === ''">
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="row justify-content-center">
     <div class="col-sm-11 col-md-11 col-lg-11 col-xl-11 mt-4">
       <div class="d-flex flex-row">
@@ -46,7 +22,7 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-9 col-md-9 col-lg-9 mt-2 pr-1">
+    <div class="col-sm-11 col-md-11 col-lg-11 mt-2 pr-1">
       <div class="card">
         <div class="card-block">
           <div class="row">
@@ -73,14 +49,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-2 col-md-2col-lg-2 mt-2 pl-1">
-      <div class="card">
-        <div class="card-block" style="text-align:center">
-          <span class="card-4-surprise">102</span><br>
-          <span class="surprise-subtext">People attending</span>
         </div>
       </div>
     </div>

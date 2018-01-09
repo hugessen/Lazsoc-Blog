@@ -41,10 +41,9 @@
             <span class="article-title p-3">{{event.title}}</span>
           </div>
         </div>
-        <div class="card-footer py-2">
-          <img src="assets/img/icons/Like.svg" class="icon">
-          <img src="assets/img/icons/Save.svg" class="icon">
-          <img src="assets/img/icons/Share.svg" class="icon">
+        <div class="card-footer py-2 px-4">
+          <span class="footer-text">{{event.total_votes}} Likes</span>
+          <span class="footer-text" style="float:right">{{event.comments.length}} Comments</span>
         </div>
       </div>
     </div>

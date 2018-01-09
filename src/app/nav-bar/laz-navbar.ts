@@ -11,11 +11,10 @@ import { AuthService } from "../services/auth.service";
 export class LazNavbar implements OnInit {
   state = "login";
   modalActions = new EventEmitter<string>();
-  url;
+  url:any = {url:""};
 
   constructor(public router:Router, public authService:AuthService){
     router.events.subscribe((url) => {
-      console.log(url);
       this.url = url;
     });
   };
@@ -27,6 +26,10 @@ export class LazNavbar implements OnInit {
   signOut(){
     this.authService.logOutUser();
     location.reload();
+  }
+
+  isUpdate(){
+    return this.url.url == "/update";
   }
 
 }

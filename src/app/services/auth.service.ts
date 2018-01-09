@@ -116,11 +116,25 @@ export class AuthService implements OnInit {
     })
   }
 
-  getBean(id: number): Promise<any> {
-  return this.getBeans()
-   .then(beans => beans.find(bean => bean.id === id));
-  }
+  // getBean(id: number): Promise<any> {
+  //   return new Promise((resolve,reject) => {
+  //     this.getBeans()
+  //     .then(beans => {
+  //       resolve(beans.find(bean => bean.id === id)
+  //     });
+  //   })
+  // }
 
+
+  getUser(id: number): Promise<any> {
+    return new Promise((resolve,reject) => {
+      this.apiGet('users/get_user').then(res => {
+        console.log(res);
+        resolve(res);
+      })
+    })
+  }
+  
   apiGet(path:string, data:any = null):Promise<any>{
      return new Promise((resolve,reject)=> {
       this.authService.get(path,data).map(res => res.json()).toPromise()
