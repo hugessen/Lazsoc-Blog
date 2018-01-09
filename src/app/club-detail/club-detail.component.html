@@ -13,18 +13,11 @@
             <div class="col-sm-9 col-md-9 col-lg-9" style="padding-left:20px;">
 							<div class="d-flex flex-row mb-2 justify-content-start">
 								<span class="club-title">{{club.name}}</span>
-								<!-- <div class="subscribe-btn ml-auto">
-									<span class="subscribe-btn-text" style="cursor: pointer;">Subscribe</span>
-								</div> -->
 							</div>
               <span class="club-tags" *ngFor="let tag of club.club_tags; let i = index">
 								<span *ngIf="i > 0">&bull;</span>
 								{{tag.tag}}
 							</span>
-              <hr>
-              <span class="club-detail-text">
-                {{club.description}}
-              </span>
               <br>
             </div>
           </div>

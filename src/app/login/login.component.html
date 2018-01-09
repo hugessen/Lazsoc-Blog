@@ -1,6 +1,9 @@
 <div class="container-fluid">
   <div class="d-flex justify-content-center mt-4">
     <div class="container-fluid mt-4 justify-content-center">
+      <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+        {{error}}
+      </div>
       <div *ngIf="state == 'login'">
         <h1>Sign in</h1>
         <div class="forum_container">
@@ -31,7 +34,10 @@
               <img src="assets/img/Lazsoc-logo.png" style="width:100px; height:auto; margin-bottom:10px;">
               <form class="login-form">
                 <span class="err-msg" *ngIf="hasRegisterError">Invalid login credentials. Please try again.</span>
-                <input type="email" placeholder="Email" name="email" [(ngModel)]="registerObj.email"/>
+                <div class="d-flex flex-row">
+                  <input type="email" placeholder="email" maxlength="8" name="email" class="email" [(ngModel)]="registerObj.email"/>
+                  <span class="mylaurier ml-2">@mylaurier.ca</span>
+                </div>
                 <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
                 <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
                 <button (click)="registerUser()">Create Account</button>

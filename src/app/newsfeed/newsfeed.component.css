@@ -266,4 +266,10 @@ h5 {
   width:100%;
   height:auto;
 }
+
+.delete-btn {
+  cursor:pointer;
+  font-family: Lato-Regular;
+  color:#1677CB;
+}
     

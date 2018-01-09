@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   };
   hasLoginError = false;
   hasRegisterError = false;
+  errors = [];
   constructor(public authService: AuthService, public tokenService: Angular2TokenService, public webAPI:WebAPI, public route: ActivatedRoute, public router:Router){
     // this.authToken.init(environment.token_auth_config);
   }
@@ -51,7 +52,14 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser(){
-    console.log("Registering");
+    this.errors = [];
+    if (!this.isValidEmail(this.registerObj.email))
+      this.errors.push("Invalid @mylaurier email");
+    if (this.registerObj.password != this.registerObj.passwordConfirmation)
+      this.errors.push("Passwords don't match");
+    if (this.errors.length > 0) 
+      return;
+    this.registerObj.email = `${this.registerObj.email}@mylaurier.ca`
     this.authService.registerUser(this.registerObj).subscribe(
         res => {
           if(res.status == 200){
@@ -67,6 +75,17 @@ export class LoginComponent implements OnInit {
           // this.onFormResult.emit({signedIn: false, err});
         }
     );
+  }
+  isValidEmail(email) {
+    return email.length == 8 && this.isChars(email.substring(0,4)) && this.isNumeric(email.substring(4));
+  }
+
+  isChars(str){
+    return /^[a-zA-Z]/.test(str);
+  }
+
+  isNumeric(str){
+    return /^\d+$/.test(str); //Somehow this checks if a value is numeric. Unfortunately isNaN() doesn't like strings in TypeScript
   }
 
 }

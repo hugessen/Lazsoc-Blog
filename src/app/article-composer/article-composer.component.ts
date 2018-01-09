@@ -14,11 +14,15 @@ import * as $ from 'jquery';
 })
 export class ArticleComposerComponent implements OnInit {
 
+  cover_photo:any;
+  submissionError = false;
+
   public options: Object = {
     placeholder: "Edit Me",
     toolbarButtons:['bold', 'italic', 'underline', 'fontSize', '|', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage'],
     fontSize: ['2.5','8', '10', '12', '14', '18', '30', '60', '96'],
-    height: 500
+    height: 500,
+    imageOutputSize: true
   //   imageUploadToS3: {
   //     bucket: 'lazsoc-images',
   //     // Your bucket region.
@@ -55,25 +59,31 @@ export class ArticleComposerComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.editorContent);
+    let cover_url = null
+    if (this.hasCover) {
+      cover_url = this.randomString(10); 
+      this.awsService.uploadToAWS(this.cover_photo, cover_url);
+    }
     this.article = {
+      cover_url: cover_url ? `https://s3.us-east-2.amazonaws.com/lazsoc-images/${cover_url}` : null,
       title: this.title,
       body: this.editorContent
     }
     this.authService.apiPost('post_article', this.article).then(res => {
       console.log(res)
       this.router.navigate(['./newsfeed']);
-    });
+    }).catch(err => this.submissionError = true);
   }
 
   readUrl(event:any) {
     if (event.target.files && event.target.files[0]) {
       this.hasCover = true;
+      this.cover_photo = event.target.files[0];
       var reader = new FileReader();
       reader.onload = (event:any) => {
         $('#cover').attr('src', event.target.result);
         var cover = document.querySelector('#cover');
-        this.doCropper(cover);
+        // this.doCropper(cover);
       }
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -110,5 +120,14 @@ export class ArticleComposerComponent implements OnInit {
 
     // });
     // this.awsService.uploadToAWS(data,"Cover.jpg");
+  }
+
+  randomString(len) {
+    let charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var randStr = '';
+    for (var i = 0; i < len; i++) {
+        randStr += charSet[Math.floor(Math.random() * charSet.length)];
+    }
+    return randStr;
   }
 }

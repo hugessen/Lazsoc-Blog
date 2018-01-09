@@ -86,6 +86,22 @@ export class NewsfeedComponent implements OnInit {
     } else return true;
   }
 
+  didUserPublish(article) {
+    if (!this.authService.userSignedIn$)
+      return false;
+    return this.authService.currentUser().id == article.user_id;
+  }
+
+  deleteArticle(articleID) {
+    this.authService.apiGet(`delete_article/${articleID}`).then(deletedID => {
+      console.log("Deleted");
+      _.remove(this.events,function(article) {
+        return article.typeof == "article" && article.id == deletedID;
+      });
+      console.log(this.events);
+    })
+  }
+
   addTagFilter(tag){
     this.tagFilters.push(tag);
   }

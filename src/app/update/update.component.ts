@@ -46,8 +46,7 @@ export class UpdateComponent implements OnInit {
   // fileChangeEvents(fileInput: any) {
   //     this.updateObj.avatar_file = fileInput.target.files;
   //   }
-
-
+  
   fileEvent(fileInput: any){
     var file = fileInput.target.files[0];
     this.awsService.uploadToAWS(file);

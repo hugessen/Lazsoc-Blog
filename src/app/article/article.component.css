@@ -3,6 +3,10 @@
 	font-size:20px;
 }
 
+.article-cover {
+	width:100%;
+}
+
 .article-title {
 	font-family: Lato-Black;
 	font-size:40px;
@@ -67,7 +71,7 @@ textarea {
 .delete-btn {
 	cursor:pointer;
 	font-family: Lato-Regular;
-	color:lightblue;
+	color:#1677CB;
 }
 
 .article-body img { 

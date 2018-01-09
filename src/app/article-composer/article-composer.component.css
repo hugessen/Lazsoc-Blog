@@ -24,7 +24,7 @@ input {
 
 .crop-container img {
   max-width: 100%; /* This rule is very important, please do not ignore this! */
-  max-height:350px;
+  /*max-height:350px;*/
 }
 
 .crop-container {
@@ -60,6 +60,13 @@ input {
   font-family:Lato-Regular;
   font-size:14px;
   color:rgb(67,48,137);;
+}
+
+.cover-img {
+  width: 100%;
+  height:auto;
+  display:block;
+  margin:auto;
 }
 
 /*For the navbar*/
