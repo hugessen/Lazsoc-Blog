@@ -22,7 +22,6 @@ export class ClubDetailComponent implements OnInit {
       .switchMap((params: ParamMap) =>
         this.webAPI.getClub(+params.get('id')))
           .subscribe((club) => {
-            console.log(club);
             this.club = club
           });
     this.fullTeam = this.getFullTeam();

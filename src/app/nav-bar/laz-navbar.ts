@@ -23,11 +23,6 @@ export class LazNavbar implements OnInit {
 
   }
 
-  signOut(){
-    this.authService.logOutUser();
-    location.reload();
-  }
-
   isUpdate(){
     return this.url.url == "/update";
   }

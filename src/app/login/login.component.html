@@ -21,7 +21,7 @@
               <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
               <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
               <button (click)="signIn()" data-dismiss="modal">login</button>
-              <p class="message">Not Registered? <a (click)="state = 'register'" style="cursor:pointer">Create an account</a></p>
+              <p class="message">Not Registered? <a (click)="state = 'register'" style="cursor:pointer"><u>Create an account</u></a></p>
             </form>
           </div>
         </div>
@@ -41,7 +41,7 @@
                 <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
                 <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
                 <button (click)="registerUser()">Create Account</button>
-                <p class="message">Already Registered? <a (click)="state = 'login'" style="cursor:pointer">Sign-in</a></p>
+                <p class="message">Already Registered? <a (click)="state = 'login'" style="cursor:pointer"><u>Sign-in</u></a></p>
               </form>
             </div>
         </div>

@@ -63,9 +63,7 @@ export class LoginComponent implements OnInit {
     this.authService.registerUser(this.registerObj).subscribe(
         res => {
           if(res.status == 200){
-            console.log("Successful Registration",res);
             this.router.navigateByUrl('/update');
-            console.log(this.tokenService.currentUserData);
             // this.onFormResult.emit({signedIn: true, res});
           }
         },

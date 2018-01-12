@@ -62,9 +62,9 @@ export class WebAPI {
 
   getArticles():Promise<any[]>{    
     return new Promise((resolve,reject) => {
-        this.http.get(`http://localhost:3000/api/get_articles`).map(res => res.json()).toPromise()
+        this.http.get(`${API_PATH}/api/get_articles`).map(res => res.json()).toPromise()
         .then(res => {
-          console.log(res);
+          // console.log(res);
           resolve(res);
         }).catch(err => reject(err));
       })  
@@ -72,9 +72,9 @@ export class WebAPI {
 
   getArticle(id: number):Promise<any>{    
     return new Promise((resolve,reject) => {
-        this.http.get(`http://localhost:3000/api/get_article/${id}`).map(res => res.json()).toPromise()
+        this.http.get(`${API_PATH}/api/get_article/${id}`).map(res => res.json()).toPromise()
         .then(res => {
-          console.log(res);
+          // console.log(res);
           resolve(res);
         }).catch(err => reject(err));
       })
@@ -183,7 +183,7 @@ export class WebAPI {
 
   trimJobPostings(jobPostings){
     return jobPostings.filter(function(posting){
-      var currentTime = new Date().getTime();
+      let currentTime = new Date().getTime();
       return Date.parse(posting.expiry_date) > currentTime;
     })
   }

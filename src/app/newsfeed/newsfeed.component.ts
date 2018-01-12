@@ -31,13 +31,11 @@ export class NewsfeedComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("club id: " + this.clubID);
     Observable.forkJoin([
       Observable.fromPromise(this.webAPI.getNewsfeed(this.clubID)),
       Observable.fromPromise(this.webAPI.getClubs())
     ]).subscribe(data => {
       [this.events, this.clubs] = data;
-      console.log(this.events);
       this.hasEvents = this.checkHasEvents();
     })
   }
@@ -93,13 +91,14 @@ export class NewsfeedComponent implements OnInit {
   }
 
   deleteArticle(articleID) {
-    this.authService.apiGet(`delete_article/${articleID}`).then(deletedID => {
-      console.log("Deleted");
-      _.remove(this.events,function(article) {
-        return article.typeof == "article" && article.id == deletedID;
-      });
-      console.log(this.events);
-    })
+    if (confirm("Are you sure you want to delete this?") == true) {
+      this.authService.apiGet(`delete_article/${articleID}`).then(deletedID => {
+        _.remove(this.events,function(article) {
+          return article.typeof == "article" && article.id == deletedID;
+        });
+      })
+    }
+
   }
 
   addTagFilter(tag){

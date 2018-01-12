@@ -30,7 +30,8 @@
       <div class="card mt-3" *ngIf="event.typeof == 'article'">
         <div class="card-block">
           <div class="d-flex flex-row">
-            <img src="assets/img/Blank Avatar.jpg" class="club-avatar mr-3">
+            <img src="assets/img/Blank Avatar.jpg" class="club-avatar mr-3" *ngIf="!event.user_avatar">
+            <img [src]="event.user_avatar" class="club-avatar mr-3" *ngIf="event.user_avatar">
             <div class="d-flex flex-column">
               <span class="club-title">{{event.author}}</span>
               <span class="card-datetime">{{event.created_at | getPublicationDate }}</span>
@@ -43,9 +44,10 @@
           </div>
         </div>
         <div class="card-footer py-2 px-4">
-          <span class="footer-text" *ngIf="event.total_votes != 1">{{event.total_votes}} Likes</span>
-          <span class="footer-text" *ngIf="event.total_votes == 1">1 Like</span>
-          <span class="footer-text" style="float:right">{{event.comments.length}} Comments</span>
+          <span class="footer-text" *ngIf="event.total_votes != 1">{{event.total_votes}} Likes &nbsp; </span>
+          <span class="footer-text" *ngIf="event.total_votes == 1">1 Like &nbsp; </span>
+          <span class="footer-text" *ngIf="event.comments.length != 1">&bull; &nbsp;{{event.comments.length}} Comments</span>
+          <span class="footer-text" *ngIf="event.comments.length == 1">&bull; &nbsp; 1 Comment</span>
         </div>
       </div>
     </div>

@@ -10,6 +10,13 @@ h5 {
   margin: 0;
 }
 
+.job-title {
+  font-family:Lato-Bold;
+  font-size:16px;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
 .card {
   font-size: 1em;
   overflow: hidden;
@@ -278,4 +285,10 @@ h5 {
   font-family: Lato-Regular;
   font-size: 14px;
   color:#83868a;;
+}
+
+.made-with-love {
+  font-family: Lato-Regular;
+  font-size:12px;
+  color:#83868A;
 }

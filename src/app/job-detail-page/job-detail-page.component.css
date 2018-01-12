@@ -54,3 +54,7 @@
   border:1px solid darkgrey;
   border-radius: 0;
 }
+
+select {
+  border: 1px solid darkgrey;
+}

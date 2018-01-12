@@ -8,6 +8,7 @@ export class JobPosting {
   job_posting_descriptions:any[];
   title:string;
   updated_at:string;
+  expiry_date:any;
 
   constructor(){
 

@@ -85,3 +85,11 @@
 .pointer {
   cursor:pointer;
 }
+
+.feedback {
+  background-color: #F2A900;
+  font-family:Lato-Regular;
+  color:white;
+  transform: translateX(-100%);
+  cursor:pointer;
+}

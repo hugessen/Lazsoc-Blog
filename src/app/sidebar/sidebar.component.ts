@@ -41,8 +41,8 @@ export class SidebarComponent {
 export class ProfileSidebar implements OnInit {
 
   constructor(public authService:AuthService, public tokenService:Angular2TokenService, private router:Router) {
-    console.log("Auth SErvice:",authService);
-    console.log("profile sidebar says: ", tokenService.currentUserData);
+    // console.log("Auth Service:",authService);
+    // console.log("profile sidebar says: ", tokenService.currentUserData);
   }
 
   ngOnInit() {
@@ -103,7 +103,7 @@ export class SocialLinksSidebar implements OnInit {
   @Input() club: Club;
 
   constructor(public elementRef: ElementRef) {
-    console.log("Club", this.club);
+    // console.log("Club", this.club);
     // for(let link in this.club.club_social_links){
     //   console.log(this.club.club_social_links[link]);
     // }

@@ -14,6 +14,7 @@ export class JobDetailPageComponent implements OnInit {
   public club:Club = new Club();
   public errors = [];
   public jobApplication:JobPostingApplication = new JobPostingApplication();
+  submitted = false;
 
   constructor( public route: ActivatedRoute, public router: Router, public webAPI: WebAPI ) {
 
@@ -23,10 +24,10 @@ export class JobDetailPageComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) =>
         this.webAPI.getJobPosting(+params.get('id')))
-      .subscribe((event) => {
-          this.webAPI.getClub(+event.club_id).then(res => {
+      .subscribe((posting) => {
+          this.webAPI.getClub(+posting.club_id).then(res => {
             this.club = res;
-            this.posting = event;
+            this.posting = posting;
             this.initApplication(this.posting.id,this.posting.job_posting_questions);
           })
       });
@@ -51,10 +52,12 @@ export class JobDetailPageComponent implements OnInit {
   }
 
   submitJobApp():void {
-    console.log(this.jobApplication);
+    if (this.submitted) return;
     this.errors = this.validateSubmission();
-    if(this.errors.length == 0)
+    if(this.errors.length == 0) {
       this.webAPI.submitJobApplication(this.jobApplication);
+      this.submitted = true;
+    }
     else this.topFunction();
   }
 

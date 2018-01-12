@@ -44,21 +44,21 @@ input {
 .cover-background {
   background-color: rgba(67,48,137,0.05);
   vertical-align: middle;
-  padding-top:65px;
-  height:250px;
+  padding-top:100px;
+  height:400px;
   width:100%;
   text-align:center;
 }
 .cover-background img {
   display: block;
   margin: auto;
-  max-width:10%;
+  max-width:13%;
   height:auto;
 }
 .cover-text {
   margin-top:5px;
   font-family:Lato-Regular;
-  font-size:14px;
+  font-size:16px;
   color:rgb(67,48,137);;
 }
 
@@ -111,4 +111,14 @@ input {
 .navbar {
   background-color:rgba(66,44,137,1); 
   height:70px;
+}
+
+.delete-cover {
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  width:70px;
+  height:70px;
+  background-color:#F2A900;
+  transform: translate(1600%,50%);
 }

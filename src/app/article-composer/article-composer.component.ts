@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import * as Crypto from 'crypto-js';
 import * as Cropper from 'cropperjs';
 import * as $ from 'jquery';
+// import * as froalaS3 from 'wysiwyg-editor-node-sdk/lib/s3.js';
 
 @Component({
   selector: 'app-article-composer',
@@ -17,33 +18,6 @@ export class ArticleComposerComponent implements OnInit {
   cover_photo:any;
   submissionError = false;
 
-  public options: Object = {
-    placeholder: "Edit Me",
-    toolbarButtons:['bold', 'italic', 'underline', 'fontSize', '|', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage'],
-    fontSize: ['2.5','8', '10', '12', '14', '18', '30', '60', '96'],
-    height: 500,
-    imageOutputSize: true
-  //   imageUploadToS3: {
-  //     bucket: 'lazsoc-images',
-  //     // Your bucket region.
-  //     region: 's3-us-east-2',
-  //     keyStart: 'article_images/',
-  //     params: {
-  //       acl: 'public-read', // ACL according to Amazon Documentation.
-  //       AWSAccessKeyId: environment.aws_access, // Access Key from Amazon.
-  //       AWSSecretAccessKey: environment.aws_secret,
-  //       policy: btoa(`
-  //         { "expiration": "${new Date(new Date().getTime() + 12 * 60 * 60 * 1000).toISOString()}",
-  //           "conditions": [
-  //             {"acl": "public-read" },
-  //             {"bucket": "lazsoc-images" }
-  //           ]
-  //       }`), // Policy string computed in the backend.
-  //       signature: this.awsService.getSignatureKey(Crypto,environment.aws_access,this.getDatestamp(),'us-east-2','s3'), // Signature computed in the backend.
-  //   }
-  // }
-  }
-
   editorContent = "";
   editorView = true;
   article:{};
@@ -52,7 +26,36 @@ export class ArticleComposerComponent implements OnInit {
   hasCover = false;
   cropper:any;
   url:any;
+  froalaConfigs;
   constructor(public authService: AuthService, private router: Router, public awsService:AwsService) {
+    var configs = {
+      bucket: 'lazsoc-images',
+      region: 'us-east-2',
+      keyStart: 'article_images',
+      acl: 'public-read',
+      accessKey: environment.aws_access,
+      secretKey: environment.aws_secret
+    }
+     
+    let s3Hash = this.awsService.getHash(configs);
+
+    this.froalaConfigs = {
+      placeholder: "Edit Me",
+      toolbarButtons:['bold', 'italic', 'underline', 'fontSize', '|', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage'],
+      fontSize: ['2.5','8', '10', '12', '14', '18', '30', '60', '96'],
+      height: 500,
+      imageOutputSize: true,
+      imageDefaultWidth: 700,
+      // imageUploadToS3: s3Hash,
+      key: 'rgmwA-21d1sD1qr=='
+    }
+    var changes = false;  
+    // Enable navigation prompt
+    window.onbeforeunload = function() {
+        return true;
+    };
+    // Remove navigation prompt
+    window.onbeforeunload = null;
   }
 
   ngOnInit() {
@@ -61,7 +64,7 @@ export class ArticleComposerComponent implements OnInit {
   submit(){
     let cover_url = null
     if (this.hasCover) {
-      cover_url = this.randomString(10); 
+      cover_url = `article-${this.awsService.randomString(10)}`; 
       this.awsService.uploadToAWS(this.cover_photo, cover_url);
     }
     this.article = {
@@ -122,12 +125,9 @@ export class ArticleComposerComponent implements OnInit {
     // this.awsService.uploadToAWS(data,"Cover.jpg");
   }
 
-  randomString(len) {
-    let charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var randStr = '';
-    for (var i = 0; i < len; i++) {
-        randStr += charSet[Math.floor(Math.random() * charSet.length)];
-    }
-    return randStr;
+  removeCover() {
+    this.cover_photo = null;
+    this.hasCover = false;
+    $('#cover').attr('src', "");
   }
 }

@@ -1,7 +1,7 @@
 <div class="container-fluid" style="background-color:white">
   <div class="row justify-content-center">
     <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8" style="margin-bottom:100px">
-      <img src="{{article.cover_url}}" class="article-cover">
+      <img src="{{article.cover_url}}" class="article-cover" *ngIf="article.cover_url">
       <span class="article-title mt-4">{{article.title}}</span>
       <br><br>
       <div class="article-body" [innerHTML]="article.body">

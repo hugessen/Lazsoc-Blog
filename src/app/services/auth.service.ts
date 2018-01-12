@@ -10,7 +10,7 @@ export class AuthService implements OnInit {
 
   constructor(public authService:Angular2TokenService, public http:Http)  {
     this.authService.init({
-        apiBase:                    'http://localhost:3000/api',
+        apiBase:                    'https://moria.lazsoc.ca/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -54,7 +54,7 @@ export class AuthService implements OnInit {
           if(res.status == 200){
             console.log("Signed in");
             this.userSignedIn$ = true;
-            console.log(authService.currentUserData);
+            // console.log(authService.currentUserData);
           }
           else {
             console.log("Sign in failed");
@@ -129,7 +129,7 @@ export class AuthService implements OnInit {
   getUser(id: number): Promise<any> {
     return new Promise((resolve,reject) => {
       this.apiGet('users/get_user').then(res => {
-        console.log(res);
+        // console.log(res);
         resolve(res);
       })
     })

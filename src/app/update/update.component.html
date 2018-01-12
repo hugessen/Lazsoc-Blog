@@ -6,12 +6,17 @@
         <div class="card-block">
           <div class="form-group">
             <div class="d-flex flex-row align-items-end">
-              <div class="d-flex flex-column mr-4 align-items-center mr-3" style="width:47%">
-                <!-- <input type="file" name="file" id="file" class="inputfile" (change)="fileEvent($event)" />
-                <label for="file" style="cursor:pointer">
-                  <img src="assets/img/Upload.png" class="upload-img">
-                  <p class="mb-0"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Upload Profile Photo</p>
-                </label>  -->
+              <div class="d-flex flex-column mr-4 align-items-center mr-3">
+                <input type="file" name="file" id="file" class="inputfile" (change)="fileEvent($event)" />
+                <label for="file" class="upload-container" style="cursor:pointer; text-align:center">
+                  <span><img src="assets/img/icons/edit.svg" style="width:15px">&nbsp;Edit</span>
+                  <div class="upload-img mt-2">
+                    <img src="assets/img/Blank Avatar.jpg" id="avatar" *ngIf="!updateObj.image">
+                    <img [src]="updateObj.image" id="avatar" *ngIf="updateObj.image">
+                  </div>
+                  <span>Images look best when square sized. <br>Make sure they're square using 
+                  <a href="https://croppola.com/" target="_blank">this</a></span>
+                </label> 
               </div>
 <!--               <div class="d-flex flex-column ml-2" style="width:45%">
                 <label for="firstname">Email Address (Username)</label>
@@ -21,7 +26,7 @@
               </div> -->
             </div>
 
-            <div class="d-flex flex-row flex-wrap">
+            <div class="d-flex flex-row flex-wrap mt-3">
               <div class="form-element mr-2">
                 <label for="firstname">First Name</label>
                 <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.first_name">

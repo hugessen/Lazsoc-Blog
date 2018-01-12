@@ -3,8 +3,12 @@ import { LazNavbar } from './nav-bar/laz-navbar';
 import { HttpModule } from '@angular/http';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import "froala-editor/js/froala_editor.pkgd.min.js";
+import * as $ from 'jquery';
+window["$"] = $;
+window["jQuery"] = $;
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
-// import { Ng2FittextModule } from 'ng2-fittext/ng2fittext';
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { RouterModule, Routes, Router } from '@angular/router';
@@ -89,7 +93,7 @@ import { DiscountComponent } from './discount/discount.component';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard],
+  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

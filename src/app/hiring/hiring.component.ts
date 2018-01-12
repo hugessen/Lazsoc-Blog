@@ -19,7 +19,6 @@ export class HiringComponent implements OnInit {
       Observable.fromPromise(webAPI.getClubs())
     ]).subscribe(data => {
       [this.jobPostings, this.clubs] = data;
-      console.log(this.jobPostings)
     })
   }
 

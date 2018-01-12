@@ -26,7 +26,7 @@ h2 {
   font-family:Lato-Black;
 }
 
-p {
+span {
 	font-family: Lato-Light;
 }
 
@@ -35,13 +35,26 @@ p {
 }
 
 .upload-img {
-  max-width:150px;
-  background-color:lightgreen;
+  width:150px;
+  height:150px;
+  transform: translateX(50px);
+  overflow: hidden;
   border-radius: 50%;
+  border: 3px solid #D4D4D4;
 }
 
-.upload-img {
-  width: 100%;
+.upload-img img {
+  z-index: -1 !important;
+  display: block;
+  position: relative;
+  height:100%;
+  width:auto;
+}
+
+.upload-container {
+  display: block;
+  position: relative;
+  transform: translateX(120%);
 }
 
 .inputfile {

@@ -16,6 +16,7 @@ export class UpdateComponent implements OnInit {
     first_name:"",
     last_name:"",
     program:"",
+    image:"",
     summary:"",
     is_bean:"",
     profile_header:"",
@@ -31,12 +32,14 @@ export class UpdateComponent implements OnInit {
     company:""
   }];
   // @ViewChild('fileInput') fileInput;
+  imageUploaded = false;
+  newAvatar:any;
   public currentUser;
   profileImg = "assets/img/Upload.png";
 
   constructor(public authService:AuthService, public awsService:AwsService) {
     this.currentUser = authService.currentUser();
-    console.log(this.currentUser);
+    // console.log(this.currentUser);
     this.initUpdateObj();
   }
 
@@ -47,9 +50,16 @@ export class UpdateComponent implements OnInit {
   //     this.updateObj.avatar_file = fileInput.target.files;
   //   }
   
-  fileEvent(fileInput: any){
-    var file = fileInput.target.files[0];
-    this.awsService.uploadToAWS(file);
+  fileEvent(event: any){
+    this.newAvatar = event.target.files[0];
+    this.imageUploaded = true;
+    var reader = new FileReader();
+      reader.onload = (event:any) => {
+        $('#avatar').attr('src', event.target.result);
+        // this.doCropper(cover);
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    // this.awsService.uploadToAWS(file);
   }
 
   getPic(){
@@ -68,13 +78,17 @@ export class UpdateComponent implements OnInit {
   }
   removeWorkExp(index){
     this.work_experiences_attributes.splice(index,1);
-    console.log(this.work_experiences_attributes);
+    // console.log(this.work_experiences_attributes);
   }
 
   postUpdates(){
+    if (this.imageUploaded) {
+      let avatarUrl = `user-${this.awsService.randomString(10)}`;
+      this.updateObj.image = `https://s3.us-east-2.amazonaws.com/lazsoc-images/${avatarUrl}`;
+      this.awsService.uploadToAWS(this.newAvatar,avatarUrl);
+    }
     this.authService.updateUser(this.updateObj).then(res => {
-      console.log("Res:", res);
-      console.log(this.authService.authService.currentUserData);
+      // console.log(res);
     })
   }
 
@@ -84,6 +98,7 @@ export class UpdateComponent implements OnInit {
         first_name:this.currentUser.first_name,
         last_name:this.currentUser.last_name,
         program:this.currentUser.program,
+        image:this.currentUser.image,
         summary:this.currentUser.summary,
         is_bean:this.currentUser.isBean,
         profile_header:this.currentUser.profile_header,
