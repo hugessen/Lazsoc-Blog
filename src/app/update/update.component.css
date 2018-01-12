@@ -26,10 +26,42 @@ h2 {
   font-family:Lato-Black;
 }
 
-p {
+span {
 	font-family: Lato-Light;
 }
 
 .form-group[_ngcontent-c2] label[_ngcontent-c2] {
 	font-family: Lato-Semibold;
+}
+
+.upload-img {
+  width:150px;
+  height:150px;
+  transform: translateX(50px);
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #D4D4D4;
+}
+
+.upload-img img {
+  z-index: -1 !important;
+  display: block;
+  position: relative;
+  height:100%;
+  width:auto;
+}
+
+.upload-container {
+  display: block;
+  position: relative;
+  transform: translateX(120%);
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }

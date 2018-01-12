@@ -25,7 +25,6 @@ export class OurTeamComponent implements OnInit {
 				this.webAPI.getNewsfeed(club).then(res => {
 					this.club = club;
 					this.newsfeed = res;
-					console.log("Newsfeed", this.newsfeed);
 				})
 
 

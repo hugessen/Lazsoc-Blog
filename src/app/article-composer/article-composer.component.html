@@ -1,16 +1,51 @@
-<div class="row justify-content-center">
-  <div class="col-sm-9 col-md-9 col-lg-9">
-    <div class="btn btn-primary" (click)="editorView = !editorView">
-      Preview
+<nav class="navbar sticky-top navbar-toggleable-md navbar-inverse bg-faded nav" onunload="areYouSure();">
+  <a class="navbar-brand" routerLink="/newsfeed">
+    <img src="../../assets/img/LazsocWhiteLogo.png" width="auto" height="105" class="ml-3" alt="">
+  </a>
+  <div class="collapse navbar-collapse">
+    <div class="storyboard">
+      <span class="story">STORY</span><span class="board">BOARD</span>
     </div>
-    <br><br>
-    <div [froalaEditor]="options" [(froalaModel)]="editorContent" *ngIf="editorView"></div>
-    <br><br>
-      <div class="card" *ngIf="!editorView">
-        <div class="card-block">
-          <div [froalaView]="editorContent"></div>
+    <div>
+      <button class="btn publish-btn" (click)="submit()">
+        <span class="publish-text">Publish</span>
+      </button>
+    </div>
+  </div>
+</nav>
+<nav class="gold-bar sticky-top"></nav>
+<div class="alert alert-danger" role="alert">
+  <strong>Warning:</strong> closing this tab will result in losing any unsaved work
+</div>
+<input type='file' name="file" id="file" class="inputfile" (change)="readUrl($event)">
+<div class="row justify-content-center">
+  <div class="col-sm-11 col-md-11 col-lg-11 mt-4">
+    <div class="card">
+      <div class="card-block">
+        <label for="file" class="cover-background" *ngIf="!hasCover" style="cursor:pointer">
+          <img src="assets/img/UploadCover.png">
+          <span class="cover-text">Articles look better with cover photos. <br> Images look best with height less than 500px.</span>
+        </label>
+        <div class="crop-container" *ngIf="hasCover">
+          <!-- <div class="delete-cover"><img src="assets/img/icons/Like.svg"></div> -->
+          <img id="cover" src="" class="cover-img">
+          <button class="btn mt-3" style="background-color:#F2A900; color:white; cursor:pointer" (click)="removeCover()">Remove Cover</button>
         </div>
+        <form>
+          <div class="row justify-content-center">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+              <div class="alert alert-danger" role="alert" *ngIf="submissionError">
+                <strong>Submission error:</strong> Article needs to have a title and a body
+              </div>
+              <input class="remove-glow" autofocus #titleValdation="ngModel" type="text" placeholder="Title" name="title" [(ngModel)]="title" required minlength="4" maxlength="100">
+              <!-- <a href="https://goo.gl/f12uUj" target="_blank" class="mt-0"><small>Here is a great resource for stock images</small></a> -->
+              <div [froalaEditor]="froalaConfigs" [(froalaModel)]="editorContent" *ngIf="editorView"></div>
+            </div>
+          </div>
+          <br>
+        </form>
       </div>
-      
+    </div>
   </div>
 </div>
+

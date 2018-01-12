@@ -1,0 +1,22 @@
+{
+	"ProjectName": "lazsoc-blog",
+	"ProjectPath": "/Users/richard/Documents/lazsoc-blog",
+	"SourceDir": ".",
+	"DistributionDir": "/dist",
+	"BuildCommand": "ng build --prod",
+	"StartCommand": "ng serve",
+	"InitializationTime": "2017-12-28-17-44-45",
+	"LastConfigurationTime": "2017-12-28-17-44-56",
+	"LastNPMInstallTime": "",
+	"FrontendLastBuildTime": "",
+	"LastPublishTime": "",
+	"BackendFormat": "yml",
+	"BackendLastBuildTime": "",
+	"BackendLastUpdateTime": "",
+	"BackendLastUpdateSuccessful": false,
+	"BackendProjectID": "c3261b58-5c06-4cc8-94b8-98ea6b8bb46b",
+	"BackendProjectName": "Lazsoc Site",
+	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/c3261b58-5c06-4cc8-94b8-98ea6b8bb46b/build",
+	"BackendProjectCreationTime": "2017-12-28T22:34:12.633Z",
+	"BackendProjectLastUpdatedTime": "2017-12-28T22:38:51.601Z"
+}

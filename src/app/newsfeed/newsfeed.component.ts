@@ -4,8 +4,12 @@ import { Observable } from 'rxjs/Rx';
 import { GetLongDate } from '../pipes/get-long-date.pipe';
 import { Event } from '../event';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { PublicationPipe } from '../pipes/publication.pipe';
 import * as Stickyfill from 'stickyfill';
 import * as _ from "lodash";
+
+const ONE_DAY = 60*60*24*1000
 
 @Component({
   selector: 'app-newsfeed',
@@ -15,39 +19,49 @@ import * as _ from "lodash";
 export class NewsfeedComponent implements OnInit {
   events:any;
   clubs = {};
-  newsfeedState = "all";
+  newsfeedState = "events";
   hasEvents:boolean = true;
   tagFilters:any[] = [];
   clubFilters:any[] = [];
   timeFilter:any = "";
 
-
   @Input() clubID;
 
-  constructor(public router: Router, public webAPI: WebAPI) {
+  constructor(public router: Router, public webAPI: WebAPI, public authService: AuthService) {
+  }
+
+  ngOnInit() {
     Observable.forkJoin([
-      Observable.fromPromise(webAPI.getNewsfeed(this.clubID)),
-      Observable.fromPromise(webAPI.getClubs(true))
+      Observable.fromPromise(this.webAPI.getNewsfeed(this.clubID)),
+      Observable.fromPromise(this.webAPI.getClubs())
     ]).subscribe(data => {
-      this.events = data[0];
-      this.clubs = data[1];
-      console.log(this.events);
+      [this.events, this.clubs] = data;
       this.hasEvents = this.checkHasEvents();
     })
   }
 
-  ngOnInit() {
-    console.log(this.clubID);
+  vote(event){
+    this.authService.apiPost('articles/'+event.id+'/vote', null).then(res => {
+      console.log(res)
+    });
   }
 
-  onSelect(event){
+  viewEvent(event){
     this.router.navigate(['/events',event.id]);
-    document.body.scrollTop = 0; // For Chrome, Safari and Opera
-    document.documentElement.scrollTop = 0; // For IE and Firefox
+    this.scrollTop();
+  }
+
+  viewArticle(article) {
+    this.router.navigate(['/article',article.id]);
+    this.scrollTop();
   }
 
   setNewsfeedState(state:string){
     this.newsfeedState = state;
+    this.scrollTop();
+  }
+
+  scrollTop(){
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
   }
@@ -59,7 +73,8 @@ export class NewsfeedComponent implements OnInit {
     }
     Stickyfill.add(document.getElementsByClassName('sticky-updates'));
   }
-  checkHasEvents():boolean{
+
+  checkHasEvents():boolean {
     if(this.clubID != 0){
       for(let event of this.events){
         if (event.club_id === this.clubID)
@@ -67,6 +82,23 @@ export class NewsfeedComponent implements OnInit {
       }
       return false;
     } else return true;
+  }
+
+  didUserPublish(article) {
+    if (!this.authService.userSignedIn$)
+      return false;
+    return this.authService.currentUser().id == article.user_id;
+  }
+
+  deleteArticle(articleID) {
+    if (confirm("Are you sure you want to delete this?") == true) {
+      this.authService.apiGet(`delete_article/${articleID}`).then(deletedID => {
+        _.remove(this.events,function(article) {
+          return article.typeof == "article" && article.id == deletedID;
+        });
+      })
+    }
+
   }
 
   addTagFilter(tag){
@@ -93,8 +125,23 @@ export class NewsfeedComponent implements OnInit {
     _.pull(this.timeFilter,timeframe);
   }
 
-  isVisible(event) {
-    return (this.matchesTags(event) && this.matchesClub(event) && this.matchesTimeframe(event))
+  isVisible(feedItem) {
+    if (this.newsfeedState != "all") {
+      if (this.newsfeedState == "events") {
+        if (this.clubID != 0 && this.clubID != feedItem.club_id) return false
+        if (feedItem.typeof != "event") return false
+      }
+      else if (this.newsfeedState == "articles" && feedItem.typeof != "article") return false
+    }
+    return this.matchesFilters(feedItem);
+  }
+
+  matchesFilters(feedItem){
+    if (feedItem.typeof == "event")
+      return (this.matchesTags(feedItem) && this.matchesClub(feedItem) && this.matchesTimeframe(feedItem));
+    else if (feedItem.typeof == "article")
+      return true
+    // TODO: Implement filtering for articles
   }
 
   matchesTags(event){
@@ -120,11 +167,11 @@ export class NewsfeedComponent implements OnInit {
       return true;
     else if(this.timeFilter == "Today" && this.sameDay(currentTime,eventStart))
       return true;
-    else if (this.timeFilter == "Tomorrow" && this.sameDay(currentTime,new Date(eventStart.getTime() + 60*60*24*1000))) // Confirm this works
+    else if (this.timeFilter == "Tomorrow" && this.sameDay(currentTime,new Date(eventStart.getTime() + ONE_DAY))) // Confirm this works
       return true;
-    else if (this.timeFilter == "This Week" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(),60*60*24*7*1000))
+    else if (this.timeFilter == "This Week" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(), ONE_DAY * 7))
       return true;
-    else if (this.timeFilter == "Next Two Weeks" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(),60*60*24*14*1000))
+    else if (this.timeFilter == "Next Two Weeks" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(), ONE_DAY * 14))
       return true;
     else if (this.timeFilter == "Past" && eventStart < currentTime)
       return true;

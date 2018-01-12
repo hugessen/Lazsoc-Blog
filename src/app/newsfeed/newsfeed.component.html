@@ -1,8 +1,8 @@
 <div class="" *ngIf="hasEvents">
-  <div *ngFor="let event of events" style="margin-bottom:1rem; cursor:pointer">
+  <div *ngFor="let event of events" style="margin-bottom:1rem">
     <div *ngIf="isVisible(event)">
     <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
-      <div class="card mt-3" *ngIf="(clubID == 0 || clubID === event.club_id)" (click)="onSelect(event)">
+      <div class="card mt-3" *ngIf="event.typeof == 'event'" (click)="viewEvent(event)" style="cursor:pointer">
         <div class="card-img-top">
           <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
           <img class="card-img-top" [src]="event.banner" *ngIf="event.banner != ''">
@@ -17,20 +17,42 @@
             <!-- <img src="assets/img/icons/bookmark.svg" class="bookmark" (click)="saveEvent(event)"> -->
           </div>
           <div class="card-text mb-2">
-              {{event.sub_heading}} <br>
+            {{event.sub_heading}} <br>
           </div>
         </div>
-        <div class="card-footer py-2">
+<!--         <div class="card-footer py-2">
           <img src="assets/img/icons/Like.svg" class="icon">
           <img src="assets/img/icons/Save.svg" class="icon">
           <img src="assets/img/icons/Share.svg" class="icon">
-          <!-- <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right"> -->
+          <img src="assets/img/icons/three-dots.svg" class="icon" style="float:right">
+        </div> -->
+      </div>
+      <div class="card mt-3" *ngIf="event.typeof == 'article'">
+        <div class="card-block">
+          <div class="d-flex flex-row">
+            <img src="assets/img/Blank Avatar.jpg" class="club-avatar mr-3" *ngIf="!event.user_avatar">
+            <img [src]="event.user_avatar" class="club-avatar mr-3" *ngIf="event.user_avatar">
+            <div class="d-flex flex-column">
+              <span class="club-title">{{event.author}}</span>
+              <span class="card-datetime">{{event.created_at | getPublicationDate }}</span>
+            </div>
+            <span class="ml-auto delete-btn" *ngIf="didUserPublish(event)" (click)="deleteArticle(event.id)">Delete</span>
+          </div>
+          <div class="card mt-3" style="cursor:pointer" (click)="viewArticle(event)">
+            <div class="article-cover" *ngIf="event.cover_url"><img [src]="event.cover_url" class="article-cover"></div>
+            <span class="article-title p-3">{{event.title}}</span>
+          </div>
+        </div>
+        <div class="card-footer py-2 px-4">
+          <span class="footer-text" *ngIf="event.total_votes != 1">{{event.total_votes}} Likes &nbsp; </span>
+          <span class="footer-text" *ngIf="event.total_votes == 1">1 Like &nbsp; </span>
+          <span class="footer-text" *ngIf="event.comments.length != 1">&bull; &nbsp;{{event.comments.length}} Comments</span>
+          <span class="footer-text" *ngIf="event.comments.length == 1">&bull; &nbsp; 1 Comment</span>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="card" *ngIf="!hasEvents">
   <div class="card-header card-header-text">
     Events

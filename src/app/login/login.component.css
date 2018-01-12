@@ -138,3 +138,12 @@ body {
   margin-bottom: 10px;
   min-width: 500.837px;
 }
+
+.mylaurier {
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
+}
+
+.email {
+  width:50% !important;
+}

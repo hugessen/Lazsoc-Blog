@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
-
+      <div class="alert alert-success" role="alert" *ngIf="submitted">
+        We have received your application. Thank you for applying!
+      </div>
       <div class="row">
         <div class="col-sm-9 col-md-9 col-lg-9">
           <img class="club-banner mt-3" src="assets/img/{{club.app_banner}}">
@@ -12,10 +14,11 @@
                 <span class="title-font">{{posting.title}}</span><br>
                 <span class="club-name-font">{{club.name}}</span>
               </div>
+              <span class="club-name-font ml-auto mt-4">Expires: {{posting.expiry_date | getShortDate}}</span>
             </div>
             <div class="card-block" *ngFor="let element of posting.job_posting_descriptions">
               <span class="job-header-font">{{element.name}}</span><br>
-              <span class="description-font">{{element.body}}</span>
+              <span class="description-font" style="white-space: pre-line">{{element.body}}</span>
             </div>
           </div>
           <div class="card mt-3">

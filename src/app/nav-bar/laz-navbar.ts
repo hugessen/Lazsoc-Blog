@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from "../services/auth.service";
 // import * as jquery from 'jquery';
@@ -8,24 +8,23 @@ import { AuthService } from "../services/auth.service";
   templateUrl:'laz-navbar.html',
   styleUrls: ['./laz-navbar.css']
 })
-export class LazNavbar {
+export class LazNavbar implements OnInit {
   state = "login";
   modalActions = new EventEmitter<string>();
+  url:any = {url:""};
 
   constructor(public router:Router, public authService:AuthService){
-
+    router.events.subscribe((url) => {
+      this.url = url;
+    });
   };
 
-  signOut(){
-    this.authService.logOutUser();
-    location.reload();
+  ngOnInit() {
+
   }
 
-  getUser() {
-    if(this.authService.userSignedIn$){
-      return this.authService.authService.currentUserData;
-    }
-    else return null;
+  isUpdate(){
+    return this.url.url == "/update";
   }
 
 }

@@ -13,18 +13,11 @@
             <div class="col-sm-9 col-md-9 col-lg-9" style="padding-left:20px;">
 							<div class="d-flex flex-row mb-2 justify-content-start">
 								<span class="club-title">{{club.name}}</span>
-								<!-- <div class="subscribe-btn ml-auto">
-									<span class="subscribe-btn-text" style="cursor: pointer;">Subscribe</span>
-								</div> -->
 							</div>
               <span class="club-tags" *ngFor="let tag of club.club_tags; let i = index">
 								<span *ngIf="i > 0">&bull;</span>
 								{{tag.tag}}
 							</span>
-              <hr>
-              <span class="club-detail-text">
-                {{club.description}}
-              </span>
               <br>
             </div>
           </div>
@@ -89,7 +82,36 @@
     <div class="col-sm-3 col-md-3 col-lg-3 mt-5" style="padding-top: 12px padding-left: 0px">
       <job-posting-sidebar [clubID]="club.id"></job-posting-sidebar>
       <br>
-			<social-links-sidebar [club]="club"></social-links-sidebar>
+			<span class="card-header-text">Social Media</span>
+      <hr/>
+      <div class="d-flex flex-row mb-3" *ngIf="club.website != ''">
+        <img src="assets/img/website-icon.png" style="width:24px; height:24px">
+        <div class="d-flex flex-column ml-3">
+          <span class="social-link-title">Website</span>
+          <a href="{{club.website}}" class="social-link-link">{{club.website}}</a>
+        </div>
+      </div>
+      <div class="d-flex flex-row mb-3" *ngIf="club.club_social_links.hasOwnProperty('facebook')">
+        <img src="assets/img/facebook_logo.png" style="width:24px; height:24px">
+        <div class="d-flex flex-column ml-3">
+          <span class="social-link-title">Facebook</span>
+          <a [href]="club.club_social_links['facebook']" class="social-link-link">{{club.club_social_links['facebook']}}</a>
+        </div>
+      </div>
+      <div class="d-flex flex-row mb-3" *ngIf="club.club_social_links.hasOwnProperty('instagram')">
+        <img src="assets/img/instagram_logo.png" style="width:24px; height:24px">
+        <div class="d-flex flex-column ml-3">
+          <span class="social-link-title">Instagram</span>
+          <a [href]="club.club_social_links['instagram']" class="social-link-link">{{club.club_social_links['instagram']}}</a>
+        </div>
+      </div>
+      <div class="d-flex flex-row mb-3" *ngIf="club.club_social_links.hasOwnProperty('twitter')">
+        <img src="assets/img/twitter_logo.png" style="width:24px; height:24px">
+        <div class="d-flex flex-column ml-3">
+          <span class="social-link-title">Twitter</span>
+          <a [href]="club.club_social_links['twitter']" class="social-link-link">{{club.club_social_links['twitter']}}</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

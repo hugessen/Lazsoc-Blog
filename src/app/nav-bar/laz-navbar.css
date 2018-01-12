@@ -2,11 +2,13 @@
   /*background-color:#422c89;*/
   font-family:Lato-Regular;
   font-size:17px;
+  background-color:rgba(66,44,137,1); 
+  height:70px;
 }
 .gold-bar {
   /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);*/
   background-color:#F2A900;
-  height:10px;
+  height:8px;
   position: -webkit-sticky;
   position: sticky;
   top: 70px;

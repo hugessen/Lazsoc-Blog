@@ -1,0 +1,88 @@
+.article-body {
+	font-family: "Times New Roman", Times, serif;
+	font-size:20px;
+}
+
+.article-cover {
+	width:100%;
+}
+
+.article-title {
+	font-family: Lato-Black;
+	font-size:40px;
+}
+
+.avatar {
+  display: block;
+  width: 55px;
+  height:55px;
+  border-radius: 50%;
+}
+
+.comment-text {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
+	outline: none;
+}
+
+.comment-placeholder {
+	font-family: "Times New Roman", Times, serif;
+	color:rgba(0,0,0,0.7);
+	font-size: 20px;
+}
+
+.comment-name-text {
+	font-family: Lato-Bold;
+	font-size: 16px;
+	color:green;
+}
+
+.comment-time {
+	font-family: Lato-Semibold;
+	font-size: 14px;
+}
+
+.like-box {
+	text-align: center;
+	font-family: Lato-Semibold;
+	font-size: 16px;
+	border-radius: 5%;
+	direction: flex;
+	flex-direction: row;
+} 
+
+textarea {
+	outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  resize:none;
+}
+
+.btn {
+	box-shadow: none !important;
+	width: 18%;
+	background-color: #422c89;
+	color:white;
+	cursor:pointer;
+}
+
+.delete-btn {
+	cursor:pointer;
+	font-family: Lato-Regular;
+	color:#1677CB;
+}
+
+.article-body img { 
+  max-width: 100% !important;
+}
+
+.card {
+	border-radius: 0px;
+	background-color: white;
+}
+
+.heart {
+	width:50px;
+}

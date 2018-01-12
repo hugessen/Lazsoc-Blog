@@ -4,14 +4,10 @@
     flex-direction:row;
 }
 
-.pointer {
-  cursor:pointer;
+.inline-block {
+  display:inline-block;
 }
 
-.timothy {
-  border: none;
-  outline: none !important;
-  font-family:Lato-Semibold;
-  font-size:14px;
-  color:#000000;
+.float-left {
+	float:left;
 }

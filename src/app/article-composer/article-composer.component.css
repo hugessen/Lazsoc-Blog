@@ -1,0 +1,124 @@
+input {
+  font-family: Lato-Black;
+  width: 100%;
+  margin-bottom:20px;
+  font-size: 40px;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.remove-glow {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.image-upload > input {
+  visibility:hidden;
+  width:0;
+  height:0
+}
+
+.crop-container img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+  /*max-height:350px;*/
+}
+
+.crop-container {
+  max-width: 100%;
+  margin: 20px auto;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.cover-background {
+  background-color: rgba(67,48,137,0.05);
+  vertical-align: middle;
+  padding-top:100px;
+  height:400px;
+  width:100%;
+  text-align:center;
+}
+.cover-background img {
+  display: block;
+  margin: auto;
+  max-width:13%;
+  height:auto;
+}
+.cover-text {
+  margin-top:5px;
+  font-family:Lato-Regular;
+  font-size:16px;
+  color:rgb(67,48,137);;
+}
+
+.cover-img {
+  width: 100%;
+  height:auto;
+  display:block;
+  margin:auto;
+}
+
+/*For the navbar*/
+.story {
+  font-family: Lato-Black;
+  font-size: 23px;
+  color:white; 
+}
+.board {
+  font-family: Lato-Regular;
+  font-size: 23px;
+  color:white; 
+}
+.storyboard {
+  display:block;
+  position:relative;
+  margin:auto;
+  transform: translate(-20%);
+}
+
+.publish-btn {
+  background-color:#F2A900;
+  cursor:pointer;
+}
+
+.publish-text {
+  font-family: Lato-Bold;
+  font-size:15px;
+  color:white;
+}
+
+.gold-bar {
+  /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);*/
+  background-color:#F2A900;
+  height:8px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
+  z-index: 1;
+}
+
+.navbar {
+  background-color:rgba(66,44,137,1); 
+  height:70px;
+}
+
+.delete-cover {
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  width:70px;
+  height:70px;
+  background-color:#F2A900;
+  transform: translate(1600%,50%);
+}

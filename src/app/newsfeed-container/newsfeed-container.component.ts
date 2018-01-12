@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { WebAPI } from '../services/web-api.service';
+import { Router } from "@angular/router";
 import { NewsfeedComponent } from '../newsfeed/newsfeed.component';
 import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 import * as $ from 'jquery';
@@ -17,16 +18,15 @@ export class NewsfeedContainerComponent implements OnInit {
 
   tags:any = this.getTags();
   times:any = this.getTimeFilters();
-  clubs: { selected: any }
+  clubs: { selected: any };
 
   tagFilters:any[] = [];
   clubFilters:any[] = [];
   timeFilters:any[] = [];
 
   constructor(public authService:AuthService, private webAPI: WebAPI) {
-    webAPI.getClubs(true).then(res => {
+    webAPI.getClubs().then(res => {
       this.clubs = res;
-      console.log("Clubs",this.clubs);
     });
   }
 
@@ -34,6 +34,11 @@ export class NewsfeedContainerComponent implements OnInit {
     $('.dropdown-menu').click(function(e) {
         e.stopPropagation();
     });
+  }
+
+  signOut(){
+    this.authService.logOutUser();
+    location.reload();
   }
 
   toggleTagFilter(tag_key){

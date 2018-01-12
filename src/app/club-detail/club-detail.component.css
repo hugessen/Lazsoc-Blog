@@ -16,9 +16,11 @@ h6 {
 }
 
 .active {
-  border-left:6px solid #FCB518;
+  background-color: white !important;
+  border-left:6px solid #FCB518 !important;
   padding-left:9px;
-  color:black;
+  font-family:Lato-Semibold;
+  color:black !important;
 }
 
 .side-heading {
@@ -71,7 +73,7 @@ h6 {
 .club-avatar {
   display: block;
   position:absolute;
-  transform: translate(15%, 70%);
+  transform: translate(15%, 120%);
   width: 20%;
   height:auto;
   border:5px solid white;
@@ -212,4 +214,15 @@ h6 {
 
 .title-text {
   font-family: Lato-Light;
+}
+
+.social-link-title {
+  font-family: Lato-Semibold;
+  font-size: 12px;
+}
+
+.social-link-link {
+  font-family: Lato-Regular;
+  font-size: 10px;
+  color: #0083c1;
 }

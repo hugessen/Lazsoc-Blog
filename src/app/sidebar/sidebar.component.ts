@@ -17,14 +17,18 @@ export class SidebarComponent {
   events = [];
   clubs = {};
   eventCount = 0;
+  anyEvents = true;
   constructor(public webAPI:WebAPI) {
-    this.webAPI.getNewsfeed().then(res => this.events = res.filter(this.isThisWeek))
+    this.webAPI.getNewsfeed().then(res => {
+      this.events = res.filter(this.isThisWeek);
+      if (this.events.length == 0) this.anyEvents = false;
+    })
   }
 
   isThisWeek(event){
     let eventStart = new Date(event.start_date_time).getTime();
     let currentTime = new Date().getTime();
-    return (eventStart <= currentTime + 60*60*24*30*1000);
+    return (eventStart <= currentTime + 60*60*24*7*1000);
   }
 
 }
@@ -37,8 +41,8 @@ export class SidebarComponent {
 export class ProfileSidebar implements OnInit {
 
   constructor(public authService:AuthService, public tokenService:Angular2TokenService, private router:Router) {
-    console.log("Auth SErvice:",authService);
-    console.log("profile sidebar says: ", tokenService.currentUserData);
+    // console.log("Auth Service:",authService);
+    // console.log("profile sidebar says: ", tokenService.currentUserData);
   }
 
   ngOnInit() {
@@ -55,21 +59,30 @@ export class JobPostingSidebar implements OnInit {
 
   public jobPostings;
   public clubs;
-  hasPostings = true;
+  hasPostings = false;
   @Input() clubID;
 
   constructor(public webAPI:WebAPI, public router:Router) {
-    Observable.forkJoin([
-      Observable.fromPromise(webAPI.getJobPostings()),
-      Observable.fromPromise(webAPI.getClubs(true))
-    ]).subscribe(data => {
-      this.jobPostings = data[0];
-      this.clubs = data[1];
-      console.log(this.jobPostings);
-    })
   }
 
   ngOnInit() {
+    Observable.forkJoin([
+      Observable.fromPromise(this.webAPI.getJobPostings()),
+      Observable.fromPromise(this.webAPI.getClubs())
+    ]).subscribe(data => {
+      [this.jobPostings, this.clubs] = data;
+      if (this.clubID != 0) {
+        for(let posting of this.jobPostings) {
+          console.log(posting.club_id);
+          console.log(this.clubID);
+          if (posting.club_id == this.clubID) {
+            this.hasPostings = true;
+            break;
+          }
+        }
+      }
+      else if (this.jobPostings.length > 0) this.hasPostings = true;
+    })
   }
 
   viewJobPost(id:number){
@@ -90,7 +103,7 @@ export class SocialLinksSidebar implements OnInit {
   @Input() club: Club;
 
   constructor(public elementRef: ElementRef) {
-    console.log("Club", this.club);
+    // console.log("Club", this.club);
     // for(let link in this.club.club_social_links){
     //   console.log(this.club.club_social_links[link]);
     // }
