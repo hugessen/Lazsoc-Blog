@@ -1,64 +1,55 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-9 col-md-9 col-lg-9">
-      <h2 class="card card-title card-block mt-4 mb-0">Personal Information</h2>
+      <div class="d-flex flex-row">
+        <h2 class="card card-title card-block mt-4 mb-0">Personal Information</h2>
+      </div>
       <div class="card mt-0">
         <div class="card-block">
           <div class="form-group">
-            <div class="d-flex flex-row align-items-end">
-              <div class="d-flex flex-column mr-4 align-items-center mr-3">
-                <input type="file" name="file" id="file" class="inputfile" (change)="fileEvent($event)" />
-                <label for="file" class="upload-container" style="cursor:pointer; text-align:center">
-                  <span><img src="assets/img/icons/edit.svg" style="width:15px">&nbsp;Edit</span>
-                  <div class="upload-img mt-2">
-                    <img src="assets/img/Blank Avatar.jpg" id="avatar" *ngIf="!updateObj.image">
-                    <img [src]="updateObj.image" id="avatar" *ngIf="updateObj.image">
-                  </div>
-                  <span>Images look best when square sized. <br>Make sure they're square using 
-                  <a href="https://croppola.com/" target="_blank">this</a></span>
-                </label> 
-              </div>
-<!--               <div class="d-flex flex-column ml-2" style="width:45%">
-                <label for="firstname">Email Address (Username)</label>
-                <input type="email" class="form-control mb-3" id="firstname">
-                <label for="firstname">Password</label>
-                <input type="Password" class="form-control mb-3" id="firstname">
-              </div> -->
+            <div class="d-flex flex-row justify-content-center">
+              <input type="file" name="file" id="file" class="inputfile" (change)="fileEvent($event)" />
+              <label for="file" class="upload-container" style="cursor:pointer; text-align:center">
+                <span><img src="assets/img/icons/edit.svg" style="width:15px">&nbsp;Edit</span>
+                <div class="upload-img mt-2">
+                  <img src="assets/img/Blank Avatar.jpg" id="avatar" *ngIf="!updateObj.image">
+                  <img [src]="updateObj.image" id="avatar" *ngIf="updateObj.image">
+                </div>
+                <span>Images look best when squared. <br>Make sure they're square using 
+                <a href="https://croppola.com/" target="_blank">this</a></span>
+              </label> 
             </div>
+            <form class="mt-3">
+              <div class="row justify-content-center">
+                <div class="col-lg-6 mb-3">
+                  <label for="firstname">First Name</label>
+                  <input type="email" class="form-control mb-3" id="firstname" name="firstname" [(ngModel)]="updateObj.first_name" >
+                </div>
+                <div class="col-lg-6 mb-3">
+                  <label for="firstname">Last Name</label>
+                  <input type="email" class="form-control mb-3" id="lastname" name="lastname" [(ngModel)]="updateObj.last_name" >
+                </div>
+              </div>
 
-            <div class="d-flex flex-row flex-wrap mt-3">
-              <div class="form-element mr-2">
-                <label for="firstname">First Name</label>
-                <input type="email" class="form-control mb-3" id="firstname" [(ngModel)]="updateObj.first_name">
+              <div class="row justify-content-center">
+                <div class="col-lg-6 mb-3">
+                  <label for="firstname">School Program</label>
+                  <input type="email" class="form-control mb-3" name="program" [(ngModel)]="updateObj.program">
+                </div>
+                <div class="col-lg-6 mb-3">
+                  <label for="firstname">School Year</label>
+                  <input type="email" class="form-control mb-3" name="schoolyear" style="width: 30%" [(ngModel)]="updateObj.school_year">
+                </div>
               </div>
-              <div class="form-element ml-2">
-                <label for="firstname">Last Name</label>
-                <input type="email" class="form-control mb-3" id="lastname" [(ngModel)]="updateObj.last_name">
+              <label for="summary">What's your story?</label><br>
+              <textarea class="textarea" rows="3" name="story" [(ngModel)]="updateObj.summary"></textarea>
+              <div style="text-align:center" *ngIf="hasErrors"><span class="some-fields-blank">Please enter your name before submitting</span></div>
+              <div class="d-flex flex-row justify-content-center mb-4">
+                <button type="submit" class="btn submit-btn mt-2" name="button" (click)="postUpdates()">Submit!</button>
               </div>
-              <div class="form-element mr-2">
-                <label for="firstname">School Program</label>
-                <input type="email" class="form-control mb-3" id="program" [(ngModel)]="updateObj.program">
-              </div>
-              <div class="form-element ml-2">
-                <label for="firstname">School Year</label>
-                <input type="email" class="form-control mb-3" id="schoolyear" style="width: 30%" [(ngModel)]="updateObj.school_year">
-              </div>
-            </div>
-
-            <label for="summary">What's your story?</label><br>
-            <textarea rows="3" style="width:100%" [(ngModel)]="updateObj.summary"></textarea>
-<!--             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="updateObj.is_bean">
-              Would you like to sign up for LazBeans?
-            </label> -->
-            <!-- <input type="file" #fileInput (change)='fileChangeEvents($event)'/>
-            <button type="button" class="btn btn-primary" (click)="upload()">Upload</button> -->
+            </form>
           </div>
         </div>
-      </div>
-      <br>
-      <div class="d-flex flex-row justify-content-center mb-4">
-        <button type="button" class="btn btn-success" name="button" (click)="postUpdates()" routerLink="/newsfeed">Submit!</button>
       </div>
     </div>
   </div>

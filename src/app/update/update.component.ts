@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AwsService } from '../services/aws.service';
+import { Router } from '@angular/router';
 import * as AWS from 'aws-sdk';
-
-const URL = 'http://localhost:3000/api/upload_avatar';
 
 @Component({
   selector: 'app-update',
@@ -33,17 +32,25 @@ export class UpdateComponent implements OnInit {
   }];
   // @ViewChild('fileInput') fileInput;
   imageUploaded = false;
+  isFirstUpdate = false;
   newAvatar:any;
-  public currentUser;
+  isSubmitting = false;
   profileImg = "assets/img/Upload.png";
+  currentUser:any;
 
-  constructor(public authService:AuthService, public awsService:AwsService) {
-    this.currentUser = authService.currentUser();
-    // console.log(this.currentUser);
-    this.initUpdateObj();
+  submissionErrors = {firstName: false, lastName: false};
+  hasErrors = false;
+
+  constructor(public authService:AuthService, public awsService:AwsService, public router:Router) {
+    this.authService.getUserAsync().then(res => {
+      this.currentUser = res;
+      this.initUpdateObj(res);
+    });
+
   }
 
   ngOnInit() {
+
   }
 
   // fileChangeEvents(fileInput: any) {
@@ -66,6 +73,20 @@ export class UpdateComponent implements OnInit {
     this.awsService.getFromAWS("");
   }
 
+  canDeactivate() {
+    if (!this.currentUser.has_updated){
+      if (this.isSubmitting)
+        return true;
+      if (window.confirm("Are you sure you want to leave? You will be logged out until you return to create a profile here.")){
+        this.authService.logOutUser();
+        location.reload();
+        return true;
+      } 
+      else return false;
+    }
+    else return true;
+  }
+
   addWorkExp(){
     this.work_experiences_attributes.push({
       title:"",
@@ -82,29 +103,50 @@ export class UpdateComponent implements OnInit {
   }
 
   postUpdates(){
+    if (this.hasSubmissionErrors()){
+      console.log("Here be dragons");
+      this.hasErrors = true;
+      return;
+    }
+    console.log("We good!");
+
     if (this.imageUploaded) {
-      let avatarUrl = `user-${this.awsService.randomString(10)}`;
+      console.log("Attempting to upload");
+      let avatarUrl = `profile_avatars/user-${this.awsService.randomString(10)}`;
       this.updateObj.image = `https://s3.us-east-2.amazonaws.com/lazsoc-images/${avatarUrl}`;
       this.awsService.uploadToAWS(this.newAvatar,avatarUrl);
     }
     this.authService.updateUser(this.updateObj).then(res => {
-      // console.log(res);
+      this.isSubmitting = true;
+      this.router.navigateByUrl("/newsfeed");
     })
   }
 
-  initUpdateObj(){
-    if (this.currentUser){
-      this.updateObj = {
-        first_name:this.currentUser.first_name,
-        last_name:this.currentUser.last_name,
-        program:this.currentUser.program,
-        image:this.currentUser.image,
-        summary:this.currentUser.summary,
-        is_bean:this.currentUser.isBean,
-        profile_header:this.currentUser.profile_header,
-        school_year:this.currentUser.school_year,
-      };
+  hasSubmissionErrors() {
+    let hasErrors = false;
+    console.log(this.updateObj);
+    if (this.updateObj.first_name == null || this.updateObj.first_name == ""){
+      document.getElementById("firstname").classList.add("danger");
+      hasErrors = true;
     }
+    if (this.updateObj.last_name === null || this.updateObj.last_name == ""){
+      document.getElementById("lastname").classList.add("danger");
+      hasErrors = true;
+    }
+    return hasErrors;
+  }
+
+  initUpdateObj(user){
+    this.updateObj = {
+      first_name:user.first_name,
+      last_name:user.last_name,
+      program:user.program,
+      image:user.image,
+      summary:user.summary,
+      is_bean:user.isBean,
+      profile_header:user.profile_header,
+      school_year:user.school_year,
+    };
   }
 
 }

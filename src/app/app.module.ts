@@ -48,6 +48,8 @@ import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-contai
 import { UpdateComponent } from './update/update.component';
 import { HiringContainerComponent } from './hiring-container/hiring-container.component';
 import { DiscountComponent } from './discount/discount.component';
+import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
+import { ArticleFeedComponent } from './article-feed/article-feed.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,8 @@ import { DiscountComponent } from './discount/discount.component';
     PublicationPipe,
     HiringContainerComponent,
     DiscountComponent,
-    ArticleComponent
+    ArticleComponent,
+    ArticleFeedComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +96,7 @@ import { DiscountComponent } from './discount/discount.component';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, CanDeactivateUpdate, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

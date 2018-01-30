@@ -3,12 +3,12 @@
   <img src="assets/img/Blank Avatar.jpg" class="profile-avatar mr-2" routerLink="/profile/{{tokenService.currentUserData.id}}">
   <div class="card-header d-flex align-items-center py-2" routerLink="/profile/{{tokenService.currentUserData.id}}"> -->
   <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top">
-  <img src="assets/img/Blank Avatar.jpg" class="profile-avatar mr-2" *ngIf="!authService.currentUser().image">
-  <img [src]="authService.currentUser().image" class="profile-avatar mr-2" *ngIf="authService.currentUser().image">
+  <img src="assets/img/Blank Avatar.jpg" class="profile-avatar mr-2" *ngIf="!currentUser.image">
+  <img [src]="currentUser.image" class="profile-avatar mr-2" *ngIf="currentUser.image">
   <div class="card-header d-flex align-items-center py-2">
     <div class="d-flex flex-column" style="transform:translate(4.5em,0); cursor:pointer">
-      <h4 class="profile-name my-0">{{authService.currentUser().first_name}} {{authService.currentUser().last_name}}</h4>
-      <span class="profile-subheader my-0">{{authService.currentUser().program}}</span>
+      <h4 class="profile-name my-0">{{currentUser.first_name}} {{currentUser.last_name}}</h4>
+      <span class="profile-subheader my-0">{{currentUser.program}}</span>
     </div>
   </div>
 </div>

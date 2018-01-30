@@ -40,9 +40,10 @@ export class SidebarComponent {
 })
 export class ProfileSidebar implements OnInit {
 
+  currentUser = {};
+
   constructor(public authService:AuthService, public tokenService:Angular2TokenService, private router:Router) {
-    // console.log("Auth Service:",authService);
-    // console.log("profile sidebar says: ", tokenService.currentUserData);
+    this.authService.getUserAsync().then(res => this.currentUser = res );
   }
 
   ngOnInit() {

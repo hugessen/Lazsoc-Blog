@@ -6,8 +6,7 @@
 }
 .form-group input{
   font-family:Lato-Regular;
-  border:1px solid darkgrey;
-  border-radius: 0;
+  border-radius: 3px;
 }
 .card-title{
   font-family:Lato-Black;
@@ -18,8 +17,20 @@
 	height: auto;
 }
 
-.form-element {
-  width:48%;
+.some-fields-blank {
+  font-family: Lato-Regular;
+  margin-top:0px;
+  font-size:14px;
+  color:red;
+}
+
+.submit-btn {
+  font-family: Lato-Bold;
+  color:white;
+  background-color: #F2A900;
+  width:15%;
+  padding: 10px 0 10px 0;
+  cursor:pointer;
 }
 
 h2 {
@@ -51,11 +62,18 @@ span {
   width:auto;
 }
 
-.upload-container {
+.textarea {
+  width:100%;
+  font-family:Lato-Regular;
+  border-color: lightgrey;
+  border-radius: 3px;
+}
+
+/*.upload-container {
   display: block;
   position: relative;
   transform: translateX(120%);
-}
+}*/
 
 .inputfile {
   width: 0.1px;
@@ -64,4 +82,9 @@ span {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+.danger {
+  border-color: red;
+  border-width:1px;
 }

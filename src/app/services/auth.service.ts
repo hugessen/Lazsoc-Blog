@@ -8,9 +8,9 @@ export class AuthService implements OnInit {
 
   userSignedIn$:boolean = false;
 
-  constructor(public authService:Angular2TokenService, public http:Http)  {
-    this.authService.init({
-        apiBase:                    'https://moria.lazsoc.ca/api',
+  constructor(public tokenService:Angular2TokenService, public http:Http)  {
+    this.tokenService.init({
+        apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -49,7 +49,7 @@ export class AuthService implements OnInit {
             }
         }
     });
-    this.authService.validateToken().subscribe(
+    this.tokenService.validateToken().subscribe(
         res => {
           if(res.status == 200){
             console.log("Signed in");
@@ -69,7 +69,7 @@ export class AuthService implements OnInit {
   }
 
   logOutUser():Observable<Response>{
-    return this.authService.signOut().map(
+    return this.tokenService.signOut().map(
         res => {
           this.userSignedIn$ = false;
           return res;
@@ -77,32 +77,38 @@ export class AuthService implements OnInit {
     );
   }
 
-  currentUser(){
-    return this.authService.currentUserData;
+  getUserAsync():Promise<any> {
+    return new Promise((resolve,reject) => {
+      return this.tokenService.validateToken().toPromise().then(res => {
+        resolve(res.json().data)
+      });
+    })
+  }
+
+  currentUser():any{
+    return this.tokenService.currentUserData;
   }
 
   registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
-    return this.authService.registerAccount(signUpData).map(
+    return this.tokenService.registerAccount(signUpData).map(
         res => {
-          this.userSignedIn$ = true;
-          return res
+          return res;
         }
     );
   }
 
-  logInUser(signInData: {email:string, password:string}):Observable<Response>{
-
-    return this.authService.signIn(signInData).map(
+  logInUser(signInData: {email:string, password:string}):Observable<any>{
+    return this.tokenService.signIn(signInData).map(
       res => {
         this.userSignedIn$ = true;
-        return res
+        return { res: res, needsUpdate: !res.json().data.has_updated }
       }
     );
   }
 
   updateUser(data:any):Promise<any>{
     return new Promise((resolve,reject) => {
-      this.authService.post('update_user',data).toPromise().then(res => {
+      this.tokenService.post('update_user',data).toPromise().then(res => {
         resolve(res);
       })
     });
@@ -137,7 +143,7 @@ export class AuthService implements OnInit {
   
   apiGet(path:string, data:any = null):Promise<any>{
      return new Promise((resolve,reject)=> {
-      this.authService.get(path,data).map(res => res.json()).toPromise()
+      this.tokenService.get(path,data).map(res => res.json()).toPromise()
       .then(res=>{
         resolve(res);
       }).catch(err => reject(err));
@@ -146,7 +152,7 @@ export class AuthService implements OnInit {
 
   public apiPost(path:string, data:any){
     return new Promise((resolve,reject)=> {
-      this.authService.post(path,data).map(res => res.json()).toPromise()
+      this.tokenService.post(path,data).map(res => res.json()).toPromise()
       .then(res=>{
         resolve(res);
       }).catch(err => reject(err));
@@ -164,11 +170,11 @@ export class AuthService implements OnInit {
   // }
 
   // upload(formData) {
-  //   let headers = this.authService.currentAuthHeaders;
+  //   let headers = this.tokenService.currentAuthHeaders;
   //   headers.delete('Content-Type');
   //   let options = new RequestOptions({ headers: headers });
   //   console.log(formData);
-  //   return this.authService.request({
+  //   return this.tokenService.request({
   //     method: 'post',
   //     url: `http://localhost:3000/api/upload_avatar`,
   //     body: formData,

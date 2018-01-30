@@ -17,6 +17,7 @@ import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { UpdateComponent } from './update/update.component';
 import { ArticleComponent } from './article/article.component';
 import { AuthGuard } from './guards/auth.guard';
+import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent },
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'compose', canActivate: [AuthGuard], component: ArticleComposerComponent },
   // { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
   // { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
-  { path: 'update', canActivate: [AuthGuard],  component: UpdateComponent },
+  { path: 'update', canActivate: [AuthGuard], canDeactivate:[CanDeactivateUpdate],  component: UpdateComponent },
   { path: 'login',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
