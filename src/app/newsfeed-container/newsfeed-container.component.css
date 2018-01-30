@@ -165,7 +165,7 @@
 }
 
 .compose {
-  font-family: Lato-Regular;
+  font-family: Lato-Semibold;
   border-radius: 2px;
   width:100%;
   text-align: center;
@@ -173,6 +173,7 @@
   color:white;
   position: -webkit-sticky;
   position: sticky;
+  padding: 10px 0 10px 0;
   top: 470px;
 }
 a{

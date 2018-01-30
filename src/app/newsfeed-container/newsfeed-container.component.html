@@ -2,8 +2,8 @@
   <div class="row justify-content-center">
     <div class="col-xs-0 col-sm-3 col-md-3 col-lg-3 mt-4 px-2">
       <div class="card mb-2 sticky" *ngIf="!authService.userSignedIn$">
-        <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('events')" [ngClass]="{active: feed.newsfeedState == 'events'}">Events</li>
-        <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('articles')" [ngClass]="{active: feed.newsfeedState == 'articles'}">Articles</li>
+        <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Events</li>
+        <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('articles')" [ngClass]="{active: newsfeedState == 'articles'}">Articles</li>
         <li class="list-group-item list-group-item-action py-2" style="cursor:pointer"><a href="mailto:webmaster@lazsoc.ca">Feedback</a></li>
       </div>
       <div *ngIf="!authService.userSignedIn$" class="sticky-signup">
@@ -13,8 +13,8 @@
         <profile-sidebar></profile-sidebar>
         <div>
           <ul class="list-group" style="border: 1px solid lightgrey; border-radius:0">
-            <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('events')" [ngClass]="{active: feed.newsfeedState == 'events'}">Events</li>
-            <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="feed.setNewsfeedState('articles')" [ngClass]="{active: feed.newsfeedState == 'articles'}">Articles</li>
+            <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Events</li>
+            <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('articles')" [ngClass]="{active: newsfeedState == 'articles'}">Articles</li>
             <li class="list-group-item list-group-item-action py-2" style="cursor:pointer"><a href="mailto:webmaster@lazsoc.ca">Feedback</a></li>
             <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" routerLink="/update">Edit Profile</li>
             <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="signOut()">Log Out</li>
@@ -92,7 +92,8 @@
         </div>
       </div>
 
-      <app-newsfeed [clubID]="0" #mainFeed></app-newsfeed>
+      <app-newsfeed *ngIf="newsfeedState == 'events'" [clubID]="0" #mainFeed></app-newsfeed>
+      <app-article-feed *ngIf="newsfeedState== 'articles'"></app-article-feed>
     </div>
     <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3 mt-4 px-2">
       <event-sidebar></event-sidebar>

@@ -14,8 +14,8 @@
 
 .avatar {
   display: block;
-  width: 55px;
-  height:55px;
+  width: 60px;
+  height:60px;
   border-radius: 50%;
 }
 
@@ -32,8 +32,10 @@
 }
 
 .comment-name-text {
-	font-family: Lato-Bold;
-	font-size: 16px;
+  font-size: 1.15em;
+  font-family:Lato-Black;
+  line-height: 1.2857em;
+  font-weight:500;
 	color:green;
 }
 

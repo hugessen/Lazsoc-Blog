@@ -1,0 +1,83 @@
+.card {
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0;
+  border: 1 solid #83868a;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+}
+
+.card-block {
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, .1);
+  box-shadow: none;
+}
+
+.avatar {
+  display: block;
+  width: 60px;
+  height:60px;
+  border-radius: 50%;
+  /*border: 1px solid darkgrey;*/
+}
+
+.card-footer {
+  font-family: Lato-Regular;
+  font-size: 1em;
+  position: static;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  padding-left: 0px;
+  color: rgba(0, 0, 0, .4);
+  border-top: 1px solid rgba(0, 0, 0, .05) !important;
+  background: #fff;
+}
+
+.article-title {
+  font-size: 16px;
+  font-family:Lato-Bold;
+}
+
+.article {
+  padding: 15px;
+  font-family:Lato-Bold;
+  line-height: 1.2857em;
+  font-weight:500;
+}
+
+.author {
+  font-size: 1.15em;
+  font-family:Lato-Black;
+  line-height: 1.2857em;
+  font-weight:500;
+}
+
+.datetime {
+  font-family:Lato-Regular;
+  font-size:14px;
+  color:#83868a;
+}
+
+.article-cover {
+  height:12em;
+  overflow:hidden;
+}
+
+.article-cover img {
+  width:100%;
+  height:auto;
+}
+
+.delete-btn {
+  cursor:pointer;
+  font-family: Lato-Regular;
+  color:#1677CB;
+}

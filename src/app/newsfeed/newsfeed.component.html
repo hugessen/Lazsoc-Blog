@@ -1,8 +1,8 @@
-<div class="" *ngIf="hasEvents">
+<div *ngIf="hasEvents">
   <div *ngFor="let event of events" style="margin-bottom:1rem">
-    <div *ngIf="isVisible(event)">
+    <div *ngIf="matchesFilters(event)">
     <!-- <span class="event-divider mt-4">{{object.val.divider}}</span><hr/> -->
-      <div class="card mt-3" *ngIf="event.typeof == 'event'" (click)="viewEvent(event)" style="cursor:pointer">
+      <div class="card mt-3" (click)="viewEvent(event)" style="cursor:pointer">
         <div class="card-img-top">
           <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
           <img class="card-img-top" [src]="event.banner" *ngIf="event.banner != ''">
@@ -33,7 +33,7 @@
             <img src="assets/img/Blank Avatar.jpg" class="club-avatar mr-3" *ngIf="!event.user_avatar">
             <img [src]="event.user_avatar" class="club-avatar mr-3" *ngIf="event.user_avatar">
             <div class="d-flex flex-column">
-              <span class="club-title">{{event.author}}</span>
+              <span class="club-title">{{event.author_name}}</span>
               <span class="card-datetime">{{event.created_at | getPublicationDate }}</span>
             </div>
             <span class="ml-auto delete-btn" *ngIf="didUserPublish(event)" (click)="deleteArticle(event.id)">Delete</span>

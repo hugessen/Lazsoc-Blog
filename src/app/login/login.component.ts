@@ -11,7 +11,7 @@ import { Router, ParamMap, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  state:string = "login"
+  state:string = "login";
   loginObj = {email: "", password: ""};
   registerObj = {email:"",password:"", passwordConfirmation:""};
   profileInfoObj = {
@@ -36,8 +36,12 @@ export class LoginComponent implements OnInit {
 
   signIn(){
     this.authService.logInUser(this.loginObj).subscribe(
-        res => this.router.navigateByUrl('/newsfeed'),
-
+        res => {
+          if (res.needsUpdate) 
+            this.router.navigateByUrl('/update'); 
+          else 
+            this.router.navigateByUrl('/newsfeed');
+        },
         err => {
           this.hasLoginError = true;
           console.error('auth error:', err);
@@ -63,14 +67,13 @@ export class LoginComponent implements OnInit {
     this.authService.registerUser(this.registerObj).subscribe(
         res => {
           if(res.status == 200){
-            this.router.navigateByUrl('/update');
-            // this.onFormResult.emit({signedIn: true, res});
+            // this.router.navigateByUrl('/update');
+            this.state = "post-registration";
           }
         },
         err => {
           console.log('Registration error', err);
-          this.hasRegisterError = true;
-          // this.onFormResult.emit({signedIn: false, err});
+          this.errors.push("Something went wrong. \n That email may already be in use, or there was an issue with your connection");
         }
     );
   }

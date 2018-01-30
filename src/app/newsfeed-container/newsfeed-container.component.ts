@@ -24,6 +24,8 @@ export class NewsfeedContainerComponent implements OnInit {
   clubFilters:any[] = [];
   timeFilters:any[] = [];
 
+  newsfeedState = "events";
+
   constructor(public authService:AuthService, private webAPI: WebAPI) {
     webAPI.getClubs().then(res => {
       this.clubs = res;
@@ -34,6 +36,10 @@ export class NewsfeedContainerComponent implements OnInit {
     $('.dropdown-menu').click(function(e) {
         e.stopPropagation();
     });
+  }
+
+  setNewsfeedState(state) { 
+    this.newsfeedState = state; 
   }
 
   signOut(){

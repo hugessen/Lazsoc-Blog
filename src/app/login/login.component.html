@@ -1,14 +1,10 @@
 <div class="container-fluid">
   <div class="d-flex justify-content-center mt-4">
-    <div class="container-fluid mt-4 justify-content-center">
-      <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
-        {{error}}
-      </div>
-      <div *ngIf="state == 'login'">
-        <h1>Sign in</h1>
+    <div class="row container-fluid mt-4 justify-content-center">
+      <div *ngIf="state == 'login'" style="margin-top:60px">
         <div class="forum_container">
           <div class="form">
-            <img src="assets/img/Lazsoc-logo.png" style="width:100px; height:auto; margin-bottom:10px;">
+            <img src="assets/img/Lazsoc-logo.png">
             <form class="register-form">
               <input type="text" placeholder="name"/>
               <input type="password" placeholder="password"/>
@@ -18,32 +14,50 @@
             </form>
             <form class="login-form">
               <span class="err-msg" *ngIf="hasLoginError">Invalid login credentials. Please try again.</span>
-              <input type="text" placeholder="email" [(ngModel)]="loginObj.email" name="email"/>
-              <input type="password" placeholder="password" [(ngModel)]="loginObj.password" name="password"/>
-              <button (click)="signIn()" data-dismiss="modal">login</button>
+              <input type="text" placeholder="Email" [(ngModel)]="loginObj.email" name="email"/>
+              <input type="password" placeholder="Password" [(ngModel)]="loginObj.password" name="password"/>
+              <button (click)="signIn()" data-dismiss="modal">Login</button>
               <p class="message">Not Registered? <a (click)="state = 'register'" style="cursor:pointer"><u>Create an account</u></a></p>
             </form>
           </div>
         </div>
       </div>
       
-      <div class="" *ngIf="state === 'register'">
-        <h1>Join the Community</h1>
+      <div *ngIf="state === 'register'" style="margin-top:60px">
         <div class="forum_container">
             <div class="form">
-              <img src="assets/img/Lazsoc-logo.png" style="width:100px; height:auto; margin-bottom:10px;">
+              <img src="assets/img/Lazsoc-logo.png">
               <form class="login-form">
-                <span class="err-msg" *ngIf="hasRegisterError">Invalid login credentials. Please try again.</span>
+                <span class="err-msg" *ngFor="let error of errors">{{error}}<br></span>
                 <div class="d-flex flex-row">
-                  <input type="email" placeholder="email" maxlength="8" name="email" class="email" [(ngModel)]="registerObj.email"/>
+                  <input type="email" placeholder="Email" maxlength="8" name="email" class="email" [(ngModel)]="registerObj.email"/>
                   <span class="mylaurier ml-2">@mylaurier.ca</span>
                 </div>
                 <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
                 <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
-                <button (click)="registerUser()">Create Account</button>
+                <button (click)="registerUser()">Let's get started!</button>
                 <p class="message">Already Registered? <a (click)="state = 'login'" style="cursor:pointer"><u>Sign-in</u></a></p>
               </form>
             </div>
+        </div>
+      </div>
+<!--       <div *ngIf="state === 'post-registration'" class="post-registration col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <img src="assets/img/Lazsoc-logo.png">
+        <span>
+          Thank you for registering with us!
+          Please confirm your email by following the link in the email we sent you.
+        </span>
+      </div> -->
+      <div *ngIf="state === 'post-registration'" style="margin-top:60px">
+        <div class="forum_container">
+          <div class="post-registration">
+            <img src="assets/img/Lazsoc-logo.png">
+            <br>
+            <h1>Check your email</h1>
+            <span>
+              Thanks for registering with us! Check your email to confirm your account.
+            </span>
+          </div>
         </div>
       </div>
     </div>

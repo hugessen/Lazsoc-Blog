@@ -54,7 +54,8 @@
 		      </div>
   	      <div class="card mt-2 px-3" *ngFor="let comment of article.comments">
 		      	<div class="d-flex flex-row mt-3">
-		      		<img src="assets/img/Blank Avatar.jpg" class="avatar mr-3">
+		      		<img src="assets/img/Blank Avatar.jpg" *ngIf="comment.author_avatar == null" class="avatar mr-3">
+		      		<img [src]="comment.author_avatar" *ngIf="comment.author_avatar != null" class="avatar mr-3">
 		      		<div class="d-flex flex-column">
 		      			<span class="comment-name-text mt-1">{{comment.author}}</span>
 		      			<span class="comment-time mt-1">{{comment.created_at | getPublicationDate}}</span>

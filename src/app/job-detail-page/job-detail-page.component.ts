@@ -57,6 +57,7 @@ export class JobDetailPageComponent implements OnInit {
     if(this.errors.length == 0) {
       this.webAPI.submitJobApplication(this.jobApplication);
       this.submitted = true;
+      this.topFunction();
     }
     else this.topFunction();
   }

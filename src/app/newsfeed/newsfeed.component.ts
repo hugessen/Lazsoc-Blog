@@ -19,7 +19,6 @@ const ONE_DAY = 60*60*24*1000
 export class NewsfeedComponent implements OnInit {
   events:any;
   clubs = {};
-  newsfeedState = "events";
   hasEvents:boolean = true;
   tagFilters:any[] = [];
   clubFilters:any[] = [];
@@ -51,16 +50,6 @@ export class NewsfeedComponent implements OnInit {
     this.scrollTop();
   }
 
-  viewArticle(article) {
-    this.router.navigate(['/article',article.id]);
-    this.scrollTop();
-  }
-
-  setNewsfeedState(state:string){
-    this.newsfeedState = state;
-    this.scrollTop();
-  }
-
   scrollTop(){
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
@@ -82,23 +71,6 @@ export class NewsfeedComponent implements OnInit {
       }
       return false;
     } else return true;
-  }
-
-  didUserPublish(article) {
-    if (!this.authService.userSignedIn$)
-      return false;
-    return this.authService.currentUser().id == article.user_id;
-  }
-
-  deleteArticle(articleID) {
-    if (confirm("Are you sure you want to delete this?") == true) {
-      this.authService.apiGet(`delete_article/${articleID}`).then(deletedID => {
-        _.remove(this.events,function(article) {
-          return article.typeof == "article" && article.id == deletedID;
-        });
-      })
-    }
-
   }
 
   addTagFilter(tag){
@@ -125,23 +97,13 @@ export class NewsfeedComponent implements OnInit {
     _.pull(this.timeFilter,timeframe);
   }
 
-  isVisible(feedItem) {
-    if (this.newsfeedState != "all") {
-      if (this.newsfeedState == "events") {
-        if (this.clubID != 0 && this.clubID != feedItem.club_id) return false
-        if (feedItem.typeof != "event") return false
-      }
-      else if (this.newsfeedState == "articles" && feedItem.typeof != "article") return false
-    }
-    return this.matchesFilters(feedItem);
+  isVisible(event) {
+    if (this.clubID != 0 && this.clubID != event.club_id) return false
+    return this.matchesFilters(event);
   }
 
-  matchesFilters(feedItem){
-    if (feedItem.typeof == "event")
-      return (this.matchesTags(feedItem) && this.matchesClub(feedItem) && this.matchesTimeframe(feedItem));
-    else if (feedItem.typeof == "article")
-      return true
-    // TODO: Implement filtering for articles
+  matchesFilters(event){
+      return (this.matchesTags(event) && this.matchesClub(event) && this.matchesTimeframe(event));
   }
 
   matchesTags(event){

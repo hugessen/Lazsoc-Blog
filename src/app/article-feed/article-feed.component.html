@@ -1,0 +1,25 @@
+ <div *ngFor="let article of articles">
+ 	 <div class="card mt-3">
+    <div class="card-block">
+      <div class="d-flex flex-row">
+        <img src="assets/img/Blank Avatar.jpg" class="avatar mr-3" *ngIf="!article.user_avatar">
+        <img [src]="article.user_avatar" class="avatar mr-3" *ngIf="article.user_avatar">
+        <div class="d-flex flex-column mt-2">
+          <span class="author">{{article.author_name}}</span>
+          <span class="datetime">{{article.created_at | getPublicationDate }}</span>
+        </div>
+        <span class="ml-auto delete-btn" *ngIf="didUserPublish(article)" (click)="deleteArticle(article.id)">Delete</span>
+      </div>
+      <div class="card mt-3" style="cursor:pointer" (click)="viewArticle(article)">
+        <div class="article-cover" *ngIf="article.cover_url"><img [src]="article.cover_url" class="article-cover"></div>
+        <span class="article-title p-3">{{article.title}}</span>
+      </div>
+    </div>
+    <div class="card-footer py-2 px-4">
+      <span class="footer-text" *ngIf="article.total_votes != 1">{{article.total_votes}} Likes &nbsp; </span>
+      <span class="footer-text" *ngIf="article.total_votes == 1">1 Like &nbsp; </span>
+      <span class="footer-text" *ngIf="article.comments.length != 1">&bull; &nbsp;{{article.comments.length}} Comments</span>
+      <span class="footer-text" *ngIf="article.comments.length == 1">&bull; &nbsp; 1 Comment</span>
+    </div>
+  </div>
+ </div>

@@ -6,6 +6,7 @@ import { JobPosting,JobPostingApplication } from '../models/job-posting';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 const API_PATH = "https://moria.lazsoc.ca"
+// const API_PATH = "http://localhost:3000"
 
 @Injectable()
 export class WebAPI {
@@ -15,24 +16,22 @@ export class WebAPI {
     return new Promise((resolve,reject) => {
       Observable.forkJoin([
         Observable.fromPromise(this.getEvents()),
-        Observable.fromPromise(this.getArticles()),
         Observable.fromPromise(this.getClubs())
       ]).subscribe(data => {
-        let [events, articles, clubs] = data;
+        let [events, clubs] = data;
         if(club)
-          var content = this.createNewsfeed(events,articles,clubs,club);
+          var content = this.createNewsfeed(events, clubs, club);
         else
-          var content = this.createNewsfeed(events,articles,clubs);
+          var content = this.createNewsfeed(events, clubs);
         resolve(content);
       })
     })
   }
 
-  createNewsfeed(events, articles, clubs,club_id?):any{
+  createNewsfeed(events, clubs,club_id?):any{
     var result = []
     for (let event of events){
       event.club_name = clubs[event.club_id].name
-      event.typeof = "event";
       event.sortDate = event.start_date_time;
       var eventStart = Date.parse(event.start_date_time);
       var currentTime = new Date().getTime();
@@ -40,54 +39,38 @@ export class WebAPI {
         result.push(event);
       }
     }
-    if (!club_id) {
-      for(let article of articles){
-        article.typeof = "article";
-        article.sortDate = article.created_at;
-        result.push(article);
-      }
-    }
-    result.sort(function(a,b){ 
-      return Date.parse(a.sortDate) - Date.parse(b.sortDate)
-    });
-    
+    result.sort((a,b) => Date.parse(a.sortDate) - Date.parse(b.sortDate));   
     return result;
   }
 
-  /*vote(event):any{
-    this.http.post('http://localhost:3000/api/articles/'+event.id +'/vote',null).subscribe(res => {
-      console.log(res);
-    });
-  } */
-
   getArticles():Promise<any[]>{    
     return new Promise((resolve,reject) => {
-        this.http.get(`${API_PATH}/api/get_articles`).map(res => res.json()).toPromise()
-        .then(res => {
-          // console.log(res);
-          resolve(res);
-        }).catch(err => reject(err));
-      })  
+      this.http.get(`${API_PATH}/api/get_articles`).map(res => res.json()).toPromise()
+      .then(res => {
+        res.sort( (a,b)=> Date.parse(b.created_at) - Date.parse(a.created_at));
+        resolve(res);
+      }).catch(err => reject(err));
+    })  
   }
 
   getArticle(id: number):Promise<any>{    
     return new Promise((resolve,reject) => {
-        this.http.get(`${API_PATH}/api/get_article/${id}`).map(res => res.json()).toPromise()
-        .then(res => {
-          // console.log(res);
-          resolve(res);
-        }).catch(err => reject(err));
-      })
+      this.http.get(`${API_PATH}/api/get_article/${id}`).map(res => res.json()).toPromise()
+      .then(res => {
+        // console.log(res);
+        resolve(res);
+      }).catch(err => reject(err));
+    })
   }
 
   getEvents():Promise<any[]>{
     return new Promise((resolve,reject) => {
-        this.http.get(`${API_PATH}/v2/api/events.json`).map(res => res.json()).toPromise()
-        .then(res => {
-          this.sortByDate(res.events);
-          resolve(res.events);
-        }).catch(err => reject(err));
-      })
+      this.http.get(`${API_PATH}/v2/api/events.json`).map(res => res.json()).toPromise()
+      .then(res => {
+        this.sortByDate(res.events);
+        resolve(res.events);
+      }).catch(err => reject(err));
+    })
   }
 
   getEvent(id: number): Promise<any> {
