@@ -23,6 +23,9 @@
 	font-family: "Times New Roman", Times, serif;
 	font-size: 20px;
 	outline: none;
+	overflow-wrap: break-word;
+	margin-bottom:20px;
+	margin-top:10px;
 }
 
 .comment-placeholder {
@@ -86,5 +89,10 @@ textarea {
 }
 
 .heart {
-	width:50px;
+	width:80px;
+}
+
+.like-text {
+	font-family: Lato-Black;
+	font-size:40px;
 }

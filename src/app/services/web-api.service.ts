@@ -6,6 +6,7 @@ import { JobPosting,JobPostingApplication } from '../models/job-posting';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 const API_PATH = "https://moria.lazsoc.ca"
+const TIME_OFFSET = 60*60*5*1000;
 // const API_PATH = "http://localhost:3000"
 
 @Injectable()
@@ -35,7 +36,7 @@ export class WebAPI {
       event.sortDate = event.start_date_time;
       var eventStart = Date.parse(event.start_date_time);
       var currentTime = new Date().getTime();
-      if(eventStart > currentTime && (!club_id || club_id == event.club_id)){
+      if(eventStart > currentTime - TIME_OFFSET && (!club_id || club_id == event.club_id)){
         result.push(event);
       }
     }
@@ -167,7 +168,7 @@ export class WebAPI {
   trimJobPostings(jobPostings){
     return jobPostings.filter(function(posting){
       let currentTime = new Date().getTime();
-      return Date.parse(posting.expiry_date) > currentTime;
+      return Date.parse(posting.expiry_date) > currentTime - TIME_OFFSET;
     })
   }
 }

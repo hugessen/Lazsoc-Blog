@@ -20,14 +20,14 @@
       		<div class="like-box" style="cursor:pointer" (click)="like()" *ngIf="authService.userSignedIn$ && !didUserUpvote()">
 	      		<img src="assets/img/icons/Like.svg" class="heart">
 	      		<div class="d-flex flex-column">
-	      			<span *ngIf="article.total_votes != 1">This article has {{article.total_votes}} likes</span>
+<!-- 	      			<span *ngIf="article.total_votes != 1">This article has {{article.total_votes}} likes</span>
 	      			<span *ngIf="article.total_votes == 1">This article has 1 like</span>
-	      			<span>Like this article to give the author your support</span>
+	      			<span>Like this article to give the author your support</span> -->
 	      		</div>
       		</div>
       		<div class="like-box" style="cursor:pointer" (click)="like()" *ngIf="didUserUpvote()">
 	      		<img src="assets/img/icons/Filled-Like.svg" class="heart">
-      			<span style="color:red">You like this article. Thanks for giving feedback!</span>
+      			<span class="like-text mt-2" style="color:red">{{article.total_votes}}</span>
       		</div>
       		<br>
 		      <div class="card mt-1" *ngIf="!isCommentActive && authService.userSignedIn$" (click)="toggleCommentActive()" style="cursor:pointer">
@@ -62,7 +62,7 @@
 		      		</div>
 		      		<div class="ml-auto p-2 delete-btn" *ngIf="didUserPublish(comment)" (click)="deleteComment(comment)">Delete</div>
 		      	</div>
-		      	<div class="comment-text m-2">
+		      	<div class="comment-text">
 		      		{{comment.body}}
 		      	</div>
 			    </div>
