@@ -11,11 +11,9 @@ import { User } from '../models/user';
 })
 export class ProfileComponent implements OnInit {
 
-  currentUser;
   state = "about" 
 
   constructor(public tokenService: Angular2TokenService, public route: ActivatedRoute, public router: Router, public authService:AuthService) {
-    this.currentUser = this.authService.currentUser();
   }
 
   ngOnInit() {

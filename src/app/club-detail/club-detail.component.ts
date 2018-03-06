@@ -60,6 +60,7 @@ export class ClubDetailComponent implements OnInit {
             { name: "Justin Dube", title: "Manager-Internal", image: "assets/img/Head Shots/JustinD.jpg" },
             { name: "Xavier Prosper", title: "Manager-Internal", image: "assets/img/Head Shots/Xavier.jpg" },
             { name: "Jack Heinzl", title: "Manager-Internal", image: "assets/img/Head Shots/JackH.jpg" },
+            { name: "Caleb Larrier", title: "Manager-Internal", image: "assets/img/Head Shots/Caleb.jpg" },
             { name: "Hannah Klein", title: "Discount Specialist", image: "assets/img/Head Shots/Hannah.jpg" },
             { name: "Justin Sung", title: "C & C Outreach", image: "assets/img/Head Shots/JustinS.jpg" }
           ]

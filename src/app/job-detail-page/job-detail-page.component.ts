@@ -14,6 +14,8 @@ export class JobDetailPageComponent implements OnInit {
   public club:Club = new Club();
   public errors = [];
   public jobApplication:JobPostingApplication = new JobPostingApplication();
+  resume:any;
+  resumeUploaded = false;
   submitted = false;
 
   constructor( public route: ActivatedRoute, public router: Router, public webAPI: WebAPI ) {
@@ -69,6 +71,14 @@ export class JobDetailPageComponent implements OnInit {
   topFunction() {
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
+  }
+
+  fileEvent(event: any){
+    this.resume = event.target.files[0];
+  }
+
+  uploadResume() {
+
   }
 
   validateSubmission(){

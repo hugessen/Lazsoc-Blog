@@ -44,13 +44,13 @@ export class ArticleComponent implements OnInit {
    didUserPublish(publishable) {
      if (!this.authService.userSignedIn$)
        return false
-     return this.authService.currentUser().id == publishable.user_id;
+     return this.authService.currentUser.id == publishable.user_id;
    }
 
    didUserUpvote(){
      if (this.userVoted != null) return this.userVoted;
      if (!this.authService.userSignedIn$) return false;
-     return this.article.votes_for.findIndex(vote => vote.voter_id == this.authService.currentUser().id) != -1;
+     return this.article.votes_for.findIndex(vote => vote.voter_id == this.authService.currentUser.id) != -1;
    }
 
    deleteComment(comment) {

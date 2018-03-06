@@ -7,10 +7,12 @@ import {Response, Http, RequestOptions} from "@angular/http";
 export class AuthService implements OnInit {
 
   userSignedIn$:boolean = false;
+  currentUser = null;
 
   constructor(public tokenService:Angular2TokenService, public http:Http)  {
     this.tokenService.init({
-        apiBase:                    'http://localhost:3000/api',
+        apiBase:                    'https://moria.lazsoc.ca/api',
+        // apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -54,7 +56,8 @@ export class AuthService implements OnInit {
           if(res.status == 200){
             console.log("Signed in");
             this.userSignedIn$ = true;
-            // console.log(authService.currentUserData);
+            this.currentUser = res.json().data;
+            console.log("CurrUser", this.currentUser)
           }
           else {
             console.log("Sign in failed");
@@ -85,7 +88,7 @@ export class AuthService implements OnInit {
     })
   }
 
-  currentUser():any{
+  getCurrentUser():any{
     return this.tokenService.currentUserData;
   }
 

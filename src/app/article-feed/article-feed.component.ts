@@ -31,7 +31,7 @@ export class ArticleFeedComponent implements OnInit {
   didUserPublish(article) {
     if (!this.authService.userSignedIn$)
       return false;
-    return this.authService.currentUser().id == article.user_id;
+    return this.authService.currentUser.id == article.user_id;
   }
 
   scrollTop(){

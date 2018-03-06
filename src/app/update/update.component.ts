@@ -11,16 +11,7 @@ import * as AWS from 'aws-sdk';
 })
 export class UpdateComponent implements OnInit {
 
-  updateObj = {
-    first_name:"",
-    last_name:"",
-    program:"",
-    image:"",
-    summary:"",
-    is_bean:"",
-    profile_header:"",
-    school_year:"",
-  };
+  updateObj;
 
   work_experiences_attributes = [{
     title:"",
@@ -113,7 +104,7 @@ export class UpdateComponent implements OnInit {
     if (this.imageUploaded) {
       console.log("Attempting to upload");
       let avatarUrl = `profile_avatars/user-${this.awsService.randomString(10)}`;
-      this.updateObj.image = `https://s3.us-east-2.amazonaws.com/lazsoc-images/${avatarUrl}`;
+      this.updateObj.image = `https://s3.us-east-2.amazonaws.com/lazsoc-images/user-avatars/${avatarUrl}`;
       this.awsService.uploadToAWS(this.newAvatar,avatarUrl);
     }
     this.authService.updateUser(this.updateObj).then(res => {
