@@ -67,8 +67,8 @@ export class LoginComponent implements OnInit {
     this.authService.registerUser(this.registerObj).subscribe(
         res => {
           if(res.status == 200){
-            // this.router.navigateByUrl('/update');
-            this.state = "post-registration";
+            this.router.navigateByUrl('/update');
+            // this.state = "post-registration";
           }
         },
         err => {

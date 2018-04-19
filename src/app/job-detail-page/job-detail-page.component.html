@@ -37,9 +37,12 @@
                 <select class="form-control mb-2" id="exampleSelect1" [(ngModel)]="jobApplication.year" required="required">
                   <option *ngFor="let option of getYearOptions()">{{option}}</option>
                 </select>
-                <label>Resume Upload</label>
+                <label>Resume Upload*</label>
+                  <input type="text" class="form-control mb-2" id="exampleInputEmail1" [(ngModel)]="jobApplication.resume_link" required="required">
+                  <small id="emailHelp" class="form-text text-muted">Upload your resume to google drive and share the link here. Make sure link sharing is set to “Anyone with link can view”.</small>
+<!--                 <label>Resume Upload</label>
                 <input type="file" name="file" id="file" class="inputfile" (change)="fileEvent($event)" />
-                <input type="file" class="form-control mb-2" id="resume" [(ngModel)]="jobApplication.resume_link" required="required">
+                <input type="file" class="form-control mb-2" id="resume" [(ngModel)]="jobApplication.resume_link" required="required"> -->
               </div>
               <div class="form-group" *ngFor="let question of posting.job_posting_questions; let i = index">
                 <label for="exampleInputEmail1"><b>{{question.question}}</b></label><br>
