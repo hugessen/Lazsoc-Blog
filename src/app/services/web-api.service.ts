@@ -20,10 +20,11 @@ export class WebAPI {
         Observable.fromPromise(this.getClubs())
       ]).subscribe(data => {
         const [events, clubs] = data;
+        let content;
         if (club) {
-          const content = this.createNewsfeed(events, clubs, club);
+          content = this.createNewsfeed(events, clubs, club);
         } else {
-          const content = this.createNewsfeed(events, clubs);
+          content = this.createNewsfeed(events, clubs);
         }
         resolve(content);
       })
