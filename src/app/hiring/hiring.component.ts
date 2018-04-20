@@ -8,21 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: './hiring.component.html',
   styleUrls: ['./hiring.component.css']
 })
-export class HiringComponent implements OnInit {
-  jobPostings;
-  public clubs;
+export class HiringComponent {
+  jobPostings: any[];
 
   @Input() clubID;
   constructor(public webAPI: WebAPI, public router: Router) {
-    Observable.forkJoin([
-      Observable.fromPromise(webAPI.getJobPostings()),
-      Observable.fromPromise(webAPI.getClubs())
-    ]).subscribe(data => {
-      [this.jobPostings, this.clubs] = data;
+    this.webAPI.getJobPostings().then(data => {
+      this.jobPostings = data;
     })
-  }
-
-  ngOnInit() {
   }
 
   onSelect(jobPosting) {

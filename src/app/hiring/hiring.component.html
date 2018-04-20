@@ -2,10 +2,10 @@
   <div *ngIf="(clubID == 0 || clubID === posting.club_id)" class="card py-0" style="cursor:pointer" (click)="onSelect(posting)">
     <div class="card-block">
       <div class="d-flex mb-2">
-        <img src="assets/img/thumbnails/{{clubs[posting.club_id].app_logo}}" class="club-avatar mr-3" alt="">
+        <img src="assets/img/thumbnails/{{posting.club.app_logo}}" class="club-avatar mr-3" alt="">
         <div class="d-flex flex-column">
           <h4 class="club-title mb-1">{{posting.title}}</h4>
-          <h4 class="card-datetime">{{clubs[posting.club_id].name}}</h4>
+          <h4 class="card-datetime">{{posting.club.name}}</h4>
         </div>
         <h4 class="card-datetime ml-auto" style="color:#83868A"><i>Expires {{posting.expiry_date | getShortDate}}</i></h4>
       </div>

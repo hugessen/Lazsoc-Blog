@@ -39,11 +39,11 @@
           <div class="dropdown-menu club-dropdown" aria-labelledby="club-dropdown" style="width:300px"
                                                    onmouseover="document.body.style.overflow='hidden';"
                                                    onmouseout="document.body.style.overflow='auto';">
-            <ul class="list-group" *ngFor="let club of clubs | mapToIterable">
+            <ul class="list-group" *ngFor="let club of clubs">
               <li class="list-group-item py-0" style="cursor:pointer" 
-                [ngClass]="{selected: club.val.selected}" 
-                (click)="toggleClubFilter(club.val.slug)">
-                {{club.val.name}}
+                [ngClass]="{selected: club.selected}" 
+                (click)="toggleClubFilter(club.slug)">
+                {{club.name}}
               </li>
             </ul>
           </div>

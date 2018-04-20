@@ -34,15 +34,14 @@ export class WebAPI {
   createNewsfeed(events, clubs, club_id?): any {
     const result = []
     for (const event of events) {
-      event.club_name = clubs[event.club_id].name
-      event.sortDate = event.start_date_time;
+      event.club = clubs.find(club => club.id === event.club_id);
       const eventStart = Date.parse(event.start_date_time);
       const currentTime = new Date().getTime();
       if (eventStart > currentTime - TIME_OFFSET && (!club_id || club_id === event.club_id)) {
         result.push(event);
       }
     }
-    result.sort((a, b) => Date.parse(a.sortDate) - Date.parse(b.sortDate));
+    result.sort((a, b) => Date.parse(a.start_date_time) - Date.parse(b.start_date_time));
     return result;
   }
 
@@ -70,7 +69,7 @@ export class WebAPI {
     return new Promise((resolve, reject) => {
       this.http.get(`${LOCAL_PATH}/v2/api/events.json`).map(res => res.json()).toPromise()
       .then(res => {
-        this.sortByDate(res.events);
+        res.events.sort((a, b) => Date.parse(a.start_date_time) - Date.parse(b.start_date_time));
         resolve(res.events);
       }).catch(err => reject(err));
     })
@@ -81,24 +80,14 @@ export class WebAPI {
              .then(events => events.find(event => event.id === id));
   }
 
-  registerForEvent(id: number) {
-    return new Promise((resolve, reject) => {
-      this.http.get(`${API_PATH}/v2/api/events/register/` + id).map(res => res.json()).toPromise()
-      .then(res => {
-        resolve(res.events);
-      }).catch(err => reject(err));
-    })
-  }
-
-  getClubs(arrayFormat = false): Promise<any> {
+  getClubs(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get(`${API_PATH}/v2/api/clubs.json`).map(res => res.json()).toPromise()
         .then(res => {
-          if (arrayFormat) {
-           resolve(res);
-          } else {
-            resolve(this.transformClubs(res));
-          }
+          res.map(club => {
+            club.club_social_links = this.formatSocialLinks(club.club_social_links);
+          })
+          resolve(res);
         })
         .catch(err => reject(err));
     })
@@ -106,7 +95,7 @@ export class WebAPI {
 
   getClub(id: number): Promise<any> {
     return new Promise((resolve, reject) => {
-    this.getClubs(true)
+    this.getClubs()
        .then(res => {
          const club = res.find(club => club.id === id);
          club.club_social_links = this.formatSocialLinks(club.club_social_links);
@@ -120,6 +109,11 @@ export class WebAPI {
       this.http.get(`${API_PATH}/api/job_postings.json`).map(res => res.json()).toPromise()
       .then(res => {
         const postings = this.trimJobPostings(res);
+        this.getClubs().then(clubs => {
+          postings.map(posting => {
+            posting.club = clubs.find(club => club.id === posting.club_id);
+          })
+        })
         resolve(postings);
       }).catch(err => reject(err));
     })
@@ -146,28 +140,12 @@ export class WebAPI {
     });
   }
 
-  transformClubs(clubs: any[]) {
-    const result = {};
-    for (const club of clubs) {
-      club.club_social_links = this.formatSocialLinks(club.club_social_links);
-      club.selected = false;
-      result[club.id.toString()] = club;
-    }
-    return result;
-  }
-
   formatSocialLinks(socialLinks: any[]) {
     const result = {};
     for (const link of socialLinks) {
-        result[link.link_type] = link.url;
+      result[link.link_type] = link.url;
     }
     return result;
-  }
-
-  sortByDate(events) {
-    return events.sort(function(a, b) {
-      return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
-    })
   }
 
   trimJobPostings(jobPostings) {

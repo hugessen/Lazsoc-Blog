@@ -21,7 +21,7 @@ export class SidebarComponent {
   constructor(public webAPI: WebAPI) {
     this.webAPI.getNewsfeed().then(res => {
       this.events = res.filter(this.isThisWeek);
-      if (this.events.length == 0) { this.anyEvents = false; }
+      if (this.events.length === 0) { this.anyEvents = false; }
     })
   }
 
@@ -59,7 +59,6 @@ export class ProfileSidebar implements OnInit {
 export class JobPostingSidebar implements OnInit {
 
   public jobPostings;
-  public clubs;
   hasPostings = false;
   @Input() clubID;
 
@@ -67,16 +66,13 @@ export class JobPostingSidebar implements OnInit {
   }
 
   ngOnInit() {
-    Observable.forkJoin([
-      Observable.fromPromise(this.webAPI.getJobPostings()),
-      Observable.fromPromise(this.webAPI.getClubs())
-    ]).subscribe(data => {
-      [this.jobPostings, this.clubs] = data;
-      if (this.clubID != 0) {
+    this.webAPI.getJobPostings().then(data => {
+      this.jobPostings = data;
+      if (this.clubID !== 0) {
         for (const posting of this.jobPostings) {
           console.log(posting.club_id);
           console.log(this.clubID);
-          if (posting.club_id == this.clubID) {
+          if (posting.club_id === this.clubID) {
             this.hasPostings = true;
             break;
           }

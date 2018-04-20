@@ -30,12 +30,9 @@ export class NewsfeedComponent implements OnInit {
   }
 
   ngOnInit() {
-    Observable.forkJoin([
-      Observable.fromPromise(this.webAPI.getNewsfeed(this.clubID)),
-      Observable.fromPromise(this.webAPI.getClubs())
-    ]).subscribe(data => {
-      [this.events, this.clubs] = data;
-      this.hasEvents = this.checkHasEvents();
+    this.webAPI.getNewsfeed().then(data => {
+      this.events = data;
+      this.hasEvents = this.checkHasEvents(data);
     })
   }
 
@@ -63,9 +60,9 @@ export class NewsfeedComponent implements OnInit {
     Stickyfill.add(document.getElementsByClassName('sticky-updates'));
   }
 
-  checkHasEvents(): boolean {
+  checkHasEvents(events): boolean {
     if (this.clubID !== 0) {
-      for (const event of this.events) {
+      for (const event of events) {
         if (event.club_id === this.clubID) {
           return true;
         }
@@ -124,7 +121,8 @@ export class NewsfeedComponent implements OnInit {
   }
 
   matchesClub(event) {
-    const slug = this.clubs[event.club_id].slug;
+    console.log(event);
+    const slug = event.club.slug;
     return this.clubFilters.length === 0 || _.indexOf(this.clubFilters, slug) !== -1;
   }
 

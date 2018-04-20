@@ -18,7 +18,7 @@ export class NewsfeedContainerComponent implements OnInit {
 
   tags: any = this.getTags();
   times: any = this.getTimeFilters();
-  clubs: { selected: any };
+  clubs: any;
 
   tagFilters: any[] = [];
   clubFilters: any[] = [];
@@ -29,6 +29,7 @@ export class NewsfeedContainerComponent implements OnInit {
   constructor(public authService: AuthService, private webAPI: WebAPI) {
     webAPI.getClubs().then(res => {
       this.clubs = res;
+      this.clubs.map(club => club.selected = false);
     });
   }
 
@@ -148,13 +149,8 @@ export class NewsfeedContainerComponent implements OnInit {
     this.feed.timeFilter = '';
   }
 
-  getClubBySlug(slug) {
-    for (const key in this.clubs) {
-      if (this.clubs[key].slug == slug) {
-        return this.clubs[key];
-      }
-    }
-    return null;
+  getClubBySlug(slug): any {
+    this.clubs.find(club => club.slug === slug);
   }
 
 }
