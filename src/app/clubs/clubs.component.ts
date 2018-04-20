@@ -11,10 +11,10 @@ import lineClamp from 'line-clamp';
   styleUrls: ['./clubs.component.css']
 })
 export class ClubsComponent implements OnInit {
-  clubs:{};
-  postings:{};
+  clubs: {};
+  postings: {};
 
-  constructor(public webAPI:WebAPI, public router:Router) {
+  constructor(public webAPI: WebAPI, public router: Router) {
     webAPI.getClubs().then(res => {
       this.clubs = res;
     })
@@ -27,8 +27,8 @@ export class ClubsComponent implements OnInit {
 
   }
 
-  onSelect(event){
-    this.router.navigate(['/clubs',event.id]);
+  onSelect(event) {
+    this.router.navigate(['/clubs', event.id]);
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
   }

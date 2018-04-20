@@ -8,10 +8,10 @@ import { SafePipe } from '../pipes/safe.pipe';
 })
 export class ResourcesComponent implements OnInit {
 
-  resourceType = "discountProgram";
+  resourceType = 'discountProgram';
   selectedDoc = 0;
-  studentResources:any[];
-  officialDocs:any[];
+  studentResources: any[];
+  officialDocs: any[];
 
   constructor() {
   }
@@ -20,19 +20,19 @@ export class ResourcesComponent implements OnInit {
     this.setDocuments();
   }
 
-  setDocuments(){
+  setDocuments() {
     this.studentResources = [
-      {name:"Clubs Guide", path: "Clubs Guide.pdf"},
-      {name:"Core Values", path: "Core Values.pdf"},
+      {name: 'Clubs Guide', path: 'Clubs Guide.pdf'},
+      {name: 'Core Values', path: 'Core Values.pdf'},
     ],
     this.officialDocs = [
-      {name:"Lazsoc Constitution", path: "Lazaridis-Students-Society-Constitution.pdf"},
-      {name:"Lazsoc Elections Policy 17/18", path: "LazSoc-Elections-Policy_17-18.pdf"},
-      {name:"Financial Policy", path: "Financial Policy.pdf"}
+      {name: 'Lazsoc Constitution', path: 'Lazaridis-Students-Society-Constitution.pdf'},
+      {name: 'Lazsoc Elections Policy 17/18', path: 'LazSoc-Elections-Policy_17-18.pdf'},
+      {name: 'Financial Policy', path: 'Financial Policy.pdf'}
     ]
   }
 
-  selectDoc(doc){
+  selectDoc(doc) {
     this.selectedDoc = doc;
   }
 

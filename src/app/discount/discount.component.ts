@@ -8,9 +8,9 @@ import { WebAPI } from '../services/web-api.service';
 })
 export class DiscountComponent implements OnInit {
 
-  discountPartners:any[];
+  discountPartners: any[];
 
-  constructor(webAPI:WebAPI) {
+  constructor(webAPI: WebAPI) {
     webAPI.getDiscountPartners()
       .then(res => this.discountPartners = res);
   }

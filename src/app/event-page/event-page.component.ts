@@ -11,18 +11,18 @@ import { Club } from '../models/club';
   styleUrls: ['./event-page.component.css']
 })
 export class EventPageComponent implements OnInit {
-  public event:Event = new Event();
-  public club:Club = new Club();
-  public startTime:string;
-  public endTime:string;
-  public multiDay:boolean;
-  public hasTags:boolean;
+  public event: Event = new Event();
+  public club: Club = new Club();
+  public startTime: string;
+  public endTime: string;
+  public multiDay: boolean;
+  public hasTags: boolean;
 
   constructor( public route: ActivatedRoute, public router: Router, public webAPI: WebAPI ) {
     this.startTime = this.getTime(this.event.start_date_time);
     console.log(new Date(this.event.start_date_time));
     this.endTime = this.getTime(this.event.end_date_time);
-    this.multiDay = ((new Date(this.event.end_date_time).getDate() - new Date(this.event.start_date_time).getDate())>0) ? true:false;
+    this.multiDay = ((new Date(this.event.end_date_time).getDate() - new Date(this.event.start_date_time).getDate()) > 0) ? true : false;
   }
 
   ngOnInit() {
@@ -38,18 +38,18 @@ export class EventPageComponent implements OnInit {
       })
   }
 
-  getTime(date:string):string{
-    var hour = new Date(date).getUTCHours();
-    var min = new Date(date).getUTCMinutes();
-    var minStr = (min < 10) ? min+"0":min;
-    var ampm = (hour < 12) ? "AM" : "PM";
-    if(hour > 12) {
-      hour = hour%12;
+  getTime(date: string): string {
+    let hour = new Date(date).getUTCHours();
+    let min = new Date(date).getUTCMinutes();
+    let minStr = (min < 10) ? min + '0' : min;
+    let ampm = (hour < 12) ? 'AM' : 'PM';
+    if (hour > 12) {
+      hour = hour % 12;
     }
-    return (hour + ":" + minStr + " " + ampm);
+    return (hour + ':' + minStr + ' ' + ampm);
   }
 
-  registerForEvent(){
+  registerForEvent() {
     // this.webAPI.registerForEvent(this.event.id).then(res => console.log(res));
   }
 

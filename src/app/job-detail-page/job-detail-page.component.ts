@@ -10,11 +10,11 @@ import { Club } from '../models/club';
   styleUrls: ['./job-detail-page.component.css']
 })
 export class JobDetailPageComponent implements OnInit {
-  posting:JobPosting = new JobPosting();
-  public club:Club = new Club();
+  posting: JobPosting = new JobPosting();
+  public club: Club = new Club();
   public errors = [];
-  public jobApplication:JobPostingApplication = new JobPostingApplication();
-  resume:any;
+  public jobApplication: JobPostingApplication = new JobPostingApplication();
+  resume: any;
   resumeUploaded = false;
   submitted = false;
 
@@ -30,42 +30,41 @@ export class JobDetailPageComponent implements OnInit {
           this.webAPI.getClub(+posting.club_id).then(res => {
             this.club = res;
             this.posting = posting;
-            this.initApplication(this.posting.id,this.posting.job_posting_questions);
+            this.initApplication(this.posting.id, this.posting.job_posting_questions);
           })
       });
   }
 
-  initApplication(postingId:number, questions:any[]){
+  initApplication(postingId: number, questions: any[]) {
     this.jobApplication = {
-      full_name:"",
-      email:"",
-      program:"",
-      year:1,
-      resume_link:"",
-      job_posting_id:postingId,
-      job_question_answers_attributes:[]
+      full_name: '',
+      email: '',
+      program: '',
+      year: 1,
+      resume_link: '',
+      job_posting_id: postingId,
+      job_question_answers_attributes: []
     };
-    for (var i=0; i<questions.length; i++) {
+    for (let i = 0; i < questions.length; i++) {
       this.jobApplication.job_question_answers_attributes[i] = {
-        job_posting_question_id:questions[i].id,
-        answer:""
+        job_posting_question_id: questions[i].id,
+        answer: ''
       }
     }
   }
 
-  submitJobApp():void {
-    if (this.submitted) return;
+  submitJobApp(): void {
+    if (this.submitted) { return; }
     this.errors = this.validateSubmission();
-    if(this.errors.length == 0) {
+    if (this.errors.length == 0) {
       this.webAPI.submitJobApplication(this.jobApplication);
       this.submitted = true;
       this.topFunction();
-    }
-    else this.topFunction();
+    } else { this.topFunction(); }
   }
 
-  getYearOptions(){
-    return ["1","2","3","4","5+"];
+  getYearOptions() {
+    return ['1', '2', '3', '4', '5+'];
   }
 
   topFunction() {
@@ -73,7 +72,7 @@ export class JobDetailPageComponent implements OnInit {
     document.documentElement.scrollTop = 0; // For IE and Firefox
   }
 
-  fileEvent(event: any){
+  fileEvent(event: any) {
     this.resume = event.target.files[0];
   }
 
@@ -81,20 +80,25 @@ export class JobDetailPageComponent implements OnInit {
 
   }
 
-  validateSubmission(){
-    var incorrectFields = [];
-    if(this.jobApplication.full_name === "")
-      incorrectFields.push("Full name can't be blank");
-    if(this.jobApplication.email === "")
-      incorrectFields.push("Email can't be blank")
-    if(this.jobApplication.program === "")
-      incorrectFields.push("Program can't be blank")
-    if(this.jobApplication.resume_link === "")
-      incorrectFields.push("Resume link can't be blank")
+  validateSubmission() {
+    let incorrectFields = [];
+    if (this.jobApplication.full_name === '') {
+      incorrectFields.push('Full name can\'t be blank');
+    }
+    if (this.jobApplication.email === '') {
+      incorrectFields.push('Email can\'t be blank')
+    }
+    if (this.jobApplication.program === '') {
+      incorrectFields.push('Program can\'t be blank')
+    }
+    if (this.jobApplication.resume_link === '') {
+      incorrectFields.push('Resume link can\'t be blank')
+    }
 
-    for(var i = 0; i < this.jobApplication.job_question_answers_attributes.length; i++) {
-      if (this.jobApplication.job_question_answers_attributes[i].answer === "")
-        incorrectFields.push("Question #"+(i+1)+" must have an answer");
+    for (let i = 0; i < this.jobApplication.job_question_answers_attributes.length; i++) {
+      if (this.jobApplication.job_question_answers_attributes[i].answer === '') {
+        incorrectFields.push('Question #' + (i + 1) + ' must have an answer');
+      }
     }
     return incorrectFields;
   }

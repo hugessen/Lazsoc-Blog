@@ -22,7 +22,7 @@ export class NewsfeedComponent implements OnInit {
   hasEvents = true;
   tagFilters = [];
   clubFilters = [];
-  timeFilter = '';
+  timeFilter: any = '';
 
   @Input() clubID;
 
@@ -65,7 +65,7 @@ export class NewsfeedComponent implements OnInit {
 
   checkHasEvents(): boolean {
     if (this.clubID !== 0) {
-      for (let event of this.events){
+      for (const event of this.events) {
         if (event.club_id === this.clubID) {
           return true;
         }
@@ -113,7 +113,7 @@ export class NewsfeedComponent implements OnInit {
 
   matchesTags(event) {
     if (this.tagFilters.length > 0) {
-      for(let tag of event.event_tags){
+      for (const tag of event.event_tags) {
         if (_.indexOf(this.tagFilters, tag.tag) !== -1) {
           return true;
         }

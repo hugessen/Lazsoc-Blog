@@ -13,7 +13,7 @@ export class HiringComponent implements OnInit {
   public clubs;
 
   @Input() clubID;
-  constructor(public webAPI: WebAPI, public router:Router) {
+  constructor(public webAPI: WebAPI, public router: Router) {
     Observable.forkJoin([
       Observable.fromPromise(webAPI.getJobPostings()),
       Observable.fromPromise(webAPI.getClubs())
@@ -25,8 +25,8 @@ export class HiringComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect(jobPosting){
-    this.router.navigate(['/hiring',jobPosting.id]);
+  onSelect(jobPosting) {
+    this.router.navigate(['/hiring', jobPosting.id]);
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
   }

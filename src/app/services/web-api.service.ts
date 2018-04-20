@@ -21,10 +21,9 @@ export class WebAPI {
       ]).subscribe(data => {
         const [events, clubs] = data;
         if (club) {
-          var content = this.createNewsfeed(events, clubs, club);
-        }
-        else {
-          var content = this.createNewsfeed(events, clubs);
+          const content = this.createNewsfeed(events, clubs, club);
+        } else {
+          const content = this.createNewsfeed(events, clubs);
         }
         resolve(content);
       })
@@ -32,8 +31,8 @@ export class WebAPI {
   }
 
   createNewsfeed(events, clubs, club_id?): any {
-    let result = []
-    for (let event of events){
+    const result = []
+    for (const event of events) {
       event.club_name = clubs[event.club_id].name
       event.sortDate = event.start_date_time;
       const eventStart = Date.parse(event.start_date_time);
@@ -42,7 +41,7 @@ export class WebAPI {
         result.push(event);
       }
     }
-    result.sort((a, b) => Date.parse(a.sortDate) - Date.parse(b.sortDate));  
+    result.sort((a, b) => Date.parse(a.sortDate) - Date.parse(b.sortDate));
     return result;
   }
 
@@ -56,7 +55,7 @@ export class WebAPI {
     })
   }
 
-  getArticle(id: number): Promise<any> {   
+  getArticle(id: number): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get(`${API_PATH}/api/get_article/${id}`).map(res => res.json()).toPromise()
       .then(res => {
@@ -96,8 +95,7 @@ export class WebAPI {
         .then(res => {
           if (arrayFormat) {
            resolve(res);
-          }
-          else {
+          } else {
             resolve(this.transformClubs(res));
           }
         })
@@ -148,8 +146,8 @@ export class WebAPI {
   }
 
   transformClubs(clubs: any[]) {
-    let result = {};
-    for (let club of clubs){
+    const result = {};
+    for (const club of clubs) {
       club.club_social_links = this.formatSocialLinks(club.club_social_links);
       club.selected = false;
       result[club.id.toString()] = club;
@@ -158,22 +156,22 @@ export class WebAPI {
   }
 
   formatSocialLinks(socialLinks: any[]) {
-    let result = {};
-    for (let link of socialLinks){
+    const result = {};
+    for (const link of socialLinks) {
         result[link.link_type] = link.url;
     }
     return result;
   }
 
   sortByDate(events) {
-    return events.sort(function(a, b){
+    return events.sort(function(a, b) {
       return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
     })
   }
 
   trimJobPostings(jobPostings) {
-    return jobPostings.filter(function(posting){
-      let currentTime = new Date().getTime();
+    return jobPostings.filter(function(posting) {
+      const currentTime = new Date().getTime();
       return Date.parse(posting.expiry_date) > currentTime - TIME_OFFSET;
     })
   }

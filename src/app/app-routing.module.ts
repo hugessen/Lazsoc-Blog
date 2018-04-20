@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'compose', canActivate: [AuthGuard], component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
-  { path: 'update', canActivate: [AuthGuard], canDeactivate:[CanDeactivateUpdate],  component: UpdateComponent },
+  { path: 'update', canActivate: [AuthGuard], canDeactivate: [CanDeactivateUpdate],  component: UpdateComponent },
   { path: 'login',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
@@ -51,8 +51,8 @@ const appRoutes: Routes = [
   ]
 })
 export class AppRoutingModule {
-  public route:Observable<any>;
-  constructor(r:Router){
+  public route: Observable<any>;
+  constructor(r: Router) {
     // r.events.subscribe((url:any) => console.log("URL", url.url));
   }
 }

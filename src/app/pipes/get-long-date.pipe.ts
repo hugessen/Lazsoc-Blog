@@ -4,11 +4,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'getLongDate'
 })
 export class GetLongDate {
-  transform(dateStr:string) {
-    var date = new Date(dateStr);
-    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    var result:string = days[date.getDay()] + ", " + months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+  transform(dateStr: string) {
+    let date = new Date(dateStr);
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let result: string = days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
     return result;
   }
 }
@@ -17,10 +17,10 @@ export class GetLongDate {
   name: 'getShortDate'
 })
 export class GetShortDate {
-  transform(dateStr:string) {
-    var date = new Date(dateStr);
-    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    var result:string = months[date.getMonth()] + " " + date.getDate();
+  transform(dateStr: string) {
+    let date = new Date(dateStr);
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let result: string = months[date.getMonth()] + ' ' + date.getDate();
     return result;
   }
 }
@@ -29,15 +29,15 @@ export class GetShortDate {
   name: 'getTime'
 })
 export class GetTime {
-  transform(dateStr:string) {
-    var hour = new Date(dateStr).getUTCHours();
-    var min = new Date(dateStr).getUTCMinutes();
-    var minStr = (min < 10) ? min+"0":min;
-    var ampm = (hour < 12) ? "AM" : "PM";
-    if(hour > 12) {
-      hour = hour%12;
+  transform(dateStr: string) {
+    let hour = new Date(dateStr).getUTCHours();
+    let min = new Date(dateStr).getUTCMinutes();
+    let minStr = (min < 10) ? min + '0' : min;
+    let ampm = (hour < 12) ? 'AM' : 'PM';
+    if (hour > 12) {
+      hour = hour % 12;
     }
-    return (hour + ":" + minStr + " " + ampm);
+    return (hour + ':' + minStr + ' ' + ampm);
   }
 }
 
@@ -45,9 +45,9 @@ export class GetTime {
   name: 'getMonth'
 })
 export class GetMonth {
-  transform(dateStr:string) {
-    var months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEPT","OCT","NOV","DEC"];
-    var date = new Date(dateStr).getMonth();
+  transform(dateStr: string) {
+    let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC'];
+    let date = new Date(dateStr).getMonth();
     return months[date];
   }
 }
@@ -56,7 +56,7 @@ export class GetMonth {
   name: 'getDate'
 })
 export class GetDate {
-  transform(dateStr:string) {
+  transform(dateStr: string) {
     return new Date(dateStr).getDate();
   }
 }

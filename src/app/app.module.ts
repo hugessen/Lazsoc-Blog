@@ -3,11 +3,11 @@ import { LazNavbar } from './nav-bar/laz-navbar';
 import { HttpModule } from '@angular/http';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import "froala-editor/js/froala_editor.pkgd.min.js";
+import 'froala-editor/js/froala_editor.pkgd.min.js';
 import * as $ from 'jquery';
-window["$"] = $;
-window["jQuery"] = $;
-import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+window['$'] = $;
+window['jQuery'] = $;
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
@@ -18,7 +18,7 @@ import { OurTeamComponent } from './our-team/our-team.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { LoginComponent } from './login/login.component';
-import { SidebarComponent,ProfileSidebar, JobPostingSidebar, SocialLinksSidebar } from './sidebar/sidebar.component';
+import { SidebarComponent, ProfileSidebar, JobPostingSidebar, SocialLinksSidebar } from './sidebar/sidebar.component';
 import { BeansComponent } from './beans/beans.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
 import { ArticleComponent } from './article/article.component';
@@ -31,7 +31,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 //Pipes
-import { GetLongDate, GetShortDate, GetTime,GetMonth,GetDate } from './pipes/get-long-date.pipe';
+import { GetLongDate, GetShortDate, GetTime, GetMonth, GetDate } from './pipes/get-long-date.pipe';
 import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
 import { PublicationPipe } from './pipes/publication.pipe';
 import { SafePipe } from './pipes/safe.pipe';

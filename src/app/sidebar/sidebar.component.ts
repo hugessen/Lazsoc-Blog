@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { AuthService } from '../services/auth.service';
-import { Angular2TokenService } from "angular2-token";
+import { Angular2TokenService } from 'angular2-token';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { GetMonth, GetDate, GetShortDate } from '../pipes/get-long-date.pipe';
@@ -18,17 +18,17 @@ export class SidebarComponent {
   clubs = {};
   eventCount = 0;
   anyEvents = true;
-  constructor(public webAPI:WebAPI) {
+  constructor(public webAPI: WebAPI) {
     this.webAPI.getNewsfeed().then(res => {
       this.events = res.filter(this.isThisWeek);
-      if (this.events.length == 0) this.anyEvents = false;
+      if (this.events.length == 0) { this.anyEvents = false; }
     })
   }
 
-  isThisWeek(event){
-    let eventStart = new Date(event.start_date_time).getTime();
-    let currentTime = new Date().getTime();
-    return (eventStart <= currentTime + 60*60*24*7*1000);
+  isThisWeek(event) {
+    const eventStart = new Date(event.start_date_time).getTime();
+    const currentTime = new Date().getTime();
+    return (eventStart <= currentTime + 60 * 60 * 24 * 7 * 1000);
   }
 
 }
@@ -42,7 +42,7 @@ export class ProfileSidebar implements OnInit {
 
   currentUser = {};
 
-  constructor(public authService:AuthService, public tokenService:Angular2TokenService, private router:Router) {
+  constructor(public authService: AuthService, public tokenService: Angular2TokenService, private router: Router) {
     this.authService.getUserAsync().then(res => this.currentUser = res );
   }
 
@@ -63,7 +63,7 @@ export class JobPostingSidebar implements OnInit {
   hasPostings = false;
   @Input() clubID;
 
-  constructor(public webAPI:WebAPI, public router:Router) {
+  constructor(public webAPI: WebAPI, public router: Router) {
   }
 
   ngOnInit() {
@@ -73,7 +73,7 @@ export class JobPostingSidebar implements OnInit {
     ]).subscribe(data => {
       [this.jobPostings, this.clubs] = data;
       if (this.clubID != 0) {
-        for(let posting of this.jobPostings) {
+        for (const posting of this.jobPostings) {
           console.log(posting.club_id);
           console.log(this.clubID);
           if (posting.club_id == this.clubID) {
@@ -81,13 +81,12 @@ export class JobPostingSidebar implements OnInit {
             break;
           }
         }
-      }
-      else if (this.jobPostings.length > 0) this.hasPostings = true;
+      } else if (this.jobPostings.length > 0) { this.hasPostings = true; }
     })
   }
 
-  viewJobPost(id:number){
-    this.router.navigate(['/hiring',id]);
+  viewJobPost(id: number) {
+    this.router.navigate(['/hiring', id]);
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
   }

@@ -1,4 +1,4 @@
 export interface Event {
-  events:any[];
-  recurring_events:any[];
+  events: any[];
+  recurring_events: any[];
 }

@@ -4,9 +4,9 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'mapToIterable'
 })
 export class MapToIterablePipe  {
-  transform(dict:any, args:any = []): any {
-    var a:any[] = [];
-    for (var key in dict) {
+  transform(dict: any, args: any = []): any {
+    let a: any[] = [];
+    for (let key in dict) {
       if (dict.hasOwnProperty(key)) {
         a.push({key: key, val: dict[key]});
       }

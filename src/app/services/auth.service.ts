@@ -54,13 +54,12 @@ export class AuthService implements OnInit {
     this.tokenService.validateToken().subscribe(
         res => {
           if (res.status === 200) {
-            console.log( "Signed in");
+            console.log( 'Signed in');
             this.userSignedIn$ = true;
             this.currentUser = res.json().data;
-            console.log( "CurrUser", this.currentUser)
-          }
-          else {
-            console.log("Sign in failed");
+            console.log( 'CurrUser', this.currentUser)
+          } else {
+            console.log('Sign in failed');
             this.userSignedIn$ = false;
           }
         }
@@ -68,10 +67,10 @@ export class AuthService implements OnInit {
   }
 
   ngOnInit() {
-    console.log( "I am run");
+    console.log( 'I am run');
   }
 
-  logOutUser(): Observable<Response>{
+  logOutUser(): Observable<Response> {
     return this.tokenService.signOut().map(
         res => {
           this.userSignedIn$ = false;
@@ -88,7 +87,7 @@ export class AuthService implements OnInit {
     })
   }
 
-  getCurrentUser(): any{
+  getCurrentUser(): any {
     return this.tokenService.currentUserData;
   }
 
@@ -143,7 +142,7 @@ export class AuthService implements OnInit {
       })
     })
   }
-  
+
   apiGet(path: string, data: any = null): Promise<any> {
      return new Promise((resolve, reject) => {
       this.tokenService.get(path, data).map(res => res.json()).toPromise()

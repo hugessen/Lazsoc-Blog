@@ -1,4 +1,3 @@
 {
-    "extends": "airbnb-base",
-    "extends": "plugin:angular/johnpapa"
+    "extends": "airbnb-base"
 }
