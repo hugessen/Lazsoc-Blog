@@ -1,18 +1,18 @@
 import { Injectable, OnInit } from '@angular/core';
-import {Angular2TokenService} from "angular2-token";
-import {Subject, Observable} from "rxjs";
-import {Response, Http, RequestOptions} from "@angular/http";
+import {Angular2TokenService} from 'angular2-token';
+import {Subject, Observable} from 'rxjs';
+import {Response, Http, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class AuthService implements OnInit {
 
-  userSignedIn$:boolean = false;
+  userSignedIn$ = false;
   currentUser = null;
 
-  constructor(public tokenService:Angular2TokenService, public http:Http)  {
+  constructor(public tokenService: Angular2TokenService, public http: Http)  {
     this.tokenService.init({
-        apiBase:                    'https://moria.lazsoc.ca/api',
-        // apiBase:                    'http://localhost:3000/api',
+        // apiBase:                    'https://moria.lazsoc.ca/api',
+        apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -39,7 +39,7 @@ export class AuthService implements OnInit {
         oAuthWindowType:            'newWindow',
         oAuthWindowOptions:         null,
 
-        userTypes:[
+        userTypes: [
           { name: 'ADMIN', path: 'admin' },
           { name: 'USER', path: 'user' }
         ],
@@ -53,11 +53,11 @@ export class AuthService implements OnInit {
     });
     this.tokenService.validateToken().subscribe(
         res => {
-          if(res.status == 200){
-            console.log("Signed in");
+          if (res.status === 200) {
+            console.log( "Signed in");
             this.userSignedIn$ = true;
             this.currentUser = res.json().data;
-            console.log("CurrUser", this.currentUser)
+            console.log( "CurrUser", this.currentUser)
           }
           else {
             console.log("Sign in failed");
@@ -67,11 +67,11 @@ export class AuthService implements OnInit {
     )
   }
 
-  ngOnInit(){
-    console.log("I am run");
+  ngOnInit() {
+    console.log( "I am run");
   }
 
-  logOutUser():Observable<Response>{
+  logOutUser(): Observable<Response>{
     return this.tokenService.signOut().map(
         res => {
           this.userSignedIn$ = false;
@@ -80,19 +80,19 @@ export class AuthService implements OnInit {
     );
   }
 
-  getUserAsync():Promise<any> {
-    return new Promise((resolve,reject) => {
+  getUserAsync(): Promise<any> {
+    return new Promise((resolve, reject) => {
       return this.tokenService.validateToken().toPromise().then(res => {
         resolve(res.json().data)
       });
     })
   }
 
-  getCurrentUser():any{
+  getCurrentUser(): any{
     return this.tokenService.currentUserData;
   }
 
-  registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
+  registerUser(signUpData:  {email: string, password: string, passwordConfirmation: string}): Observable<Response> {
     return this.tokenService.registerAccount(signUpData).map(
         res => {
           return res;
@@ -100,7 +100,7 @@ export class AuthService implements OnInit {
     );
   }
 
-  logInUser(signInData: {email:string, password:string}):Observable<any>{
+  logInUser(signInData: { email: string, password: string }): Observable<any> {
     return this.tokenService.signIn(signInData).map(
       res => {
         this.userSignedIn$ = true;
@@ -109,16 +109,16 @@ export class AuthService implements OnInit {
     );
   }
 
-  updateUser(data:any):Promise<any>{
-    return new Promise((resolve,reject) => {
-      this.tokenService.post('update_user',data).toPromise().then(res => {
+  updateUser(data: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.tokenService.post('update_user', data).toPromise().then(res => {
         resolve(res);
       })
     });
   }
 
-  getBeans(): Promise<any>{
-    return new Promise((resolve,reject) => {
+  getBeans(): Promise<any> {
+    return new Promise((resolve, reject) => {
       this.apiGet('beans/get_all.json').then(res => {
         resolve(res);
        });
@@ -136,7 +136,7 @@ export class AuthService implements OnInit {
 
 
   getUser(id: number): Promise<any> {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       this.apiGet('users/get_user').then(res => {
         // console.log(res);
         resolve(res);
@@ -144,19 +144,19 @@ export class AuthService implements OnInit {
     })
   }
   
-  apiGet(path:string, data:any = null):Promise<any>{
-     return new Promise((resolve,reject)=> {
-      this.tokenService.get(path,data).map(res => res.json()).toPromise()
-      .then(res=>{
+  apiGet(path: string, data: any = null): Promise<any> {
+     return new Promise((resolve, reject) => {
+      this.tokenService.get(path, data).map(res => res.json()).toPromise()
+      .then(res => {
         resolve(res);
       }).catch(err => reject(err));
     });
   }
 
-  public apiPost(path:string, data:any){
-    return new Promise((resolve,reject)=> {
-      this.tokenService.post(path,data).map(res => res.json()).toPromise()
-      .then(res=>{
+  public apiPost(path: string, data: any) {
+    return new Promise((resolve, reject) => {
+      this.tokenService.post(path, data).map(res => res.json()).toPromise()
+      .then(res => {
         resolve(res);
       }).catch(err => reject(err));
     });

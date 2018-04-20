@@ -2,60 +2,62 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Event } from '../event';
-import { JobPosting,JobPostingApplication } from '../models/job-posting';
+import { JobPosting, JobPostingApplication } from '../models/job-posting';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-const API_PATH = "https://moria.lazsoc.ca"
-const TIME_OFFSET = 60*60*5*1000;
-// const API_PATH = "http://localhost:3000"
+const API_PATH = 'https://moria.lazsoc.ca'
+const TIME_OFFSET = 60 * 60 * 5 * 1000;
+const LOCAL_PATH = 'http://localhost:3000'
 
 @Injectable()
 export class WebAPI {
-  constructor(public http:Http) { }
+  constructor(public http: Http) { }
 
-  getNewsfeed(club?):Promise<any[]>{
-    return new Promise((resolve,reject) => {
+  getNewsfeed(club?): Promise<any[]> {
+    return new Promise((resolve, reject) => {
       Observable.forkJoin([
         Observable.fromPromise(this.getEvents()),
         Observable.fromPromise(this.getClubs())
       ]).subscribe(data => {
-        let [events, clubs] = data;
-        if(club)
+        const [events, clubs] = data;
+        if (club) {
           var content = this.createNewsfeed(events, clubs, club);
-        else
+        }
+        else {
           var content = this.createNewsfeed(events, clubs);
+        }
         resolve(content);
       })
     })
   }
 
-  createNewsfeed(events, clubs,club_id?):any{
-    var result = []
+  createNewsfeed(events, clubs, club_id?): any {
+    let result = []
     for (let event of events){
       event.club_name = clubs[event.club_id].name
       event.sortDate = event.start_date_time;
-      var eventStart = Date.parse(event.start_date_time);
-      var currentTime = new Date().getTime();
-      if(eventStart > currentTime - TIME_OFFSET && (!club_id || club_id == event.club_id)){
+      const eventStart = Date.parse(event.start_date_time);
+      const currentTime = new Date().getTime();
+      if (eventStart > currentTime - TIME_OFFSET && (!club_id || club_id === event.club_id)) {
         result.push(event);
       }
     }
-    result.sort((a,b) => Date.parse(a.sortDate) - Date.parse(b.sortDate));   
+    result.sort((a, b) => Date.parse(a.sortDate) - Date.parse(b.sortDate));  
     return result;
   }
 
-  getArticles():Promise<any[]>{    
-    return new Promise((resolve,reject) => {
+  getArticles(): Promise<any[]> {
+    return new Promise((resolve, reject) => {
       this.http.get(`${API_PATH}/api/get_articles`).map(res => res.json()).toPromise()
       .then(res => {
-        res.sort( (a,b)=> Date.parse(b.created_at) - Date.parse(a.created_at));
+        res.sort( (a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
         resolve(res);
       }).catch(err => reject(err));
-    })  
+    })
   }
 
-  getArticle(id: number):Promise<any>{    
-    return new Promise((resolve,reject) => {
+  getArticle(id: number): Promise<any> {   
+    return new Promise((resolve, reject) => {
       this.http.get(`${API_PATH}/api/get_article/${id}`).map(res => res.json()).toPromise()
       .then(res => {
         // console.log(res);
@@ -64,9 +66,9 @@ export class WebAPI {
     })
   }
 
-  getEvents():Promise<any[]>{
-    return new Promise((resolve,reject) => {
-      this.http.get(`${API_PATH}/v2/api/events.json`).map(res => res.json()).toPromise()
+  getEvents(): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${LOCAL_PATH}/v2/api/events.json`).map(res => res.json()).toPromise()
       .then(res => {
         this.sortByDate(res.events);
         resolve(res.events);
@@ -79,49 +81,53 @@ export class WebAPI {
              .then(events => events.find(event => event.id === id));
   }
 
-  registerForEvent(id:number){
-    return new Promise((resolve,reject) => {
-      this.http.get(`${API_PATH}/v2/api/events/register/`+id).map(res => res.json()).toPromise()
+  registerForEvent(id: number) {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${API_PATH}/v2/api/events/register/` + id).map(res => res.json()).toPromise()
       .then(res => {
         resolve(res.events);
       }).catch(err => reject(err));
     })
   }
 
-  getClubs(arrayFormat = false):Promise<any>{
-    return new Promise((resolve,reject) => {
+  getClubs(arrayFormat = false): Promise<any> {
+    return new Promise((resolve, reject) => {
       this.http.get(`${API_PATH}/v2/api/clubs.json`).map(res => res.json()).toPromise()
         .then(res => {
-          if (arrayFormat) resolve(res)
-          else resolve(this.transformClubs(res))
+          if (arrayFormat) {
+           resolve(res);
+          }
+          else {
+            resolve(this.transformClubs(res));
+          }
         })
         .catch(err => reject(err));
     })
   }
 
-  getClub(id:number):Promise<any>{
-    return new Promise((resolve,reject) => {
+  getClub(id: number): Promise<any> {
+    return new Promise((resolve, reject) => {
     this.getClubs(true)
        .then(res => {
-         let club = res.find(club => club.id === id);
+         const club = res.find(club => club.id === id);
          club.club_social_links = this.formatSocialLinks(club.club_social_links);
          resolve(club);
        });
      })
   }
 
-  getJobPostings():Promise<any>{
-    return new Promise((resolve,reject) => {
+  getJobPostings(): Promise<any> {
+    return new Promise((resolve, reject) => {
       this.http.get(`${API_PATH}/api/job_postings.json`).map(res => res.json()).toPromise()
       .then(res => {
-        var postings = this.trimJobPostings(res);
+        const postings = this.trimJobPostings(res);
         resolve(postings);
       }).catch(err => reject(err));
     })
   }
 
-  getDiscountPartners():Promise<any[]>{
-    return new Promise((resolve,reject) => {
+  getDiscountPartners(): Promise<any[]> {
+    return new Promise((resolve, reject) => {
         this.http.get(`${API_PATH}/v2/api/discount_partners.json`).map(res => res.json()).toPromise()
         .then(res => {
           resolve(res);
@@ -135,14 +141,14 @@ export class WebAPI {
   }
 
 
-  submitJobApplication(data:JobPostingApplication){
-    this.http.post(`${API_PATH}/api/submit_job_app`,{job_posting_application:data}).subscribe(res => {
+  submitJobApplication(data: JobPostingApplication) {
+    this.http.post(`${API_PATH}/api/submit_job_app`, { job_posting_application: data }).subscribe(res => {
       console.log(res);
     });
   }
 
-  transformClubs(clubs:any[]):Object{
-    var result:Object = {};
+  transformClubs(clubs: any[]) {
+    let result = {};
     for (let club of clubs){
       club.club_social_links = this.formatSocialLinks(club.club_social_links);
       club.selected = false;
@@ -151,21 +157,21 @@ export class WebAPI {
     return result;
   }
 
-  formatSocialLinks(socialLinks:any[]):Object{
-    var result:Object = {};
+  formatSocialLinks(socialLinks: any[]) {
+    let result = {};
     for (let link of socialLinks){
         result[link.link_type] = link.url;
     }
     return result;
   }
 
-  sortByDate(events){
-    return events.sort(function(a,b){
+  sortByDate(events) {
+    return events.sort(function(a, b){
       return Date.parse(a.start_date_time) - Date.parse(b.start_date_time)
     })
   }
 
-  trimJobPostings(jobPostings){
+  trimJobPostings(jobPostings) {
     return jobPostings.filter(function(posting){
       let currentTime = new Date().getTime();
       return Date.parse(posting.expiry_date) > currentTime - TIME_OFFSET;

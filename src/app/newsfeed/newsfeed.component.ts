@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { PublicationPipe } from '../pipes/publication.pipe';
 import * as Stickyfill from 'stickyfill';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
-const ONE_DAY = 60*60*24*1000
+const ONE_DAY = 60 * 60 * 24 * 1000;
 
 @Component({
   selector: 'app-newsfeed',
@@ -17,12 +17,12 @@ const ONE_DAY = 60*60*24*1000
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
-  events:any;
+  events: any;
   clubs = {};
-  hasEvents:boolean = true;
-  tagFilters:any[] = [];
-  clubFilters:any[] = [];
-  timeFilter:any = "";
+  hasEvents = true;
+  tagFilters = [];
+  clubFilters = [];
+  timeFilter = '';
 
   @Input() clubID;
 
@@ -39,78 +39,84 @@ export class NewsfeedComponent implements OnInit {
     })
   }
 
-  vote(event){
-    this.authService.apiPost('articles/'+event.id+'/vote', null).then(res => {
+  vote(event) {
+    this.authService.apiPost('articles/' + event.id + '/vote', null).then(res => {
       console.log(res)
     });
   }
 
-  viewEvent(event){
-    this.router.navigate(['/events',event.id]);
+  viewEvent(event) {
+    this.router.navigate(['/events', event.id]);
     this.scrollTop();
   }
 
-  scrollTop(){
+  scrollTop() {
     document.body.scrollTop = 0; // For Chrome, Safari and Opera
     document.documentElement.scrollTop = 0; // For IE and Firefox
   }
 
-  doSticky(){
-    var stickyElements = document.getElementsByClassName('sticky');
-    for (var i = stickyElements.length - 1; i >= 0; i--) {
+  doSticky() {
+    const stickyElements = document.getElementsByClassName('sticky');
+    for (let i = stickyElements.length - 1; i >= 0; i--) {
       Stickyfill.add(stickyElements[i]);
     }
     Stickyfill.add(document.getElementsByClassName('sticky-updates'));
   }
 
-  checkHasEvents():boolean {
-    if(this.clubID != 0){
-      for(let event of this.events){
-        if (event.club_id === this.clubID)
+  checkHasEvents(): boolean {
+    if (this.clubID !== 0) {
+      for (let event of this.events){
+        if (event.club_id === this.clubID) {
           return true;
+        }
       }
       return false;
-    } else return true;
+    } else {
+      return true;
+    }
   }
 
-  addTagFilter(tag){
+  addTagFilter(tag) {
     this.tagFilters.push(tag);
   }
 
-  removeTagFilter(tag){
-    _.pull(this.tagFilters,tag);
+  removeTagFilter(tag) {
+    _.pull(this.tagFilters, tag);
   }
 
-  addClubFilter(clubSlug){
+  addClubFilter(clubSlug) {
     this.clubFilters.push(clubSlug);
   }
 
   removeClubFilter(clubSlug) {
-    _.pull(this.clubFilters,clubSlug);
+    _.pull(this.clubFilters, clubSlug);
   }
 
-  addTimeFilter(timeframe){
+  addTimeFilter(timeframe) {
     this.timeFilter.push(timeframe);
   }
 
   removeTimeFilter(timeframe) {
-    _.pull(this.timeFilter,timeframe);
+    _.pull(this.timeFilter, timeframe);
   }
 
   isVisible(event) {
-    if (this.clubID != 0 && this.clubID != event.club_id) return false
+    if (this.clubID !== 0 && this.clubID !== event.club_id) {
+      return false
+    }
     return this.matchesFilters(event);
   }
 
-  matchesFilters(event){
+  matchesFilters(event) {
       return (this.matchesTags(event) && this.matchesClub(event) && this.matchesTimeframe(event));
   }
 
-  matchesTags(event){
-    if (this.tagFilters.length > 0){
+  matchesTags(event) {
+    if (this.tagFilters.length > 0) {
       for(let tag of event.event_tags){
-        if(_.indexOf(this.tagFilters, tag.tag) != -1)
+        if (_.indexOf(this.tagFilters, tag.tag) !== -1) {
           return true;
+        }
       }
       return false;
     }
@@ -118,29 +124,35 @@ export class NewsfeedComponent implements OnInit {
   }
 
   matchesClub(event) {
-    let slug = this.clubs[event.club_id].slug;
-    return this.clubFilters.length == 0 || _.indexOf(this.clubFilters, slug) != -1;
+    const slug = this.clubs[event.club_id].slug;
+    return this.clubFilters.length === 0 || _.indexOf(this.clubFilters, slug) !== -1;
   }
 
-  matchesTimeframe(event){
-    var eventStart = new Date(event.start_date_time);
-    var currentTime = new Date();
-    if (this.timeFilter == "")
+  matchesTimeframe(event) {
+    const eventStart = new Date(event.start_date_time);
+    const currentTime = new Date();
+    if (this.timeFilter === '') {
       return true;
-    else if(this.timeFilter == "Today" && this.sameDay(currentTime,eventStart))
+    }
+    if (this.timeFilter === 'Today' && this.sameDay(currentTime, eventStart)) {
       return true;
-    else if (this.timeFilter == "Tomorrow" && this.sameDay(currentTime,new Date(eventStart.getTime() + ONE_DAY))) // Confirm this works
+    }
+    if (this.timeFilter === 'Tomorrow' && this.sameDay(currentTime, new Date(eventStart.getTime() + ONE_DAY))) { // Confirm this works
       return true;
-    else if (this.timeFilter == "This Week" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(), ONE_DAY * 7))
+    }
+    if (this.timeFilter === 'This Week' && this.isDateWithin(currentTime.getTime(), eventStart.getTime(), ONE_DAY * 7)) {
       return true;
-    else if (this.timeFilter == "Next Two Weeks" && this.isDateWithin(currentTime.getTime(),eventStart.getTime(), ONE_DAY * 14))
+    }
+    if (this.timeFilter === 'Next Two Weeks' && this.isDateWithin(currentTime.getTime(), eventStart.getTime(), ONE_DAY * 14)) {
       return true;
-    else if (this.timeFilter == "Past" && eventStart < currentTime)
+    }
+    if (this.timeFilter === 'Past' && eventStart < currentTime) {
       return true;
-    else return false;
+    }
+    return false;
   }
 
-  isDateWithin(today, eventDate, interval){
+  isDateWithin(today, eventDate, interval) {
     return (eventDate > today && eventDate <= today + interval)
   }
 
