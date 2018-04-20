@@ -32,14 +32,13 @@
     <div class="col-sm-8 col-md-8 col-lg-8 pl-1">
 
       <div *ngIf="resourceType == 'studentResources'">
-        <embed [src]="'assets/pdfs/' + studentResources[0].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 0"/>
-        <embed [src]="'assets/pdfs/' + studentResources[1].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 1"/>
-        <embed [src]="'assets/pdfs/' + studentResources[2].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 2"/>
+        <embed src="assets/pdfs/Clubs Guide.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 0"/>
+        <embed src="assets/pdfs/Core Values.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 1"/>
       </div>
       <div *ngIf="resourceType == 'officialDocs'">
-        <embed [src]="'assets/pdfs/' + officialDocs[0].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 0"/>
-        <embed [src]="'assets/pdfs/' + officialDocs[1].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 1"/>
-        <embed [src]="'assets/pdfs/' + officialDocs[2].path | safe" width="100%" height="1000px" *ngIf="selectedDoc == 2"/>
+        <embed src="assets/pdfs/Lazaridis-Students-Society-Constitution.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 0"/>
+        <embed src="assets/pdfs/LazSoc-Elections-Policy_17-18.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 1"/>
+        <embed src="assets/pdfs/Financial Policy.pdf" width="100%" height="1000px" *ngIf="selectedDoc == 2"/>
       </div>
     </div>
   </div>
