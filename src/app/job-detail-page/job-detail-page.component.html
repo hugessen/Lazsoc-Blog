@@ -6,10 +6,10 @@
       </div>
       <div class="row">
         <div class="col-sm-9 col-md-9 col-lg-9">
-          <img class="club-banner mt-3" src="assets/img/{{club.app_banner}}">
+          <img class="club-banner mt-3" [src]="club.app_banner">
           <div class="card">
             <div class="card-header d-flex flex-row">
-              <img src="assets/img/thumbnails/{{club.app_logo}}" class="logo mr-4">
+              <img [src]="club.app_logo" class="logo mr-4">
               <div class="d-flex-flex-column">
                 <span class="title-font">{{posting.title}}</span><br>
                 <span class="club-name-font">{{club.name}}</span>

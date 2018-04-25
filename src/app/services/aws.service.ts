@@ -47,7 +47,7 @@ export class AwsService {
   getHash(config) {
     // Check default region.
     config.region = config.region || 'us-east-1';
-    config.region = config.region == 's3' ? 'us-east-1' : config.region;
+    config.region = config.region === 's3' ? 'us-east-1' : config.region;
 
     const bucket = config.bucket;
     const region = config.region;

@@ -3,9 +3,9 @@
     <div class="col-sm-11 col-md-11 col-lg-11 mt-4 left-content-pane">
       <div class="card">
         <div class="card-img-top">
-          <img class="card-img-top club-banner" src="assets/img/{{club.app_banner}}">
+          <img class="card-img-top club-banner" [src]="club.app_banner">
         </div>
-        <img src="assets/img/thumbnails/{{club.app_logo}}" style="background-color:white" class="club-avatar">
+        <img [src]="club.app_logo" style="background-color:white" class="club-avatar">
         <div class="card-block">
           <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">

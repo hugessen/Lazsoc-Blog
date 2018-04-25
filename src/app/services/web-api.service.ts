@@ -67,7 +67,7 @@ export class WebAPI {
 
   getEvents(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${LOCAL_PATH}/v2/api/events.json`).map(res => res.json()).toPromise()
+      this.http.get(`${LOCAL_PATH}/api/events.json`).map(res => res.json()).toPromise()
       .then(res => {
         res.events.sort((a, b) => Date.parse(a.start_date_time) - Date.parse(b.start_date_time));
         resolve(res.events);
@@ -82,7 +82,7 @@ export class WebAPI {
 
   getClubs(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${API_PATH}/v2/api/clubs.json`).map(res => res.json()).toPromise()
+      this.http.get(`${LOCAL_PATH}/api/clubs.json`).map(res => res.json()).toPromise()
         .then(res => {
           res.map(club => {
             club.club_social_links = this.formatSocialLinks(club.club_social_links);
@@ -106,7 +106,7 @@ export class WebAPI {
 
   getJobPostings(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${API_PATH}/api/job_postings.json`).map(res => res.json()).toPromise()
+      this.http.get(`${LOCAL_PATH}/api/job_postings.json`).map(res => res.json()).toPromise()
       .then(res => {
         const postings = this.trimJobPostings(res);
         this.getClubs().then(clubs => {
@@ -121,7 +121,7 @@ export class WebAPI {
 
   getDiscountPartners(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-        this.http.get(`${API_PATH}/v2/api/discount_partners.json`).map(res => res.json()).toPromise()
+        this.http.get(`${LOCAL_PATH}/api/discount_partners.json`).map(res => res.json()).toPromise()
         .then(res => {
           resolve(res);
         }).catch(err => reject(err));

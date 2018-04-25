@@ -12,7 +12,7 @@ export class DiscountComponent implements OnInit {
 
   constructor(webAPI: WebAPI) {
     webAPI.getDiscountPartners()
-      .then(res => this.discountPartners = res);
+      .then(res => {this.discountPartners = res; console.log(res)});
   }
 
   ngOnInit() {

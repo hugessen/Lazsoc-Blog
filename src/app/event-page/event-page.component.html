@@ -14,8 +14,8 @@
         </div>
         <div class="card ml-2" style="width:75%">
           <div class="card-img-top">
-            <img src="{{event.banner}}" class="card-img-top event-banner" *ngIf="event.banner != ''">
-            <img src="assets/img/{{club.app_banner}}" class="card-img-top event-banner" *ngIf="event.banner === ''">
+            <img [src]="event.banner" class="card-img-top event-banner" *ngIf="event.banner != ''">
+            <img [src]="club.app_banner" class="card-img-top event-banner" *ngIf="event.banner === ''">
           </div>
         </div>
       </div>

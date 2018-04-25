@@ -3,7 +3,7 @@
   <div *ngIf="hasPostings">
     <ul class="list-group list-group-flush" *ngFor="let posting of jobPostings; let i = index" style="cursor: pointer;" #myList>
       <li class="list-group-item d-flex flex-row" *ngIf="i < 3 && (posting.club_id === clubID || clubID === 0)" (click)="viewJobPost(posting.id)">
-        <img src="assets/img/thumbnails/{{posting.club.app_logo}}" class="open-positions-icon mr-4">
+        <img [src]="posting.club.app_logo" class="open-positions-icon mr-4">
         <div class="d-flex flex-column job-title">
           <h2 style="font-family:Lato-Bold; font-size:14px;">{{posting.title}}</h2>
           <span class="job-posting-subheader">Expires on {{posting.expiry_date | getShortDate}}</span>
