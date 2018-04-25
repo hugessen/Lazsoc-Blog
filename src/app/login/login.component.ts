@@ -70,9 +70,9 @@ export class LoginComponent implements OnInit {
     this.registerObj.email = `${this.registerObj.email}@mylaurier.ca`
     this.authService.registerUser(this.registerObj).subscribe(
         res => {
-          if (res.status == 200) {
-            this.router.navigateByUrl('/update');
-            // this.state = "post-registration";
+          if (res.status === 200) {
+            // this.router.navigateByUrl('/update');
+            this.state = 'post-registration';
           }
         },
         err => {
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
     );
   }
   isValidEmail(email) {
-    return email.length == 8 && this.isChars(email.substring(0, 4)) && this.isNumeric(email.substring(4));
+    return email.length === 8 && this.isChars(email.substring(0, 4)) && this.isNumeric(email.substring(4));
   }
 
   isChars(str) {
