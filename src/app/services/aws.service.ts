@@ -44,74 +44,66 @@ export class AwsService {
     return kSigning.toString(Crypto.enc.Hex);
   }
 
-  getHash(config) {
-    // Check default region.
-    config.region = config.region || 'us-east-1';
-    config.region = config.region === 's3' ? 'us-east-1' : config.region;
+  getHash(cfg) {
+      cfg.region = cfg.region || 'us-east-1';
+      cfg.region = cfg.region === 's3' ? 'us-east-1' : cfg.region;
 
-    const bucket = config.bucket;
-    const region = config.region;
-    const keyStart = config.keyStart;
-    const acl = config.acl;
+      const bucket = cfg.bucket;
+      const region = cfg.region;
+      const keyStart = cfg.keyStart;
+      const acl = cfg.acl;
 
-    // These can be found on your Account page, under Security Credentials > Access Keys.
-    const accessKeyId = config.accessKey;
-    const secret = config.secretKey;
+      const accessKeyId = cfg.accessKey;
+      const secret = cfg.secretKey;
 
-    const date = new Date().toISOString();
-    const dateString = date.substr(0, 4) + date.substr(5, 2) + date.substr(8, 2); // Ymd format.
+      const date = new Date().toISOString();
+      const dateString = date.substr(0, 4) + date.substr(5, 2) + date.substr(8, 2); // Ymd format.
 
-    const credential = [accessKeyId, dateString, region, 's3/aws4_request'].join('/');
-    const xAmzDate = dateString + 'T000000Z';
+      const credential = [accessKeyId, dateString, region, 's3/aws4_request'].join('/');
+      const xAmzDate = dateString + 'T000000Z';
 
-    const policy = {
-      // 5 minutes into the future
-      expiration: new Date((new Date).getTime() + (5 * 60 * 1000)).toISOString(),
-      conditions: [
-        {bucket: bucket},
-        {acl: acl },
-        {'success_action_status': '201'},
-        {'x-requested-with': 'xhr'},
-        {'x-amz-algorithm': 'AWS4-HMAC-SHA256'},
-        {'x-amz-credential': credential},
-        {'x-amz-date': xAmzDate},
-        ['starts-with', '$key', keyStart],
-        ['starts-with', '$Content-Type', ''] // accept all files
-      ],
+      const policy = {
+          expiration: new Date((new Date).getTime() + (30 * 60 * 1000)).toISOString(),
+          conditions: [
+              {bucket: bucket},
+              {acl: acl},
+              {'success_action_status': '201'},
+              {'x-requested-with': 'xhr'},
+              {'x-amz-algorithm': 'AWS4-HMAC-SHA256'},
+              {'x-amz-credential': credential},
+              {'x-amz-date': xAmzDate},
+              ['starts-with', '$key', keyStart],
+              ['starts-with', '$Content-Type', 'image/']
+          ],
+      };
+      const policyBase64 = new Buffer(JSON.stringify(policy)).toString('base64');
+
+      const dateKey = Crypto.HmacSHA256(dateString, 'AWS4' + secret);
+      const dateRegionKey = Crypto.HmacSHA256(region, dateKey);
+      const dateRegionServiceKey = Crypto.HmacSHA256('s3', dateRegionKey);
+      const signingKey = Crypto.HmacSHA256('aws4_request', dateRegionServiceKey);
+      const signature = Crypto.HmacSHA256(policyBase64, signingKey).toString(Crypto.enc.Hex);
+
+      return {
+        bucket: bucket,
+        region: region !== 'us-east-1' ? 's3-' + region : 's3',
+        keyStart: keyStart,
+        params: {
+            acl: acl,
+            policy: policyBase64,
+            'x-amz-algorithm': 'AWS4-HMAC-SHA256',
+            'x-amz-credential': credential,
+            'x-amz-date': xAmzDate,
+            'x-amz-signature': signature
+        }
+      };
     }
-    const policyBase64 = new Buffer(JSON.stringify(policy)).toString('base64');
 
-    const signature = this.getSignatureKey(secret, dateString, region, 's3');
-    console.log(signature);
-
-    // var dateKey = this.hmac('AWS4' + secret, dateString);
-    // var dateRegionKey = this.hmac(dateKey, region);
-    // var dateRegionServiceKey = this.hmac(dateRegionKey, 's3');
-    // var signingKey = this.hmac(dateRegionServiceKey, 'aws4_request');
-    // var signature = this.hmac(signingKey, policyBase64).toString('hex');
-
-    const returnVal = {
-      bucket: bucket,
-      region: region != 'us-east-1' ? 's3-' + region : 's3',
-      keyStart: keyStart,
-      params: {
-        acl: acl,
-        policy: policyBase64,
-        'x-amz-algorithm': 'AWS4-HMAC-SHA256',
-        'x-amz-credential': credential,
-        'x-amz-date': xAmzDate,
-        'x-amz-signature': signature
-      }
-    }
-    console.log(returnVal);
-    return returnVal;
-  }
-
-  hmac(key, string) {
-    const hmac = Crypto.createHmac('sha256', key);
-    hmac.end(string);
-    return hmac.read();
-  }
+  // hmac(key, string) {
+  //   const hmac = Crypto.createHmac('sha256', key);
+  //   hmac.end(string);
+  //   return hmac.read();
+  // }
 
   randomString(len) {
     const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

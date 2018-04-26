@@ -46,7 +46,7 @@ export class ArticleComposerComponent implements OnInit {
       height: 500,
       imageOutputSize: true,
       imageDefaultWidth: 700,
-      // imageUploadToS3: s3Hash,
+      imageUploadToS3: s3Hash,
       key: 'rgmwA-21d1sD1qr=='
     }
     const changes = false;

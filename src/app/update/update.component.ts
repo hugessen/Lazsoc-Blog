@@ -103,7 +103,7 @@ export class UpdateComponent implements OnInit {
     if (this.imageUploaded) {
       console.log('Attempting to upload');
       const avatarUrl = `profile_avatars/user-${this.awsService.randomString(10)}`;
-      this.updateObj.image = `https://s3.us-east-2.amazonaws.com/lazsoc-images/user-avatars/${avatarUrl}`;
+      this.updateObj.image = `https://s3.us-east-2.amazonaws.com/lazsoc-images/${avatarUrl}`;
       this.awsService.uploadToAWS(this.newAvatar, avatarUrl);
     }
     this.authService.updateUser(this.updateObj).then(res => {
