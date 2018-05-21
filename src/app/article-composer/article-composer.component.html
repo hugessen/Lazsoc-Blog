@@ -14,14 +14,11 @@
   </div>
 </nav>
 <nav class="gold-bar sticky-top"></nav>
-<div class="alert alert-danger" role="alert">
-  <strong>Warning:</strong> closing this tab will result in losing any unsaved work
-</div>
 <input type='file' name="file" id="file" class="inputfile" (change)="readUrl($event)">
 <div class="row justify-content-center">
   <div class="col-sm-11 col-md-11 col-lg-11 mt-4">
     <div class="card">
-      <div class="card-block">
+      <div class="card-body">
         <label for="file" class="cover-background" *ngIf="!hasCover" style="cursor:pointer">
           <img src="assets/img/UploadCover.png">
           <span class="cover-text">Articles look better with cover photos. <br> Images look best with height less than 500px.</span>

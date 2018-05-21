@@ -1,6 +1,6 @@
 <div class="" *ngFor="let posting of jobPostings">
   <div *ngIf="(clubID == 0 || clubID === posting.club_id)" class="card py-0" style="cursor:pointer" (click)="onSelect(posting)">
-    <div class="card-block">
+    <div class="card-body">
       <div class="d-flex mb-2">
         <img [src]="posting.club.app_logo" class="club-avatar mr-3" alt="">
         <div class="d-flex flex-column">

@@ -16,13 +16,13 @@
               </div>
               <span class="club-name-font ml-auto mt-4">Expires: {{posting.expiry_date | getShortDate}}</span>
             </div>
-            <div class="card-block" *ngFor="let element of posting.job_posting_descriptions">
+            <div class="card-body" *ngFor="let element of posting.job_posting_descriptions">
               <span class="job-header-font">{{element.name}}</span><br>
               <span class="description-font" style="white-space: pre-line">{{element.body}}</span>
             </div>
           </div>
           <div class="card mt-3">
-            <div class="card-block">
+            <div class="card-body">
               <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
                 <strong>Submission error:</strong> {{error}}
               </div>

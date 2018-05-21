@@ -7,7 +7,7 @@
           <img class="card-img-top" [src]="event.club.app_banner" *ngIf="event.banner === '' || event.banner === null">
           <img class="card-img-top" [src]="event.banner" *ngIf="event.banner !== '' && event.banner !== null">
         </div>
-        <div class="card-block">
+        <div class="card-body">
           <div class="d-flex flex-row mb-2">
             <img [src]="event.club.app_logo" class="club-avatar mr-3" alt="">
             <div class="d-flex flex-column">
@@ -28,7 +28,7 @@
         </div> -->
       </div>
       <div class="card mt-3" *ngIf="event.typeof == 'article'">
-        <div class="card-block">
+        <div class="card-body">
           <div class="d-flex flex-row">
             <img src="assets/img/Blank Avatar.jpg" class="club-avatar mr-3" *ngIf="!event.user_avatar">
             <img [src]="event.user_avatar" class="club-avatar mr-3" *ngIf="event.user_avatar">
@@ -57,7 +57,7 @@
   <div class="card-header card-header-text">
     Events
   </div>
-  <div class="card-block">
+  <div class="card-body">
       <span class="club-detail-text">Sorry, this club doesn't appear to have any events</span>
   </div>
 </div>
