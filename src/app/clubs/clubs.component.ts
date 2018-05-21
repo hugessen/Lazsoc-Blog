@@ -8,7 +8,7 @@ import lineClamp from 'line-clamp';
 @Component({
   selector: 'app-clubs',
   templateUrl: './clubs.component.html',
-  styleUrls: ['./clubs.component.css']
+  styleUrls: ['./clubs.css']
 })
 export class ClubsComponent implements OnInit {
   clubs: {};
