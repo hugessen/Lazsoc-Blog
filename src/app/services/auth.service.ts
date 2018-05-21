@@ -1,7 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import {Angular2TokenService} from 'angular2-token';
 import {Subject, Observable} from 'rxjs';
-import {Response, Http, RequestOptions} from '@angular/http';
+import {Response, RequestOptions} from '@angular/http';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable()
 export class AuthService implements OnInit {
@@ -9,10 +10,10 @@ export class AuthService implements OnInit {
   userSignedIn$ = false;
   currentUser = null;
 
-  constructor(public tokenService: Angular2TokenService, public http: Http)  {
+  constructor(public tokenService: Angular2TokenService, public http: HttpClient)  {
     this.tokenService.init({
-        // apiBase:                    'https://moria.lazsoc.ca/api',
-        apiBase:                    'http://localhost:3000/api',
+        apiBase:                    'https://moria.lazsoc.ca/api',
+        // apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -112,7 +113,7 @@ export class AuthService implements OnInit {
     return new Promise((resolve, reject) => {
       this.tokenService.post('update_user', data).toPromise().then(res => {
         resolve(res);
-      })
+      }).catch(err => reject(err))
     });
   }
 

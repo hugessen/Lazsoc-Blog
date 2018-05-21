@@ -1,5 +1,6 @@
 import { LazNavbar } from './nav-bar/laz-navbar';
 
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -48,7 +49,7 @@ import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-contai
 import { UpdateComponent } from './update/update.component';
 import { HiringContainerComponent } from './hiring-container/hiring-container.component';
 import { DiscountComponent } from './discount/discount.component';
-import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
+import { CanDeactivateUpdate, CanDeactivateCompose } from './guards/can-deactivate.guard';
 import { ArticleFeedComponent } from './article-feed/article-feed.component';
 
 @NgModule({
@@ -90,13 +91,14 @@ import { ArticleFeedComponent } from './article-feed/article-feed.component';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    HttpClientModule,
     HttpModule,
     FormsModule,
     // Ng2FittextModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, CanDeactivateUpdate, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, CanDeactivateUpdate, CanDeactivateCompose, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
