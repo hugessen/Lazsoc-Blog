@@ -1,14 +1,25 @@
-<div class="" *ngFor="let posting of jobPostings">
-  <div *ngIf="(clubID == 0 || clubID === posting.club_id)" class="card py-0" style="cursor:pointer" (click)="onSelect(posting)">
-    <div class="card-body">
-      <div class="d-flex mb-2">
-        <img [src]="posting.club.app_logo" class="club-avatar mr-3" alt="">
-        <div class="d-flex flex-column">
-          <h4 class="club-title mb-1">{{posting.title}}</h4>
-          <h4 class="card-datetime">{{posting.club.name}}</h4>
-        </div>
-        <h4 class="card-datetime ml-auto" style="color:#83868A"><i>Expires {{posting.expiry_date | getShortDate}}</i></h4>
-      </div>
+<div class="container-fluid" style="width:95%">
+  <div class="banner-container mt-3">
+    <img class="banner" src="assets/img/LazHall-Cropped.jpg" style="width:100%">
+    <div class="text-container">
+      <span class="open-positions">Open Positions</span><br>
+      <span class="banner-subtext">The fun outside the classroom</span>
+    </div>
+  </div>
+  <div class="card pointer">
+    <div class="card-body py-0">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item pointer" *ngFor="let posting of jobPostings" (click)="onSelect(posting)">
+          <div class="media">
+            <img [src]="posting.club.app_logo" class="club-avatar align-self-center mr-5">
+            <div class="media-body align-self-center">
+              <span class="regular-text" style="float:right">Expires {{posting.expiry_date | getShortDate}}</span>
+              <div class="position-title mb-1">{{posting.title}}</div>
+              <div class="regular-text mb-1">{{posting.club.name}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

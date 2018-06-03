@@ -47,7 +47,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { UpdateComponent } from './update/update.component';
-import { HiringContainerComponent } from './hiring-container/hiring-container.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CanDeactivateUpdate, CanDeactivateCompose } from './guards/can-deactivate.guard';
 import { ArticleFeedComponent } from './article-feed/article-feed.component';
@@ -82,7 +81,6 @@ import { ArticleFeedComponent } from './article-feed/article-feed.component';
     GetTime,
     SafePipe,
     PublicationPipe,
-    HiringContainerComponent,
     DiscountComponent,
     ArticleComponent,
     ArticleFeedComponent
