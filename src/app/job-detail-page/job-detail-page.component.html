@@ -8,17 +8,19 @@
         <div class="col-sm-9 col-md-9 col-lg-9">
           <img class="club-banner mt-3" [src]="club.app_banner">
           <div class="card">
-            <div class="card-header d-flex flex-row">
-              <img [src]="club.app_logo" class="logo mr-4">
-              <div class="d-flex-flex-column">
-                <span class="title-font">{{posting.title}}</span><br>
-                <span class="club-name-font">{{club.name}}</span>
+            <div class="card-header py-0">
+              <div class="media ml-3">
+                <img [src]="club.app_logo" class="logo align-self-center mr-4">
+                <div class="media-body align-self-center">
+                  <span class="expiry-font" style="float:right">Expires {{posting.expiry_date | getShortDate}}</span>
+                  <span class="title-font">{{posting.title}}</span><br>
+                  <span class="club-name-font">{{club.name}}</span>
+                </div>
               </div>
-              <span class="club-name-font ml-auto mt-4">Expires: {{posting.expiry_date | getShortDate}}</span>
             </div>
             <div class="card-body" *ngFor="let element of posting.job_posting_descriptions">
               <span class="job-header-font">{{element.name}}</span><br>
-              <span class="description-font" style="white-space: pre-line">{{element.body}}</span>
+              <span class="description-font">{{element.body}}</span>
             </div>
           </div>
           <div class="card mt-3">
