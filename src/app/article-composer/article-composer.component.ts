@@ -6,7 +6,6 @@ import { environment } from '../../environments/environment';
 import * as Crypto from 'crypto-js';
 import * as Cropper from 'cropperjs';
 import * as $ from 'jquery';
-// import * as froalaS3 from 'wysiwyg-editor-node-sdk/lib/s3.js';
 
 @Component({
   selector: 'app-article-composer',
@@ -50,12 +49,6 @@ export class ArticleComposerComponent implements OnInit {
       key: 'rgmwA-21d1sD1qr=='
     }
     const changes = false;
-    // Enable navigation prompt
-    window.onbeforeunload = function() {
-        return true;
-    };
-    // Remove navigation prompt
-    window.onbeforeunload = null;
   }
 
   ngOnInit() {
@@ -118,11 +111,10 @@ export class ArticleComposerComponent implements OnInit {
            ].join('');
   }
 
-  uploadCoverToS3() {
-    // let data = this.cropper.getCroppedCanvas().toBlob(function(blob) {
-
-    // });
-    // this.awsService.uploadToAWS(data,"Cover.jpg");
+  canDeactivate() {
+    if (window.confirm('Are you sure you want to leave? Your unsaved work will be lost')) {
+      return true;
+    } else { return false; }
   }
 
   removeCover() {
