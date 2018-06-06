@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { UpdateComponent } from './update/update.component';
 import { ArticleComponent } from './article/article.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CanDeactivateUpdate, CanDeactivateCompose } from './guards/can-deactivate.guard';
 
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ResourcesComponent },
+  { path: 'home',  component: LandingPageComponent },
   // { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
   { path: 'compose', canActivate: [AuthGuard], canDeactivate: [CanDeactivateCompose], component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
@@ -35,7 +37,7 @@ const appRoutes: Routes = [
   { path: 'hiring/:id', component: JobDetailPageComponent},
   { path: 'clubs/:id', component: ClubDetailComponent},
   { path: 'article/:id', component: ArticleComponent},
-  { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
 ];
 

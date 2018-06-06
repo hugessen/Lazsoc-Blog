@@ -50,6 +50,7 @@ import { UpdateComponent } from './update/update.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CanDeactivateUpdate, CanDeactivateCompose } from './guards/can-deactivate.guard';
 import { ArticleFeedComponent } from './article-feed/article-feed.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { ArticleFeedComponent } from './article-feed/article-feed.component';
     PublicationPipe,
     DiscountComponent,
     ArticleComponent,
-    ArticleFeedComponent
+    ArticleFeedComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
