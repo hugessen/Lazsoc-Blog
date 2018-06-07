@@ -111,12 +111,6 @@ export class ArticleComposerComponent implements OnInit {
            ].join('');
   }
 
-  canDeactivate() {
-    if (window.confirm('Are you sure you want to leave? Your unsaved work will be lost')) {
-      return true;
-    } else { return false; }
-  }
-
   removeCover() {
     this.cover_photo = null;
     this.hasCover = false;

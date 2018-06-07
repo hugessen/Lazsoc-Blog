@@ -48,7 +48,7 @@ import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { UpdateComponent } from './update/update.component';
 import { DiscountComponent } from './discount/discount.component';
-import { CanDeactivateUpdate, CanDeactivateCompose } from './guards/can-deactivate.guard';
+import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
 import { ArticleFeedComponent } from './article-feed/article-feed.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
@@ -98,7 +98,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, CanDeactivateUpdate, CanDeactivateCompose, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, CanDeactivateUpdate, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

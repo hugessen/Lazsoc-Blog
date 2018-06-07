@@ -18,7 +18,7 @@ import { UpdateComponent } from './update/update.component';
 import { ArticleComponent } from './article/article.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './guards/auth.guard';
-import { CanDeactivateUpdate, CanDeactivateCompose } from './guards/can-deactivate.guard';
+import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent },
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   { path: 'resources',  component: ResourcesComponent },
   { path: 'home',  component: LandingPageComponent },
   // { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
-  { path: 'compose', canActivate: [AuthGuard], canDeactivate: [CanDeactivateCompose], component: ArticleComposerComponent },
+  { path: 'compose', canActivate: [AuthGuard], component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
   { path: 'update', canActivate: [AuthGuard], canDeactivate: [CanDeactivateUpdate],  component: UpdateComponent },

@@ -27,6 +27,7 @@
     "aws-amplify": "^0.4.1",
     "aws-sdk": "^2.243.1",
     "bootstrap": "^4.1.1",
+    "buffer": "^5.1.0",
     "clamp": "^1.0.1",
     "core-js": "^2.4.1",
     "cropperjs": "^1.2.1",
@@ -40,6 +41,7 @@
     "ng4-fittext": "^1.1.5",
     "rxjs": "^5.5.10",
     "stickyfill": "^1.1.1",
+    "util": "^0.10.4",
     "wysiwyg-editor-node-sdk": "^2.3.4-rc.1",
     "zone.js": "^0.8.4"
   },
