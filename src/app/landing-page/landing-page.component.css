@@ -1,9 +1,171 @@
+.container-fluid {
+	background-color: white;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.first-row {
+	padding-top:60px;
+	padding-bottom: 60px;
+}
+
+.carousel-img {
+	width:100%;
+	align-self: center;
+}
+
 h1 {
 	color: #53449B;
-	font-family: Lato-Bold;
+	font-family: Lato-Black;
 	font-size: 30px;
 }
 
-.container-fluid {
-	.text-align:center;
+.subtext {
+	color: #83868A;	
+	font-family: Lato-Regular;	
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.text-container {
+  top: 0;
+  bottom: 0;
+  margin:auto;
+  height:50%;
+	width:40%;
+	position:absolute;
+	display: inline;
+	/*border:1px solid grey;*/
+}
+
+.graphic {
+	width: 70%;
+	height:auto;
+	align-self: center;
+}
+
+.selector-container {
+	background: linear-gradient(180deg, rgba(94,75,184,0.11) 0%, rgba(249,248,251,0) 100%);
+}
+
+.our-projects {
+	font-family: Lato-Bold;
+	text-align: center;
+	text-transform: uppercase;
+	color:#53449B;
+	font-size: 32px;
+}
+
+.three-cols-div {
+	margin-top:100px;
+	height: 52px;
+	width: 60%;
+	border-radius: 32px;
+	background-color: #FFFFFF;
+	box-shadow: 0 0 14px 0 rgba(0,0,0,0.16);
+}
+
+.three-col {
+	height: 44px;
+	width: 33%;
+	color:#83868A;
+	font-family: Lato-Regular;
+	font-size: 22px;
+	text-align: center;
+}
+
+.active {
+	background-color: #FFBF40;
+	color:white;
+	/*box-shadow: 0 0 14px 0 rgba(0,0,0,0.16);*/
+}
+
+.col-left { border-radius: 32px 6px 6px 32px; }
+.col-right { border-radius: 6px 32px 32px 6px; }
+.col-mid { border-radius: 6px 6px 6px 6px; }
+
+.selector-content {
+	margin-top:30px;
+	margin-bottom:30px;
+	width:90%;
+	/*border: 1px solid grey;*/
+}
+
+.beans-content {
+	/*border: 1px solid grey;*/
+}
+
+.beans-content img {
+	width:50%;
+	align-self: center;
+	margin-right:30px;
+}
+
+.gold-button {
+	cursor: pointer;
+	width: 130px;
+	padding:10px;
+	text-align:center;
+	font-family: Lato-Regular;
+	font-size:18px;
+	color:white;
+	border-radius: 5px;
+	background-color: #FFBF40;
+}
+
+.our-clubs {
+	background-color: rgba(249,248,251,0)
+}
+
+.our-clubs img {
+	width: 31%;
+	align-self: center;
+}
+
+.final-panel {
+	position:relative;
+	height:600px;
+}
+
+.final-panel img {
+	width:100%;
+	filter: brightness(70%);
+}
+
+.final-panel-text-div {
+	text-align:center;
+	width:40%;
+	color:white;
+	position:absolute;
+	bottom:30%;
+}
+
+.final-panel-heading {
+	font-family:Lato-Bold;
+	font-size:40px;
+}
+
+.final-panel-subtext {
+	font-family:Lato-Regular;
+	font-size:30px;
+}
+
+.signup-box {
+	height: 45px;
+	width: 276px;
+	border: 1px solid #D4D4D4;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	color: #83868A;
+	text-align:left;
+}
+
+.footer-panel {
+	background-color: #53449B;
+	height: 150px;
+	color:white;
+	font-family: Lato-Regular;
+	font-size: 18px;
+	text-align: center;
 }
