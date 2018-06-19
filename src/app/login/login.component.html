@@ -13,7 +13,7 @@
               <p class="message">Already Registered? <a href="#">Sign In</a></p>
             </form>
             <form class="login-form">
-              <span class="err-msg" *ngIf="hasLoginError">Invalid login credentials. Please try again.</span>
+              <span class="err-msg" *ngIf="loginErr != ''">{{loginErr}}</span>
               <input type="text" placeholder="Email" [(ngModel)]="loginObj.email" name="email"/>
               <input type="password" placeholder="Password" [(ngModel)]="loginObj.password" name="password"/>
               <button (click)="signIn()" data-dismiss="modal">Login</button>

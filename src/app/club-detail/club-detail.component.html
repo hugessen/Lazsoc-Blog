@@ -5,15 +5,19 @@
         <div class="card-img-top">
           <img class="card-img-top club-banner" [src]="club.app_banner">
         </div>
-        <div class="card-body">
-          <div class="media">
-            <img [src]="club.app_logo" style="background-color:white" class="club-avatar ml-5">
-            <div class="media-body ml-4 mt-3">
-              <div class="club-title">{{club.name}}</div>
-              <span class="club-tags" *ngFor="let tag of club.club_tags; let i = index">
-                <span *ngIf="i > 0">&bull;</span>
-                {{tag.tag}}
-              </span>
+        <div class="card-body py-3">
+          <div class="media ml-3">
+            <img [src]="club.app_logo" style="background-color:white" class="club-avatar align-self-start mr-4">
+            <div class="media-body align-self-center d-flex flex-row mt-3">
+              <div>
+                <div class="club-title">{{club.name}}</div>
+                <span class="club-tags" *ngFor="let tag of club.club_tags; let i = index">
+                  <span *ngIf="i > 0">&bull;</span>
+                  {{tag.tag}}
+                </span>
+                <hr>
+                <span class="club-detail-text">{{club.description}}</span>
+              </div>
             </div>
             <br>
           </div>

@@ -12,8 +12,8 @@ export class AuthService implements OnInit {
 
   constructor(public tokenService: Angular2TokenService, public http: HttpClient)  {
     this.tokenService.init({
-        apiBase:                    'https://moria.lazsoc.ca/api',
-        // apiBase:                    'http://localhost:3000/api',
+        // apiBase:                    'https://moria.lazsoc.ca/api',
+        apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',

@@ -53,8 +53,8 @@ export class ProfileSidebar implements OnInit {
 
 @Component({
   selector: 'job-posting-sidebar',
-  templateUrl: './job-posting-sidebar.html',
-  styleUrls: ['./sidebar.component.css']
+  templateUrl: './hiring-sidebar.html',
+  styleUrls: ['./hiring-sidebar.css']
 })
 export class JobPostingSidebar implements OnInit {
 

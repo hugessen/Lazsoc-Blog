@@ -10,6 +10,12 @@
 	padding-bottom: 60px;
 }
 
+.gold-bar {
+	height: 11px;
+	width: 109px;
+	background-color: #FFBF40;
+}
+
 .carousel-img {
 	width:100%;
 	align-self: center;
@@ -130,6 +136,7 @@ h1 {
 
 .final-panel img {
 	width:100%;
+	align-self: center;
 	filter: brightness(70%);
 }
 
@@ -157,6 +164,7 @@ h1 {
 	border: 1px solid #D4D4D4;
 	border-radius: 5px;
 	background-color: #FFFFFF;
+	outline: none !important;
 	color: #83868A;
 	text-align:left;
 }

@@ -101,11 +101,16 @@ h5 {
 .profile-avatar {
   display: block;
   position: absolute;
-  transform: translate(10px, 50px);
   width: 90px;
   height: 90px;
   border-radius: 50%;
+  transform: translate(10px, 50px);
   border: 2px solid white;
+  overflow:hidden;
+}
+
+.profile-avatar img {
+  height:100%;
 }
 
 .club-avatar {
@@ -271,12 +276,6 @@ h5 {
   font-family: Lato-Regular;
   font-size: 10px;
   color: #0083c1;
-}
-
-.none-found {
-  font-family: Lato-Regular;
-  font-size: 14px;
-  color:#83868a;;
 }
 
 .made-with-love {

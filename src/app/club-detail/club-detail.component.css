@@ -48,6 +48,11 @@ h6 {
   border-radius: 0;
 }
 
+.social-box {
+  width:15%;
+  border: 1px solid black;
+}
+
 .portfolio-header {
   background-color:white;
 }
@@ -72,10 +77,7 @@ h6 {
 }
 .club-avatar {
   display: block;
-  margin-top:-10%;
-  width: 20%;
-  border:5px solid white;
-  border-radius:10px;
+  width: 120px;
 }
 
 .club-event-avatar {

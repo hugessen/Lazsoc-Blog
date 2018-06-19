@@ -88,12 +88,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+/*
 .sticky {
   position: -webkit-sticky;
   position: sticky;
   top: 104px;
-}
+}*/
 
 .sticky-signup {
   position: -webkit-sticky;

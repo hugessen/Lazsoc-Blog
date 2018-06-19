@@ -1,17 +1,18 @@
 <div class="container-fluid">
 	<div class="first-row row justify-content-center">
 		<div style="text-align: center; width:50%">
-			<h1>The fun outside the classroom</h1>
+			<h1>The fun outside the classroom starts here</h1>
 			<div class="subtext">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim odio quis orci pellentesque molestie.
 			</div>
+			<div class="gold-bar mx-auto mt-5"></div>
 		</div>
 	</div>
 	<div class="row">
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="d-block carousel-img" src="assets/img/banners/LinkBanner.png" alt="First slide">
+		      <img class="d-block carousel-img" src="assets/img/Gradball.jpeg" alt="First slide">
 		    </div>
 		    <div class="carousel-item">
 		      <img class="d-block carousel-img" src="assets/img/banners/TapBanner.png" alt="Second slide">
@@ -66,7 +67,7 @@
 				<div class="mt-1">Discount Program</div>
 			</div>
 			<div class="three-col col-right align-self-center mr-1" (click)="activeCol = 'events'" [ngClass]="{active:activeCol == 'events'}">
-				<div class="mt-1">Club Events</div>
+				<div class="mt-1">Events Feed</div>
 			</div>
 		</div>
 	</div>
@@ -76,7 +77,7 @@
 				<img src="assets/img/Coffee-Cups.png">
 				<div style="margin-top:5%">
 					<h1>Build meaningful connections</h1>
-					<div class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love.</div>
+					<div class="subtext">LazBeans is a platform created for Lazaridis students to connect and interact with each other in a professional manner. This platform will allow you to filter through and find peers with interests similar to yours so that you can leverage the Lazaridis community and grow as an individual.</div>
 					<div class="gold-button mt-4">
 						Check it out
 					</div>
@@ -87,6 +88,16 @@
 				<div style="margin-top:5%">
 					<h1>Build meaningful connections</h1>
 					<div class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love.</div>
+					<div class="gold-button mt-4">
+						Check it out
+					</div>
+				</div>
+			</div>
+			<div class="d-flex flex-row beans-content" *ngIf="activeCol == 'events'">
+				<img src="assets/img/Events Feed.png">
+				<div style="margin-top:5%">
+					<h1>Build meaningful connections</h1>
+					<div class="subtext">The Events Feed will allow you to stay on top of all the events that our clubs put together throughout the year. The feed will show you upcoming events happening on campus so you don’t miss out on the great oppurunities the clubs have to offer. With 23 clubs, associations and committees, you really get a chance to explore all your interests.</div>
 					<div class="gold-button mt-4">
 						Check it out
 					</div>
@@ -106,14 +117,12 @@
 		<img src="assets/img/Clubs-Right.png">
 	</div>
 	<div class="row final-panel justify-content-center">
-		<img src="assets/img/Laz-Hall.jpg">
+		<img src="assets/img/FullTeam19.jpeg">
 		<div class="final-panel-text-div">
 			<div class="final-panel-heading">Don't miss out!</div>
 			<div class="final-panel-subtext">Sign up here and stay on top</div>
 			<div class="d-flex flex-row justify-content-center mt-3">
-				<div class="signup-box pt-2 pl-3">
-					abcd1234@mylaurier.ca
-				</div>
+				<input id="email" class="signup-box pl-3" placeholder="abcd1234@mylaurier.ca">
 				<div class="gold-button ml-3">Born Ready</div>
 			</div>
 		</div>
