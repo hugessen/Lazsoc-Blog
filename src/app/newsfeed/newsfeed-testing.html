@@ -63,7 +63,7 @@
             <div class="card-img-top">
               <img class="card-img-top" src="assets/img/{{clubs[event.club_id].app_banner}}" *ngIf="event.banner == ''">
             </div>
-              <div class="card-block">
+              <div class="card-body">
                 <div class="d-flex mb-2">
                   <img src="assets/img/thumbnails/{{clubs[event.club_id].app_logo}}" class="club-avatar mr-3" alt="">
                   <div class="d-flex flex-column">
@@ -86,7 +86,7 @@
 
           <!-- Laz Latest Section -->
           <div class="card" *ngIf="event.typeof == 'blog' && (newsfeedState == 'blog' || newsfeedState == 'all')">
-            <div class="card-block">
+            <div class="card-body">
               <div class="d-flex">
                 <img src="https://www2.mmu.ac.uk/media/mmuacuk/style-assets/images/r-research/profile-Zeyad.jpg" class="avatar mr-3">
                 <div class="d-flex flex-column">

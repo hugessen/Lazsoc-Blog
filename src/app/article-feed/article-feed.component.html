@@ -1,6 +1,6 @@
  <div *ngFor="let article of articles">
  	 <div class="card mt-3">
-    <div class="card-block">
+    <div class="card-body">
       <div class="d-flex flex-row">
         <img src="assets/img/Blank Avatar.jpg" class="avatar mr-3" *ngIf="!article.user_avatar">
         <img [src]="article.user_avatar" class="avatar mr-3" *ngIf="article.user_avatar">

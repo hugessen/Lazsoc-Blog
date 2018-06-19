@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 export class HiringComponent {
   jobPostings: any[];
 
-  @Input() clubID;
   constructor(public webAPI: WebAPI, public router: Router) {
     this.webAPI.getJobPostings().then(data => {
       this.jobPostings = data;
+      console.log("Postings:",this.jobPostings);
     })
   }
 

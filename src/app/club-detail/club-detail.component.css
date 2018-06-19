@@ -48,6 +48,11 @@ h6 {
   border-radius: 0;
 }
 
+.social-box {
+  width:15%;
+  border: 1px solid black;
+}
+
 .portfolio-header {
   background-color:white;
 }
@@ -72,13 +77,7 @@ h6 {
 }
 .club-avatar {
   display: block;
-  position:absolute;
-  transform: translate(15%, 120%);
-  width: 20%;
-  height:auto;
-  border:5px solid white;
-  padding:0;
-  border-radius:10px;
+  width: 120px;
 }
 
 .club-event-avatar {
@@ -139,7 +138,6 @@ h6 {
 .club-detail-text {
   font-family:Lato-Medium;
   font-size:14px;
-  /*color:#83868a;*/
   letter-spacing:0;
   text-align:left;
 }
@@ -158,14 +156,6 @@ h6 {
   font-size:16px;
   color:#433089;
   letter-spacing:0;
-}
-
-.card-header-text {
-  font-family:Lato-Black;
-  font-size:16px;
-  color:#83868a;
-  letter-spacing:0;
-  text-align:left;
 }
 
 .club-detail-body {
@@ -225,4 +215,10 @@ h6 {
   font-family: Lato-Regular;
   font-size: 10px;
   color: #0083c1;
+}
+
+.social-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 104px;
 }

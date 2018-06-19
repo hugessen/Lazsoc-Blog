@@ -1,0 +1,22 @@
+<div class="card sticky">
+  <h3 class="card-header card-header-text">Open Positions</h3>
+  <div class="card-body py-0" *ngIf="hasPostings">
+    <ul class="list-group list-group-flush pointer" *ngFor="let posting of jobPostings; let i = index">
+      <li class="list-group-item py-2 pl-0" *ngIf="i < 3 && (posting.club_id === clubID || clubID === 0)" (click)="viewJobPost(posting.id)">
+        <div class="media">
+          <img [src]="posting.club.app_logo" class="mr-3 align-self-center">
+          <div class="media-body align-self-center">
+            <div class="posting-title">{{posting.title}}</div>
+            <div class="posting-club">{{posting.club.name}}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="py-2 text-center">
+      <a class="see-more-postings py-2" routerLink="/hiring">See all positions</a>
+    </div>
+  </div>
+  <div class="mx-auto py-2" *ngIf="!hasPostings">
+    <span class="text-md-grey">No positions currently open</span>
+  </div>
+</div>

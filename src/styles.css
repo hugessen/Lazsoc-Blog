@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.page-header {
+	font-family:Lato-Bold;
+}
+
+.card {
+	border: 1px solid #D4D4D4;
+	border-radius:0px;
+}
+
+.card-header-text {
+  font-family: Lato-Black;
+  font-size: 16px;
+  color: #83868a;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.card-footer {
+	background-color:white;
+}
+
 .posting-flex{
     display:flex;
     flex-direction:row;
@@ -10,4 +37,32 @@
 
 .float-left {
 	float:left;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 104px;
+}
+
+.pointer {
+	cursor:pointer;
+}
+
+.media {
+	z-index: -1;
+}
+
+.media img {
+	width:25%;
+}
+
+.media-body {
+	width:75%;
+}
+
+.text-md-grey {
+  font-family: Lato-Regular;
+  font-size: 14px;
+  color:#83868a;
 }

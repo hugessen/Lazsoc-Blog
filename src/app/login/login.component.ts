@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     lastName: '',
     program: '',
   };
-  hasLoginError = false;
+  loginErr = '';
   hasRegisterError = false;
   errors = [];
   constructor(public authService: AuthService, public tokenService: Angular2TokenService, public webAPI: WebAPI, public route: ActivatedRoute, public router: Router) {
@@ -44,8 +44,7 @@ export class LoginComponent implements OnInit {
           }
         },
         err => {
-          this.hasLoginError = true;
-          console.error('auth error:', err);
+          this.loginErr = err.json().errors[0];
         }
     )
   }
@@ -76,8 +75,8 @@ export class LoginComponent implements OnInit {
           }
         },
         err => {
-          console.log('Registration error', err);
-          this.errors.push('Something went wrong. \n That email may already be in use, or there was an issue with your connection');
+          console.log('Registration error', err.json());
+          this.errors.push(err.json().errors.full_messages[0]);
         }
     );
   }

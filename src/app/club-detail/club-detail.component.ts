@@ -12,7 +12,7 @@ export class ClubDetailComponent implements OnInit {
 
   public club: Club = new Club();
   public newsfeed;
-  public state = 'about';
+  public state = 'events';
   public fullTeam;
 
   constructor(public route: ActivatedRoute, public router: Router, public webAPI: WebAPI) { }

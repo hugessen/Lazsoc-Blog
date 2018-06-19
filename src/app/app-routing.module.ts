@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { NewsfeedContainerComponent } from './newsfeed-container/newsfeed-container.component';
 import { BeansComponent } from './beans/beans.component';
 import { LazNavbar } from './nav-bar/laz-navbar';
-import { HiringContainerComponent } from './hiring-container/hiring-container.component';
+import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { LoginComponent } from './login/login.component';
 import { OurTeamComponent } from './our-team/our-team.component';
@@ -16,15 +16,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { ClubDetailComponent } from './club-detail/club-detail.component';
 import { UpdateComponent } from './update/update.component';
 import { ArticleComponent } from './article/article.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent },
-  { path: 'hiring',     component: HiringContainerComponent },
+  { path: 'hiring',     component: HiringComponent },
   { path: 'clubs',      component: ClubsComponent },
   { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ResourcesComponent },
+  { path: 'home',  component: LandingPageComponent },
   // { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
   { path: 'compose', canActivate: [AuthGuard], component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
@@ -35,7 +37,7 @@ const appRoutes: Routes = [
   { path: 'hiring/:id', component: JobDetailPageComponent},
   { path: 'clubs/:id', component: ClubDetailComponent},
   { path: 'article/:id', component: ArticleComponent},
-  { path: '',   redirectTo: '/newsfeed', pathMatch: 'full' }
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
 ];
 

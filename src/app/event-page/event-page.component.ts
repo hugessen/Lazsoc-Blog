@@ -40,17 +40,13 @@ export class EventPageComponent implements OnInit {
 
   getTime(date: string): string {
     let hour = new Date(date).getUTCHours();
-    let min = new Date(date).getUTCMinutes();
-    let minStr = (min < 10) ? min + '0' : min;
-    let ampm = (hour < 12) ? 'AM' : 'PM';
+    const min = new Date(date).getUTCMinutes();
+    const minStr = (min < 10) ? '0' + min : min;
+    const ampm = (hour < 12) ? 'AM' : 'PM';
     if (hour > 12) {
       hour = hour % 12;
     }
     return (hour + ':' + minStr + ' ' + ampm);
-  }
-
-  registerForEvent() {
-    // this.webAPI.registerForEvent(this.event.id).then(res => console.log(res));
   }
 
 }

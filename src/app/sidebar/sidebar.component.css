@@ -24,7 +24,7 @@ h5 {
   border-radius: 0;
 }
 
-.card-block {
+.card-body {
   font-size: 1em;
   position: relative;
   margin: 0;
@@ -101,11 +101,16 @@ h5 {
 .profile-avatar {
   display: block;
   position: absolute;
-  transform: translate(10px, 50px);
   width: 90px;
   height: 90px;
   border-radius: 50%;
+  transform: translate(10px, 50px);
   border: 2px solid white;
+  overflow:hidden;
+}
+
+.profile-avatar img {
+  height:100%;
 }
 
 .club-avatar {
@@ -256,14 +261,6 @@ h5 {
   width: 20%;
 }
 
-.card-header-text {
-  font-family: Lato-Black;
-  font-size: 16px;
-  color: #83868a;
-  letter-spacing: 0;
-  text-align: left;
-}
-
 .see-other-postings {
   font-family: Lato-Semibold;
   font-size: 12px;
@@ -279,12 +276,6 @@ h5 {
   font-family: Lato-Regular;
   font-size: 10px;
   color: #0083c1;
-}
-
-.none-found {
-  font-family: Lato-Regular;
-  font-size: 14px;
-  color:#83868a;;
 }
 
 .made-with-love {

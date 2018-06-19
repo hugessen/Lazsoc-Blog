@@ -1,36 +1,34 @@
-<div class="container-fluid" style="background-color:#F5F5F5">
-	<div class="row justify-content-center">
-  	<div class="col-sm-9 col-md-9 col-lg-9 mt-4">
-      <div class="ml-3">
-        <h3>Our Clubs</h3>
-        <p class="under-header-text">The fun outside the classroom</p>
-      </div>
-      <div *ngFor="let club of clubs">
-        <div class="card pointer p-2" (click)="onSelect(club)" style="cursor:pointer">
-          <div class="row container-fluid py-0 pr-0">
-            <div class="col-sm-3 col-md-3 col-lg-3 logo-div">
-              <img class="logo" [src]="club.app_logo" style="margin-left:50px" alt="Club Logo">
-            </div>
-            <div class="col-sm-8 col-md-8 col-lg-8">
-              <div class="d-flex flex-column align-content-center">
-                <br/>
-                <span class="title">{{club.name}}</span>
-                <div class="row container" id="bottom_margin_2">
+<div class="container-fluid">
+	<div class="row justify-content-center mt-4">
+		<div class="col-9">
+			<div class="card">
+				<div class="card-header pl-3">
+					<div class="our-clubs ml-3">Our Clubs</div>
+					<div class="title-subheader ml-3">The fun outside the classroom</div>
+				</div>
+				<div class="card-body" style="padding-top:0px">
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item" *ngFor="let club of clubs" (click)="onSelect(club)" style="cursor:pointer">
+				    	<div class="media">
+				    		<img [src]="club.app_logo" class="align-self-center mr-5 py-0">
+				    		<div class="media-body align-self-center">
+				    			<div class="club-title">{{club.name}}</div>
                   <span class="tags" *ngFor="let tag of club.club_tags; let i = index">
                     <span *ngIf="i > 0">&nbsp; &bull; &nbsp;</span>
                     {{tag.tag}}
                   </span>
-                  <span class="club-description py-2">{{club.description}}</span>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
+				    			<div class="club-desc mt-2">{{club.description}}</div>
+				    		</div>
+				    	</div>
+				    </li>
+				  </ul>
+				</div>
+			</div>
+		</div>
+    <div class="col-3">
+      <div class="sticky">
+        <job-posting-sidebar [clubID]="0"></job-posting-sidebar>
       </div>
     </div>
-    <div class="col-sm-3 col-md-3 col-lg-3 mt-4">
-    	<job-posting-sidebar [clubID]="0"></job-posting-sidebar>
-    </div>
-  </div>
+	</div>
 </div>

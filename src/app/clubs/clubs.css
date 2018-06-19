@@ -1,0 +1,37 @@
+.our-clubs {
+	font-family:Lato-Black;
+	font-size:35px;
+}
+
+.title-subheader {
+	font-family: Lato-Regular;
+	color: #83868A;
+	font-size: 20px;
+	font-style: italic;
+}
+
+.card-header {
+	background-color:white;
+}
+
+.media img {
+	width:20%;
+}
+
+.club-title {
+	font-family:Lato-Black;
+	font-size:24px;
+}
+
+.tags {
+  font-family:Lato-Regular;
+  font-size:15px;
+  color:#83868a;
+  letter-spacing:0;
+  text-align:left;
+}
+
+.club-desc {
+	font-family:Lato-Regular;
+	font-size:14px;
+}
