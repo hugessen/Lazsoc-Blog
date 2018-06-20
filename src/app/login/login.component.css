@@ -103,16 +103,7 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
-body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
-  font-family: Lato-Regular;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
 .err-msg {
   font-family:Lato-Regular;
   font-size:12px;
@@ -121,7 +112,7 @@ body {
   text-align:left;
 }
 
-.forum_container {
+.forum-container {
   /*background-color: #FFFFFF;*/
   margin-top: 5px;
   margin-bottom: 10px;
@@ -159,8 +150,14 @@ body {
   color:#83868A;
   font-size: 16px;
 }
-img {
+.laz-logo {
   width:120px; 
   height:auto; 
   margin-bottom:10px;
+}
+
+.linkedin-login {
+  width:100%; 
+  margin-top:15px;
+  cursor:pointer;
 }

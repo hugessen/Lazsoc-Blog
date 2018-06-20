@@ -32,9 +32,9 @@ export class AuthService implements OnInit {
         resetPasswordPath:          'user_auth/password',
         resetPasswordCallback:      window.location.href,
 
-        oAuthBase:                  window.location.origin,
+        oAuthBase:                  'http://localhost:3000/api',
         oAuthPaths: {
-            github:                 'user_auth/github'
+            linkedin:               'user_auth/linkedin'
         },
         oAuthCallbackPath:          'oauth_callback',
         oAuthWindowType:            'newWindow',
@@ -150,6 +150,10 @@ export class AuthService implements OnInit {
         resolve(res);
       }).catch(err => reject(err));
     });
+  }
+
+  loginOauth(): Observable<any> {
+    return this.tokenService.signInOAuth('linkedin')
   }
 
   // public getAuthDataFromStorage() {

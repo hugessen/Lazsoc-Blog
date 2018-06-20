@@ -2,21 +2,15 @@
   <div class="d-flex justify-content-center mt-4">
     <div class="row container-fluid mt-4 justify-content-center">
       <div *ngIf="state == 'login'" style="margin-top:60px">
-        <div class="forum_container">
+        <div class="forum-container">
           <div class="form">
-            <img src="assets/img/Lazsoc-logo.png">
-            <form class="register-form">
-              <input type="text" placeholder="name"/>
-              <input type="password" placeholder="password"/>
-              <input type="text" placeholder="email address"/>
-              <button>create</button>
-              <p class="message">Already Registered? <a href="#">Sign In</a></p>
-            </form>
+            <img class="laz-logo" src="assets/img/Lazsoc-logo.png">
             <form class="login-form">
               <span class="err-msg" *ngIf="loginErr != ''">{{loginErr}}</span>
               <input type="text" placeholder="Email" [(ngModel)]="loginObj.email" name="email"/>
               <input type="password" placeholder="Password" [(ngModel)]="loginObj.password" name="password"/>
               <button (click)="signIn()" data-dismiss="modal">Login</button>
+              <img src="assets/img/Linkedin-Login.png" class="linkedin-login" (click)="loginOauth()">
               <p class="message">Not Registered? <a (click)="state = 'register'" style="cursor:pointer"><u>Create an account</u></a></p>
             </form>
           </div>
@@ -24,9 +18,9 @@
       </div>
       
       <div *ngIf="state === 'register'" style="margin-top:60px">
-        <div class="forum_container">
+        <div class="forum-container">
             <div class="form">
-              <img src="assets/img/Lazsoc-logo.png">
+              <img class="laz-logo" src="assets/img/Lazsoc-logo.png">
               <form class="login-form">
                 <span class="err-msg" *ngFor="let error of errors">{{error}}<br></span>
                 <div class="d-flex flex-row">
@@ -36,13 +30,14 @@
                 <input type="password" placeholder="Password" name="password" [(ngModel)]="registerObj.password"/>
                 <input type="password" placeholder="Confirm Password" name="passwordConfirmation" [(ngModel)]="registerObj.passwordConfirmation"/>
                 <button (click)="registerUser()">Let's get started!</button>
+                <img src="assets/img/Linkedin-Login.png" class="linkedin-login" (click)="loginOauth()">
                 <p class="message">Already Registered? <a (click)="state = 'login'" style="cursor:pointer"><u>Sign-in</u></a></p>
               </form>
             </div>
         </div>
       </div>
       <div *ngIf="state === 'post-registration'" style="margin-top:60px">
-        <div class="forum_container">
+        <div class="forum-container">
           <div class="post-registration">
             <img src="assets/img/Lazsoc-logo.png">
             <br>

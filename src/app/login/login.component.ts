@@ -55,6 +55,18 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  loginOauth() {
+    this.authService.loginOauth().subscribe(
+        res => {
+          console.log(res);
+          this.router.navigateByUrl('/update');
+        },
+        err => {
+          this.loginErr = err.json().errors[0];
+        }
+      )
+  }
+
   registerUser() {
     this.errors = [];
     if (!this.isValidEmail(this.registerObj.email)) {
