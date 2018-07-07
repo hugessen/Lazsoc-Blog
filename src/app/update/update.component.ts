@@ -131,12 +131,15 @@ export class UpdateComponent implements OnInit {
       first_name: user.first_name,
       last_name: user.last_name,
       program: user.program,
+      student_id: user.student_id,
       image: user.image,
       summary: user.summary,
       is_bean: user.isBean,
       profile_header: user.profile_header,
       school_year: user.school_year,
     };
+    if (user.provider == 'email')
+      this.updateObj['email'] = user.uid;
   }
 
 }
