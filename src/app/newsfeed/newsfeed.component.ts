@@ -17,7 +17,7 @@ const ONE_DAY = 60 * 60 * 24 * 1000;
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
-  events: any;
+  clubEvents: any;
   clubs = {};
   hasEvents = true;
   tagFilters = [];
@@ -31,7 +31,7 @@ export class NewsfeedComponent implements OnInit {
 
   ngOnInit() {
     this.webAPI.getNewsfeed().then(data => {
-      this.events = data;
+      this.clubEvents = data;
       this.hasEvents = this.checkHasEvents(data);
     })
   }
