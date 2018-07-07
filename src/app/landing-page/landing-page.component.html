@@ -1,14 +1,15 @@
 <div class="container-fluid">
 	<div class="first-row row justify-content-center">
 		<div style="text-align: center; width:50%">
+			<img src="assets/img/Lazsoc-logo.png" style="width:40%">
 			<h1>The fun outside the classroom starts here</h1>
 			<div class="subtext">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim odio quis orci pellentesque molestie.
+				<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim odio quis orci pellentesque molestie. -->
 			</div>
 			<div class="gold-bar mx-auto mt-5"></div>
 		</div>
 	</div>
-	<div class="row">
+<!-- 	<div class="row">
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
@@ -30,13 +31,13 @@
 		    <span class="sr-only">Next</span>
 		  </a>
 		</div>
-	</div>
-	<div class="row mt-5" id="experience" style="position:relative">
+	</div> -->
+	<div class="row" id="passion" style="position:relative">
 		<div>
-			<img src="assets/img/LandingGraphic1.jpeg" class="graphic" style="float:right">
+			<img src="assets/img/LandingGraphic3.jpeg" class="graphic" style="float:right">
 			<div class="text-container" style="margin-left:40px">
-				<h1>Experience what works best for you</h1>
-				<span class="subtext">Lazaridis students get a chance to see their work come to life. Focusing in on the why you get a chance to try new things in a hands on appraoch to see what works best for you. Through your experiences you will develop new skills, __, and friendships that will last a lifetime. Putting your best foot forward, bring your ideas to life and leave behind that positive legacy.</span>
+				<h1>Discover your passions</h1>
+				<span class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love. Whatever you may be interested in, LazSoc is here to help you dive into it.</span>
 			</div>
 		</div>
 	</div>
@@ -44,20 +45,22 @@
 		<div>
 			<img src="assets/img/LandingGraphic2.jpeg" class="graphic" style="float:left; width: 65%">
 			<div class="text-container" style="margin-left:-8%">
-				<h1>Experience what works best for you</h1>
-				<span class="subtext">With one of the smallest campuses in Ontario, the Lazaridis community is known to have the strongest and tight knit culture. Being a Lazaridis student, you are able to surround yourself with ambitious like minded students that push you past your comfort zone and help you persue your passions. You get the oppurunity to inspire the lives of the generation that comes next by leading by example.</span>
+				<h1>Immerse yourself within an empowering community</h1>
+				<span class="subtext">With one of the smallest campuses in Ontario, the Lazaridis community is known to have the strongest and tight knit culture. Being a Lazaridis student, you are able to surround yourself with ambitious like minded students that push you past your comfort zone and help you pursue your passions. You get the oppurunity to inspire the lives of the generation that comes next by leading by example.
+</span>
 			</div>
 		</div>
 	</div>
-	<div class="row" id="passion" style="position:relative">
+	<div class="row" id="experience" style="position:relative">
 		<div>
-			<img src="assets/img/LandingGraphic3.jpeg" class="graphic" style="float:right">
+			<img src="assets/img/LandingGraphic1.jpeg" class="graphic" style="float:right">
 			<div class="text-container" style="margin-left:40px">
 				<h1>Experience what works best for you</h1>
-				<span class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love. Whatever you may be interested in, LazSoc is here to help you dive into it.</span>
+				<span class="subtext">Lazaridis students get a chance to see their work come to life. Focusing in on the why you get a chance to try new things in a hands on approach to see what works best for you. Through your experiences you will develop new skills and friendships that will last a lifetime. Putting your best foot forward, bring your ideas to life and leave behind that positive legacy.</span>
 			</div>
 		</div>
 	</div>
+
 	<div class="row selector-container justify-content-center">
 		<div class="d-flex flex-row three-cols-div pointer">
 			<div class="three-col col-left align-self-center ml-1" (click)="activeCol = 'beans'" [ngClass]="{active:activeCol == 'beans'}">
@@ -74,31 +77,31 @@
 	<div class="row justify-content-center">
 		<div class="selector-content">
 			<div class="d-flex flex-row beans-content" *ngIf="activeCol == 'beans'">
-				<img src="assets/img/Coffee-Cups.png">
+				<img src="assets/img/Coffee-Cups.png" style="height:520px">
 				<div style="margin-top:5%">
 					<h1>Build meaningful connections</h1>
 					<div class="subtext">LazBeans is a platform created for Lazaridis students to connect and interact with each other in a professional manner. This platform will allow you to filter through and find peers with interests similar to yours so that you can leverage the Lazaridis community and grow as an individual.</div>
 					<div class="gold-button mt-4">
-						Check it out
+						Coming soon!
 					</div>
 				</div>
 			</div>
 			<div class="d-flex flex-row beans-content" *ngIf="activeCol == 'discount'">
-				<img src="assets/img/Discount-Cards.png">
+				<img src="assets/img/Discount-Cards.png" style="height:520px">
 				<div style="margin-top:5%">
-					<h1>Build meaningful connections</h1>
+					<h1>Discounts for Lazaridis students</h1>
 					<div class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love.</div>
-					<div class="gold-button mt-4">
+					<div class="gold-button mt-4" routerLink="/resources">
 						Check it out
 					</div>
 				</div>
 			</div>
 			<div class="d-flex flex-row beans-content" *ngIf="activeCol == 'events'">
-				<img src="assets/img/Events Feed.png">
+				<img src="assets/img/Events Feed.png" style="height:520px">
 				<div style="margin-top:5%">
-					<h1>Build meaningful connections</h1>
+					<h1>Get involved with our fantastic events</h1>
 					<div class="subtext">The Events Feed will allow you to stay on top of all the events that our clubs put together throughout the year. The feed will show you upcoming events happening on campus so you don’t miss out on the great oppurunities the clubs have to offer. With 23 clubs, associations and committees, you really get a chance to explore all your interests.</div>
-					<div class="gold-button mt-4">
+					<div class="gold-button mt-4" routerLink="/newsfeed">
 						Check it out
 					</div>
 				</div>
@@ -110,14 +113,14 @@
 		<div class="mx-4 align-self-center" style="width:34%; text-align:center">
 			<h1>23 Student-Run Clubs, Associations and Committees</h1>
 			<div class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love.</div>
-			<div class="gold-button mt-4 mx-auto">
+			<div class="gold-button mt-4 mx-auto" routerLink="/clubs">
 				Check it out
 			</div>
 		</div>
 		<img src="assets/img/Clubs-Right.png">
 	</div>
 	<div class="row final-panel justify-content-center">
-		<img src="assets/img/FullTeam19.jpeg">
+		<img src="assets/img/FullTeam19.jpeg" style="height:100%">
 		<div class="final-panel-text-div">
 			<div class="final-panel-heading">Don't miss out!</div>
 			<div class="final-panel-subtext">Sign up here and stay on top</div>

@@ -66,7 +66,7 @@ export class WebAPI {
 
   getEvents(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${LOCAL_PATH}/api/events.json`).toPromise()
+      this.http.get(`${API_PATH}/api/events.json`).toPromise()
       .then(res => {
         let events = res['events'].sort((a, b) => Date.parse(a.start_date_time) - Date.parse(b.start_date_time));
         resolve(events);
@@ -105,7 +105,7 @@ export class WebAPI {
 
   getJobPostings(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${LOCAL_PATH}/api/job_postings.json`).toPromise()
+      this.http.get(`${API_PATH}/api/job_postings.json`).toPromise()
       .then(res => {
         const postings = this.trimJobPostings(res);
         this.getClubs().then(clubs => {

@@ -24,7 +24,7 @@ export class NewsfeedContainerComponent implements OnInit {
   clubFilters: any[] = [];
   timeFilters: any[] = [];
 
-  newsfeedState = 'events';
+  newsfeedState = 'articles';
 
   constructor(public authService: AuthService, private webAPI: WebAPI) {
     webAPI.getClubs().then(res => {
