@@ -2,7 +2,8 @@ import { Injectable, OnInit } from '@angular/core';
 import {Angular2TokenService} from 'angular2-token';
 import {Subject, Observable} from 'rxjs';
 import {Response, RequestOptions} from '@angular/http';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService implements OnInit {
@@ -12,8 +13,8 @@ export class AuthService implements OnInit {
 
   constructor(public tokenService: Angular2TokenService, public http: HttpClient)  {
     this.tokenService.init({
-        apiBase:                    'https://moria.lazsoc.ca/api',
-        // apiBase:                    'http://localhost:3000/api',
+        // apiBase:                    'https://moria.lazsoc.ca/api',
+        apiBase:                    'http://localhost:3000/api',
         apiPath:                    null,
 
         signInPath:                 'user_auth/sign_in',
@@ -83,7 +84,11 @@ export class AuthService implements OnInit {
   getUserAsync(): Promise<any> {
     return new Promise((resolve, reject) => {
       return this.tokenService.validateToken().toPromise().then(res => {
-        resolve(res.json().data)
+        let user = res.json().data
+        this.getSmilePoints(user.email).then(points => {
+          user.points = points;
+        }).catch(err => console.log("Problem getting smile points:", err));
+        resolve(user)
       });
     })
   }
@@ -127,12 +132,24 @@ export class AuthService implements OnInit {
 
   getUser(id: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.apiGet('users/get_user').then(res => {
+      this.apiGet(`get_user/${id}`).then(res => {
         // console.log(res);
         resolve(res);
       })
     })
   }
+
+  getSmilePoints(email): Promise<any> {
+    return new Promise((resolve,reject) => {
+      const headers = new HttpHeaders();
+      headers.set('Content-Type', 'application/json; charset=utf-8');
+      this.http.get(`https://api.sweettooth.io/v1/customers?email=${email}`, { headers: new HttpHeaders({Authorization: `Bearer ${environment.SMILE_SECRET}`})})
+        .toPromise().then(res => resolve(res));
+    })
+  }
+      //   setHeaders: {
+      //   Authorization: `Bearer ${this.auth.getToken()}`
+      // }
 
   apiGet(path: string, data: any = null): Promise<any> {
      return new Promise((resolve, reject) => {
@@ -155,27 +172,4 @@ export class AuthService implements OnInit {
   loginOauth(): Observable<any> {
     return this.tokenService.signInOAuth('linkedin')
   }
-
-  // public getAuthDataFromStorage() {
-  //   return {
-  //       accessToken:    localStorage.getItem('accessToken'),
-  //       client:         localStorage.getItem('client'),
-  //       expiry:         localStorage.getItem('expiry'),
-  //       tokenType:      localStorage.getItem('tokenType'),
-  //       uid:            localStorage.getItem('uid')
-  //   };
-  // }
-
-  // upload(formData) {
-  //   let headers = this.tokenService.currentAuthHeaders;
-  //   headers.delete('Content-Type');
-  //   let options = new RequestOptions({ headers: headers });
-  //   console.log(formData);
-  //   return this.tokenService.request({
-  //     method: 'post',
-  //     url: `http://localhost:3000/api/upload_avatar`,
-  //     body: formData,
-  //     headers: options.headers
-  //   }).map(res => res.json());
-  // }
 }
