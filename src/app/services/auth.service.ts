@@ -140,16 +140,11 @@ export class AuthService implements OnInit {
   }
 
   getSmilePoints(email): Promise<any> {
-    return new Promise((resolve,reject) => {
-      const headers = new HttpHeaders();
-      headers.set('Content-Type', 'application/json; charset=utf-8');
+    return new Promise((resolve,reject) => {  
       this.http.get(`https://api.sweettooth.io/v1/customers?email=${email}`, { headers: new HttpHeaders({Authorization: `Bearer ${environment.SMILE_SECRET}`})})
         .toPromise().then(res => resolve(res));
     })
   }
-      //   setHeaders: {
-      //   Authorization: `Bearer ${this.auth.getToken()}`
-      // }
 
   apiGet(path: string, data: any = null): Promise<any> {
      return new Promise((resolve, reject) => {
