@@ -25,17 +25,6 @@ export class BeansComponent implements OnInit {
   oldRes;
 
   constructor(public webAPI: WebAPI, public authService: AuthService) {
-     /*setInterval(function(){
-    authService.apiGet('beans/display_conversation',{params: {sender_id: 1, recipient_id: 2, conversation_id:1}}).then(res => {
-      console.log("display conversation between 1 and 2:", res);
-      if(this.oldRes){
-        if(this.oldRes.length != res.length){
-          //display new messages
-          console.log("NEW MESSSAGE ARRIVED: ", res[res.length-1])
-        }
-      }
-      this.oldRes = res;
-     });},2500);*/
      this.authService.getBeans().then(res => {
        this.beans = res;
      })

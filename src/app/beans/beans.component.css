@@ -1,5 +1,6 @@
-.card {
-  width:30%
+.bean-card {
+  width:32%;
+  margin-bottom:30px;
 }
 
 .avatar {
@@ -19,28 +20,27 @@
   font-size:18px;
   color:#433089;
   letter-spacing:0;
-  text-align:left;
 }
 .profile-subheading {
-  font-family:Lato-Semibold;
+  font-family:Lato-Regular;
   font-size:14px;
   color:#83868a;
   letter-spacing:0;
-  text-align:left;
 }
 .invite-button {
-  margin-left:20%;
+  display:block;
+  position:relative;
   background:#433089;
   border:2px solid #433089;
   border-radius:5px;
-  width:153px;
-  height:21px;
-  padding-bottom:11%;
+  transform: translateX(50%);
+  width:50%;
+
   text-align:center;
 }
 .invite-button span {
   font-family:Lato-Semibold;
-  font-size:14px;
+  font-size:16px;
   color:#ffffff;
   letter-spacing:0;
 }

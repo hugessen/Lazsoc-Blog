@@ -1,24 +1,26 @@
 <div class="container-fluid">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-4">
     <div class="col-sm-3 col-md-3 col-lg-3">
-      <profile-sidebar></profile-sidebar>
+      <div class="sticky" *ngIf="authService.userSignedIn$">
+        <profile-sidebar></profile-sidebar>
+      </div>
     </div>
-    <div class="col-sm-8 col-md-8 col-lg-8" style="margin-top:45px">
+    <div class="col-sm-8 col-md-8 col-lg-8">
       <div class="d-flex flex-wrap">
-        <div class="card my-4 mx-1" *ngFor="let bean of beans" routerLink="/profile/{{bean.id}}">
-          <img src="https://media.giphy.com/media/26gsl2WC5tRxkemdi/giphy.gif" class="avatar">
-          <div class="card-body">
-            <br><br>
+        <div class="card bean-card mx-1" style="margin-top:5%" routerLink="/profile/{{bean.id}}" *ngFor="let bean of beans">
+          <img [src]="bean.image" class="avatar" *ngIf="bean.image">
+          <img src="assets/img/Blank Avatar.jpg" class="avatar" *ngIf="!bean.image">
+          <div class="card-body" style="padding-top:20%">
             <span class="profile-name">{{bean.first_name}}&nbsp;{{bean.last_name}}</span><br>
             <span class="profile-subheading">Laurier BBA Student</span>
             <div class="invite-button mt-4"><span>Invite</span></div>
-            <div class="d-flex flex-wrap mt-4 justify-content-center">
+<!--             <div class="d-flex flex-wrap mt-4 justify-content-center">
               <div class="tags-label m-1"><span>Technology</span></div>
               <div class="tags-label m-1"><span>Design</span></div>
               <div class="tags-label m-1"><span>UX</span></div>
               <div class="tags-label m-1"><span>Entrepreneurship</span></div>
               <div class="tags-label m-1"><span>Finance</span></div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -27,23 +29,3 @@
 
   </div>
 </div>
-<!-- <br>
-<hr>
-<h2> Rough work below</h2>
-<button type="button" class="btn btn-primary" (click)="getBeans()">Get Beans (see console)</button>
-<br>
-<h3>Messaging Test</h3>
-<p>onversation between richard.hugessen@example.com and test2@wlu.ca</p>
-
-<button type="button" class="btn btn-primary" (click)="startConversation()">Start Conversation Between user1 and user2 (i.e. "connect")</button>
-<br>
-<button type="button" class="btn btn-primary" (click)="getConversations()">Get Signed in User's Conversations (see console)</button>
-<br>
-<button type="button" class="btn btn-primary" (click)="displayConversation()">Display Conversation Between user1 and user2 (see console)</button>
-<hr>
-<h3> Conversation between richard.hugessen@example.com and test2@wlu.ca</h3>
-
-<br>
-<input type="text" placeholder="type message" [(ngModel)]="message.body" name="message"/>
-<br>
-<button type="button" class="btn btn-primary" (click)="sendMessage()">  Sending message between user1 and user2 (see console)</button> -->
