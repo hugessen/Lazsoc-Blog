@@ -12,11 +12,18 @@ import { User } from '../models/user';
 export class ProfileComponent implements OnInit {
 
   state = 'about'
+  user = {}
 
   constructor(public tokenService: Angular2TokenService, public route: ActivatedRoute, public router: Router, public authService: AuthService) {
   }
 
   ngOnInit() {
+    this.route.paramMap
+      .switchMap((params: ParamMap) =>
+        this.authService.getUser(+params.get('id')))
+          .subscribe((user) => {
+            this.user = user;
+          });
   }
 
   getCurrentUser() {}

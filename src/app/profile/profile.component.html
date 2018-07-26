@@ -1,36 +1,23 @@
-<!-- <div class="container-fluid">
+<div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-8 col-md-8 col-lg-8">
       <div class="card mt-4">
         <div class="card-img-top">
           <img src="assets/img/cover-photo.jpeg" class="card-img-top banner-img">
         </div>
-        <img src="https://mediasia.iafor.org/wp-content/uploads/sites/30/2017/02/IAFOR-Blank-Avatar-Image.jpg" class="profile-img">
-        <div class="card-body" style="text-align:center">
-
-          <br><br><br>
-          <h2 class="name-font">{{currentUser.first_name}} {{currentUser.last_name}}</h2>
-          <h2 class="program">{{currentUser.program}}</h2>
-        </div>
-      </div>
-      <div class="row mt-2">
-        <div class="col-sm-12 col-md-12 col-lg-12 pl-1">
-          <div class="card">
-            <h3 class="card-header card-header-text">About</h3>
-            <div class="card-body">
-              <span class="club-detail-text">
-                {{currentUser.summary}}
-              </span>
-            </div>
+        <div class="card-body">
+          <img [src]="user.image" class="profile-img" *ngIf="user.image">
+          <img src="assets/img/Blank Avatar.jpg" class="profile-img" *ngIf="!user.image">
+          <div style="padding-top:10%">
+            <h2 class="name-font">{{user.first_name}} {{user.last_name}}</h2>
+            <h2 class="program">{{user.program}}</h2>
           </div>
-
+          <hr width="60%">
+          <div class="biography-text">
+            {{user.summary}}
+          </div>
         </div>
       </div>
-
-    </div>
-    <div class="col-sm-3 col-md-3 col-lg-3">
-      <job-posting-sidebar [clubID]="0"></job-posting-sidebar>
     </div>
   </div>
 </div>
- -->
