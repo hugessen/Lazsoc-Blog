@@ -13,7 +13,7 @@
       <li class="nav-item mr-4" style="cursor:pointer">
         <a class="nav-link" routerLink="/resources" routerLinkActive="active">Resources</a>
       </li>
-      <li class="nav-item mr-4" style="cursor:pointer">
+      <li class="nav-item mr-4" style="cursor:pointer" *ngIf="authService.userSignedIn$">
         <a class="nav-link" routerLink="/beans" routerLinkActive="active">Beans</a>
       </li>
       <li class="nav-item dropdown mr-3" style="cursor:pointer">
