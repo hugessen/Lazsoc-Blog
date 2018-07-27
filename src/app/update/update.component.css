@@ -8,7 +8,8 @@
   font-family:Lato-Regular;
   border-radius: 3px;
 }
-.card-title{
+.card-header{
+  background-color: white;
   font-family:Lato-Black;
 }
 .avatar {
@@ -62,18 +63,18 @@ span {
   width:auto;
 }
 
-.textarea {
+textarea {
   width:100%;
   font-family:Lato-Regular;
-  border-color: lightgrey;
-  border-radius: 3px;
+  border: 1px solid #ced4da;
+  border-radius:5px;
 }
 
-/*.upload-container {
-  display: block;
-  position: relative;
-  transform: translateX(120%);
-}*/
+.form-check-label {
+  margin-left:18px;
+  margin-bottom:10px;
+  font-family:Lato-Regular;
+}
 
 .inputfile {
   width: 0.1px;
