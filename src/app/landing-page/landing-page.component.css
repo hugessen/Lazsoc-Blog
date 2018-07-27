@@ -1,8 +1,8 @@
 .container-fluid {
 	background-color: white;
-  position: absolute;
+  position: relative;
   width: 100%;
-  left: 0;
+  /*left: 0;*/
 }
 
 .first-row {
@@ -17,7 +17,7 @@
 }
 
 .carousel-img {
-	width:100%;
+	max-width:100%;
 	align-self: center;
 }
 
@@ -42,7 +42,10 @@ h1 {
 	width:40%;
 	position:absolute;
 	display: inline;
-	/*border:1px solid grey;*/
+}
+
+.community-text {
+	right:40px;
 }
 
 .graphic {
@@ -136,6 +139,7 @@ h1 {
 
 .final-panel img {
 	width:100%;
+	overflow: hidden;
 	align-self: center;
 	filter: brightness(70%);
 }
