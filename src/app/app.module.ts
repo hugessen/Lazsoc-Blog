@@ -15,7 +15,6 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
-import { OurTeamComponent } from './our-team/our-team.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { LoginComponent } from './login/login.component';
@@ -64,7 +63,6 @@ import { NewsfeedResolve } from './services/newsfeed-resolve.service';
     NewsfeedComponent,
     HiringComponent,
     ClubsComponent,
-    OurTeamComponent,
     ResourcesComponent,
     GetLongDate,
     GetShortDate,

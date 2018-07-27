@@ -7,7 +7,6 @@ import { LazNavbar } from './nav-bar/laz-navbar';
 import { HiringComponent } from './hiring/hiring.component';
 import { ClubsComponent } from './clubs/clubs.component';
 import { LoginComponent } from './login/login.component';
-import { OurTeamComponent } from './our-team/our-team.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { ArticleComposerComponent } from './article-composer/article-composer.component';
@@ -26,7 +25,6 @@ const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent, resolve: { feeds: NewsfeedResolve } },
   { path: 'hiring',     component: HiringComponent },
   { path: 'clubs',      component: ClubsComponent },
-  { path: 'fullteam',   component: OurTeamComponent },
   { path: 'resources',  component: ResourcesComponent },
   { path: 'home',  component: LandingPageComponent },
   // { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
