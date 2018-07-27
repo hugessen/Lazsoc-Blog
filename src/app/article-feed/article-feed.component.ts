@@ -12,12 +12,16 @@ import * as _ from 'lodash';
 export class ArticleFeedComponent implements OnInit {
 
   @Input() articles;
+  user_id;
 
   constructor(public webAPI: WebAPI, public authService: AuthService, public router: Router) {
-
+    this.authService.getUserAsync().then(user => this.user_id = user.id);
   }
 
   ngOnInit() {
+    if (this.articles.length > 0) {
+      this.hasArticles = true;
+    }
   }
 
   viewArticle(article) {
@@ -29,7 +33,7 @@ export class ArticleFeedComponent implements OnInit {
     if (!this.authService.userSignedIn$) {
       return false;
     }
-    return this.authService.currentUser.id == article.user_id;
+    return (this.user_id === article.author_id)
   }
 
   scrollTop() {
