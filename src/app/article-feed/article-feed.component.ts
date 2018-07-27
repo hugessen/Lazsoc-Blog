@@ -19,9 +19,6 @@ export class ArticleFeedComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.articles.length > 0) {
-      this.hasArticles = true;
-    }
   }
 
   viewArticle(article) {
