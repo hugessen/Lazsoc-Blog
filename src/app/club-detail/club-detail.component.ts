@@ -10,7 +10,7 @@ import { Club } from '../models/club';
 })
 export class ClubDetailComponent implements OnInit {
 
-  public club: Club = new Club();
+  public club;
   public newsfeed;
   public state = 'events';
   public fullTeam;
@@ -18,12 +18,17 @@ export class ClubDetailComponent implements OnInit {
   constructor(public route: ActivatedRoute, public router: Router, public webAPI: WebAPI) { }
 
   ngOnInit() {
-    this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this.webAPI.getClub(+params.get('id')))
-          .subscribe((club) => {
-            this.club = club
-          });
+    // this.route.paramMap
+    //   .switchMap((params: ParamMap) =>
+    //     this.webAPI.getClub(+params.get('id')))
+    //       .subscribe((club) => {
+    //         this.club = club
+    //       });
+    this.route.data
+      .subscribe((data: { club: any }) => {
+        console.log(data);
+        this.club = data.club;
+      });
     this.fullTeam = this.getFullTeam();
   }
 

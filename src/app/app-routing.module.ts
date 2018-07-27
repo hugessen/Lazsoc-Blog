@@ -19,6 +19,7 @@ import { ArticleComponent } from './article/article.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
+import { ClubDetailResolve } from './services/club-detail-resolve.service';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent },
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
   { path: 'login',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
-  { path: 'clubs/:id', component: ClubDetailComponent},
+  { path: 'clubs/:id', component: ClubDetailComponent, resolve: { club: ClubDetailResolve } },
   { path: 'article/:id', component: ArticleComponent},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
   //{ path: '**', component: PageNotFoundComponent }
