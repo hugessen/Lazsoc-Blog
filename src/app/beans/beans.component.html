@@ -9,10 +9,10 @@
       <div class="d-flex flex-wrap">
         <div class="card bean-card mx-1" style="margin-top:4%" routerLink="/profile/{{bean.id}}" *ngFor="let bean of beans">
           <img [src]="bean.image" class="avatar pointer" *ngIf="bean.image">
-          <img src="assets/img/Blank Avatar.jpg" class="avatar" *ngIf="!bean.image">
+          <img src="assets/img/Blank Avatar.jpg" class="avatar pointer" *ngIf="!bean.image">
           <div class="card-body" style="padding-top:30%">
             <span class="profile-name pointer">{{bean.first_name}}&nbsp;{{bean.last_name}}</span><br>
-            <span class="profile-subheading">Laurier BBA Student</span>
+            <span class="profile-subheading">{{bean.program}}</span>
             <div class="invite-button mt-3"><span>Invite</span></div>
             <hr>
             <div class="d-flex flex-wrap mt-4 justify-content-center">
