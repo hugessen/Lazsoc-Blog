@@ -10,19 +10,22 @@ import { Club } from '../models/club';
 
 @Component({
   selector: 'event-sidebar',
-  templateUrl: './sidebar.component.html',
+  templateUrl: './event-sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
-  events = [];
+export class SidebarComponent implements OnInit {
   clubs = {};
   eventCount = 0;
   anyEvents = true;
+
+  @Input() clubEvents;
+
   constructor(public webAPI: WebAPI) {
-    this.webAPI.getNewsfeed().then(res => {
-      this.events = res.filter(this.isThisWeek);
-      if (this.events.length === 0) { this.anyEvents = false; }
-    })
+  }
+
+  ngOnInit() {
+    this.clubEvents = this.clubEvents.filter(this.isThisWeek);
+    if (this.clubEvents.length === 0) { this.anyEvents = false; }
   }
 
   isThisWeek(event) {
@@ -68,16 +71,10 @@ export class JobPostingSidebar implements OnInit {
   ngOnInit() {
     this.webAPI.getJobPostings().then(data => {
       this.jobPostings = data;
-      if (this.clubID !== 0) {
-        for (const posting of this.jobPostings) {
-          console.log(posting.club_id);
-          console.log(this.clubID);
-          if (posting.club_id === this.clubID) {
-            this.hasPostings = true;
-            break;
-          }
-        }
-      } else if (this.jobPostings.length > 0) { this.hasPostings = true; }
+      if (this.clubID !== 0)
+        this.jobPostings.filter(posting => posting.club === this.clubID);
+      if (this.jobPostings.length > 0)
+        this.hasPostings = true;
     })
   }
 

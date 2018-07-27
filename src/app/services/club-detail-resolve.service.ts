@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import {
     Router, Resolve,
     ActivatedRouteSnapshot
@@ -10,14 +11,13 @@ export class ClubDetailResolve implements Resolve<any> {
     constructor(private webAPI: WebAPI, private router: Router) { }
     resolve(route: ActivatedRouteSnapshot): Promise<any> | boolean {
         let id = +route.params['id'];
-        return this.webAPI.getClub(id).then(club => {
-            console.log("Resolver", club);
-            if (club) {
-                return club;
-            } else { // id not found
-                this.router.navigate(['/newsfeed']);
-                return false;
-            }
-        });
+        return new Promise((resolve,reject) => {
+            Observable.forkJoin(
+                Observable.fromPromise(this.webAPI.getClub(id)),
+                Observable.fromPromise(this.webAPI.getEventsByClub(id))
+            ).subscribe(data => {
+                resolve({club: data[0], clubEvents: data[1]})
+            })
+    })
     }
 }

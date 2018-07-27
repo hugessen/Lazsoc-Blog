@@ -2,7 +2,7 @@
   <h3 class="card-header card-header-text">Open Positions</h3>
   <div class="card-body py-0" *ngIf="hasPostings">
     <ul class="list-group list-group-flush pointer" *ngFor="let posting of jobPostings; let i = index">
-      <li class="list-group-item py-2 pl-0" *ngIf="i < 3 && (posting.club_id === clubID || clubID === 0)" (click)="viewJobPost(posting.id)">
+      <li class="list-group-item py-2 pl-0" *ngIf="i < 3" (click)="viewJobPost(posting.id)">
         <div class="media">
           <img [src]="posting.club.app_logo" class="mr-3 align-self-center">
           <div class="media-body align-self-center">

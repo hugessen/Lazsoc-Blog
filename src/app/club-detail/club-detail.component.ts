@@ -11,23 +11,20 @@ import { Club } from '../models/club';
 export class ClubDetailComponent implements OnInit {
 
   public club;
+  public clubEvents;
   public newsfeed;
   public state = 'events';
   public fullTeam;
 
-  constructor(public route: ActivatedRoute, public router: Router, public webAPI: WebAPI) { }
+  constructor(public route: ActivatedRoute, public router: Router, public webAPI: WebAPI) {
+    // this.webAPI.getEventsByClub(2).then(res => console.log("events by club: ", res));
+  }
 
   ngOnInit() {
-    // this.route.paramMap
-    //   .switchMap((params: ParamMap) =>
-    //     this.webAPI.getClub(+params.get('id')))
-    //       .subscribe((club) => {
-    //         this.club = club
-    //       });
     this.route.data
-      .subscribe((data: { club: any }) => {
-        console.log(data);
-        this.club = data.club;
+      .subscribe((data) => {
+        this.club = data.clubAndEvents['club'];
+        this.clubEvents = data.clubAndEvents['clubEvents'];
       });
     this.fullTeam = this.getFullTeam();
   }

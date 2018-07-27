@@ -90,6 +90,8 @@ export class NewsfeedComponent implements OnInit {
   }
 
   matchesFilters(event) {
+      if (this.isClubDetail)
+        return true;
       return (this.matchesTags(event) && this.matchesClub(event) && this.matchesTimeframe(event));
   }
 

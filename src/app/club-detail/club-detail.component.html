@@ -46,7 +46,7 @@
             </div>
           </div>
 					<div *ngIf="state === 'events'">
-						<app-newsfeed [clubID]="club.id"></app-newsfeed>
+						<app-newsfeed [clubEvents]="clubEvents" [isClubDetail]="true"></app-newsfeed>
 					</div>
           <div class="card sticky" *ngIf="state === 'team'">
             <h3 class="card-header card-header-text">Team</h3>
