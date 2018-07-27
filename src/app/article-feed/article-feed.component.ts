@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WebAPI } from '../services/web-api.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -11,13 +11,10 @@ import * as _ from 'lodash';
 })
 export class ArticleFeedComponent implements OnInit {
 
-	articles;
+  @Input() articles;
 
   constructor(public webAPI: WebAPI, public authService: AuthService, public router: Router) {
-  	webAPI.getArticles().then(res => {
-  		this.articles = res;
-  		console.log(res);
-  	})
+
   }
 
   ngOnInit() {

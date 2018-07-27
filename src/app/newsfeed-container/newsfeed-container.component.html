@@ -92,11 +92,11 @@
         </div>
       </div>
 
-      <app-newsfeed *ngIf="newsfeedState == 'events'" [clubID]="0" #mainFeed></app-newsfeed>
-      <app-article-feed *ngIf="newsfeedState== 'articles'"></app-article-feed>
+      <app-newsfeed *ngIf="newsfeedState == 'events'" [clubEvents]="clubEvents" #mainFeed></app-newsfeed>
+      <app-article-feed [articles]="articles" *ngIf="newsfeedState== 'articles'"></app-article-feed>
     </div>
     <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3 mt-4 px-2">
-      <event-sidebar></event-sidebar>
+      <event-sidebar [clubEvents]="clubEvents"></event-sidebar>
     </div>
   </div>
 </div>

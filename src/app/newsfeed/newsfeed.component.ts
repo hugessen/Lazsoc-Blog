@@ -17,23 +17,21 @@ const ONE_DAY = 60 * 60 * 24 * 1000;
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
-  clubEvents: any;
-  clubs = {};
   hasEvents = true;
   tagFilters = [];
   clubFilters = [];
+  clubID = 0;
   timeFilter: any = '';
 
-  @Input() clubID;
+  @Input() clubEvents;
+  @Input() isClubDetail = false;
 
   constructor(public router: Router, public webAPI: WebAPI, public authService: AuthService) {
   }
 
   ngOnInit() {
-    this.webAPI.getNewsfeed().then(data => {
-      this.clubEvents = data;
-      this.hasEvents = this.checkHasEvents(data);
-    })
+    if (this.clubEvents.length === 0)
+      this.hasEvents = false;
   }
 
   vote(event) {
@@ -58,19 +56,6 @@ export class NewsfeedComponent implements OnInit {
       Stickyfill.add(stickyElements[i]);
     }
     Stickyfill.add(document.getElementsByClassName('sticky-updates'));
-  }
-
-  checkHasEvents(events): boolean {
-    if (this.clubID !== 0) {
-      for (const event of events) {
-        if (event.club_id === this.clubID) {
-          return true;
-        }
-      }
-      return false;
-    } else {
-      return true;
-    }
   }
 
   addTagFilter(tag) {

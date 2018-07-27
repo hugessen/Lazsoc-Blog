@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { AuthService } from '../services/auth.service';
 import { WebAPI } from '../services/web-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NewsfeedComponent } from '../newsfeed/newsfeed.component';
 import { MapToIterablePipe } from '../pipes/map-to-iterable.pipe';
 import * as $ from 'jquery';
@@ -19,6 +20,8 @@ export class NewsfeedContainerComponent implements OnInit {
   tags: any = this.getTags();
   times: any = this.getTimeFilters();
   clubs: any;
+  clubEvents:any;
+  articles:any;
 
   tagFilters: any[] = [];
   clubFilters: any[] = [];
@@ -26,16 +29,19 @@ export class NewsfeedContainerComponent implements OnInit {
 
   newsfeedState = 'articles';
 
-  constructor(public authService: AuthService, private webAPI: WebAPI) {
-    webAPI.getClubs().then(res => {
-      this.clubs = res;
-      this.clubs.map(club => club.selected = false);
-    });
+  constructor(public authService: AuthService, private webAPI: WebAPI, private route:ActivatedRoute) {
   }
 
   ngOnInit() {
     $('.dropdown-menu').click(function(e) {
         e.stopPropagation();
+    });
+    this.route.data
+      .subscribe((data) => {
+        console.log(data);
+        this.clubEvents = data.feeds.clubEvents;
+        this.articles = data.feeds.articles;
+        this.clubs = data.feeds.clubs;
     });
   }
 

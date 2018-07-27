@@ -13,20 +13,28 @@ const LOCAL_PATH = 'http://localhost:3000'
 export class WebAPI {
   constructor(public http: HttpClient) { }
 
-  getNewsfeed(club?): Promise<any[]> {
+  getNewsfeed(): Promise<any> {
     return new Promise((resolve, reject) => {
       Observable.forkJoin([
         Observable.fromPromise(this.getEvents()),
-        Observable.fromPromise(this.getClubs())
+        Observable.fromPromise(this.getClubs()),
+        Observable.fromPromise(this.getArticles()),
       ]).subscribe(data => {
-        const [events, clubs] = data;
-        let content;
-        if (club) {
-          content = this.createNewsfeed(events, clubs, club);
-        } else {
-          content = this.createNewsfeed(events, clubs);
-        }
-        resolve(content);
+        const [clubEvents, clubs, articles] = data;
+        let result = {clubEvents: null, articles: data[2], clubs: data[1]};
+        result.clubEvents = this.createNewsfeed(clubEvents, clubs);
+        resolve(result);
+      })
+    })
+  }
+
+  getEventsByClub(club_id):Promise<any> {
+    return new Promise((resolve,reject) => {
+      Observable.forkJoin([
+        Observable.fromPromise(this.getEvents()),
+        Observable.fromPromise(this.getClubs()),
+      ]).subscribe(data => {
+        resolve(this.createNewsfeed(data[0], data[1], club_id))
       })
     })
   }
@@ -112,8 +120,8 @@ export class WebAPI {
           postings.map(posting => {
             posting.club = clubs.find(club => club.id === posting.club_id);
           })
+          resolve(postings);
         })
-        resolve(postings);
       }).catch(err => reject(err));
     })
   }

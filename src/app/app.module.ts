@@ -54,6 +54,7 @@ import { AuthService } from './services/auth.service';
 import { WebAPI } from './services/web-api.service';
 import { AwsService } from './services/aws.service';
 import { ClubDetailResolve } from './services/club-detail-resolve.service';
+import { NewsfeedResolve } from './services/newsfeed-resolve.service';
 
 
 @NgModule({
@@ -102,7 +103,7 @@ import { ClubDetailResolve } from './services/club-detail-resolve.service';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, ClubDetailResolve, CanDeactivateUpdate, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, ClubDetailResolve, NewsfeedResolve, CanDeactivateUpdate, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
