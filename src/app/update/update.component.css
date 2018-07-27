@@ -68,6 +68,7 @@ textarea {
   font-family:Lato-Regular;
   border: 1px solid #ced4da;
   border-radius:5px;
+  padding:10px;
 }
 
 .form-check-label {

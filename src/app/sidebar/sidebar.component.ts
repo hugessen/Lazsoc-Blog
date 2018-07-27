@@ -46,7 +46,8 @@ export class ProfileSidebar implements OnInit {
   currentUser = {};
 
   constructor(public authService: AuthService, public tokenService: Angular2TokenService, private router: Router) {
-    this.authService.getUserAsync().then(res => this.currentUser = res );
+    if (this.authService.userSignedIn$)
+      this.authService.getUserAsync().then(res => this.currentUser = res );
   }
 
   ngOnInit() {

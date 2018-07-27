@@ -4,12 +4,12 @@
   <div class="card-header d-flex align-items-center py-2" routerLink="/profile/{{tokenService.currentUserData.id}}"> -->
   <img src="assets/img/cover-photo.jpeg" style="height:100px" class="card-image-top">
   
-  <div class="profile-avatar mr-2">
+  <div class="profile-avatar mr-2" routerLink="/profile/{{currentUser.id}}">
     <img [src]="currentUser.image" *ngIf="currentUser.image">
     <img src="assets/img/Blank Avatar.jpg" *ngIf="!currentUser.image">
   </div>
   <div class="card-header d-flex align-items-center py-2">
-    <div class="d-flex flex-column" style="transform:translate(4.5em,0); cursor:pointer">
+    <div class="d-flex flex-column pointer" style="transform:translate(4.5em,0)" routerLink="/profile/{{currentUser.id}}">
       <h4 class="profile-name my-0">{{currentUser.first_name}} {{currentUser.last_name}}</h4>
       <span class="profile-subheader my-0">{{currentUser.program}}</span>
     </div>
