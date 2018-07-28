@@ -8,7 +8,7 @@
         <div class="card-body">
           <img [src]="user.image" class="profile-img" *ngIf="user.image">
           <img src="assets/img/Blank Avatar.jpg" class="profile-img" *ngIf="!user.image">
-          <div style="padding-top:10%">
+          <div style="padding-top:10%; text-align:center">
             <h2 class="name-font">{{user.first_name}} {{user.last_name}}</h2>
             <h2 class="program">{{user.program}}</h2>
           </div>
@@ -28,12 +28,20 @@
         </div>
         <div class="col-8 pl-1">
           <div class="card">
-            <div class="card-header card-header-text">About</div>
+            <div class="card-header card-header-text">Experience</div>
             <div class="card-body">
-              <span class="card-title">Experience</span>
-              <div>
-                
-              </div>
+              <ul class="list-group list-group-flush my-0">
+                <li class="list-group-item my-0" *ngFor="let exp of user.work_experiences_attributes">
+                  <div class="media">
+                    <img [src]="exp.club.logo" class="align-self-start">
+                    <div class="media-body align-self-center ml-3">
+                      <div class="work-exp-title">{{exp.title}}</div>
+                      <div class="club-title">{{exp.club.name}}</div>
+                      <div class="work-exp-desc">{{exp.summary}}</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

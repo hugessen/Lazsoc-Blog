@@ -20,6 +20,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
 import { ClubDetailResolve } from './services/club-detail-resolve.service';
 import { NewsfeedResolve } from './services/newsfeed-resolve.service';
+import { ProfileResolve } from './services/profile-resolve.service';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent, resolve: { feeds: NewsfeedResolve } },
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
   { path: 'compose', canActivate: [AuthGuard], component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
-  { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent },
+  { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent, resolve: { user: ProfileResolve } },
   { path: 'update', canActivate: [AuthGuard], canDeactivate: [CanDeactivateUpdate],  component: UpdateComponent },
   { path: 'login',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },

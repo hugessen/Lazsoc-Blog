@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { Angular2TokenService } from 'angular2-token';
-import { User } from '../models/user';
 
 @Component({
   selector: 'app-profile',
@@ -12,18 +9,13 @@ import { User } from '../models/user';
 export class ProfileComponent implements OnInit {
 
   state = 'about'
-  user = {}
+  user;
 
-  constructor(public tokenService: Angular2TokenService, public route: ActivatedRoute, public router: Router, public authService: AuthService) {
+  constructor(public route: ActivatedRoute, public router: Router) {
   }
 
   ngOnInit() {
-    this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this.authService.getUser(+params.get('id')))
-          .subscribe((user) => {
-            this.user = user;
-          });
+    this.route.data.subscribe(data => { this.user = data.user; console.log(this.user); });
   }
 
   getCurrentUser() {}

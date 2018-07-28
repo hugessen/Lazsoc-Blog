@@ -28,8 +28,27 @@
   display: block;
   width: 100%;
 }
+.work-exp-title {
+  font-family: Lato-Bold;
+  font-size: 15px;
+}
+.work-exp-desc {
+  font-family: Lato-Regular;
+  font-size: 12px;
+  color: #83868A;
+}
+
+.media img {
+  width:15%;
+}
+
+.club-title {
+  font-family: Lato-Semibold;
+  font-size:12px;
+}
+
 .card-body {
-  text-align:center;
+
 }
 .program {
   font-family:Lato-Regular;
