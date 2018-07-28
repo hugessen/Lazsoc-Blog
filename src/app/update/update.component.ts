@@ -2,7 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AwsService } from '../services/aws.service';
 import { Router } from '@angular/router';
+import { UpdateObject, WorkExperience } from '../models/update_object';
 import * as AWS from 'aws-sdk';
+import * as $ from 'jquery';
+window['$'] = $;
+window['jQuery'] = $;
 
 @Component({
   selector: 'app-update',
@@ -11,16 +15,8 @@ import * as AWS from 'aws-sdk';
 })
 export class UpdateComponent implements OnInit {
 
-  updateObj;
+  updateObj:UpdateObject = new UpdateObject();
 
-  work_experiences_attributes = [{
-    title: '',
-    summary: '',
-    started_date: '',
-    end_date: '',
-    is_current: false,
-    company: ''
-  }];
   // @ViewChild('fileInput') fileInput;
   imageUploaded = false;
   isFirstUpdate = false;
@@ -35,6 +31,7 @@ export class UpdateComponent implements OnInit {
   constructor(public authService: AuthService, public awsService: AwsService, public router: Router) {
     this.authService.getUserAsync().then(res => {
       this.currentUser = res;
+      console.log(this.currentUser);
       this.initUpdateObj(res);
     });
 
@@ -78,27 +75,19 @@ export class UpdateComponent implements OnInit {
   }
 
   addWorkExp() {
-    this.work_experiences_attributes.push({
-      title: '',
-      summary: '',
-      started_date: '',
-      end_date: '',
-      is_current: false,
-      company: ''
-    })
+    this.updateObj.work_experiences_attributes.push(new WorkExperience())
   }
+
   removeWorkExp(index) {
-    this.work_experiences_attributes.splice(index, 1);
+    this.updateObj.work_experiences_attributes.splice(index, 1);
     // console.log(this.work_experiences_attributes);
   }
 
   postUpdates() {
     if (this.hasSubmissionErrors()) {
-      console.log('Here be dragons');
       this.hasErrors = true;
       return;
     }
-    console.log('We good!');
 
     if (this.imageUploaded) {
       console.log('Attempting to upload');
@@ -106,6 +95,7 @@ export class UpdateComponent implements OnInit {
       this.updateObj.image = `https://s3.us-east-2.amazonaws.com/lazsoc-images/${avatarUrl}`;
       this.awsService.uploadToAWS(this.newAvatar, avatarUrl);
     }
+    console.log(this.updateObj);
     this.authService.updateUser(this.updateObj).then(res => {
       this.isSubmitting = true;
       this.router.navigateByUrl('/newsfeed');
@@ -114,7 +104,6 @@ export class UpdateComponent implements OnInit {
 
   hasSubmissionErrors() {
     let hasErrors = false;
-    console.log(this.updateObj);
     if (this.updateObj.first_name == null || this.updateObj.first_name == '') {
       document.getElementById('firstname').classList.add('danger');
       hasErrors = true;
@@ -137,7 +126,9 @@ export class UpdateComponent implements OnInit {
       is_bean: user.isBean,
       profile_header: user.profile_header,
       school_year: user.school_year,
+      work_experiences_attributes: user.work_experiences
     };
+    console.log(this.updateObj);
     if (user.provider == 'email')
       this.updateObj['email'] = user.uid;
   }

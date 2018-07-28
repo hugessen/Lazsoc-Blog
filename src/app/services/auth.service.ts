@@ -56,10 +56,8 @@ export class AuthService implements OnInit {
     this.tokenService.validateToken().subscribe(
         res => {
           if (res.status === 200) {
-            console.log( 'Signed in');
             this.userSignedIn$ = true;
             this.currentUser = res.json().data;
-            console.log( 'CurrUser', this.currentUser)
           } else {
             console.log('Sign in failed');
             this.userSignedIn$ = false;
@@ -83,8 +81,8 @@ export class AuthService implements OnInit {
 
   getUserAsync(): Promise<any> {
     return new Promise((resolve, reject) => {
-      return this.tokenService.validateToken().toPromise().then(res => {
-        let user = res.json().data
+      return this.apiGet("get_current_user").then(res => {
+        let user = res;
         this.getSmilePoints(user.email).then(points => {
           user.points = points;
         }).catch(err => console.log("Problem getting smile points:", err));
