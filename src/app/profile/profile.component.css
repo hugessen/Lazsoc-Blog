@@ -7,6 +7,28 @@
   border-radius:50%;
   border: 5px solid white;
 }
+.right-profile-div {
+  display:block;
+  position:absolute;
+  width:15%;
+  right:40px;
+}
+.edit-btn {
+  font-family: Lato-Regular;
+  font-size: 18px;
+  color: #83868A;
+  cursor:pointer;
+}
+.invite-btn {
+  border: 2px solid #433089;
+  background-color: #433089;
+  border-radius: 2px;
+  font-family: Lato-Semibold;
+  font-size: 18px;
+  text-align:center;
+  color: white;
+  cursor:pointer;
+}
 .name-font {
   font-family:Lato-Black;
   font-size:30px;
@@ -46,10 +68,6 @@
   font-family: Lato-Semibold;
   font-size:12px;
 }
-
-.card-body {
-
-}
 .program {
   font-family:Lato-Regular;
   clear: both;
@@ -69,5 +87,17 @@
   font-family: Lato-Regular;
   font-size: 14px;
   width:70%;
+  text-align:center;
   margin:auto;
+}
+textarea {
+  width:100%;
+  font-family:Lato-Regular;
+  border: 1px solid #ced4da;
+  border-radius:5px;
+  padding:10px;
+}
+label {
+  font-family: Lato-Regular;
+  font-size: 15px;
 }

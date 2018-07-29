@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AwsService } from '../services/aws.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UpdateObject, WorkExperience } from '../models/update_object';
 import * as AWS from 'aws-sdk';
 import * as $ from 'jquery';
@@ -28,22 +28,15 @@ export class UpdateComponent implements OnInit {
   submissionErrors = {firstName: false, lastName: false};
   hasErrors = false;
 
-  constructor(public authService: AuthService, public awsService: AwsService, public router: Router) {
-    this.authService.getUserAsync().then(res => {
-      this.currentUser = res;
-      console.log(this.currentUser);
-      this.initUpdateObj(res);
-    });
-
+  constructor(public authService: AuthService, public awsService: AwsService, public router: Router, public route: ActivatedRoute) {
   }
 
   ngOnInit() {
-
+    this.route.data.subscribe(data => { 
+      this.currentUser = data.user;
+      this.initUpdateObj(data.user);
+     });
   }
-
-  // fileChangeEvents(fileInput: any) {
-  //     this.updateObj.avatar_file = fileInput.target.files;
-  //   }
 
   fileEvent(event: any) {
     this.newAvatar = event.target.files[0];
@@ -126,7 +119,7 @@ export class UpdateComponent implements OnInit {
       is_bean: user.isBean,
       profile_header: user.profile_header,
       school_year: user.school_year,
-      work_experiences_attributes: user.work_experiences
+      work_experiences_attributes: user.work_experiences_attributes
     };
     console.log(this.updateObj);
     if (user.provider == 'email')
