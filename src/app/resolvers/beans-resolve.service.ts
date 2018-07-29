@@ -3,19 +3,19 @@ import {
     Router, Resolve,
     ActivatedRouteSnapshot
 } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
-export class ProfileResolve implements Resolve<any> {
+export class BeansResolve implements Resolve<any> {
     constructor(private authService: AuthService, private router: Router) { }
 
     resolve(route: ActivatedRouteSnapshot): Promise<any> | boolean {
-        let id = +route.params['id'];
-        return this.authService.getUser(id).then(user => {
-            if (user) {
-                return user;
+        return this.authService.getBeans().then(beans => {
+            if (beans) {
+                return beans;
             } else { // id not found
-                this.router.navigate(['/beans']);
+                console.log('something went wrong');
+                this.router.navigate(['/newsfeed']);
                 return false;
             }
         });

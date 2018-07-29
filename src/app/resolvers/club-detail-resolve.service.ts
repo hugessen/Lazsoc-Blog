@@ -4,7 +4,7 @@ import {
     Router, Resolve,
     ActivatedRouteSnapshot
 } from '@angular/router';
-import { WebAPI } from './web-api.service';
+import { WebAPI } from '../services/web-api.service';
 
 @Injectable()
 export class ClubDetailResolve implements Resolve<any> {
