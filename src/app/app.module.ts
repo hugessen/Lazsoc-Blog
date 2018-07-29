@@ -52,9 +52,11 @@ import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './services/auth.service';
 import { WebAPI } from './services/web-api.service';
 import { AwsService } from './services/aws.service';
-import { ClubDetailResolve } from './services/club-detail-resolve.service';
-import { NewsfeedResolve } from './services/newsfeed-resolve.service';
-import { ProfileResolve } from './services/profile-resolve.service';
+import { ClubDetailResolve } from './resolvers/club-detail-resolve.service';
+import { NewsfeedResolve } from './resolvers/newsfeed-resolve.service';
+import { ProfileResolve } from './resolvers/profile-resolve.service';
+import { BeansResolve } from './resolvers/beans-resolve.service';
+import { UserResolve } from './resolvers/user-resolve.service';
 
 
 @NgModule({
@@ -102,7 +104,19 @@ import { ProfileResolve } from './services/profile-resolve.service';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [WebAPI, Angular2TokenService, AwsService, AuthService, AuthGuard, ClubDetailResolve, NewsfeedResolve, ProfileResolve, CanDeactivateUpdate, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+      WebAPI, 
+      Angular2TokenService, 
+      AwsService, 
+      AuthService, 
+      AuthGuard, 
+      ClubDetailResolve, 
+      NewsfeedResolve, 
+      ProfileResolve, 
+      UserResolve, 
+      BeansResolve, 
+      CanDeactivateUpdate, 
+      {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,9 +18,11 @@ import { ArticleComponent } from './article/article.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CanDeactivateUpdate } from './guards/can-deactivate.guard';
-import { ClubDetailResolve } from './services/club-detail-resolve.service';
-import { NewsfeedResolve } from './services/newsfeed-resolve.service';
-import { ProfileResolve } from './services/profile-resolve.service';
+import { ClubDetailResolve } from './resolvers/club-detail-resolve.service';
+import { NewsfeedResolve } from './resolvers/newsfeed-resolve.service';
+import { ProfileResolve } from './resolvers/profile-resolve.service';
+import { BeansResolve } from './resolvers/beans-resolve.service';
+import { UserResolve } from './resolvers/user-resolve.service';
 
 const appRoutes: Routes = [
   { path: 'newsfeed',   component: NewsfeedContainerComponent, resolve: { feeds: NewsfeedResolve } },
@@ -28,11 +30,11 @@ const appRoutes: Routes = [
   { path: 'clubs',      component: ClubsComponent },
   { path: 'resources',  component: ResourcesComponent },
   { path: 'home',  component: LandingPageComponent },
-  { path: 'beans', canActivate: [AuthGuard], component: BeansComponent },
+  { path: 'beans', canActivate: [AuthGuard], component: BeansComponent, resolve: { beans: BeansResolve } },
   { path: 'compose', canActivate: [AuthGuard], component: ArticleComposerComponent },
   { path: 'profile', canActivate: [AuthGuard],  component: ProfileComponent },
-  { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent, resolve: { user: ProfileResolve } },
-  { path: 'update', canActivate: [AuthGuard], canDeactivate: [CanDeactivateUpdate],  component: UpdateComponent },
+  { path: 'profile/:id', canActivate: [AuthGuard],  component: ProfileComponent, resolve: { userData: ProfileResolve } },
+  { path: 'update', canActivate: [AuthGuard], canDeactivate: [CanDeactivateUpdate],  component: UpdateComponent, resolve: { user: UserResolve } },
   { path: 'login',   component: LoginComponent },
   { path: 'events/:id', component: EventPageComponent },
   { path: 'hiring/:id', component: JobDetailPageComponent},
