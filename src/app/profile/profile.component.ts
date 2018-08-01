@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,7 @@ export class ProfileComponent implements OnInit {
     {question:"What do you hope to accomplish from this conversation?", answer: ""}
   ]
 
-  constructor(public route: ActivatedRoute, public router: Router) {
+  constructor(public route: ActivatedRoute, public router: Router, public authService: AuthService) {
   }
 
   ngOnInit() {
@@ -31,7 +32,9 @@ export class ProfileComponent implements OnInit {
   }
 
   invite() {
-    
+    this.authService.apiGet(`beans/send_invite/${this.user.id}`).then(res => {
+      console.log("This worked")
+    })
   }
 
 }
