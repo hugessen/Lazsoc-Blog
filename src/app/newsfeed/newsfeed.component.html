@@ -53,11 +53,17 @@
     </div>
   </div>
 </div>
-<div class="card" *ngIf="!hasEvents">
+<div class="card" *ngIf="!hasEvents && isClubDetail">
   <div class="card-header card-header-text">
     Events
   </div>
   <div class="card-body">
-      <span class="club-detail-text">Sorry, this club doesn't appear to have any events</span>
+    <span class="club-detail-text">Sorry, this club doesn't appear to have any events</span>
   </div>
+</div>
+<div class="card mt-4 mx-auto" style="width:80%" *ngIf="!hasEvents && !isClubDetail">
+  <div class="card-body py-4" style="text-align:center">  
+    <div class="club-title">No upcoming events :(</div>  
+    <span class="card-datetime">New events are always coming up, so be sure to check back soon!</span> 
+  </div>  
 </div>

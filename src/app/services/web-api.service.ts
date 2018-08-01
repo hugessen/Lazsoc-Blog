@@ -74,10 +74,19 @@ export class WebAPI {
 
   getEvents(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${API_PATH}/api/events.json`).toPromise()
+      this.http.get(`${LOCAL_PATH}/api/events.json`).toPromise()
       .then(res => {
         let events = res['events'].sort((a, b) => Date.parse(a.start_date_time) - Date.parse(b.start_date_time));
         resolve(events);
+      }).catch(err => reject(err));
+    })
+  }
+
+  getHomepageEvents(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${LOCAL_PATH}/api/carousel_events.json`).toPromise()
+      .then(res => {
+        resolve(res);
       }).catch(err => reject(err));
     })
   }
@@ -91,6 +100,7 @@ export class WebAPI {
     return new Promise((resolve, reject) => {
       this.http.get(`${API_PATH}/api/clubs.json`).toPromise()
         .then((res:any[]) => {
+          console.log(res);
           res.map(club => {
             club.club_social_links = this.formatSocialLinks(club.club_social_links);
           })

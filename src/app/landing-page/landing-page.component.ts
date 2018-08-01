@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebAPI } from '../services/web-api.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 	activeCol = 'beans';
-  constructor() { }
+	carouselEvents;
+  constructor(public webAPI: WebAPI) {
+  	console.log("yeah");
+  	this.webAPI.getHomepageEvents().then(res => {
+  		console.log("Carousel events", res);
+  		this.carouselEvents = res;
+  	})
+  }
 
   ngOnInit() {
   }

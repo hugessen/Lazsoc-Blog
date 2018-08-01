@@ -108,7 +108,6 @@ export class NewsfeedComponent implements OnInit {
   }
 
   matchesClub(event) {
-    console.log(event);
     const slug = event.club.slug;
     return this.clubFilters.length === 0 || _.indexOf(this.clubFilters, slug) !== -1;
   }

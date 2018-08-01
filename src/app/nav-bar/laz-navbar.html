@@ -1,18 +1,21 @@
 <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-faded nav" style="background-color:rgba(66,44,137,1); height:70px">
-  <a class="navbar-brand" routerLink="/newsfeed">
+  <a class="navbar-brand" routerLink="/home">
     <img src="../../assets/img/LazsocWhiteLogo.png" width="auto" height="105" class="ml-3" alt="">
   </a>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav mr-4">
       <li class="nav-item mr-4">
-        <a class="nav-link" routerLink="/clubs/2" routerLinkActive="active">ABOUT US</a>
+        <a class="nav-link" routerLink="/newsfeed" routerLinkActive="active">Newsfeed</a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" routerLink="/clubs/2" routerLinkActive="active">About Us</a>
       </li>
       <li class="nav-item mr-4" style="cursor:pointer">
-        <a class="nav-link" routerLink="/resources" routerLinkActive="active">RESOURCES</a>
+        <a class="nav-link" routerLink="/resources" routerLinkActive="active">Resources</a>
       </li>
       <li class="nav-item dropdown mr-3" style="cursor:pointer">
         <a class="nav-link dropdown-toggle" id="getInvolvedDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          GET INVOLVED
+          Get Involved
         </a>
         <div class="dropdown-menu get-involved-dropdown" aria-labelledby="getInvolvedDropdown" >
           <a class="dropdown-item" routerLink="/clubs">Our Clubs</a>
@@ -21,11 +24,11 @@
         </div>
       </li>
       <li class="nav-item mr-4">
-        <a class="nav-link" routerLinkActive="active" href="http://www.shop.lazsoc.ca">SHOP</a>
+        <a class="nav-link" routerLinkActive="active" href="http://www.shop.lazsoc.ca">Shop</a>
       </li>
       <li class="nav-item mr-4" *ngIf="!(authService.userSignedIn$)">
         <!-- <a class="nav-link" data-toggle="modal" data-target="#myModal">LOGIN</a> -->
-        <a class="nav-link" routerLink="/login">LOGIN</a>
+        <a class="nav-link" routerLink="/login">Login</a>
       </li>
     </ul>
   </div>
