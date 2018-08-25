@@ -15,7 +15,7 @@
           <ul class="list-group" style="border: 1px solid lightgrey; border-radius:0">
             <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('events')" [ngClass]="{active: newsfeedState == 'events'}">Events</li>
             <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="setNewsfeedState('articles')" [ngClass]="{active: newsfeedState == 'articles'}">Articles</li>
-            <li class="list-group-item list-group-item-action py-2" style="cursor:pointer"><a href="mailto:webmaster@lazsoc.ca">Feedback</a></li>
+            <!-- <li class="list-group-item list-group-item-action py-2" style="cursor:pointer"><a href="mailto:webmaster@lazsoc.ca">Feedback</a></li> -->
             <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" routerLink="/update">Edit Profile</li>
             <li class="list-group-item list-group-item-action py-2" style="cursor:pointer" (click)="signOut()">Log Out</li>
           </ul>
