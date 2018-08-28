@@ -28,10 +28,11 @@
       </div>
       <div class="row justify-content-center my-2">
         <div class="col-4 pr-1">
-          <div class="card">
-            <div class="card-body">
-              
-            </div>
+          <div class="card sticky">
+            <h3 class="card-header card-header-text">View</h3>
+<!--             <div class="side-heading py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">About</div>
+            <div class="side-heading py-2" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</div>
+            <div class="side-heading py-2" *ngIf="club.id == 2" (click)="state = 'team'" [ngClass]="{active: state == 'team'}">Team</div> -->
           </div>
         </div>
         <div class="col-8 pl-1">
@@ -41,7 +42,7 @@
               <ul class="list-group list-group-flush my-0">
                 <li class="list-group-item my-0" *ngFor="let exp of work_experiences">
                   <div class="media">
-                    <img [src]="exp.club.logo" class="align-self-start">
+                    <img [src]="exp.club.api_logo" class="align-self-start">
                     <div class="media-body align-self-center ml-3">
                       <div class="work-exp-title">{{exp.title}}</div>
                       <div class="club-title">{{exp.club.name}}</div>
@@ -60,17 +61,19 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Write a message to {{user.first_name}} {{user.last_name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <div *ngFor="let question of inviteQuestions">
+<!--           <div *ngFor="let question of inviteQuestions">
             <label for="goals">{{question.question}}</label><br>
             <textarea rows="5" name="goals" [(ngModel)]="question.answer"></textarea>
-          </div>
+          </div> -->
+          <label for="message">Why are you reaching out? What would you like to talk about?</label><br>
+          <textarea rows="5" name="message" [(ngModel)]="inviteMessage"></textarea>
         </div>
       </div>
       <div class="modal-footer">

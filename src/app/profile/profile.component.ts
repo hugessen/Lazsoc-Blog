@@ -13,11 +13,7 @@ export class ProfileComponent implements OnInit {
   user;
   work_experiences;
   is_current_user;
-  inviteQuestions = [
-    {question:"What do you hope to accomplish from this conversation?", answer: ""},
-    {question:"What do you hope to accomplish from this conversation?", answer: ""},
-    {question:"What do you hope to accomplish from this conversation?", answer: ""}
-  ]
+  inviteMessage = "";
 
   constructor(public route: ActivatedRoute, public router: Router, public authService: AuthService) {
   }
@@ -32,8 +28,8 @@ export class ProfileComponent implements OnInit {
   }
 
   invite() {
-    this.authService.apiGet(`beans/send_invite/${this.user.id}`).then(res => {
-      console.log("This worked")
+    this.authService.apiPost(`beans/send_invite/${this.user.id}`,{message:this.inviteMessage}).then(res => {
+      console.log("This worked");
     })
   }
 
