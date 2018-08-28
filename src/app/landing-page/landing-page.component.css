@@ -1,3 +1,72 @@
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .text-container {
+  	width:100%;
+  	position:relative;
+  	padding:5%;
+  	font-size:12px;
+  }
+  .text-container h1 {
+  	text-align: center;
+  }
+  .graphic {
+  	width:100%;
+  	position: relative;
+  }
+  .subtext {
+  	font-size: 15px;
+  }
+  .non-mobile {
+  	display:none;
+  }
+  .our-clubs img {
+		width: 50%;
+		height:100%
+		/*align-self: center;*/
+	}
+}
+@media only screen and (min-width: 769px) {
+  /* For mobile phones: */
+	.text-container {
+	  top: 0;
+	  bottom: 0;
+	  margin:auto;
+	  height:50%;
+		width:40%;
+		position:absolute;
+		display: inline;
+	}
+
+	.community-text {
+		right:40px;
+	}
+	.subtext {
+		font-size: 20px;
+	}
+
+	.left-40 {
+		margin-left:40px
+	}
+	.community-img {
+		width: 65%;
+		float:left;
+	}
+
+	.right-img {
+		float:right;
+	}
+
+	.graphic {
+		width: 70%;
+		height:auto;
+	}
+
+	.our-clubs img {
+		width: 31%;
+		align-self: center;
+	}
+}
+
 .container-fluid {
 	background-color: white;
   position: relative;
@@ -30,28 +99,7 @@ h1 {
 .subtext {
 	color: #83868A;	
 	font-family: Lato-Regular;	
-	font-size: 20px;
 	line-height: 24px;
-}
-
-.text-container {
-  top: 0;
-  bottom: 0;
-  margin:auto;
-  height:50%;
-	width:40%;
-	position:absolute;
-	display: inline;
-}
-
-.community-text {
-	right:40px;
-}
-
-.graphic {
-	width: 70%;
-	height:auto;
-	align-self: center;
 }
 
 .selector-container {
@@ -125,11 +173,6 @@ h1 {
 
 .our-clubs {
 	background-color: rgba(249,248,251,0)
-}
-
-.our-clubs img {
-	width: 31%;
-	align-self: center;
 }
 
 .final-panel {

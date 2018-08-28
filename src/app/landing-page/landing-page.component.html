@@ -27,8 +27,8 @@
 	</div>
 	<div class="row justify-content-center" id="passion" style="position:relative">
 		<div>
-			<img src="assets/img/LandingGraphic3.jpeg" class="graphic" style="float:right">
-			<div class="text-container" style="margin-left:40px">
+			<img src="assets/img/LandingGraphic3.jpeg" class="graphic right-img">
+			<div class="text-container left-40">
 				<h1>Discover your passions</h1>
 				<span class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love. Whatever you may be interested in, LazSoc is here to help you dive into it.</span>
 			</div>
@@ -36,7 +36,7 @@
 	</div>
 	<div class="row justify-content-center" id="community" style="position:relative">
 		<div>
-			<img src="assets/img/LandingGraphic2.jpeg" class="graphic" style="float:left; width: 65%">
+			<img src="assets/img/LandingGraphic2.jpeg" class="graphic community-img">
 			<div class="text-container community-text">
 				<h1>Immerse yourself within an empowering community</h1>
 				<span class="subtext">With one of the smallest campuses in Ontario, the Lazaridis community is known to have the strongest and tight knit culture. Being a Lazaridis student, you are able to surround yourself with ambitious like minded students that push you past your comfort zone and help you pursue your passions. You get the oppurunity to inspire the lives of the generation that comes next by leading by example.</span>
@@ -45,15 +45,15 @@
 	</div>
 	<div class="row justify-content-center" id="experience" style="position:relative">
 		<div>
-			<img src="assets/img/LandingGraphic1.jpeg" class="graphic" style="float:right">
-			<div class="text-container" style="margin-left:40px">
+			<img src="assets/img/LandingGraphic1.jpeg" class="graphic right-img">
+			<div class="text-container left-40">
 				<h1>Experience what works best for you</h1>
 				<span class="subtext">Lazaridis students get a chance to see their work come to life. Focusing in on the why you get a chance to try new things in a hands on approach to see what works best for you. Through your experiences you will develop new skills and friendships that will last a lifetime. Putting your best foot forward, bring your ideas to life and leave behind that positive legacy.</span>
 			</div>
 		</div>
 	</div>
 
-	<div class="row selector-container justify-content-center">
+	<div class="row selector-container justify-content-center non-mobile">
 		<div class="d-flex flex-row three-cols-div pointer">
 			<div class="three-col col-left align-self-center ml-1" (click)="activeCol = 'beans'" [ngClass]="{active:activeCol == 'beans'}">
 				<div class="mt-1">LazBeans</div>
@@ -66,8 +66,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="row justify-content-center">
-		<div class="selector-content">
+	<div class="row justify-content-center non-mobile">
+		<div class="selector-content non-mobile">
 			<div class="d-flex flex-row beans-content" *ngIf="activeCol == 'beans'">
 				<img src="assets/img/Coffee-Cups.png" style="height:520px">
 				<div style="margin-top:5%">
@@ -102,7 +102,7 @@
 	</div>
 	<div class="row our-clubs justify-content-center">
 		<img src="assets/img/Clubs-Left.png">
-		<div class="mx-4 align-self-center" style="width:34%; text-align:center">
+		<div class="mx-4 align-self-center non-mobile" style="width:34%; text-align:center">
 			<h1>23 Student-Run Clubs, Associations and Committees</h1>
 			<div class="subtext">Our school is the perfect place to find who you are, who you want to become and discover what you enjoy most. With a low stake environment you will be able to explore all your interests learning from all the ups and downs along the way. Passion is the engine that drives the Lazaridis community and our community will help you find what you love.</div>
 			<div class="gold-button mt-4 mx-auto" routerLink="/clubs">
@@ -113,7 +113,7 @@
 	</div>
 	<div class="row final-panel justify-content-center" style="height:auto">
 		<img src="assets/img/FullTeam19.jpeg">
-		<div class="final-panel-text-div">
+		<div class="final-panel-text-div non-mobile">
 			<div class="final-panel-heading">Don't miss out!</div>
 			<div class="final-panel-subtext">Sign up here and stay on top</div>
 			<div class="d-flex flex-row justify-content-center mt-3">
