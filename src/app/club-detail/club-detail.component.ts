@@ -23,6 +23,7 @@ export class ClubDetailComponent implements OnInit {
         this.webAPI.getClub(+params.get('id')))
           .subscribe((club) => {
             this.club = club
+            console.log(this.club)
           });
     this.fullTeam = this.getFullTeam();
   }

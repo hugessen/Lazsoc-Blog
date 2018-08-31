@@ -81,7 +81,7 @@ export class WebAPI {
 
   getClubs(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${API_PATH}/api/clubs.json`).toPromise()
+      this.http.get(`${LOCAL_PATH}/api/clubs.json`).toPromise()
         .then((res:any[]) => {
           res.map(club => {
             club.club_social_links = this.formatSocialLinks(club.club_social_links);
