@@ -72,7 +72,7 @@ export class JobPostingSidebar implements OnInit {
     this.webAPI.getJobPostings().then(data => {
       this.jobPostings = data;
       if (this.clubID !== 0)
-        this.jobPostings.filter(posting => posting.club === this.clubID);
+        this.jobPostings = this.jobPostings.filter(posting => posting.club === this.clubID);
       if (this.jobPostings.length > 0)
         this.hasPostings = true;
     })

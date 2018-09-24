@@ -115,7 +115,6 @@ export class WebAPI {
     this.getClubs()
        .then(res => {
          const club = res.find(club => club.id === id);
-         club.club_social_links = this.formatSocialLinks(club.club_social_links);
          resolve(club);
        });
      })
