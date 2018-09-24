@@ -201,6 +201,8 @@ h6 {
   height: 100%;
   width: auto;
   overflow: hidden;
+}
+.has-headshot img {
   transform: translateX(-15%);
 }
 

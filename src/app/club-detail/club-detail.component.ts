@@ -54,7 +54,7 @@ export class ClubDetailComponent implements OnInit {
             { name: 'Shivansh Patel', title: 'Director of Marketing', image: 'assets/img/Head Shots/Shivansh.jpg' },
             { name: 'Alex Martin', title: 'Multimedia Manager', image: 'assets/img/Head Shots/Alex M.jpg' },
             { name: 'Grayson Hunter', title: 'Marketing Manager', image: 'assets/img/Head Shots/Grayson.jpg' },
-            { name: 'Julia Christopherakos', title: 'Brand Manager', image: 'assets/img/thumbnails/LazSoc.png' },
+            { name: 'Julia Christopherakos', title: 'Brand Manager', image: null },
             { name: 'Maddy Rotman', title: 'Design Director', image: 'assets/img/Head Shots/Maddy.jpg' }
           ]
         },
@@ -62,7 +62,7 @@ export class ClubDetailComponent implements OnInit {
           title: 'Corporate Relations',
           team: [
             { name: 'Hannah Dube', title: 'VP of Corporate', image: 'assets/img/Head Shots/Hannah B.jpg' },
-            { name: 'Ashhad Kabeer', title: 'Director of Sponsorships', image: 'assets/img/thumbnails/LazSoc.png' },
+            { name: 'Ashhad Kabeer', title: 'Director of Sponsorships', image: null },
             { name: 'Joseph Tung', title: 'Director of Alumni Relations', image: 'assets/img/Head Shots/Joseph.jpg' }
           ]
         },
@@ -88,7 +88,7 @@ export class ClubDetailComponent implements OnInit {
             { name: 'Alex Watson', title: 'VP of Events', image: 'assets/img/Head Shots/Alex.jpg' },
             { name: 'Blair Forrest', title: 'Director of Case & Competitions', image: 'assets/img/Head Shots/Blair.jpg' },
             { name: 'Jenna Greenspoon', title: 'Events Manager', image: 'assets/img/Head Shots/Jenna G.jpg' }
-            { name: 'Samia Sami', title: 'Events Manager', image: 'assets/img/thumbnails/LazSoc.png' }
+            { name: 'Samia Sami', title: 'Events Manager', image: null }
             ]
         },
         {
