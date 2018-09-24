@@ -13,7 +13,7 @@ export class ClubDetailComponent implements OnInit {
   public club;
   public clubEvents;
   public newsfeed;
-  public state = 'events';
+  public state = 'about';
   public fullTeam;
 
   constructor(public route: ActivatedRoute, public router: Router, public webAPI: WebAPI) {
