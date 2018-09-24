@@ -1,3 +1,8 @@
+.heading {
+  font-family:Lato-Black;
+  font-size:20;
+}
+
 h5, h5 > a {
   font-family: Lato-Black;
   font-weight: 600;
@@ -136,7 +141,7 @@ h6 {
 
 .club-detail-text {
   font-family:Lato-Medium;
-  font-size:14px;
+  font-size:15px;
   letter-spacing:0;
   text-align:left;
 }
@@ -192,7 +197,7 @@ h6 {
   margin-right: auto;
 }
 
-.head-shot > img {
+.head-shot img {
   width: 100%;
 }
 

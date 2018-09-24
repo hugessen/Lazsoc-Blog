@@ -34,17 +34,62 @@
 						<div class="side-heading py-2" (click)="state = 'about'" [ngClass]="{active: state == 'about'}">About</div>
 						<div class="side-heading py-2" (click)="state = 'events'" [ngClass]="{active: state == 'events'}">Events</div>
             <div class="side-heading py-2" *ngIf="club.id == 2" (click)="state = 'team'" [ngClass]="{active: state == 'team'}">Team</div>
+            <div class="side-heading py-2" *ngIf="club.id == 2" (click)="state = 'sponsors'" [ngClass]="{active: state == 'sponsors'}">Sponsors</div>
+            <div class="side-heading py-2" *ngIf="club.id == 2" (click)="state = 'photos'" [ngClass]="{active: state == 'photos'}">Photos</div>
           </div>
         </div>
         <div class="col-8 pl-1">
-          <div class="card sticky" *ngIf="state === 'about'">
-            <h3 class="card-header card-header-text">About</h3>
-            <div class="card-body">
-							<span class="club-detail-text">
-								{{club.description}}
-							</span>
+          <div *ngIf="state === 'about'">
+            <div class="card sticky">
+              <h3 class="card-header card-header-text">About</h3>
+              <div class="card-body" *ngIf="club.id != 2">
+                <span class="club-detail-text">
+                  {{club.description}}
+                </span>
+              </div>
+              <div class="card-body" *ngIf="club.id == 2">
+                <span class="heading">Who are we?</span>
+                <hr>
+                <span class="club-detail-text">
+                  {{club.description}}
+                </span>
+                <br><br>
+                <span class="heading">Our Mission</span>
+                <hr>
+                <span class="club-detail-text">
+                  To inspire learning, foster a collaborative community, and provide the opportunities for students to
+                  simultaneously discover and pursue their passions.
+                </span>
+                <br><br>
+                <span class="heading">Vision</span>
+                <hr>
+                <span class="club-detail-text">
+                  To provide an enriching undergraduate student experience within the Lazaridis Students’ Society
+                  community both in Canada and across the globe. We aim to positively impact every Lazaridis Student
+                  in a meaningful manner by providing leadership opportunities and supporting personal and
+                  professional development. We aim to do this by supporting our Clubs and Associations, crafting
+                  events and
+                  experiences, and promoting continuous development with external organizations to connect
+                  students with alumni, potential employers, and unique opportunities. We strive towards giving
+                  Lazaridis students an experience that adds value beyond their in-class time by fostering a strong
+                  community and igniting the need for continuous development. 
+                </span>
+                <br><br>
+                <span class="heading">Core Values</span>
+                <hr>
+                <span class="club-detail-text">
+                  1. Execute with Excellence <br>
+                  2. Act with Integrity and transparency <br>
+                  3. Practice open communication <br>
+                  4. Foster creativity and create a culture of learning <br>
+                  5. Student commitment <br>
+                  6. Create a supportive culture with regards to diversity and inclusion <br>
+                  7. Represent every Lazaridis Student <br>
+                </span>
+              </div>
             </div>
           </div>
+
 					<div *ngIf="state === 'events'">
 						<app-newsfeed [clubEvents]="clubEvents" [isClubDetail]="true"></app-newsfeed>
 					</div>
