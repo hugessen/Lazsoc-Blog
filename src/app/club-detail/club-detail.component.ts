@@ -42,9 +42,9 @@ export class ClubDetailComponent implements OnInit {
           title: 'Internal',
           team: [
             { name: 'Kara McDowell', title: 'VP of Internal', image: 'assets/img/Head Shots/Kara.jpg' },
-            { name: 'Gabriela Morales', title: 'Executive', image: 'assets/img/Head Shots/Gaby.jpg' }
-            { name: 'Hayley McGoldrick', title: 'Lazaridis Review Editor-in-Chief', image: 'assets/img/Head Shots/Hayley M.jpg' }
-            { name: 'Tyler De Sousa', title: 'Director of Philanthropy', image: 'assets/img/Head Shots/Tyler.jpg' }
+            { name: 'Gabriela Morales', title: 'Executive', image: 'assets/img/Head Shots/Gaby.jpg' },
+            { name: 'Hayley McGoldrick', title: 'Lazaridis Review Editor-in-Chief', image: 'assets/img/Head Shots/Hayley M.jpg' },
+            { name: 'Tyler De Sousa', title: 'Director of Philanthropy', image: 'assets/img/Head Shots/Tyler.jpg' },
           ]
         },
         {
@@ -71,7 +71,7 @@ export class ClubDetailComponent implements OnInit {
           team: [
             { name: 'Sam Hall', title: 'VP of Finance', image: 'assets/img/Head Shots/Sam.jpg' },
             { name: 'Hayden Carver', title: 'External Director of Finance', image: 'assets/img/Head Shots/Hayden.jpg' },            
-            { name: 'Jackson Relouw', title: 'External Director of Finance', image: 'assets/img/Head Shots/Jackson.jpg' }            
+            { name: 'Jackson Relouw', title: 'External Director of Finance', image: 'assets/img/Head Shots/Jackson.jpg' },        
             { name: "Alex O'Hara", title: 'External Director of Finance', image: 'assets/img/Head Shots/Alex O.jpg' },            
           ]
         },
@@ -87,7 +87,7 @@ export class ClubDetailComponent implements OnInit {
           team: [
             { name: 'Alex Watson', title: 'VP of Events', image: 'assets/img/Head Shots/Alex.jpg' },
             { name: 'Blair Forrest', title: 'Director of Case & Competitions', image: 'assets/img/Head Shots/Blair.jpg' },
-            { name: 'Jenna Greenspoon', title: 'Events Manager', image: 'assets/img/Head Shots/Jenna G.jpg' }
+            { name: 'Jenna Greenspoon', title: 'Events Manager', image: 'assets/img/Head Shots/Jenna G.jpg' },
             { name: 'Samia Sami', title: 'Events Manager', image: null }
             ]
         },

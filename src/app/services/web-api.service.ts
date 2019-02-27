@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 const API_PATH = 'https://moria.lazsoc.ca'
 const TIME_OFFSET = 60 * 60 * 5 * 1000;
 const LOCAL_PATH = 'http://localhost:3000'
+const LITE_PATH = 'http://localhost:3001'
 
 @Injectable()
 export class WebAPI {
@@ -74,7 +75,7 @@ export class WebAPI {
 
   getEvents(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${LOCAL_PATH}/api/events.json`).toPromise()
+      this.http.get(`${API_PATH}/api/events.json`).toPromise()
       .then(res => {
         let events = res['events'].sort((a, b) => Date.parse(a.start_date_time) - Date.parse(b.start_date_time));
         resolve(events);
@@ -84,7 +85,7 @@ export class WebAPI {
 
   getHomepageEvents(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${LOCAL_PATH}/api/carousel_events.json`).toPromise()
+      this.http.get(`${API_PATH}/api/carousel_events.json`).toPromise()
       .then(res => {
         resolve(res);
       }).catch(err => reject(err));
