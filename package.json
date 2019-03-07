@@ -25,6 +25,8 @@
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@angular/platform-server": "^5.2.11",
     "@angular/router": "^5.2.11",
+    "@angular/cli": "^7.3.5",
+    "@angular/compiler-cli": "^5.2.11",
     "angular-froala-wysiwyg": "^1.0.0",
     "angular2-token": "^0.2.0-beta.14",
     "aws-amplify": "^0.4.1",
@@ -44,12 +46,13 @@
     "ng4-fittext": "^1.1.5",
     "rxjs": "^5.5.10",
     "stickyfill": "^1.1.1",
+    "typescript": "^2.4.2",
     "util": "^0.10.4",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",
-    "@angular/cli": "^7.3.3",
+    "@angular/cli": "^7.3.5",
     "@angular/compiler-cli": "^5.2.11",
     "@angular/language-service": "^4.3.4",
     "@types/jasmine": "2.5.45",
@@ -75,5 +78,8 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "^2.4.2"
+  },
+  "scripts": {
+    "heroku-postbuild": "ng build --prod"
   }
 }
